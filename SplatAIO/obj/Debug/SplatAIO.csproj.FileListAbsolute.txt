@@ -1,0 +1,18 @@
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\bin\Debug\SplatAIO.exe.config
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\bin\Debug\SplatAIO.exe
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\bin\Debug\SplatAIO.pdb
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.csprojResolveAssemblyReference.cache
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.Form1.resources
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.Properties.Resources.resources
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.csproj.GenerateResource.Cache
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.exe
+c:\users\bryce\documents\visual studio 2015\Projects\SplatAIO\SplatAIO\obj\Debug\SplatAIO.pdb
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\bin\Debug\SplatAIO.exe.config
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.exe
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.pdb
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\bin\Debug\SplatAIO.exe
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\bin\Debug\SplatAIO.pdb
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.csprojResolveAssemblyReference.cache
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.Form1.resources
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.Properties.Resources.resources
+C:\Users\Bryce\Desktop\SplatAIO\SplatAIO\obj\Debug\SplatAIO.csproj.GenerateResource.Cache
