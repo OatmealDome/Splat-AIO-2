@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            SingleAssemblyComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(Form1));
             this.ipBox = new System.Windows.Forms.TextBox();
             this.connectBox = new System.Windows.Forms.Button();
             this.disconnectBox = new System.Windows.Forms.Button();
@@ -80,34 +80,26 @@
             // 
             // ipBox
             // 
-            this.ipBox.Location = new System.Drawing.Point(71, 23);
+            resources.ApplyResources(this.ipBox, "ipBox");
             this.ipBox.Name = "ipBox";
-            this.ipBox.Size = new System.Drawing.Size(105, 20);
-            this.ipBox.TabIndex = 0;
             // 
             // connectBox
             // 
-            this.connectBox.Location = new System.Drawing.Point(182, 23);
+            resources.ApplyResources(this.connectBox, "connectBox");
             this.connectBox.Name = "connectBox";
-            this.connectBox.Size = new System.Drawing.Size(58, 21);
-            this.connectBox.TabIndex = 1;
-            this.connectBox.Text = "Connect";
             this.connectBox.UseVisualStyleBackColor = true;
             this.connectBox.Click += new System.EventHandler(this.connectBox_Click);
             // 
             // disconnectBox
             // 
-            this.disconnectBox.Enabled = false;
-            this.disconnectBox.Location = new System.Drawing.Point(246, 23);
+            resources.ApplyResources(this.disconnectBox, "disconnectBox");
             this.disconnectBox.Name = "disconnectBox";
-            this.disconnectBox.Size = new System.Drawing.Size(91, 21);
-            this.disconnectBox.TabIndex = 2;
-            this.disconnectBox.Text = "Disconnect";
             this.disconnectBox.UseVisualStyleBackColor = true;
             this.disconnectBox.Click += new System.EventHandler(this.disconnectBox_Click);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.sazaeBox);
             this.groupBox1.Controls.Add(this.maeBox);
             this.groupBox1.Controls.Add(this.kaneBox);
@@ -118,59 +110,42 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.udeBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 150);
-            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Stats";
             // 
             // sazaeBox
             // 
-            this.sazaeBox.Enabled = false;
-            this.sazaeBox.Location = new System.Drawing.Point(88, 68);
+            resources.ApplyResources(this.sazaeBox, "sazaeBox");
             this.sazaeBox.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
             this.sazaeBox.Name = "sazaeBox";
-            this.sazaeBox.Size = new System.Drawing.Size(69, 20);
-            this.sazaeBox.TabIndex = 6;
-            this.sazaeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // maeBox
             // 
-            this.maeBox.Enabled = false;
-            this.maeBox.Location = new System.Drawing.Point(117, 94);
+            resources.ApplyResources(this.maeBox, "maeBox");
             this.maeBox.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
             this.maeBox.Name = "maeBox";
-            this.maeBox.Size = new System.Drawing.Size(40, 20);
-            this.maeBox.TabIndex = 8;
-            this.maeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // kaneBox
             // 
-            this.kaneBox.Enabled = false;
-            this.kaneBox.Location = new System.Drawing.Point(88, 43);
+            resources.ApplyResources(this.kaneBox, "kaneBox");
             this.kaneBox.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.kaneBox.Name = "kaneBox";
-            this.kaneBox.Size = new System.Drawing.Size(69, 20);
-            this.kaneBox.TabIndex = 5;
-            this.kaneBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // rankBox
             // 
-            this.rankBox.Enabled = false;
-            this.rankBox.Location = new System.Drawing.Point(117, 17);
+            resources.ApplyResources(this.rankBox, "rankBox");
             this.rankBox.Maximum = new decimal(new int[] {
             50,
             0,
@@ -182,9 +157,6 @@
             0,
             0});
             this.rankBox.Name = "rankBox";
-            this.rankBox.Size = new System.Drawing.Size(40, 20);
-            this.rankBox.TabIndex = 4;
-            this.rankBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.rankBox.Value = new decimal(new int[] {
             1,
             0,
@@ -193,358 +165,245 @@
             // 
             // showStatsBox
             // 
-            this.showStatsBox.Enabled = false;
-            this.showStatsBox.Location = new System.Drawing.Point(6, 122);
+            resources.ApplyResources(this.showStatsBox, "showStatsBox");
             this.showStatsBox.Name = "showStatsBox";
-            this.showStatsBox.Size = new System.Drawing.Size(151, 23);
-            this.showStatsBox.TabIndex = 9;
-            this.showStatsBox.Text = "Enable All";
             this.showStatsBox.UseVisualStyleBackColor = true;
             this.showStatsBox.Click += new System.EventHandler(this.showStatsBox_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 98);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Rank";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 72);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Sea Snails";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 46);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Money";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 20);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Level";
             // 
             // udeBox
             // 
-            this.udeBox.Enabled = false;
+            resources.ApplyResources(this.udeBox, "udeBox");
             this.udeBox.FormattingEnabled = true;
             this.udeBox.Items.AddRange(new object[] {
-            "C-",
-            "C",
-            "C+",
-            "B-",
-            "B",
-            "B+",
-            "A-",
-            "A",
-            "A+",
-            "S",
-            "S+"});
-            this.udeBox.Location = new System.Drawing.Point(76, 94);
+            resources.GetString("udeBox.Items"),
+            resources.GetString("udeBox.Items1"),
+            resources.GetString("udeBox.Items2"),
+            resources.GetString("udeBox.Items3"),
+            resources.GetString("udeBox.Items4"),
+            resources.GetString("udeBox.Items5"),
+            resources.GetString("udeBox.Items6"),
+            resources.GetString("udeBox.Items7"),
+            resources.GetString("udeBox.Items8"),
+            resources.GetString("udeBox.Items9"),
+            resources.GetString("udeBox.Items10")});
             this.udeBox.Name = "udeBox";
-            this.udeBox.Size = new System.Drawing.Size(35, 21);
-            this.udeBox.TabIndex = 7;
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.skinBox);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.eyeBox);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.genderBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(163, 107);
-            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Player";
             // 
             // skinBox
             // 
-            this.skinBox.Enabled = false;
+            resources.ApplyResources(this.skinBox, "skinBox");
             this.skinBox.FormattingEnabled = true;
             this.skinBox.Items.AddRange(new object[] {
-            "1 - Lightest",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6 - Darkest"});
-            this.skinBox.Location = new System.Drawing.Point(72, 74);
+            resources.GetString("skinBox.Items"),
+            resources.GetString("skinBox.Items1"),
+            resources.GetString("skinBox.Items2"),
+            resources.GetString("skinBox.Items3"),
+            resources.GetString("skinBox.Items4"),
+            resources.GetString("skinBox.Items5")});
             this.skinBox.Name = "skinBox";
-            this.skinBox.Size = new System.Drawing.Size(85, 21);
-            this.skinBox.TabIndex = 12;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 77);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Skin";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 50);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Eyes";
             // 
             // eyeBox
             // 
-            this.eyeBox.Enabled = false;
+            resources.ApplyResources(this.eyeBox, "eyeBox");
             this.eyeBox.FormattingEnabled = true;
             this.eyeBox.Items.AddRange(new object[] {
-            "Black",
-            "Brown",
-            "Pink",
-            "Orange",
-            "Yellow",
-            "Green",
-            "Blue"});
-            this.eyeBox.Location = new System.Drawing.Point(72, 47);
+            resources.GetString("eyeBox.Items"),
+            resources.GetString("eyeBox.Items1"),
+            resources.GetString("eyeBox.Items2"),
+            resources.GetString("eyeBox.Items3"),
+            resources.GetString("eyeBox.Items4"),
+            resources.GetString("eyeBox.Items5"),
+            resources.GetString("eyeBox.Items6")});
             this.eyeBox.Name = "eyeBox";
-            this.eyeBox.Size = new System.Drawing.Size(85, 21);
-            this.eyeBox.TabIndex = 11;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 22);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Gender";
             // 
             // genderBox
             // 
-            this.genderBox.Enabled = false;
+            resources.ApplyResources(this.genderBox, "genderBox");
             this.genderBox.FormattingEnabled = true;
             this.genderBox.Items.AddRange(new object[] {
-            "Girl",
-            "Boy",
-            "Octoling"});
-            this.genderBox.Location = new System.Drawing.Point(72, 19);
+            resources.GetString("genderBox.Items"),
+            resources.GetString("genderBox.Items1"),
+            resources.GetString("genderBox.Items2")});
             this.genderBox.Name = "genderBox";
-            this.genderBox.Size = new System.Drawing.Size(85, 21);
-            this.genderBox.TabIndex = 10;
             this.genderBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.takoBox);
             this.groupBox3.Controls.Add(this.ikaBox);
-            this.groupBox3.Location = new System.Drawing.Point(181, 59);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(162, 88);
-            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Octohax";
             // 
             // takoBox
             // 
-            this.takoBox.Enabled = false;
-            this.takoBox.Location = new System.Drawing.Point(10, 49);
+            resources.ApplyResources(this.takoBox, "takoBox");
             this.takoBox.Name = "takoBox";
-            this.takoBox.Size = new System.Drawing.Size(146, 23);
-            this.takoBox.TabIndex = 15;
-            this.takoBox.Text = "Octopus ZL";
             this.takoBox.UseVisualStyleBackColor = true;
             this.takoBox.Click += new System.EventHandler(this.takoBox_Click);
             // 
             // ikaBox
             // 
-            this.ikaBox.Enabled = false;
-            this.ikaBox.Location = new System.Drawing.Point(10, 19);
+            resources.ApplyResources(this.ikaBox, "ikaBox");
             this.ikaBox.Name = "ikaBox";
-            this.ikaBox.Size = new System.Drawing.Size(146, 23);
-            this.ikaBox.TabIndex = 14;
-            this.ikaBox.Text = "Squid ZL";
             this.ikaBox.UseVisualStyleBackColor = true;
             this.ikaBox.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.normalBox);
             this.groupBox4.Controls.Add(this.swapBox);
             this.groupBox4.Controls.Add(this.hotaruBox);
             this.groupBox4.Controls.Add(this.aoriBox);
-            this.groupBox4.Location = new System.Drawing.Point(182, 153);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(161, 149);
-            this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Sisterhax";
             // 
             // normalBox
             // 
-            this.normalBox.Enabled = false;
-            this.normalBox.Location = new System.Drawing.Point(6, 108);
+            resources.ApplyResources(this.normalBox, "normalBox");
             this.normalBox.Name = "normalBox";
-            this.normalBox.Size = new System.Drawing.Size(150, 23);
-            this.normalBox.TabIndex = 19;
-            this.normalBox.Text = "Normalize";
             this.normalBox.UseVisualStyleBackColor = true;
             this.normalBox.Click += new System.EventHandler(this.button9_Click);
             // 
             // swapBox
             // 
-            this.swapBox.Enabled = false;
-            this.swapBox.Location = new System.Drawing.Point(7, 79);
+            resources.ApplyResources(this.swapBox, "swapBox");
             this.swapBox.Name = "swapBox";
-            this.swapBox.Size = new System.Drawing.Size(149, 23);
-            this.swapBox.TabIndex = 18;
-            this.swapBox.Text = "Sister Swap";
             this.swapBox.UseVisualStyleBackColor = true;
             this.swapBox.Click += new System.EventHandler(this.swapBox_Click);
             // 
             // hotaruBox
             // 
-            this.hotaruBox.Enabled = false;
-            this.hotaruBox.Location = new System.Drawing.Point(7, 50);
+            resources.ApplyResources(this.hotaruBox, "hotaruBox");
             this.hotaruBox.Name = "hotaruBox";
-            this.hotaruBox.Size = new System.Drawing.Size(149, 23);
-            this.hotaruBox.TabIndex = 17;
-            this.hotaruBox.Text = "Copy Marie";
             this.hotaruBox.UseVisualStyleBackColor = true;
             this.hotaruBox.Click += new System.EventHandler(this.hotaruBox_Click);
             // 
             // aoriBox
             // 
-            this.aoriBox.Enabled = false;
-            this.aoriBox.Location = new System.Drawing.Point(7, 20);
+            resources.ApplyResources(this.aoriBox, "aoriBox");
             this.aoriBox.Name = "aoriBox";
-            this.aoriBox.Size = new System.Drawing.Size(149, 23);
-            this.aoriBox.TabIndex = 16;
-            this.aoriBox.Text = "Copy Callie";
             this.aoriBox.UseVisualStyleBackColor = true;
             this.aoriBox.Click += new System.EventHandler(this.aoriBox_Click);
             // 
             // amiiboBox
             // 
-            this.amiiboBox.Enabled = false;
+            resources.ApplyResources(this.amiiboBox, "amiiboBox");
             this.amiiboBox.FormattingEnabled = true;
             this.amiiboBox.Items.AddRange(new object[] {
-            "(None)",
-            "Girl",
-            "Boy",
-            "Squid",
-            "Callie",
-            "Marie"});
-            this.amiiboBox.Location = new System.Drawing.Point(71, 63);
+            resources.GetString("amiiboBox.Items"),
+            resources.GetString("amiiboBox.Items1"),
+            resources.GetString("amiiboBox.Items2"),
+            resources.GetString("amiiboBox.Items3"),
+            resources.GetString("amiiboBox.Items4"),
+            resources.GetString("amiiboBox.Items5")});
             this.amiiboBox.Name = "amiiboBox";
-            this.amiiboBox.Size = new System.Drawing.Size(85, 21);
-            this.amiiboBox.TabIndex = 3;
             this.amiiboBox.SelectedIndexChanged += new System.EventHandler(this.amiiboBox_SelectedIndexChanged);
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 66);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Amiibo:";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 27);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "IP Address:";
             // 
             // groupBox5
             // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.gameButton);
             this.groupBox5.Controls.Add(this.bukiButton);
             this.groupBox5.Controls.Add(this.gearButton);
-            this.groupBox5.Location = new System.Drawing.Point(182, 312);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(161, 111);
-            this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Unlock";
             // 
             // gameButton
             // 
-            this.gameButton.Enabled = false;
-            this.gameButton.Location = new System.Drawing.Point(6, 78);
+            resources.ApplyResources(this.gameButton, "gameButton");
             this.gameButton.Name = "gameButton";
-            this.gameButton.Size = new System.Drawing.Size(149, 22);
-            this.gameButton.TabIndex = 22;
-            this.gameButton.Text = "Minigames";
             this.gameButton.UseVisualStyleBackColor = true;
             this.gameButton.Click += new System.EventHandler(this.gameButton_Click);
             // 
             // bukiButton
             // 
-            this.bukiButton.Enabled = false;
-            this.bukiButton.Location = new System.Drawing.Point(6, 49);
+            resources.ApplyResources(this.bukiButton, "bukiButton");
             this.bukiButton.Name = "bukiButton";
-            this.bukiButton.Size = new System.Drawing.Size(149, 23);
-            this.bukiButton.TabIndex = 21;
-            this.bukiButton.Text = "Weapons";
             this.bukiButton.UseVisualStyleBackColor = true;
             this.bukiButton.Click += new System.EventHandler(this.bukiButton_Click);
             // 
             // gearButton
             // 
-            this.gearButton.Enabled = false;
-            this.gearButton.Location = new System.Drawing.Point(6, 20);
+            resources.ApplyResources(this.gearButton, "gearButton");
             this.gearButton.Name = "gearButton";
-            this.gearButton.Size = new System.Drawing.Size(149, 22);
-            this.gearButton.TabIndex = 20;
-            this.gearButton.Text = "Gear";
             this.gearButton.UseVisualStyleBackColor = true;
             this.gearButton.Click += new System.EventHandler(this.gearButton_Click_1);
             // 
             // OKButton
             // 
-            this.OKButton.Enabled = false;
-            this.OKButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.OKButton.Location = new System.Drawing.Point(19, 367);
+            resources.ApplyResources(this.OKButton, "OKButton");
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(150, 45);
-            this.OKButton.TabIndex = 13;
-            this.OKButton.Text = "Apply";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 418);
+            resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "For Splatoon v2.10";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 440);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.groupBox5);
@@ -559,10 +418,8 @@
             this.Controls.Add(this.connectBox);
             this.Controls.Add(this.ipBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Splat AIO 2: It\'s Him!";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

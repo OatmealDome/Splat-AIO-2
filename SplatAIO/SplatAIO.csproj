@@ -73,8 +73,12 @@
     <Compile Include="MemAreas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleAssemblyComponentResourceManager.cs" />
     <Compile Include="tcpconn.cs" />
     <Compile Include="TCPGecko.cs" />
+    <EmbeddedResource Include="Form1.ja.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +121,14 @@
     <None Include="_itshim.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
+"$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
