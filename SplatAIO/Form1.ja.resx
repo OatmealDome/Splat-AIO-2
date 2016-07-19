@@ -117,572 +117,171 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;swapBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;gearButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Skin</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="gearButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;bukiButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;gearButton.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="takoBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 49</value>
-  </data>
-  <data name="&gt;&gt;amiiboBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;disconnectBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="maeBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="connectBox.Text" xml:space="preserve">
-    <value>Connect</value>
-  </data>
-  <data name="sazaeBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>接続</value>
   </data>
   <data name="disconnectBox.Text" xml:space="preserve">
-    <value>Disconnect</value>
+    <value>切断</value>
   </data>
-  <data name="&gt;&gt;normalBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>統計</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="sazaeBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="showStatsBox.Text" xml:space="preserve">
+    <value>すべて表示</value>
   </data>
-  <data name="&gt;&gt;normalBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="OKButton.Text" xml:space="preserve">
-    <value>Apply</value>
-  </data>
-  <data name="genderBox.Items1" xml:space="preserve">
-    <value>Boy</value>
-  </data>
-  <data name="gameButton.Text" xml:space="preserve">
-    <value>Minigames</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 150</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;skinBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="skinBox.Items4" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="genderBox.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;rankBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 50</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eyeBox.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;connectBox.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 107</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;aoriBox.Name" xml:space="preserve">
-    <value>aoriBox</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Money</value>
-  </data>
-  <data name="&gt;&gt;ikaBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Splat AIO 2: It's Him!</value>
-  </data>
-  <data name="eyeBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 47</value>
-  </data>
-  <data name="&gt;&gt;takoBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="connectBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 23</value>
-  </data>
-  <data name="&gt;&gt;OKButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="amiiboBox.Items5" xml:space="preserve">
-    <value>Marie</value>
-  </data>
-  <data name="takoBox.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 88</value>
-  </data>
-  <data name="bukiButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;takoBox.Name" xml:space="preserve">
-    <value>takoBox</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="sazaeBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="rankBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 17</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 367</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="eyeBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 149</value>
-  </data>
-  <data name="udeBox.Items9" xml:space="preserve">
-    <value>S</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="skinBox.Items5" xml:space="preserve">
-    <value>6 - Darkest</value>
-  </data>
-  <data name="normalBox.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 312</value>
-  </data>
-  <data name="takoBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 23</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
-  <data name="&gt;&gt;maeBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;aoriBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="gameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="gearButton.Text" xml:space="preserve">
-    <value>Gear</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="skinBox.Items2" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;maeBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="amiiboBox.Items4" xml:space="preserve">
-    <value>Callie</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 111</value>
-  </data>
-  <data name="eyeBox.Items1" xml:space="preserve">
-    <value>Pink</value>
-  </data>
-  <data name="gameButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ikaBox.Text" xml:space="preserve">
-    <value>Squid on ZL</value>
-  </data>
-  <data name="disconnectBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 21</value>
-  </data>
-  <data name="skinBox.Items1" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;genderBox.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 46</value>
-  </data>
-  <data name="&gt;&gt;showStatsBox.Name" xml:space="preserve">
-    <value>showStatsBox</value>
-  </data>
-  <data name="&gt;&gt;connectBox.Name" xml:space="preserve">
-    <value>connectBox</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="disconnectBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="udeBox.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;amiiboBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="kaneBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="genderBox.Items" xml:space="preserve">
-    <value>Girl</value>
-  </data>
-  <data name="&gt;&gt;kaneBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="udeBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 21</value>
-  </data>
-  <data name="&gt;&gt;hotaruBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="&gt;&gt;gameButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 78</value>
-  </data>
-  <data name="&gt;&gt;disconnectBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="kaneBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="&gt;&gt;skinBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="udeBox.Items3" xml:space="preserve">
-    <value>B-</value>
-  </data>
-  <data name="&gt;&gt;maeBox.Name" xml:space="preserve">
-    <value>maeBox</value>
-  </data>
-  <data name="&gt;&gt;sazaeBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="genderBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+    <value>44, 13</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Rank</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;swapBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
-  </data>
-  <data name="amiiboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 63</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;disconnectBox.Name" xml:space="preserve">
-    <value>disconnectBox</value>
-  </data>
-  <data name="&gt;&gt;OKButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="ipBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="gameButton.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;aoriBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="hotaruBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 23</value>
-  </data>
-  <data name="&gt;&gt;maeBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="gearButton.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="bukiButton.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;amiiboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="OKButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="kaneBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="maeBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;sazaeBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="aoriBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 23</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="genderBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;skinBox.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;OKButton.Name" xml:space="preserve">
-    <value>OKButton</value>
-  </data>
-  <data name="kaneBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 43</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Level</value>
-  </data>
-  <data name="hotaruBox.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
-  <data name="&gt;&gt;showStatsBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="hotaruBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 50</value>
-  </data>
-  <data name="udeBox.Items6" xml:space="preserve">
-    <value>A-</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 90</value>
-  </data>
-  <data name="&gt;&gt;kaneBox.Name" xml:space="preserve">
-    <value>kaneBox</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="disconnectBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 23</value>
-  </data>
-  <data name="&gt;&gt;ipBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="amiiboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Gender</value>
-  </data>
-  <data name="gearButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>ウデマエ</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>36, 13</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 22</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>サザエ</value>
   </data>
-  <data name="normalBox.Text" xml:space="preserve">
-    <value>Normalize</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
   </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>おカネ</value>
   </data>
-  <data name="&gt;&gt;ikaBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 247</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ランク</value>
   </data>
-  <data name="&gt;&gt;rankBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;normalBox.Name" xml:space="preserve">
-    <value>normalBox</value>
-  </data>
-  <data name="normalBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>プレイヤー</value>
   </data>
   <data name="skinBox.Items" xml:space="preserve">
-    <value>1 - Lightest</value>
+    <value>1 - 白</value>
   </data>
-  <data name="swapBox.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+  <data name="skinBox.Items5" xml:space="preserve">
+    <value>6 - 茶</value>
   </data>
-  <data name="&gt;&gt;showStatsBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
   </data>
-  <data name="&gt;&gt;gearButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>皮膚</value>
   </data>
-  <data name="skinBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 74</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
   </data>
-  <data name="&gt;&gt;rankBox.Name" xml:space="preserve">
-    <value>rankBox</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>目</value>
   </data>
-  <data name="&gt;&gt;udeBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="eyeBox.Items" xml:space="preserve">
+    <value>茶</value>
   </data>
-  <data name="&gt;&gt;swapBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="eyeBox.Items1" xml:space="preserve">
+    <value>ピンク</value>
+  </data>
+  <data name="eyeBox.Items2" xml:space="preserve">
+    <value>青</value>
+  </data>
+  <data name="eyeBox.Items3" xml:space="preserve">
+    <value>オレンジ</value>
+  </data>
+  <data name="eyeBox.Items4" xml:space="preserve">
+    <value>緑</value>
+  </data>
+  <data name="eyeBox.Items5" xml:space="preserve">
+    <value>黒</value>
+  </data>
+  <data name="eyeBox.Items6" xml:space="preserve">
+    <value>黄</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="genderBox.Items" xml:space="preserve">
+    <value>♀</value>
+  </data>
+  <data name="genderBox.Items1" xml:space="preserve">
+    <value>♂</value>
+  </data>
+  <data name="genderBox.Items2" xml:space="preserve">
+    <value>タコゾネス（本物)</value>
+  </data>
+  <data name="takoBox.Text" xml:space="preserve">
+    <value>ZRでタコ</value>
+  </data>
+  <data name="ikaBox.Text" xml:space="preserve">
+    <value>ZLでイカ</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>タコゾネスハック</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>シオカラハック</value>
+  </data>
+  <data name="normalBox.Text" xml:space="preserve">
+    <value>修正</value>
+  </data>
+  <data name="swapBox.Text" xml:space="preserve">
+    <value>シオカラスワップ</value>
+  </data>
+  <data name="hotaruBox.Text" xml:space="preserve">
+    <value>ホタルを複写</value>
+  </data>
+  <data name="aoriBox.Text" xml:space="preserve">
+    <value>アオリを複写</value>
+  </data>
+  <data name="amiiboBox.Items" xml:space="preserve">
+    <value>（なし）</value>
+  </data>
+  <data name="amiiboBox.Items1" xml:space="preserve">
+    <value>ガール</value>
+  </data>
+  <data name="amiiboBox.Items2" xml:space="preserve">
+    <value>ボーイ</value>
+  </data>
+  <data name="amiiboBox.Items3" xml:space="preserve">
+    <value>イカ</value>
+  </data>
+  <data name="amiiboBox.Items4" xml:space="preserve">
+    <value>アオリ</value>
+  </data>
+  <data name="amiiboBox.Items5" xml:space="preserve">
+    <value>ホタル</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>アミーボ:</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 27</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>IPアドレス:</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>アンロック</value>
+  </data>
+  <data name="gameButton.Text" xml:space="preserve">
+    <value>ミニゲーム</value>
+  </data>
+  <data name="bukiButton.Text" xml:space="preserve">
+    <value>ブキ</value>
+  </data>
+  <data name="gearButton.Text" xml:space="preserve">
+    <value>ギア</value>
+  </data>
+  <data name="OKButton.Text" xml:space="preserve">
+    <value>ゲームに送信</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3450,550 +3049,4 @@
         AAA=
 </value>
   </data>
-  <data name="&gt;&gt;kaneBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;showStatsBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;sazaeBox.Name" xml:space="preserve">
-    <value>sazaeBox</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 59</value>
-  </data>
-  <data name="udeBox.Items8" xml:space="preserve">
-    <value>A+</value>
-  </data>
-  <data name="udeBox.Items10" xml:space="preserve">
-    <value>S+</value>
-  </data>
-  <data name="udeBox.Items1" xml:space="preserve">
-    <value>C</value>
-  </data>
-  <data name="&gt;&gt;ikaBox.Name" xml:space="preserve">
-    <value>ikaBox</value>
-  </data>
-  <data name="&gt;&gt;aoriBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="udeBox.Items2" xml:space="preserve">
-    <value>C+</value>
-  </data>
-  <data name="udeBox.Items5" xml:space="preserve">
-    <value>B+</value>
-  </data>
-  <data name="udeBox.Items4" xml:space="preserve">
-    <value>B</value>
-  </data>
-  <data name="udeBox.Items7" xml:space="preserve">
-    <value>A</value>
-  </data>
-  <data name="&gt;&gt;eyeBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;genderBox.Name" xml:space="preserve">
-    <value>genderBox</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gameButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;takoBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Amiibo:</value>
-  </data>
-  <data name="aoriBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;takoBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="bukiButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 23</value>
-  </data>
-  <data name="&gt;&gt;connectBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 13</value>
-  </data>
-  <data name="genderBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 19</value>
-  </data>
-  <data name="bukiButton.Text" xml:space="preserve">
-    <value>Weapons</value>
-  </data>
-  <data name="&gt;&gt;eyeBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="OKButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="skinBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
-  </data>
-  <data name="eyeBox.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="skinBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="maeBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="showStatsBox.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="aoriBox.Text" xml:space="preserve">
-    <value>Copy Callie</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="aoriBox.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="genderBox.Items2" xml:space="preserve">
-    <value>Octoling</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;eyeBox.Name" xml:space="preserve">
-    <value>eyeBox</value>
-  </data>
-  <data name="&gt;&gt;disconnectBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Sea Snails</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form1</value>
-  </data>
-  <data name="&gt;&gt;ikaBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="swapBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 23</value>
-  </data>
-  <data name="amiiboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Stats</value>
-  </data>
-  <data name="udeBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="showStatsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 122</value>
-  </data>
-  <data name="&gt;&gt;gameButton.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="sazaeBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="kaneBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;swapBox.Name" xml:space="preserve">
-    <value>swapBox</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ipBox.Name" xml:space="preserve">
-    <value>ipBox</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="bukiButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 49</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Player</value>
-  </data>
-  <data name="&gt;&gt;hotaruBox.Name" xml:space="preserve">
-    <value>hotaruBox</value>
-  </data>
-  <data name="eyeBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="amiiboBox.Items1" xml:space="preserve">
-    <value>Girl</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="showStatsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 23</value>
-  </data>
-  <data name="&gt;&gt;ipBox.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="hotaruBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="OKButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 45</value>
-  </data>
-  <data name="&gt;&gt;hotaruBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="eyeBox.Items3" xml:space="preserve">
-    <value>Orange</value>
-  </data>
-  <data name="eyeBox.Items2" xml:space="preserve">
-    <value>Blue</value>
-  </data>
-  <data name="eyeBox.Items5" xml:space="preserve">
-    <value>Black</value>
-  </data>
-  <data name="eyeBox.Items4" xml:space="preserve">
-    <value>Green</value>
-  </data>
-  <data name="eyeBox.Items6" xml:space="preserve">
-    <value>Yellow</value>
-  </data>
-  <data name="ikaBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Octohax</value>
-  </data>
-  <data name="swapBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="udeBox.Items" xml:space="preserve">
-    <value>C-</value>
-  </data>
-  <data name="swapBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 79</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="amiiboBox.Items3" xml:space="preserve">
-    <value>Squid</value>
-  </data>
-  <data name="aoriBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Sisterhax</value>
-  </data>
-  <data name="showStatsBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 66</value>
-  </data>
-  <data name="&gt;&gt;genderBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="connectBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="hotaruBox.Text" xml:space="preserve">
-    <value>Copy Marie</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;normalBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;hotaruBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>For Splatoon v2.10</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="amiiboBox.Items2" xml:space="preserve">
-    <value>Boy</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Unlock</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="udeBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 94</value>
-  </data>
-  <data name="ikaBox.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="ikaBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 23</value>
-  </data>
-  <data name="takoBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="rankBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="maeBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 94</value>
-  </data>
-  <data name="ipBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 23</value>
-  </data>
-  <data name="rankBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 418</value>
-  </data>
-  <data name="&gt;&gt;OKButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;skinBox.Name" xml:space="preserve">
-    <value>skinBox</value>
-  </data>
-  <data name="&gt;&gt;genderBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="takoBox.Text" xml:space="preserve">
-    <value>Octopus on ZL</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="rankBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ikaBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>358, 440</value>
-  </data>
-  <data name="&gt;&gt;kaneBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>IP Address:</value>
-  </data>
-  <data name="&gt;&gt;gearButton.Name" xml:space="preserve">
-    <value>gearButton</value>
-  </data>
-  <data name="maeBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="amiiboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 153</value>
-  </data>
-  <data name="amiiboBox.Items" xml:space="preserve">
-    <value>(None)</value>
-  </data>
-  <data name="&gt;&gt;amiiboBox.Name" xml:space="preserve">
-    <value>amiiboBox</value>
-  </data>
-  <data name="connectBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="eyeBox.Items" xml:space="preserve">
-    <value>Brown</value>
-  </data>
-  <data name="&gt;&gt;connectBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="showStatsBox.Text" xml:space="preserve">
-    <value>Enable All</value>
-  </data>
-  <data name="&gt;&gt;bukiButton.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;ipBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="gearButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
-  </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="normalBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 108</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="disconnectBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="skinBox.Items3" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;udeBox.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 98</value>
-  </data>
-  <data name="&gt;&gt;rankBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="sazaeBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 68</value>
-  </data>
-  <data name="swapBox.Text" xml:space="preserve">
-    <value>Sister Swap</value>
-  </data>
-  <data name="&gt;&gt;bukiButton.Name" xml:space="preserve">
-    <value>bukiButton</value>
-  </data>
-  <data name="normalBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
-  </data>
-  <data name="&gt;&gt;sazaeBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Eyes</value>
-  </data>
-  <data name="ipBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 77</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="skinBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;gameButton.Name" xml:space="preserve">
-    <value>gameButton</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="rankBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;udeBox.Name" xml:space="preserve">
-    <value>udeBox</value>
-  </data>
-  <data name="OKButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bukiButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;udeBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja</value>
-  </metadata>
 </root>

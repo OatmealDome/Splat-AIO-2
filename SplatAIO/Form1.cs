@@ -4,22 +4,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Convert;
 
-namespace SplatAIO
-{
+namespace SplatAIO {
+
     public partial class Form1 : Form
     {
         public uint diff;
         public TCPGecko Gecko;
-        public string[] udemae = new string[] { "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+", "S", "S+" };
-        public string[] amiibo = new string[] { "Girl", "Boy", "Squid", "Callie", "Marie" };
-        public string[] skinString = new string[] { "1 - Lightest", "2", "3", "4", "5", "6 - Darkest" };
-        public string[] eyeString = new string[] { "Brown", "Pink", "Blue", "Orange", "Green", "Black", "Yellow" };
-        public string[] genderString = new string[] { "Girl", "Boy", "Octoling" };
+
         public Form1()
         {
             InitializeComponent();
@@ -128,19 +125,19 @@ namespace SplatAIO
             maeBox.Value  = mae;
             sazaeBox.Value = sazae;
 
-            if(figure == 0xFFFFFFFF)
+            if (figure == 0xFFFFFFFF)
             {
-                amiiboBox.Text = "(None)";
+                amiiboBox.SelectedIndex = 0;
             }
             else
             {
-                amiiboBox.Text = amiibo[ToInt32(figure)];
+                amiiboBox.SelectedIndex = ToInt32(figure + 1);
             }
 
-            genderBox.Text = genderString[gender];
-            eyeBox.Text = eyeString[eyes];
-            skinBox.Text = skinString[skin];
-            udeBox.Text = udemae[ude];
+            genderBox.SelectedIndex = gender;
+            eyeBox.SelectedIndex = eyes;
+            skinBox.SelectedIndex = skin;
+            udeBox.SelectedIndex = ude;
             release();
 
         }
@@ -171,142 +168,19 @@ namespace SplatAIO
 
         public void pokeRank(uint address)
         {
-            //Prepare for elif galore
-
-            if (udeBox.Text == udemae[0])
-            {
-                Gecko.poke32(address, 0x00000000);
-            }
-            else if (udeBox.Text == udemae[1])
-            {
-                Gecko.poke32(address, 0x00000001);
-            }
-            else if (udeBox.Text == udemae[2])
-            {
-                Gecko.poke32(address, 0x00000002);
-            }
-            else if (udeBox.Text == udemae[3])
-            {
-                Gecko.poke32(address, 0x00000003);
-            }
-            else if (udeBox.Text == udemae[4])
-            {
-                Gecko.poke32(address, 0x00000004);
-            }
-            else if (udeBox.Text == udemae[5])
-            {
-                Gecko.poke32(address, 0x00000005);
-            }
-            else if (udeBox.Text == udemae[6])
-            {
-                Gecko.poke32(address, 0x00000006);
-            }
-            else if (udeBox.Text == udemae[7])
-            {
-                Gecko.poke32(address, 0x00000007);
-            }
-            else if (udeBox.Text == udemae[8])
-            {
-                Gecko.poke32(address, 0x00000008);
-            }
-            else if (udeBox.Text == udemae[9])
-            {
-                Gecko.poke32(address, 0x00000009);
-            }
-            else if (udeBox.Text == udemae[10])
-            {
-                Gecko.poke32(address, 0x0000000A);
-            }
-
-            else
-            {
-                MessageBox.Show("Invalid rank.");
-            }
+            Gecko.poke32(address, ToUInt32(udeBox.SelectedIndex));
         }
         public void pokeGender(uint address)
         {
-            if (genderBox.Text == genderString[0])
-            {
-                Gecko.poke32(address, 0x00000000);
-            }
-            else if (genderBox.Text == genderString[1])
-            {
-                Gecko.poke32(address, 0x00000001);
-            }
-            else if (genderBox.Text == genderString[2])
-            {
-                Gecko.poke32(address, 0x00000002);
-            }
-            else
-            {
-                MessageBox.Show("Invalid gender.");
-            }
+            Gecko.poke32(address, ToUInt32(genderBox.SelectedIndex));
         }
         public void pokeEyes(uint address)
         {
-            if (eyeBox.Text == eyeString[0])
-            {
-                Gecko.poke32(address, 0x00000000);
-            }
-            else if (eyeBox.Text == eyeString[1])
-            {
-                Gecko.poke32(address, 0x00000001);
-            }
-            else if (eyeBox.Text == eyeString[2])
-            {
-                Gecko.poke32(address, 0x00000002);
-            }
-            else if (eyeBox.Text == eyeString[3])
-            {
-                Gecko.poke32(address, 0x00000003);
-            }
-            else if (eyeBox.Text == eyeString[4])
-            {
-                Gecko.poke32(address, 0x00000004);
-            }
-            else if (eyeBox.Text == eyeString[5])
-            {
-                Gecko.poke32(address, 0x00000005);
-            }
-            else if (eyeBox.Text == eyeString[6])
-            {
-                Gecko.poke32(address, 0x00000006);
-            }
-            else
-            {
-                MessageBox.Show("Invalid eye color.");
-            }
+            Gecko.poke32(address, ToUInt32(eyeBox.SelectedIndex));
         }
         public void pokeSkin(uint address)
         {
-            if (skinBox.Text == skinString[0])
-            {
-                Gecko.poke32(address, 0x00000000);
-            }
-            else if (skinBox.Text == skinString[1])
-            {
-                Gecko.poke32(address, 0x00000001);
-            }
-            else if (skinBox.Text == skinString[2])
-            {
-                Gecko.poke32(address, 0x00000002);
-            }
-            else if (skinBox.Text == skinString[3])
-            {
-                Gecko.poke32(address, 0x00000003);
-            }
-            else if (skinBox.Text == skinString[4])
-            {
-                Gecko.poke32(address, 0x00000004);
-            }
-            else if (skinBox.Text == skinString[5])
-            {
-                Gecko.poke32(address, 0x00000005);
-            }
-            else
-            {
-                MessageBox.Show("Invalid skin color.");
-            }
+            Gecko.poke32(address, ToUInt32(skinBox.SelectedIndex));
         }
         public void getDiff(uint value1, uint value2)
         {
@@ -318,34 +192,15 @@ namespace SplatAIO
         }
         public void pokeAmiibo(uint address)
         {
-            if (amiiboBox.Text == "(None)")
+            if (amiiboBox.SelectedIndex == 0) // none / nashi
             {
                 Gecko.poke32(address, 0xFFFFFFFF);
             }
-            else if (amiiboBox.Text == amiibo[0])
-            {
-                Gecko.poke32(address, 0x00000000);
-            }
-            else if (amiiboBox.Text == amiibo[1])
-            {
-                Gecko.poke32(address, 0x00000001);
-            }
-            else if (amiiboBox.Text == amiibo[2])
-            {
-                Gecko.poke32(address, 0x00000002);
-            }
-            else if (amiiboBox.Text == amiibo[3])
-            {
-                Gecko.poke32(address, 0x00000003);
-            }
-            else if (amiiboBox.Text == amiibo[4])
-            {
-                Gecko.poke32(address, 0x00000004);
-            }
             else
             {
-                MessageBox.Show("Invalid Amiibo.");
+                Gecko.poke32(address, ToUInt32(amiiboBox.SelectedIndex - 1));
             }
+            
         }
         public void octohax(uint tnksimple1, uint tnksimple2, uint player00, uint player00_hlf, uint rival_squid, uint tnksimple3, uint tnksimple4, uint tnksimple5, bool Octo)
         {
