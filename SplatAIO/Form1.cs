@@ -233,6 +233,9 @@ namespace SplatAIO {
                     break;
 
                 case false:
+                    Gecko.poke32(rival_squid, 0x506C6179);
+                    Gecko.poke32(rival_squid + 0x4, 0x65725F53);
+                    Gecko.poke32(rival_squid + 0x8, 0x71756964);
                     break;
             }
 
