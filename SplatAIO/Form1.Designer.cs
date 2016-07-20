@@ -37,7 +37,7 @@
             this.maeBox = new System.Windows.Forms.NumericUpDown();
             this.kaneBox = new System.Windows.Forms.NumericUpDown();
             this.rankBox = new System.Windows.Forms.NumericUpDown();
-            this.showStatsBox = new System.Windows.Forms.Button();
+            this.progressFlagsBox = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@
             this.groupBox1.Controls.Add(this.maeBox);
             this.groupBox1.Controls.Add(this.kaneBox);
             this.groupBox1.Controls.Add(this.rankBox);
-            this.groupBox1.Controls.Add(this.showStatsBox);
+            this.groupBox1.Controls.Add(this.progressFlagsBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -163,12 +163,12 @@
             0,
             0});
             // 
-            // showStatsBox
+            // progressFlagsBox
             // 
-            resources.ApplyResources(this.showStatsBox, "showStatsBox");
-            this.showStatsBox.Name = "showStatsBox";
-            this.showStatsBox.UseVisualStyleBackColor = true;
-            this.showStatsBox.Click += new System.EventHandler(this.showStatsBox_Click);
+            resources.ApplyResources(this.progressFlagsBox, "progressFlagsBox");
+            this.progressFlagsBox.Name = "progressFlagsBox";
+            this.progressFlagsBox.UseVisualStyleBackColor = true;
+            this.progressFlagsBox.Click += new System.EventHandler(this.progressFlagsBox_Click);
             // 
             // label4
             // 
@@ -447,7 +447,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox udeBox;
-        private System.Windows.Forms.Button showStatsBox;
+        private System.Windows.Forms.Button progressFlagsBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;

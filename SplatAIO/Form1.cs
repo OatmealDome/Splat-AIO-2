@@ -66,7 +66,7 @@ namespace SplatAIO {
             sazaeBox.Enabled     =   true ;
             udeBox.Enabled       =   true ;
             maeBox.Enabled       =   true ;
-            showStatsBox.Enabled =   true ;
+            progressFlagsBox.Enabled =   true ;
             genderBox.Enabled    =   true ;
             eyeBox.Enabled       =   true ;
             skinBox.Enabled      =   true ;
@@ -90,7 +90,7 @@ namespace SplatAIO {
             sazaeBox.Enabled     =  false;
             udeBox.Enabled       =  false;
             maeBox.Enabled       =  false;
-            showStatsBox.Enabled =  false;
+            progressFlagsBox.Enabled =  false;
             genderBox.Enabled    =  false;
             eyeBox.Enabled       =  false;
             skinBox.Enabled      =  false;
@@ -393,9 +393,10 @@ namespace SplatAIO {
             Gecko.poke32(0x12CDBBB0 + diff + specialdiff, 0x00000408);
         }
 
-        private void showStatsBox_Click(object sender, EventArgs e)
+        private void progressFlagsBox_Click(object sender, EventArgs e)
         {
-            Gecko.poke32(0x12CD1C24 + diff, 0xFFFFFFFF);
+            ProgressBitsForm progressBitsForm = new ProgressBitsForm();
+            progressBitsForm.ShowDialog(this);
         }
 
         private void amiiboBox_SelectedIndexChanged(object sender, EventArgs e)
