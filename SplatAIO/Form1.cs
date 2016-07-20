@@ -162,10 +162,10 @@ namespace SplatAIO {
         private void OKButton_Click(object sender, EventArgs e)
         {
             hold();
-            Gecko.poke32(0x12CDC1A8 + diff, (ToUInt32(rankBox.Value) - 1)); Gecko.poke32(0x12CDC1A4 + diff, 0x0); //rank
+            pokeRank(0x12CDC1A4); //rank
             Gecko.poke32(0x12CDC1A0 + diff, ToUInt32(kaneBox.Value)); //money
             Gecko.poke32(0x12CDC1B4 + diff, ToUInt32(sazaeBox.Value));
-            pokeRank(0x12CDC1AC + diff); //udemae
+            pokeUdemae(0x12CDC1AC + diff); //udemae
             Gecko.poke32(0x12CDC1B0 + diff, ToUInt32(maeBox.Value)); //udemae2
             pokeGender(0x12CD1D90 + diff); //gender
             pokeSkin(0x12CD1D94 + diff); //skin
@@ -175,8 +175,20 @@ namespace SplatAIO {
 
         }
 
-        public void pokeRank(uint address)
+        public void pokeRank(uint expAddress)
         {
+            uint level = ToUInt32(rankBox.Value);
+            Gecko.poke32(expAddress + 0x4 + diff, level - 1); // rank
+            Gecko.poke32(expAddress + diff, 0x10); // experience to 0
+
+            // we need to set the level cap progression bit appropriately
+            uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress);
+            ProgressBitsForm.SetFlag(ref progression, 0x100000, level >= 20); // remove if level < 20, set if level >= 20
+            Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
+        }
+        public void pokeUdemae(uint address)
+        {
+
             Gecko.poke32(address, ToUInt32(udeBox.SelectedIndex));
         }
         public void pokeGender(uint address)
