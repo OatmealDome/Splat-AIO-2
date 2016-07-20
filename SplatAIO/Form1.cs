@@ -50,11 +50,20 @@ namespace SplatAIO {
         private void connectBox_Click(object sender, EventArgs e)
         {
             Gecko = new TCPGecko(ipBox.Text, 7331);
-            Gecko.Connect();
-            connectBox.Enabled = false;
-            getDiff(0x0, 0x9000);
-            load();
-            disconnectBox.Enabled = true;
+
+            try
+            {
+                Gecko.Connect();
+                connectBox.Enabled = false;
+                getDiff(0x0, 0x9000, 0x8000);
+                load();
+                disconnectBox.Enabled = true;
+            }
+            catch(ETCPGeckoException)
+            {
+                MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
+            }
+
             
         }
 
@@ -182,12 +191,14 @@ namespace SplatAIO {
         {
             Gecko.poke32(address, ToUInt32(skinBox.SelectedIndex));
         }
-        public void getDiff(uint value1, uint value2)
+        public void getDiff(uint value1, uint value2, uint value3)
         {
-            if (Gecko.peek(0x12CDADA0) != 0x000003F2)
+            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
+                diff = value1;
+            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
                 diff = value2;
             else
-                diff = value1;
+                diff = value3;
 
         }
         public void pokeAmiibo(uint address)
