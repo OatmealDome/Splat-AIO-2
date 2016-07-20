@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,13 @@ namespace SplatAIO
         [STAThread]
         static void Main()
         {
+            // for debugging purposes
+            // CultureInfo japaneseCulture = new CultureInfo("ja-JP");
+            // Thread.CurrentThread.CurrentCulture = japaneseCulture;
+            // Thread.CurrentThread.CurrentUICulture = japaneseCulture;
+            // CultureInfo.DefaultThreadCurrentCulture = japaneseCulture;
+            // CultureInfo.DefaultThreadCurrentUICulture = japaneseCulture;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
