@@ -12,7 +12,8 @@ namespace SplatAIO
 {
     public partial class ProgressBitsForm : Form
     {
-        private readonly uint progressBitsAddress = 0x12CD1C24;
+        public static readonly uint progressBitsAddress = 0x12CD1C24;
+        private TCPGecko gecko;
         private uint progression;
 
         public ProgressBitsForm()
@@ -23,7 +24,8 @@ namespace SplatAIO
         private void ProgressBitsForm_Load(object sender, EventArgs e)
         {
             Form1 mainForm = (Form1)this.Owner;
-            progression = mainForm.Gecko.peek(progressBitsAddress);
+            gecko = mainForm.Gecko;
+            progression = gecko.peek(progressBitsAddress);
 
             tutorialBox.Checked = (progression & 0x1) != 0;
             splatfestBox.Checked = (progression & 0x2) != 0;
@@ -41,46 +43,35 @@ namespace SplatAIO
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.Owner;
-
-            if (tutorialBox.Checked)
-                progression |= 0x1;
-
-            if (splatfestBox.Checked)
-                progression |= 0x2;
-
-            if (rankedNewsBox.Checked)
-                progression |= 0x4;
-
-            if (lobbyBox.Checked)
-                progression |= 0x8;
-
-            if (heroSuitBox.Checked)
-                progression |= 0x10;
-
-            if (greatZapfishBox.Checked)
-                progression |= 0x80;
-
-            if (cuttlefishPostGameBox.Checked)
-                progression |= 0x100;
-
-            if (rankedUnlockedBox.Checked)
-                progression |= 0x800;
-
-            if (rankShownBox.Checked)
-                progression |= 0x1000;
-
-            if (snailsShownBox.Checked)
-                progression |= 0x10000;
-
-            if (levelCapRaisedBox.Checked)
-                progression |= 0x100000;
-
-            if (warningBox.Checked)
-                progression |= 0x200000;
+            SetFlag(ref progression, 0x1, tutorialBox.Checked);
+            SetFlag(ref progression, 0x2, splatfestBox.Checked);
+            SetFlag(ref progression, 0x4, rankedNewsBox.Checked);
+            SetFlag(ref progression, 0x8, lobbyBox.Checked);
+            SetFlag(ref progression, 0x10, heroSuitBox.Checked);
+            SetFlag(ref progression, 0x80, greatZapfishBox.Checked);
+            SetFlag(ref progression, 0x100, cuttlefishPostGameBox.Checked);
+            SetFlag(ref progression, 0x800, rankedUnlockedBox.Checked);
+            SetFlag(ref progression, 0x1000, rankShownBox.Checked);
+            SetFlag(ref progression, 0x10000, snailsShownBox.Checked);
+            SetFlag(ref progression, 0x100000, levelCapRaisedBox.Checked);
+            SetFlag(ref progression, 0x200000, warningBox.Checked);
 
             Console.WriteLine("progression: " + progression);
-            mainForm.Gecko.poke32(progressBitsAddress, progression);
+            gecko.poke32(progressBitsAddress, progression);
+        }
+
+        public static void SetFlag(ref uint progression, uint flag, bool checkbox)
+        {
+            if (((progression & flag) != 0) && !checkbox)
+            {
+                // the flag is set, but we don't want it to be, so remove the flag
+                progression ^= flag;
+            }
+            else if (((progression & flag) == 0) && checkbox)
+            {
+                // the flag isn't set, but we need it to be, so set the flag
+                progression |= flag;
+            }
         }
 
     }
