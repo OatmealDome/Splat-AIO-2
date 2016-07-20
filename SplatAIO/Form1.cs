@@ -63,7 +63,11 @@ namespace SplatAIO {
             {
                 MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
             }
-
+            
+            catch(System.Net.Sockets.SocketException)
+            {
+                MessageBox.Show("Invalid IP entry.");
+            }
             
         }
 
@@ -119,7 +123,7 @@ namespace SplatAIO {
         {
 
             hold();
-            int rank = ToInt32(Gecko.peek(0x12CDC1A8 + diff));
+            int rank = ToInt32(Gecko.peek(0x12CDC1A8 + diff)) + 1;
             int okane = ToInt32(Gecko.peek(0x12CDC1A0 + diff));
             int ude = ToInt32(Gecko.peek(0x12CDC1AC + diff));
             int mae = ToInt32(Gecko.peek(0x12CDC1B0 + diff));
@@ -129,10 +133,21 @@ namespace SplatAIO {
             int skin = ToInt32(Gecko.peek(0x12CD1D94 + diff));
             uint figure = Gecko.peek(0x12D1F130 + diff);
 
-            rankBox.Value = rank + 1;
-            kaneBox.Value = okane;
-            maeBox.Value  = mae;
-            sazaeBox.Value = sazae;
+            try
+            {
+                rankBox.Value = rank;
+                kaneBox.Value = okane;
+                maeBox.Value = mae;
+                sazaeBox.Value = sazae;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Some values have been found to be invalid.\nThis may have been caused by a bad script.");
+                rankBox.Value = 1;
+                kaneBox.Value = 0;
+                maeBox.Value = 30;
+                sazaeBox.Value = 0;
+            }
 
             if (figure == 0xFFFFFFFF)
             {
@@ -179,7 +194,7 @@ namespace SplatAIO {
         {
             uint level = ToUInt32(rankBox.Value);
             Gecko.poke32(expAddress + 0x4 + diff, level - 1); // rank
-            Gecko.poke32(expAddress + diff, 0x10); // experience to 0
+            Gecko.poke32(expAddress + diff, 0x00000000); // experience to 0
 
             // we need to set the level cap progression bit appropriately
             uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress);

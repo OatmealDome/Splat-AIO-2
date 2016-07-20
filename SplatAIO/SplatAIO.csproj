@@ -88,6 +88,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBitsForm.ja.resx">
+      <DependentUpon>ProgressBitsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgressBitsForm.resx">
       <DependentUpon>ProgressBitsForm.cs</DependentUpon>
     </EmbeddedResource>

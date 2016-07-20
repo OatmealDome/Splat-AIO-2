@@ -123,6 +123,9 @@
   <data name="disconnectBox.Text" xml:space="preserve">
     <value>切断</value>
   </data>
+  <data name="progressFlagsBox.Text" xml:space="preserve">
+    <value>記録フラグ</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -278,7 +281,7 @@
     <value>アンロック</value>
   </data>
   <data name="OKButton.Text" xml:space="preserve">
-    <value>ゲームに送信</value>
+    <value>送信</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
