@@ -142,7 +142,7 @@ namespace SplatAIO {
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Some values have been found to be invalid.\nThis may have been caused by a bad script.");
+                MessageBox.Show(Properties.Strings.BAD_SCRIPT_TEXT);
                 rankBox.Value = 1;
                 kaneBox.Value = 0;
                 maeBox.Value = 30;
@@ -742,9 +742,6 @@ namespace SplatAIO {
             { 0x00006d60, new uint[] { 0x0000000C, 0x00000009, 0x00000007 } }
         };
 
-
-
-
         private void PokeGear(uint baseAddress, Dictionary<uint, uint[]> gear)
         {
             // Sort the Dictionary's keys so that starter gear will appear first
@@ -779,6 +776,13 @@ namespace SplatAIO {
             PokeGear(0x12CD4DA0 + diff, clothes);
             PokeGear(0x12CD1DA0 + diff, shoes);
         }
+
+        private void singlePlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SinglePlayerForm singlePlayerForm = new SinglePlayerForm();
+            singlePlayerForm.ShowDialog(this);
+        }
+
     }
 
 
