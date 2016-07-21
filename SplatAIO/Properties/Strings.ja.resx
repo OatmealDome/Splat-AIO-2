@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BAD_SCRIPT_TEXT" xml:space="preserve">
-    <value>Some values have been found to be invalid.\nThis may have been caused by a bad script.</value>
+  <data name="BAD_MAE_1" xml:space="preserve">
+    <value>Your rank number is </value>
+  </data>
+  <data name="BAD_MAE_2" xml:space="preserve">
+    <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 99, the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
+  </data>
+  <data name="BAD_OKANE_1" xml:space="preserve">
+    <value>Your coins are set to </value>
+  </data>
+  <data name="BAD_OKANE_2" xml:space="preserve">
+    <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 9999999, the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
+  </data>
+  <data name="BAD_RANK_1" xml:space="preserve">
+    <value>Your level is </value>
+  </data>
+  <data name="BAD_RANK_2" xml:space="preserve">
+    <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 50, the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
+  </data>
+  <data name="BAD_SAZAE_1" xml:space="preserve">
+    <value>Your super sea snails are set to </value>
+  </data>
+  <data name="BAD_SAZAE_2" xml:space="preserve">
+    <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 999, the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
+  </data>
+  <data name="BAD_UDE_1" xml:space="preserve">
+    <value>Your rank is set to </value>
+  </data>
+  <data name="BAD_UDE_2" xml:space="preserve">
+    <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 10 (S+), the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
   </data>
   <data name="FILL_IN_ALL_FIELDS_TEXT" xml:space="preserve">
     <value>Please fill in all fields.</value>
+  </data>
+  <data name="INVALID" xml:space="preserve">
+    <value>Invalid</value>
   </data>
   <data name="INVALID_CLEAR_STATE" xml:space="preserve">
     <value>Invalid clear state.</value>

@@ -61,11 +61,92 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some values have been found to be invalid.\nThis may have been caused by a bad script..
+        ///   Looks up a localized string similar to Your rank number is .
         /// </summary>
-        public static string BAD_SCRIPT_TEXT {
+        public static string BAD_MAE_1 {
             get {
-                return ResourceManager.GetString("BAD_SCRIPT_TEXT", resourceCulture);
+                return ResourceManager.GetString("BAD_MAE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 99, the maximum, to fix it? (You can change it to another value later.) If you select &quot;No&quot; here, the true value will not display in the AIO and you are at risk for a ban..
+        /// </summary>
+        public static string BAD_MAE_2 {
+            get {
+                return ResourceManager.GetString("BAD_MAE_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your coins are set to .
+        /// </summary>
+        public static string BAD_OKANE_1 {
+            get {
+                return ResourceManager.GetString("BAD_OKANE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 9999999, the maximum, to fix it? (You can change it to another value later.) If you select &quot;No&quot; here, the true value will not display in the AIO and you are at risk for a ban..
+        /// </summary>
+        public static string BAD_OKANE_2 {
+            get {
+                return ResourceManager.GetString("BAD_OKANE_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your level is .
+        /// </summary>
+        public static string BAD_RANK_1 {
+            get {
+                return ResourceManager.GetString("BAD_RANK_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 50, the maximum, to fix it? (You can change it to another value later.) If you select &quot;No&quot; here, the true value will not display in the AIO and you are at risk for a ban..
+        /// </summary>
+        public static string BAD_RANK_2 {
+            get {
+                return ResourceManager.GetString("BAD_RANK_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your super sea snails are set to .
+        /// </summary>
+        public static string BAD_SAZAE_1 {
+            get {
+                return ResourceManager.GetString("BAD_SAZAE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 999, the maximum, to fix it? (You can change it to another value later.) If you select &quot;No&quot; here, the true value will not display in the AIO and you are at risk for a ban..
+        /// </summary>
+        public static string BAD_SAZAE_2 {
+            get {
+                return ResourceManager.GetString("BAD_SAZAE_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your rank is set to .
+        /// </summary>
+        public static string BAD_UDE_1 {
+            get {
+                return ResourceManager.GetString("BAD_UDE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 10 (S+), the maximum, to fix it? (You can change it to another value later.) If you select &quot;No&quot; here, the true value will not display in the AIO and you are at risk for a ban..
+        /// </summary>
+        public static string BAD_UDE_2 {
+            get {
+                return ResourceManager.GetString("BAD_UDE_2", resourceCulture);
             }
         }
         
@@ -75,6 +156,15 @@ namespace SplatAIO.Properties {
         public static string FILL_IN_ALL_FIELDS_TEXT {
             get {
                 return ResourceManager.GetString("FILL_IN_ALL_FIELDS_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid.
+        /// </summary>
+        public static string INVALID {
+            get {
+                return ResourceManager.GetString("INVALID", resourceCulture);
             }
         }
         

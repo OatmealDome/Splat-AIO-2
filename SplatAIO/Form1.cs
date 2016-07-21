@@ -136,17 +136,47 @@ namespace SplatAIO {
             try
             {
                 rankBox.Value = rank;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                int rankDisplay = fixStuff(Properties.Strings.BAD_RANK_1, rank, Properties.Strings.BAD_RANK_2, 0x12CDC1A8, 49, 50, 1);
+                rankBox.Value = rankDisplay;
+            }
+            try
+            {
                 kaneBox.Value = okane;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                int okaneDisplay = fixStuff(Properties.Strings.BAD_OKANE_1, okane, Properties.Strings.BAD_OKANE_2, 0x12CDC1A0, 9999999, 9999999, 0);
+                kaneBox.Value = okaneDisplay;
+            }
+            try
+            {
                 maeBox.Value = mae;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                int maeDisplay = fixStuff(Properties.Strings.BAD_MAE_1, mae, Properties.Strings.BAD_MAE_2, 0x12CDC1B0, 99, 99, 0);
+                maeBox.Value = maeDisplay;
+            }
+            try
+            {
                 sazaeBox.Value = sazae;
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show(Properties.Strings.BAD_SCRIPT_TEXT);
-                rankBox.Value = 1;
-                kaneBox.Value = 0;
-                maeBox.Value = 30;
-                sazaeBox.Value = 0;
+                int sazaeDisplay = fixStuff(Properties.Strings.BAD_SAZAE_1, sazae, Properties.Strings.BAD_SAZAE_2, 0x12CDC1B4, 999, 999, 0);
+                sazaeBox.Value = sazaeDisplay;
+            }
+            try
+            {
+                udeBox.SelectedIndex = ude;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                int udeDisplay = fixStuff(Properties.Strings.BAD_UDE_1, ude, Properties.Strings.BAD_UDE_2, 0x12CDC1AC, 10, 10, 0);
+                udeBox.SelectedIndex = udeDisplay;
             }
 
             if (figure == 0xFFFFFFFF)
@@ -161,9 +191,7 @@ namespace SplatAIO {
             genderBox.SelectedIndex = gender;
             eyeBox.SelectedIndex = eyes;
             skinBox.SelectedIndex = skin;
-            udeBox.SelectedIndex = ude;
             release();
-
         }
 
         private void disconnectBox_Click(object sender, EventArgs e)
@@ -188,6 +216,19 @@ namespace SplatAIO {
             pokeAmiibo(0x12D1F130 + diff); //amiibo
             release();
 
+        }
+        public int fixStuff(string str1, int invalid, string str2, uint fixAddress, int newPokeVal, int newVal, int noVal)
+        {
+            DialogResult fix = MessageBox.Show(str1 + invalid + str2, Properties.Strings.INVALID, MessageBoxButtons.YesNo);
+            if (fix == DialogResult.Yes)
+            {
+                Gecko.poke32(fixAddress + diff, ToUInt32(newPokeVal));
+                return newVal;
+            }
+            else
+            {
+                return noVal;
+            }
         }
 
         public void pokeRank(uint expAddress)
