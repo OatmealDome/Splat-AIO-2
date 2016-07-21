@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(SinglePlayerForm));
             this.heroShotBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,72 +65,55 @@
             // 
             // heroShotBox
             // 
+            resources.ApplyResources(this.heroShotBox, "heroShotBox");
             this.heroShotBox.FormattingEnabled = true;
             this.heroShotBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.heroShotBox.Location = new System.Drawing.Point(73, 19);
+            resources.GetString("heroShotBox.Items"),
+            resources.GetString("heroShotBox.Items1"),
+            resources.GetString("heroShotBox.Items2"),
+            resources.GetString("heroShotBox.Items3")});
             this.heroShotBox.Name = "heroShotBox";
-            this.heroShotBox.Size = new System.Drawing.Size(85, 21);
-            this.heroShotBox.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 22);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Hero Shot";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 49);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Ink Tank";
             // 
             // inkTankBox
             // 
+            resources.ApplyResources(this.inkTankBox, "inkTankBox");
             this.inkTankBox.FormattingEnabled = true;
             this.inkTankBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.inkTankBox.Location = new System.Drawing.Point(73, 46);
+            resources.GetString("inkTankBox.Items"),
+            resources.GetString("inkTankBox.Items1"),
+            resources.GetString("inkTankBox.Items2"),
+            resources.GetString("inkTankBox.Items3")});
             this.inkTankBox.Name = "inkTankBox";
-            this.inkTankBox.Size = new System.Drawing.Size(85, 21);
-            this.inkTankBox.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 76);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Splat Bomb";
             // 
             // splatBombBox
             // 
+            resources.ApplyResources(this.splatBombBox, "splatBombBox");
             this.splatBombBox.FormattingEnabled = true;
             this.splatBombBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.splatBombBox.Location = new System.Drawing.Point(73, 73);
+            resources.GetString("splatBombBox.Items"),
+            resources.GetString("splatBombBox.Items1"),
+            resources.GetString("splatBombBox.Items2"),
+            resources.GetString("splatBombBox.Items3")});
             this.splatBombBox.Name = "splatBombBox";
-            this.splatBombBox.Size = new System.Drawing.Size(85, 21);
-            this.splatBombBox.TabIndex = 5;
             // 
             // upgradesGroup
             // 
+            resources.ApplyResources(this.upgradesGroup, "upgradesGroup");
             this.upgradesGroup.Controls.Add(this.powerEggsBox);
             this.upgradesGroup.Controls.Add(this.seekerBox);
             this.upgradesGroup.Controls.Add(this.label7);
@@ -142,208 +126,155 @@
             this.upgradesGroup.Controls.Add(this.label1);
             this.upgradesGroup.Controls.Add(this.label2);
             this.upgradesGroup.Controls.Add(this.inkTankBox);
-            this.upgradesGroup.Location = new System.Drawing.Point(279, 12);
             this.upgradesGroup.Name = "upgradesGroup";
-            this.upgradesGroup.Size = new System.Drawing.Size(169, 183);
-            this.upgradesGroup.TabIndex = 7;
             this.upgradesGroup.TabStop = false;
-            this.upgradesGroup.Text = "Upgrades";
             // 
             // powerEggsBox
             // 
-            this.powerEggsBox.Location = new System.Drawing.Point(73, 154);
+            resources.ApplyResources(this.powerEggsBox, "powerEggsBox");
             this.powerEggsBox.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
             this.powerEggsBox.Name = "powerEggsBox";
-            this.powerEggsBox.Size = new System.Drawing.Size(85, 20);
-            this.powerEggsBox.TabIndex = 18;
             // 
             // seekerBox
             // 
+            resources.ApplyResources(this.seekerBox, "seekerBox");
             this.seekerBox.FormattingEnabled = true;
             this.seekerBox.Items.AddRange(new object[] {
-            "(Locked)",
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.seekerBox.Location = new System.Drawing.Point(73, 127);
+            resources.GetString("seekerBox.Items"),
+            resources.GetString("seekerBox.Items1"),
+            resources.GetString("seekerBox.Items2"),
+            resources.GetString("seekerBox.Items3"),
+            resources.GetString("seekerBox.Items4")});
             this.seekerBox.Name = "seekerBox";
-            this.seekerBox.Size = new System.Drawing.Size(85, 21);
-            this.seekerBox.TabIndex = 9;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 156);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Power Eggs";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 130);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Seeker";
             // 
             // burstBombBox
             // 
+            resources.ApplyResources(this.burstBombBox, "burstBombBox");
             this.burstBombBox.FormattingEnabled = true;
             this.burstBombBox.Items.AddRange(new object[] {
-            "(Locked)",
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.burstBombBox.Location = new System.Drawing.Point(73, 100);
+            resources.GetString("burstBombBox.Items"),
+            resources.GetString("burstBombBox.Items1"),
+            resources.GetString("burstBombBox.Items2"),
+            resources.GetString("burstBombBox.Items3"),
+            resources.GetString("burstBombBox.Items4")});
             this.burstBombBox.Name = "burstBombBox";
-            this.burstBombBox.Size = new System.Drawing.Size(85, 21);
-            this.burstBombBox.TabIndex = 7;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 103);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Burst Bomb";
             // 
             // levelGroup
             // 
+            resources.ApplyResources(this.levelGroup, "levelGroup");
             this.levelGroup.Controls.Add(this.label6);
             this.levelGroup.Controls.Add(this.levelDataView);
             this.levelGroup.Controls.Add(this.addButton);
-            this.levelGroup.Location = new System.Drawing.Point(12, 12);
             this.levelGroup.Name = "levelGroup";
-            this.levelGroup.Size = new System.Drawing.Size(261, 321);
-            this.levelGroup.TabIndex = 8;
             this.levelGroup.TabStop = false;
-            this.levelGroup.Text = "Level Save Data";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(231, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "To edit, right click on the level number or name.";
             // 
             // levelDataView
             // 
+            resources.ApplyResources(this.levelDataView, "levelDataView");
             this.levelDataView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.levelColumn,
             this.clearStateColumn,
             this.scrollColumn});
-            this.levelDataView.Location = new System.Drawing.Point(6, 39);
             this.levelDataView.Name = "levelDataView";
-            this.levelDataView.Size = new System.Drawing.Size(248, 247);
-            this.levelDataView.TabIndex = 0;
             this.levelDataView.UseCompatibleStateImageBehavior = false;
             this.levelDataView.View = System.Windows.Forms.View.Details;
             this.levelDataView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelDataView_MouseClick);
             // 
             // levelColumn
             // 
-            this.levelColumn.Text = "Level";
-            this.levelColumn.Width = 80;
+            resources.ApplyResources(this.levelColumn, "levelColumn");
             // 
             // clearStateColumn
             // 
-            this.clearStateColumn.Text = "Clear State";
-            this.clearStateColumn.Width = 80;
+            resources.ApplyResources(this.clearStateColumn, "clearStateColumn");
             // 
             // scrollColumn
             // 
-            this.scrollColumn.Text = "Has Scroll";
+            resources.ApplyResources(this.scrollColumn, "scrollColumn");
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(93, 291);
+            resources.ApplyResources(this.addButton, "addButton");
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 1;
-            this.addButton.Text = "Add Level";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // OKButton
             // 
-            this.OKButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.OKButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.OKButton.Location = new System.Drawing.Point(279, 288);
+            resources.ApplyResources(this.OKButton, "OKButton");
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(168, 45);
-            this.OKButton.TabIndex = 14;
-            this.OKButton.Text = "Apply";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // contextMenu
             // 
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(108, 48);
             // 
             // editToolStripMenuItem
             // 
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
+            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // clearEnvironmentButton
             // 
-            this.clearEnvironmentButton.Location = new System.Drawing.Point(280, 201);
+            resources.ApplyResources(this.clearEnvironmentButton, "clearEnvironmentButton");
             this.clearEnvironmentButton.Name = "clearEnvironmentButton";
-            this.clearEnvironmentButton.Size = new System.Drawing.Size(168, 23);
-            this.clearEnvironmentButton.TabIndex = 15;
-            this.clearEnvironmentButton.Text = "Clear Environment Flags";
             this.clearEnvironmentButton.UseVisualStyleBackColor = true;
             this.clearEnvironmentButton.Click += new System.EventHandler(this.clearEnvironmentButton_Click);
             // 
             // setEnvironmentButton
             // 
-            this.setEnvironmentButton.Location = new System.Drawing.Point(280, 230);
+            resources.ApplyResources(this.setEnvironmentButton, "setEnvironmentButton");
             this.setEnvironmentButton.Name = "setEnvironmentButton";
-            this.setEnvironmentButton.Size = new System.Drawing.Size(168, 23);
-            this.setEnvironmentButton.TabIndex = 16;
-            this.setEnvironmentButton.Text = "Set All Environment Flags";
             this.setEnvironmentButton.UseVisualStyleBackColor = true;
             this.setEnvironmentButton.Click += new System.EventHandler(this.setEnvironmentButton_Click);
             // 
             // resetAllButton
             // 
-            this.resetAllButton.Location = new System.Drawing.Point(280, 259);
+            resources.ApplyResources(this.resetAllButton, "resetAllButton");
             this.resetAllButton.Name = "resetAllButton";
-            this.resetAllButton.Size = new System.Drawing.Size(168, 23);
-            this.resetAllButton.TabIndex = 17;
-            this.resetAllButton.Text = "Reset Octo Valley";
             this.resetAllButton.UseVisualStyleBackColor = true;
             this.resetAllButton.Click += new System.EventHandler(this.resetAllButton_Click);
             // 
             // SinglePlayerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 343);
             this.Controls.Add(this.resetAllButton);
             this.Controls.Add(this.setEnvironmentButton);
             this.Controls.Add(this.clearEnvironmentButton);
@@ -352,7 +283,6 @@
             this.Controls.Add(this.upgradesGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SinglePlayerForm";
-            this.Text = "Single Player";
             this.Load += new System.EventHandler(this.SinglePlayerForm_Load);
             this.upgradesGroup.ResumeLayout(false);
             this.upgradesGroup.PerformLayout();

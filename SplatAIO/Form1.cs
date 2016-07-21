@@ -94,6 +94,7 @@ namespace SplatAIO {
             bukiButton.Enabled   =    true;
             gearButton.Enabled   =    true;
             OKButton.Enabled     =    true;
+            otherToolStripMenuItem.Enabled   =    true;
         }
         public void hold()
         {
@@ -118,6 +119,7 @@ namespace SplatAIO {
             bukiButton.Enabled   =  false;
             gearButton.Enabled   =  false;
             OKButton.Enabled     =  false;
+            otherToolStripMenuItem.Enabled   =  false;
         }
         public void load()
         {

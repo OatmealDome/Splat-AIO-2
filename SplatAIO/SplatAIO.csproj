@@ -105,6 +105,9 @@
     </Compile>
     <Compile Include="tcpconn.cs" />
     <Compile Include="TCPGecko.cs" />
+    <EmbeddedResource Include="EditLevelDataForm.ja.resx">
+      <DependentUpon>EditLevelDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditLevelDataForm.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +136,9 @@
     <EmbeddedResource Include="Properties\Strings.ja.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ja.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SinglePlayerForm.ja.resx">
+      <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SinglePlayerForm.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>

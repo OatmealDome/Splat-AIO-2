@@ -39,6 +39,7 @@
             // 
             // levelBox
             // 
+            resources.ApplyResources(this.levelBox, "levelBox");
             this.levelBox.FormattingEnabled = true;
             this.levelBox.Items.AddRange(new object[] {
             resources.GetString("levelBox.Items"),
@@ -73,7 +74,6 @@
             resources.GetString("levelBox.Items29"),
             resources.GetString("levelBox.Items30"),
             resources.GetString("levelBox.Items31")});
-            resources.ApplyResources(this.levelBox, "levelBox");
             this.levelBox.Name = "levelBox";
             // 
             // label1
@@ -88,12 +88,12 @@
             // 
             // clearStateBox
             // 
+            resources.ApplyResources(this.clearStateBox, "clearStateBox");
             this.clearStateBox.FormattingEnabled = true;
             this.clearStateBox.Items.AddRange(new object[] {
             resources.GetString("clearStateBox.Items"),
             resources.GetString("clearStateBox.Items1"),
             resources.GetString("clearStateBox.Items2")});
-            resources.ApplyResources(this.clearStateBox, "clearStateBox");
             this.clearStateBox.Name = "clearStateBox";
             // 
             // scrollBox

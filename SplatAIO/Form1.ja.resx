@@ -260,7 +260,7 @@
     <value>アミーボ:</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 27</value>
+    <value>8, 36</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
@@ -282,6 +282,22 @@
   </data>
   <data name="OKButton.Text" xml:space="preserve">
     <value>送信</value>
+  </data>
+  <data name="singlePlayerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="singlePlayerToolStripMenuItem.Text" xml:space="preserve">
+    <value>シングルプレイヤー</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="otherToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="otherToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="otherToolStripMenuItem.Text" xml:space="preserve">
+    <value>もっと見る</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
