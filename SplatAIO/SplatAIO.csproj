@@ -171,8 +171,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
-REM "$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"</PostBuildEvent>
+    <PostBuildEvent>move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
+"$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>"$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"
