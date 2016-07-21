@@ -233,9 +233,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 13);
+            this.label6.Size = new System.Drawing.Size(231, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "To edit a row, right click it.";
+            this.label6.Text = "To edit, right click on the level number or name.";
             // 
             // levelDataView
             // 
@@ -254,7 +254,7 @@
             // levelColumn
             // 
             this.levelColumn.Text = "Level";
-            this.levelColumn.Width = 103;
+            this.levelColumn.Width = 80;
             // 
             // clearStateColumn
             // 
