@@ -181,6 +181,16 @@ namespace SplatAIO {
                 udeBox.SelectedIndex = udeDisplay;
             }
 
+            try
+            {
+                genderBox.SelectedIndex = gender;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                genderBox.SelectedIndex = 0;
+                Gecko.poke32(0x12CD1D90, 0x00000000);
+            }
+
             if (figure == 0xFFFFFFFF)
             {
                 amiiboBox.SelectedIndex = 0;
@@ -190,7 +200,6 @@ namespace SplatAIO {
                 amiiboBox.SelectedIndex = ToInt32(figure + 1);
             }
 
-            genderBox.SelectedIndex = gender;
             eyeBox.SelectedIndex = eyes;
             skinBox.SelectedIndex = skin;
             release();
