@@ -15,6 +15,7 @@ namespace SplatAIO {
     public partial class Form1 : Form
     {
         public uint diff;
+        public int ver = 110;
         public TCPGecko Gecko;
 
         public Form1()
@@ -44,7 +45,22 @@ namespace SplatAIO {
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Checker g = new Checker();
+            g.getdata();
 
+            switch (g.getdata())
+            {
+                case 0:
+                    if (g.ver != ver)
+                    {
+                        g.Show();
+                    }
+                break;
+
+                case 1:
+                    break;
+                   
+            }
         }
 
         private void connectBox_Click(object sender, EventArgs e)
