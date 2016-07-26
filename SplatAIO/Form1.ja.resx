@@ -157,8 +157,8 @@
   <data name="skinBox.Items" xml:space="preserve">
     <value>1 - 白</value>
   </data>
-  <data name="skinBox.Items5" xml:space="preserve">
-    <value>6 - 茶</value>
+  <data name="skinBox.Items6" xml:space="preserve">
+    <value>7 - 茶</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
@@ -204,9 +204,6 @@
   </data>
   <data name="genderBox.Items1" xml:space="preserve">
     <value>♂</value>
-  </data>
-  <data name="genderBox.Items2" xml:space="preserve">
-    <value>タコゾネス（本物)</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>プレイヤー</value>

@@ -15,7 +15,7 @@ namespace SplatAIO {
     public partial class Form1 : Form
     {
         public uint diff;
-        public int ver = 110;
+        public int ver = 111;
         public TCPGecko Gecko;
 
         public Form1()
