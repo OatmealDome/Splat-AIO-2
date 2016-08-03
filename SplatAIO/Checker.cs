@@ -53,6 +53,7 @@ namespace SplatAIO
         private void githubButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/seresaa/Splat-AIO-2/releases/latest");
+            Close();
         }
     }
 }

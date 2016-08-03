@@ -15,7 +15,7 @@ namespace SplatAIO {
     public partial class Form1 : Form
     {
         public uint diff;
-        public int ver = 111;
+        public int ver = 112;
         public TCPGecko Gecko;
 
         public Form1()
@@ -40,7 +40,7 @@ namespace SplatAIO {
 
         private void button4_Click(object sender, EventArgs e)
         {
-            octohax(0x10506BC0, 0x105E62C0, 0x105EF3C0, 0x105EF3CC, 0x105EF3DC, 0x12BF3354, 0x12BF33A0, 0x12BF33EC, false);
+            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BD, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -512,7 +512,7 @@ namespace SplatAIO {
 
         private void takoBox_Click(object sender, EventArgs e)
         {
-            octohax(0x10506BC0, 0x105E62C0, 0x105EF3C0, 0x105EF3CC, 0x105EF3DC, 0x12BF3354, 0x12BF33A0, 0x12BF33EC, true);
+            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BD, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, true);
         }
 
         private void aoriBox_Click(object sender, EventArgs e)
