@@ -35,7 +35,7 @@ namespace SplatAIO {
 
         private void button9_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5FC, 0x105EB608, "normal");
+            sisterhax(0x105EB5DC, 0x105EB5E8, "normal");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -517,17 +517,17 @@ namespace SplatAIO {
 
         private void aoriBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5FC, 0x105EB608, "aori");
+            sisterhax(0x105EB5DC, 0x105EB5E8, "aori");
         }
 
         private void hotaruBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5FC, 0x105EB608, "hotaru");
+            sisterhax(0x105EB5DC, 0x105EB5E8, "hotaru");
         }
 
         private void swapBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5FC, 0x105EB608, "swap");
+            sisterhax(0x105EB5DC, 0x105EB5E8, "swap");
         }
 
         private void gameButton_Click(object sender, EventArgs e)
