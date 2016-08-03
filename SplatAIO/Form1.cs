@@ -40,7 +40,7 @@ namespace SplatAIO {
 
         private void button4_Click(object sender, EventArgs e)
         {
-            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BD, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, false);
+            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BC, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -512,7 +512,7 @@ namespace SplatAIO {
 
         private void takoBox_Click(object sender, EventArgs e)
         {
-            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BD, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, true);
+            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BC, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, true);
         }
 
         private void aoriBox_Click(object sender, EventArgs e)
