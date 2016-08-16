@@ -851,6 +851,11 @@ namespace SplatAIO {
             singlePlayerForm.ShowDialog(this);
         }
 
+        private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TimerHaxForm timerHaxForm = new TimerHaxForm();
+            timerHaxForm.ShowDialog(this);
+        }
     }
 
 

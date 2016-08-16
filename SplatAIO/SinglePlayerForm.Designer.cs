@@ -233,6 +233,7 @@
             // contextMenu
             // 
             resources.ApplyResources(this.contextMenu, "contextMenu");
+            this.contextMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
