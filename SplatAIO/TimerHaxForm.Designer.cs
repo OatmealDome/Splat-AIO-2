@@ -1,0 +1,179 @@
+﻿namespace SplatAIO
+{
+    partial class TimerHaxForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(TimerHaxForm));
+            this.BattleDojoRadioButton = new System.Windows.Forms.RadioButton();
+            this.ReconRadioButton = new System.Windows.Forms.RadioButton();
+            this.AmiiboRadioButton = new System.Windows.Forms.RadioButton();
+            this.TimerBox = new System.Windows.Forms.NumericUpDown();
+            this.ApplyButton = new System.Windows.Forms.Button();
+            this.TimerLabel = new System.Windows.Forms.Label();
+            this.ControlsGroupBox = new System.Windows.Forms.GroupBox();
+            this.FreezeCheckBox = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.TimerBox)).BeginInit();
+            this.ControlsGroupBox.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // BattleDojoRadioButton
+            // 
+            this.BattleDojoRadioButton.AutoSize = true;
+            this.BattleDojoRadioButton.Location = new System.Drawing.Point(25, 35);
+            this.BattleDojoRadioButton.Name = "BattleDojoRadioButton";
+            this.BattleDojoRadioButton.Size = new System.Drawing.Size(148, 29);
+            this.BattleDojoRadioButton.TabIndex = 0;
+            this.BattleDojoRadioButton.TabStop = true;
+            this.BattleDojoRadioButton.Text = "Battle Dojo";
+            this.BattleDojoRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ReconRadioButton
+            // 
+            this.ReconRadioButton.AutoSize = true;
+            this.ReconRadioButton.Location = new System.Drawing.Point(25, 70);
+            this.ReconRadioButton.Name = "ReconRadioButton";
+            this.ReconRadioButton.Size = new System.Drawing.Size(105, 29);
+            this.ReconRadioButton.TabIndex = 1;
+            this.ReconRadioButton.TabStop = true;
+            this.ReconRadioButton.Text = "Recon";
+            this.ReconRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // AmiiboRadioButton
+            // 
+            this.AmiiboRadioButton.AutoSize = true;
+            this.AmiiboRadioButton.Location = new System.Drawing.Point(25, 105);
+            this.AmiiboRadioButton.Name = "AmiiboRadioButton";
+            this.AmiiboRadioButton.Size = new System.Drawing.Size(281, 29);
+            this.AmiiboRadioButton.TabIndex = 2;
+            this.AmiiboRadioButton.TabStop = true;
+            this.AmiiboRadioButton.Text = "amiibo Squid Challenges";
+            this.AmiiboRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // TimerBox
+            // 
+            this.TimerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimerBox.Location = new System.Drawing.Point(311, 58);
+            this.TimerBox.Margin = new System.Windows.Forms.Padding(6);
+            this.TimerBox.Maximum = new decimal(new int[] {
+            6039,
+            0,
+            0,
+            0});
+            this.TimerBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TimerBox.Name = "TimerBox";
+            this.TimerBox.Size = new System.Drawing.Size(222, 31);
+            this.TimerBox.TabIndex = 7;
+            this.TimerBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TimerBox.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // ApplyButton
+            // 
+            this.ApplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ApplyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ApplyButton.Location = new System.Drawing.Point(15, 161);
+            this.ApplyButton.Margin = new System.Windows.Forms.Padding(6);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(552, 68);
+            this.ApplyButton.TabIndex = 14;
+            this.ApplyButton.Text = "Apply";
+            this.ApplyButton.UseVisualStyleBackColor = true;
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            // 
+            // TimerLabel
+            // 
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.Location = new System.Drawing.Point(306, 27);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(127, 25);
+            this.TimerLabel.TabIndex = 15;
+            this.TimerLabel.Text = "Set timer to:";
+            // 
+            // ControlsGroupBox
+            // 
+            this.ControlsGroupBox.Controls.Add(this.FreezeCheckBox);
+            this.ControlsGroupBox.Controls.Add(this.ReconRadioButton);
+            this.ControlsGroupBox.Controls.Add(this.TimerLabel);
+            this.ControlsGroupBox.Controls.Add(this.BattleDojoRadioButton);
+            this.ControlsGroupBox.Controls.Add(this.AmiiboRadioButton);
+            this.ControlsGroupBox.Controls.Add(this.TimerBox);
+            this.ControlsGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.ControlsGroupBox.Name = "ControlsGroupBox";
+            this.ControlsGroupBox.Size = new System.Drawing.Size(555, 143);
+            this.ControlsGroupBox.TabIndex = 16;
+            this.ControlsGroupBox.TabStop = false;
+            this.ControlsGroupBox.Text = "Controls";
+            // 
+            // FreezeCheckBox
+            // 
+            this.FreezeCheckBox.AutoSize = true;
+            this.FreezeCheckBox.Location = new System.Drawing.Point(312, 105);
+            this.FreezeCheckBox.Name = "FreezeCheckBox";
+            this.FreezeCheckBox.Size = new System.Drawing.Size(171, 29);
+            this.FreezeCheckBox.TabIndex = 16;
+            this.FreezeCheckBox.Text = "Freeze Timer";
+            this.FreezeCheckBox.UseVisualStyleBackColor = true;
+            this.FreezeCheckBox.CheckedChanged += new System.EventHandler(this.FreezeCheckBox_CheckedChanged);
+            // 
+            // TimerHaxForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(585, 243);
+            this.Controls.Add(this.ControlsGroupBox);
+            this.Controls.Add(this.ApplyButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "TimerHaxForm";
+            this.Text = "TimerHax";
+            ((System.ComponentModel.ISupportInitialize)(this.TimerBox)).EndInit();
+            this.ControlsGroupBox.ResumeLayout(false);
+            this.ControlsGroupBox.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.RadioButton BattleDojoRadioButton;
+        private System.Windows.Forms.RadioButton ReconRadioButton;
+        private System.Windows.Forms.RadioButton AmiiboRadioButton;
+        private System.Windows.Forms.NumericUpDown TimerBox;
+        private System.Windows.Forms.Button ApplyButton;
+        private System.Windows.Forms.Label TimerLabel;
+        private System.Windows.Forms.GroupBox ControlsGroupBox;
+        private System.Windows.Forms.CheckBox FreezeCheckBox;
+    }
+}

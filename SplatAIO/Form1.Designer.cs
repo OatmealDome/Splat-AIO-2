@@ -70,6 +70,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.singlePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerHaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimerHaxCredits = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sazaeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maeBox)).BeginInit();
@@ -406,6 +408,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.otherToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
@@ -414,9 +417,10 @@
             // otherToolStripMenuItem
             // 
             this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.singlePlayerToolStripMenuItem});
-            this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
+            this.singlePlayerToolStripMenuItem,
+            this.timerHaxToolStripMenuItem});
             resources.ApplyResources(this.otherToolStripMenuItem, "otherToolStripMenuItem");
+            this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
             // 
             // singlePlayerToolStripMenuItem
             // 
@@ -424,10 +428,22 @@
             resources.ApplyResources(this.singlePlayerToolStripMenuItem, "singlePlayerToolStripMenuItem");
             this.singlePlayerToolStripMenuItem.Click += new System.EventHandler(this.singlePlayerToolStripMenuItem_Click);
             // 
+            // timerHaxToolStripMenuItem
+            // 
+            this.timerHaxToolStripMenuItem.Name = "timerHaxToolStripMenuItem";
+            resources.ApplyResources(this.timerHaxToolStripMenuItem, "timerHaxToolStripMenuItem");
+            this.timerHaxToolStripMenuItem.Click += new System.EventHandler(this.timerHaxToolStripMenuItem_Click);
+            // 
+            // TimerHaxCredits
+            // 
+            resources.ApplyResources(this.TimerHaxCredits, "TimerHaxCredits");
+            this.TimerHaxCredits.Name = "TimerHaxCredits";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TimerHaxCredits);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.groupBox5);
@@ -508,6 +524,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem singlePlayerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timerHaxToolStripMenuItem;
+        private System.Windows.Forms.Label TimerHaxCredits;
     }
 }
 
