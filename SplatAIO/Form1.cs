@@ -45,21 +45,10 @@ namespace SplatAIO {
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Checker g = new Checker();
-            g.getdata();
-
-            switch (g.getdata())
+            Checker checker = new Checker();
+            if (checker.getdata() == 0 && checker.ver != ver)
             {
-                case 0:
-                    if (g.ver != ver)
-                    {
-                        g.Show();
-                    }
-                break;
-
-                case 1:
-                    break;
-                   
+                checker.ShowDialog();
             }
         }
 
