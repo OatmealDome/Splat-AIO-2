@@ -94,21 +94,40 @@ namespace SplatAIO {
             try
             {
                 Gecko.Connect();
-                connectBox.Enabled = false;
-                getDiff(0x0, 0x9000, 0x8000);
-                load();
-                disconnectBox.Enabled = true;
             }
             catch(ETCPGeckoException)
             {
                 MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
             }
-            
             catch(System.Net.Sockets.SocketException)
             {
                 MessageBox.Show("Invalid IP entry.");
             }
-            
+
+            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
+            {
+                diff = 0x0;
+            }
+            else if (Gecko.peek(0x12CE2DA0) == 0x000003F2)
+            {
+                diff = 0x8000;
+            }
+            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
+            {
+                diff = 0x9000;
+            }
+            else
+            {
+                MessageBox.Show("Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon.");
+
+                Gecko.Disconnect();
+                return;
+            }
+
+            connectBox.Enabled = false;
+            disconnectBox.Enabled = true;
+
+            load();
         }
 
         public void release()
@@ -294,16 +313,7 @@ namespace SplatAIO {
             ProgressBitsForm.SetFlag(ref progression, 0x100000, level >= 20); // remove if level < 20, set if level >= 20
             Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
         }
-        public void getDiff(uint value1, uint value2, uint value3)
-        {
-            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
-                diff = value1;
-            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
-                diff = value2;
-            else
-                diff = value3;
 
-        }
         public void pokeAmiibo(uint address)
         {
             if (amiiboBox.SelectedIndex == 0) // none / nashi
