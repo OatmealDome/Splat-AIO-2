@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(ProgressBitsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressBitsForm));
             this.tutorialBox = new System.Windows.Forms.CheckBox();
             this.splatfestBox = new System.Windows.Forms.CheckBox();
             this.rankedNewsBox = new System.Windows.Forms.CheckBox();
@@ -140,6 +140,7 @@
             this.Controls.Add(this.rankedNewsBox);
             this.Controls.Add(this.splatfestBox);
             this.Controls.Add(this.tutorialBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ProgressBitsForm";
             this.Load += new System.EventHandler(this.ProgressBitsForm_Load);
             this.ResumeLayout(false);

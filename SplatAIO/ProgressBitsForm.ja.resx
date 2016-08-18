@@ -119,73 +119,73 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tutorialBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 17</value>
+    <value>140, 17</value>
   </data>
   <data name="tutorialBox.Text" xml:space="preserve">
     <value>チュートリアルクリア、広場の説明</value>
   </data>
   <data name="splatfestBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>69, 17</value>
   </data>
   <data name="splatfestBox.Text" xml:space="preserve">
     <value>フェスの説明</value>
   </data>
   <data name="rankedNewsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 17</value>
+    <value>274, 17</value>
   </data>
   <data name="rankedNewsBox.Text" xml:space="preserve">
     <value>Seen Ranked Battle available news (これのこと知ってない)</value>
   </data>
   <data name="lobbyBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
+    <value>70, 17</value>
   </data>
   <data name="lobbyBox.Text" xml:space="preserve">
     <value>ロビーの説明</value>
   </data>
   <data name="heroSuitBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 17</value>
+    <value>139, 17</value>
   </data>
   <data name="heroSuitBox.Text" xml:space="preserve">
     <value>タコツボバレーに初めて行きました</value>
   </data>
   <data name="greatZapfishBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 17</value>
+    <value>177, 17</value>
   </data>
   <data name="greatZapfishBox.Text" xml:space="preserve">
     <value>オオデンチナマズとDJタコワサ将軍が見える</value>
   </data>
   <data name="cuttlefishPostGameBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 17</value>
+    <value>196, 17</value>
   </data>
   <data name="cuttlefishPostGameBox.Text" xml:space="preserve">
     <value>アタリメ司令との最終会話、エンドロールが見える</value>
   </data>
   <data name="rankedUnlockedBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 17</value>
+    <value>85, 17</value>
   </data>
   <data name="rankedUnlockedBox.Text" xml:space="preserve">
     <value>ガチマッチの説明</value>
   </data>
   <data name="rankShownBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>79, 17</value>
   </data>
   <data name="rankShownBox.Text" xml:space="preserve">
     <value>ウデマエの表示</value>
   </data>
   <data name="snailsShownBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
+    <value>98, 17</value>
   </data>
   <data name="snailsShownBox.Text" xml:space="preserve">
     <value>スーパーサザエの表示</value>
   </data>
   <data name="levelCapRaisedBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
+    <value>141, 17</value>
   </data>
   <data name="levelCapRaisedBox.Text" xml:space="preserve">
     <value>ランクのカンストは50になりました</value>
   </data>
   <data name="warningBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
+    <value>133, 17</value>
   </data>
   <data name="warningBox.Text" xml:space="preserve">
     <value>公開プレイヤデーターのお知らせ</value>
