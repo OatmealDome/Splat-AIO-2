@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressBitsForm));
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(ProgressBitsForm));
             this.tutorialBox = new System.Windows.Forms.CheckBox();
             this.splatfestBox = new System.Windows.Forms.CheckBox();
             this.rankedNewsBox = new System.Windows.Forms.CheckBox();

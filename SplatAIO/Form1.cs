@@ -14,7 +14,6 @@ namespace SplatAIO {
 
     public partial class Form1 : Form
     {
-
         // Addresses (diff = 0x0)
 
         // Player Stuff
@@ -49,33 +48,16 @@ namespace SplatAIO {
         private readonly uint clothesAddress = 0x12CD4DA0;
         private readonly uint shoesAddress = 0x12CD1DA0;
 
+        // Addresses END
+
+        public readonly int ver = 112;
+
         public uint diff;
-        public int ver = 112;
         public TCPGecko Gecko;
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            sisterhax("normal");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            octohax(false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -95,11 +77,11 @@ namespace SplatAIO {
             {
                 Gecko.Connect();
             }
-            catch(ETCPGeckoException)
+            catch (ETCPGeckoException)
             {
                 MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
             }
-            catch(System.Net.Sockets.SocketException)
+            catch (System.Net.Sockets.SocketException)
             {
                 MessageBox.Show("Invalid IP entry.");
             }
@@ -132,58 +114,60 @@ namespace SplatAIO {
 
         public void release()
         {
-            rankBox.Enabled      =   true ;
-            ipBox.Enabled        =   false;
-            kaneBox.Enabled      =   true ;
-            sazaeBox.Enabled     =   true ;
-            udeBox.Enabled       =   true ;
-            maeBox.Enabled       =   true ;
-            progressFlagsBox.Enabled =   true ;
-            genderBox.Enabled    =   true ;
-            eyeBox.Enabled       =   true ;
-            skinBox.Enabled      =   true ;
-            amiiboBox.Enabled    =   true ;
-            ikaBox.Enabled       =   true ;
-            takoBox.Enabled      =   true ;
-            aoriBox.Enabled      =   true ;
-            hotaruBox.Enabled    =   true ;
-            swapBox.Enabled      =   true ;
-            normalBox.Enabled    =   true ;
-            gameButton.Enabled   =    true;
-            bukiButton.Enabled   =    true;
-            gearButton.Enabled   =    true;
-            OKButton.Enabled     =    true;
-            otherToolStripMenuItem.Enabled   =    true;
+            rankBox.Enabled = true;
+            ipBox.Enabled = false;
+            kaneBox.Enabled = true;
+            sazaeBox.Enabled = true;
+            udeBox.Enabled = true;
+            maeBox.Enabled = true;
+            progressFlagsBox.Enabled = true;
+            genderBox.Enabled = true;
+            eyeBox.Enabled = true;
+            skinBox.Enabled = true;
+            amiiboBox.Enabled = true;
+            ikaBox.Enabled = true;
+            takoBox.Enabled = true;
+            aoriBox.Enabled = true;
+            hotaruBox.Enabled = true;
+            swapBox.Enabled = true;
+            normalBox.Enabled = true;
+            gameButton.Enabled = true;
+            bukiButton.Enabled = true;
+            gearButton.Enabled = true;
+            OKButton.Enabled = true;
+            otherToolStripMenuItem.Enabled = true;
         }
+
         public void hold()
         {
-            rankBox.Enabled      =  false;
-            ipBox.Enabled        =   true;
-            kaneBox.Enabled      =  false;
-            sazaeBox.Enabled     =  false;
-            udeBox.Enabled       =  false;
-            maeBox.Enabled       =  false;
-            progressFlagsBox.Enabled =  false;
-            genderBox.Enabled    =  false;
-            eyeBox.Enabled       =  false;
-            skinBox.Enabled      =  false;
-            amiiboBox.Enabled    =  false;
-            ikaBox.Enabled       =  false;
-            aoriBox.Enabled      =  false;
-            hotaruBox.Enabled    =  false;
-            takoBox.Enabled      =  false;
-            swapBox.Enabled      =  false;
-            normalBox.Enabled    =  false;
-            gameButton.Enabled   =  false;
-            bukiButton.Enabled   =  false;
-            gearButton.Enabled   =  false;
-            OKButton.Enabled     =  false;
-            otherToolStripMenuItem.Enabled   =  false;
+            rankBox.Enabled = false;
+            ipBox.Enabled = true;
+            kaneBox.Enabled = false;
+            sazaeBox.Enabled = false;
+            udeBox.Enabled = false;
+            maeBox.Enabled = false;
+            progressFlagsBox.Enabled = false;
+            genderBox.Enabled = false;
+            eyeBox.Enabled = false;
+            skinBox.Enabled = false;
+            amiiboBox.Enabled = false;
+            ikaBox.Enabled = false;
+            aoriBox.Enabled = false;
+            hotaruBox.Enabled = false;
+            takoBox.Enabled = false;
+            swapBox.Enabled = false;
+            normalBox.Enabled = false;
+            gameButton.Enabled = false;
+            bukiButton.Enabled = false;
+            gearButton.Enabled = false;
+            OKButton.Enabled = false;
+            otherToolStripMenuItem.Enabled = false;
         }
+
         public void load()
         {
-
             hold();
+
             int rank = ToInt32(Gecko.peek(rankAddress + diff)) + 1;
             int okane = ToInt32(Gecko.peek(okaneAddress + diff));
             int ude = ToInt32(Gecko.peek(udeAddress + diff));
@@ -203,6 +187,7 @@ namespace SplatAIO {
                 int rankDisplay = fixStuff(Properties.Strings.BAD_RANK_1, rank, Properties.Strings.BAD_RANK_2, 0x12CDC1A8, 49, 50, 1);
                 rankBox.Value = rankDisplay;
             }
+
             try
             {
                 kaneBox.Value = okane;
@@ -212,6 +197,7 @@ namespace SplatAIO {
                 int okaneDisplay = fixStuff(Properties.Strings.BAD_OKANE_1, okane, Properties.Strings.BAD_OKANE_2, 0x12CDC1A0, 9999999, 9999999, 0);
                 kaneBox.Value = okaneDisplay;
             }
+
             try
             {
                 maeBox.Value = mae;
@@ -221,6 +207,7 @@ namespace SplatAIO {
                 int maeDisplay = fixStuff(Properties.Strings.BAD_MAE_1, mae, Properties.Strings.BAD_MAE_2, 0x12CDC1B0, 99, 99, 0);
                 maeBox.Value = maeDisplay;
             }
+
             try
             {
                 sazaeBox.Value = sazae;
@@ -230,6 +217,7 @@ namespace SplatAIO {
                 int sazaeDisplay = fixStuff(Properties.Strings.BAD_SAZAE_1, sazae, Properties.Strings.BAD_SAZAE_2, 0x12CDC1B4, 999, 999, 0);
                 sazaeBox.Value = sazaeDisplay;
             }
+
             try
             {
                 udeBox.SelectedIndex = ude;
@@ -288,6 +276,7 @@ namespace SplatAIO {
 
             release();
         }
+
         public int fixStuff(string str1, int invalid, string str2, uint fixAddress, int newPokeVal, int newVal, int noVal)
         {
             DialogResult fix = MessageBox.Show(str1 + invalid + str2, Properties.Strings.INVALID, MessageBoxButtons.YesNo);
@@ -304,13 +293,13 @@ namespace SplatAIO {
 
         public void pokeRank(uint address)
         {
-            uint level = ToUInt32(rankBox.Value);
-            Gecko.poke32(address, level - 1); // rank
+            uint rank = ToUInt32(rankBox.Value);
+            Gecko.poke32(address, rank - 1); // rank
             Gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
-            // we need to set the level cap progression bit appropriately
+            // we need to set the rank cap progression bit appropriately
             uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress);
-            ProgressBitsForm.SetFlag(ref progression, 0x100000, level >= 20); // remove if level < 20, set if level >= 20
+            ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20); // remove if rank < 20, set if rank >= 20
             Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
         }
 
@@ -326,6 +315,7 @@ namespace SplatAIO {
             }
             
         }
+
         public void octohax(bool octopus)
         {
             // Tnk_Simple 1
@@ -376,6 +366,7 @@ namespace SplatAIO {
             Gecko.poke32(tnkSimpleFiveAddress + 0x4, 0x53696D70);
             Gecko.poke32(tnkSimpleFiveAddress + 0x8, 0x6C650000);
         }
+
         public void sisterhax(string mode)
         {
             switch(mode)
@@ -521,9 +512,9 @@ namespace SplatAIO {
             progressBitsForm.ShowDialog(this);
         }
 
-        private void amiiboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ikaBox_Click(object sender, EventArgs e)
         {
-
+            octohax(false);
         }
 
         private void takoBox_Click(object sender, EventArgs e)
@@ -544,6 +535,11 @@ namespace SplatAIO {
         private void swapBox_Click(object sender, EventArgs e)
         {
             sisterhax("swap");
+        }
+
+        private void normalBox_Click(object sender, EventArgs e)
+        {
+            sisterhax("normal");
         }
 
         private void gameButton_Click(object sender, EventArgs e)
@@ -872,7 +868,6 @@ namespace SplatAIO {
             TimerHaxForm timerHaxForm = new TimerHaxForm();
             timerHaxForm.ShowDialog(this);
         }
+
     }
-
-
 }
