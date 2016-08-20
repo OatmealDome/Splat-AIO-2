@@ -8,7 +8,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Convert;
+using System.Convert;
 
 namespace SplatAIO {
 
@@ -183,16 +183,16 @@ namespace SplatAIO {
         public void load()
         {
             hold();
-
-            rank = ToInt32(Gecko.peek(rankAddress + diff)) + 1;
-            okane = ToInt32(Gecko.peek(okaneAddress + diff));
-            ude = ToInt32(Gecko.peek(udeAddress + diff));
-            mae = ToInt32(Gecko.peek(maeAddress + diff));
-            sazae = ToInt32(Gecko.peek(sazaeAddress + diff));
-            gender = ToInt32(Gecko.peek(genderAddress + diff));
-            eyes = ToInt32(Gecko.peek(eyesAddress + diff));
-            skin = ToInt32(Gecko.peek(skinAddress + diff));
-            figure = Gecko.peek(amiiboAddress + diff);
+			
+            int rank = Convert.ToInt32(Gecko.peek(rankAddress + diff)) + 1;
+            int okane = Convert.ToInt32(Gecko.peek(okaneAddress + diff));
+            int ude = Convert.ToInt32(Gecko.peek(udeAddress + diff));
+            int mae = Convert.ToInt32(Gecko.peek(maeAddress + diff));
+            int sazae = Convert.ToInt32(Gecko.peek(sazaeAddress + diff));
+            int gender = Convert.ToInt32(Gecko.peek(genderAddress + diff));
+            int eyes = Convert.ToInt32(Gecko.peek(eyesAddress + diff));
+            int skin = Convert.ToInt32(Gecko.peek(skinAddress + diff));
+            uint figure = Gecko.peek(amiiboAddress + diff);
 
             try
             {
@@ -260,7 +260,7 @@ namespace SplatAIO {
             }
             else
             {
-                amiiboBox.SelectedIndex = ToInt32(figure + 1);
+                amiiboBox.SelectedIndex = Convert.ToInt32(figure + 1);
             }
 
             eyeBox.SelectedIndex = eyes;
@@ -313,13 +313,13 @@ namespace SplatAIO {
             }
 
             pokeRank(rankAddress + diff); // rank
-            Gecko.poke32(okaneAddress + diff, ToUInt32(kaneBox.Value)); // okane
-            Gecko.poke32(udeAddress + diff, ToUInt32(udeBox.SelectedIndex)); // ude
-            Gecko.poke32(maeAddress + diff, ToUInt32(maeBox.Value)); // mae
-            Gecko.poke32(sazaeAddress + diff, ToUInt32(sazaeBox.Value)); // sazae
-            Gecko.poke32(genderAddress + diff, ToUInt32(genderBox.SelectedIndex)); // gender
-            Gecko.poke32(eyesAddress + diff, ToUInt32(eyeBox.SelectedIndex)); // eyes
-            Gecko.poke32(skinAddress + diff, ToUInt32(skinBox.SelectedIndex)); // skin
+            Gecko.poke32(okaneAddress + diff, Convert.ToUInt32(kaneBox.Value)); // okane
+            Gecko.poke32(udeAddress + diff, Convert.ToUInt32(udeBox.SelectedIndex)); // ude
+            Gecko.poke32(maeAddress + diff, Convert.ToUInt32(maeBox.Value)); // mae
+            Gecko.poke32(sazaeAddress + diff, Convert.ToUInt32(sazaeBox.Value)); // sazae
+            Gecko.poke32(genderAddress + diff, Convert.ToUInt32(genderBox.SelectedIndex)); // gender
+            Gecko.poke32(eyesAddress + diff, Convert.ToUInt32(eyeBox.SelectedIndex)); // eyes
+            Gecko.poke32(skinAddress + diff, Convert.ToUInt32(skinBox.SelectedIndex)); // skin
             pokeAmiibo(amiiboAddress + diff); // amiibo
 
             release();
@@ -330,7 +330,7 @@ namespace SplatAIO {
             DialogResult fix = MessageBox.Show(str1 + invalid + str2, Properties.Strings.INVALID, MessageBoxButtons.YesNo);
             if (fix == DialogResult.Yes)
             {
-                Gecko.poke32(fixAddress + diff, ToUInt32(newPokeVal));
+                Gecko.poke32(fixAddress + diff, Convert.ToUInt32(newPokeVal));
                 return newVal;
             }
             else
@@ -341,7 +341,7 @@ namespace SplatAIO {
 
         public void pokeRank(uint address)
         {
-            uint rank = ToUInt32(rankBox.Value);
+            uint rank = Convert.ToUInt32(rankBox.Value);
             Gecko.poke32(address, rank - 1); // rank
             Gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
@@ -359,7 +359,7 @@ namespace SplatAIO {
             }
             else
             {
-                Gecko.poke32(address, ToUInt32(amiiboBox.SelectedIndex - 1));
+                Gecko.poke32(address, Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
                 if (sendStats)
                 {
                     Statistics.WriteToSlot(7, 1);
