@@ -14,8 +14,45 @@ namespace SplatAIO {
 
     public partial class Form1 : Form
     {
+        // Addresses (diff = 0x0)
+
+        // Player Stuff
+        private readonly uint rankAddress = 0x12CDC1A8;
+        private readonly uint okaneAddress = 0x12CDC1A0;
+        private readonly uint udeAddress = 0x12CDC1AC;
+        private readonly uint maeAddress = 0x12CDC1B0;
+        private readonly uint sazaeAddress = 0x12CDC1B4;
+        private readonly uint genderAddress = 0x12CD1D90;
+        private readonly uint eyesAddress = 0x12CD1D98;
+        private readonly uint skinAddress = 0x12CD1D94;
+        private readonly uint amiiboAddress = 0x12D1F130;
+        private readonly uint minigamesAddress = 0x12CD1C40;
+
+        // Octohax
+        private readonly uint tnkSimpleOneAddress = 0x10506BC0;
+        private readonly uint tnkSimpleTwoAddress = 0x105E62A0;
+        private readonly uint player00Address = 0x105EF3A0;
+        private readonly uint player00HlfAddress = 0x105EF3AC;
+        private readonly uint rivalSquidAddress = 0x105EF3BC;
+        private readonly uint tnkSimpleThreeAddress = 0x12BF4354;
+        private readonly uint tnkSimpleFourAddress = 0x12BF43A0;
+        private readonly uint tnkSimpleFiveAddress = 0x12BF43EC;
+
+        // Sisterhax
+        private readonly uint aoriAddress = 0x105EB5DC;
+        private readonly uint hotaruAddress = 0x105EB5E8;
+
+        // Gear
+        private readonly uint weaponsAddress = 0x0;
+        private readonly uint hatsAddress = 0x12CD7DA0;
+        private readonly uint clothesAddress = 0x12CD4DA0;
+        private readonly uint shoesAddress = 0x12CD1DA0;
+
+        // Addresses END
+
+        public readonly int ver = 112;
+
         public uint diff;
-        public int ver = 112;
         public TCPGecko Gecko;
 
         public Form1()
@@ -23,43 +60,12 @@ namespace SplatAIO {
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            sisterhax(0x105EB5DC, 0x105EB5E8, "normal");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BC, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, false);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            Checker g = new Checker();
-            g.getdata();
-
-            switch (g.getdata())
+            Checker checker = new Checker();
+            if (checker.getdata() == 0 && checker.ver != ver)
             {
-                case 0:
-                    if (g.ver != ver)
-                    {
-                        g.Show();
-                    }
-                break;
-
-                case 1:
-                    break;
-                   
+                checker.ShowDialog();
             }
         }
 
@@ -70,86 +76,107 @@ namespace SplatAIO {
             try
             {
                 Gecko.Connect();
-                connectBox.Enabled = false;
-                getDiff(0x0, 0x9000, 0x8000);
-                load();
-                disconnectBox.Enabled = true;
             }
-            catch(ETCPGeckoException)
+            catch (ETCPGeckoException)
             {
                 MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
             }
-            
-            catch(System.Net.Sockets.SocketException)
+            catch (System.Net.Sockets.SocketException)
             {
                 MessageBox.Show("Invalid IP entry.");
             }
-            
+
+            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
+            {
+                diff = 0x0;
+            }
+            else if (Gecko.peek(0x12CE2DA0) == 0x000003F2)
+            {
+                diff = 0x8000;
+            }
+            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
+            {
+                diff = 0x9000;
+            }
+            else
+            {
+                MessageBox.Show("Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon.");
+
+                Gecko.Disconnect();
+                return;
+            }
+
+            connectBox.Enabled = false;
+            disconnectBox.Enabled = true;
+
+            load();
         }
 
         public void release()
         {
-            rankBox.Enabled      =   true ;
-            ipBox.Enabled        =   false;
-            kaneBox.Enabled      =   true ;
-            sazaeBox.Enabled     =   true ;
-            udeBox.Enabled       =   true ;
-            maeBox.Enabled       =   true ;
-            progressFlagsBox.Enabled =   true ;
-            genderBox.Enabled    =   true ;
-            eyeBox.Enabled       =   true ;
-            skinBox.Enabled      =   true ;
-            amiiboBox.Enabled    =   true ;
-            ikaBox.Enabled       =   true ;
-            takoBox.Enabled      =   true ;
-            aoriBox.Enabled      =   true ;
-            hotaruBox.Enabled    =   true ;
-            swapBox.Enabled      =   true ;
-            normalBox.Enabled    =   true ;
-            gameButton.Enabled   =    true;
-            bukiButton.Enabled   =    true;
-            gearButton.Enabled   =    true;
-            OKButton.Enabled     =    true;
-            otherToolStripMenuItem.Enabled   =    true;
+            rankBox.Enabled = true;
+            ipBox.Enabled = false;
+            kaneBox.Enabled = true;
+            sazaeBox.Enabled = true;
+            udeBox.Enabled = true;
+            maeBox.Enabled = true;
+            progressFlagsBox.Enabled = true;
+            genderBox.Enabled = true;
+            eyeBox.Enabled = true;
+            skinBox.Enabled = true;
+            amiiboBox.Enabled = true;
+            ikaBox.Enabled = true;
+            takoBox.Enabled = true;
+            aoriBox.Enabled = true;
+            hotaruBox.Enabled = true;
+            swapBox.Enabled = true;
+            normalBox.Enabled = true;
+            gameButton.Enabled = true;
+            bukiButton.Enabled = true;
+            gearButton.Enabled = true;
+            OKButton.Enabled = true;
+            otherToolStripMenuItem.Enabled = true;
         }
+
         public void hold()
         {
-            rankBox.Enabled      =  false;
-            ipBox.Enabled        =   true;
-            kaneBox.Enabled      =  false;
-            sazaeBox.Enabled     =  false;
-            udeBox.Enabled       =  false;
-            maeBox.Enabled       =  false;
-            progressFlagsBox.Enabled =  false;
-            genderBox.Enabled    =  false;
-            eyeBox.Enabled       =  false;
-            skinBox.Enabled      =  false;
-            amiiboBox.Enabled    =  false;
-            ikaBox.Enabled       =  false;
-            aoriBox.Enabled      =  false;
-            hotaruBox.Enabled    =  false;
-            takoBox.Enabled      =  false;
-            swapBox.Enabled      =  false;
-            normalBox.Enabled    =  false;
-            gameButton.Enabled   =  false;
-            bukiButton.Enabled   =  false;
-            gearButton.Enabled   =  false;
-            OKButton.Enabled     =  false;
-            otherToolStripMenuItem.Enabled   =  false;
+            rankBox.Enabled = false;
+            ipBox.Enabled = true;
+            kaneBox.Enabled = false;
+            sazaeBox.Enabled = false;
+            udeBox.Enabled = false;
+            maeBox.Enabled = false;
+            progressFlagsBox.Enabled = false;
+            genderBox.Enabled = false;
+            eyeBox.Enabled = false;
+            skinBox.Enabled = false;
+            amiiboBox.Enabled = false;
+            ikaBox.Enabled = false;
+            aoriBox.Enabled = false;
+            hotaruBox.Enabled = false;
+            takoBox.Enabled = false;
+            swapBox.Enabled = false;
+            normalBox.Enabled = false;
+            gameButton.Enabled = false;
+            bukiButton.Enabled = false;
+            gearButton.Enabled = false;
+            OKButton.Enabled = false;
+            otherToolStripMenuItem.Enabled = false;
         }
+
         public void load()
         {
-
             hold();
-            int rank = ToInt32(Gecko.peek(0x12CDC1A8 + diff)) + 1;
-            int okane = ToInt32(Gecko.peek(0x12CDC1A0 + diff));
-            int ude = ToInt32(Gecko.peek(0x12CDC1AC + diff));
-            int mae = ToInt32(Gecko.peek(0x12CDC1B0 + diff));
-            int sazae = ToInt32(Gecko.peek(0x12CDC1B4 + diff));
-            int gender = ToInt32(Gecko.peek(0x12CD1D90 + diff));
-            int eyes = ToInt32(Gecko.peek(0x12CD1D98 + diff));
-            int skin = ToInt32(Gecko.peek(0x12CD1D94 + diff));
-            uint figure = Gecko.peek(0x12D1F130 + diff);
+
+            int rank = ToInt32(Gecko.peek(rankAddress + diff)) + 1;
+            int okane = ToInt32(Gecko.peek(okaneAddress + diff));
+            int ude = ToInt32(Gecko.peek(udeAddress + diff));
+            int mae = ToInt32(Gecko.peek(maeAddress + diff));
+            int sazae = ToInt32(Gecko.peek(sazaeAddress + diff));
+            int gender = ToInt32(Gecko.peek(genderAddress + diff));
+            int eyes = ToInt32(Gecko.peek(eyesAddress + diff));
+            int skin = ToInt32(Gecko.peek(skinAddress + diff));
+            uint figure = Gecko.peek(amiiboAddress + diff);
 
             try
             {
@@ -160,6 +187,7 @@ namespace SplatAIO {
                 int rankDisplay = fixStuff(Properties.Strings.BAD_RANK_1, rank, Properties.Strings.BAD_RANK_2, 0x12CDC1A8, 49, 50, 1);
                 rankBox.Value = rankDisplay;
             }
+
             try
             {
                 kaneBox.Value = okane;
@@ -169,6 +197,7 @@ namespace SplatAIO {
                 int okaneDisplay = fixStuff(Properties.Strings.BAD_OKANE_1, okane, Properties.Strings.BAD_OKANE_2, 0x12CDC1A0, 9999999, 9999999, 0);
                 kaneBox.Value = okaneDisplay;
             }
+
             try
             {
                 maeBox.Value = mae;
@@ -178,6 +207,7 @@ namespace SplatAIO {
                 int maeDisplay = fixStuff(Properties.Strings.BAD_MAE_1, mae, Properties.Strings.BAD_MAE_2, 0x12CDC1B0, 99, 99, 0);
                 maeBox.Value = maeDisplay;
             }
+
             try
             {
                 sazaeBox.Value = sazae;
@@ -187,6 +217,7 @@ namespace SplatAIO {
                 int sazaeDisplay = fixStuff(Properties.Strings.BAD_SAZAE_1, sazae, Properties.Strings.BAD_SAZAE_2, 0x12CDC1B4, 999, 999, 0);
                 sazaeBox.Value = sazaeDisplay;
             }
+
             try
             {
                 udeBox.SelectedIndex = ude;
@@ -204,7 +235,7 @@ namespace SplatAIO {
             catch (ArgumentOutOfRangeException)
             {
                 genderBox.SelectedIndex = 0;
-                Gecko.poke32(0x12CD1D90, 0x00000000);
+                Gecko.poke32(genderAddress, 0x00000000);
             }
 
             if (figure == 0xFFFFFFFF)
@@ -232,18 +263,20 @@ namespace SplatAIO {
         private void OKButton_Click(object sender, EventArgs e)
         {
             hold();
-            pokeRank(0x12CDC1A4); //rank
-            Gecko.poke32(0x12CDC1A0 + diff, ToUInt32(kaneBox.Value)); //money
-            Gecko.poke32(0x12CDC1B4 + diff, ToUInt32(sazaeBox.Value));
-            pokeUdemae(0x12CDC1AC + diff); //udemae
-            Gecko.poke32(0x12CDC1B0 + diff, ToUInt32(maeBox.Value)); //udemae2
-            pokeGender(0x12CD1D90 + diff); //gender
-            pokeSkin(0x12CD1D94 + diff); //skin
-            pokeEyes(0x12CD1D98 + diff); //eyes
-            pokeAmiibo(0x12D1F130 + diff); //amiibo
-            release();
 
+            pokeRank(rankAddress + diff); // rank
+            Gecko.poke32(okaneAddress + diff, ToUInt32(kaneBox.Value)); // okane
+            Gecko.poke32(udeAddress + diff, ToUInt32(udeBox.SelectedIndex)); // ude
+            Gecko.poke32(maeAddress + diff, ToUInt32(maeBox.Value)); // mae
+            Gecko.poke32(sazaeAddress + diff, ToUInt32(sazaeBox.Value)); // sazae
+            Gecko.poke32(genderAddress + diff, ToUInt32(genderBox.SelectedIndex)); // gender
+            Gecko.poke32(eyesAddress + diff, ToUInt32(eyeBox.SelectedIndex)); // eyes
+            Gecko.poke32(skinAddress + diff, ToUInt32(skinBox.SelectedIndex)); // skin
+            pokeAmiibo(amiiboAddress + diff); // amiibo
+
+            release();
         }
+
         public int fixStuff(string str1, int invalid, string str2, uint fixAddress, int newPokeVal, int newVal, int noVal)
         {
             DialogResult fix = MessageBox.Show(str1 + invalid + str2, Properties.Strings.INVALID, MessageBoxButtons.YesNo);
@@ -258,44 +291,18 @@ namespace SplatAIO {
             }
         }
 
-        public void pokeRank(uint expAddress)
+        public void pokeRank(uint address)
         {
-            uint level = ToUInt32(rankBox.Value);
-            Gecko.poke32(expAddress + 0x4 + diff, level - 1); // rank
-            Gecko.poke32(expAddress + diff, 0x00000000); // experience to 0
+            uint rank = ToUInt32(rankBox.Value);
+            Gecko.poke32(address, rank - 1); // rank
+            Gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
-            // we need to set the level cap progression bit appropriately
-            uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress);
-            ProgressBitsForm.SetFlag(ref progression, 0x100000, level >= 20); // remove if level < 20, set if level >= 20
+            // we need to set the rank cap progression bit appropriately
+            uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress + diff);
+            ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20); // remove if rank < 20, set if rank >= 20
             Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
         }
-        public void pokeUdemae(uint address)
-        {
 
-            Gecko.poke32(address, ToUInt32(udeBox.SelectedIndex));
-        }
-        public void pokeGender(uint address)
-        {
-            Gecko.poke32(address, ToUInt32(genderBox.SelectedIndex));
-        }
-        public void pokeEyes(uint address)
-        {
-            Gecko.poke32(address, ToUInt32(eyeBox.SelectedIndex));
-        }
-        public void pokeSkin(uint address)
-        {
-            Gecko.poke32(address, ToUInt32(skinBox.SelectedIndex));
-        }
-        public void getDiff(uint value1, uint value2, uint value3)
-        {
-            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
-                diff = value1;
-            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
-                diff = value2;
-            else
-                diff = value3;
-
-        }
         public void pokeAmiibo(uint address)
         {
             if (amiiboBox.SelectedIndex == 0) // none / nashi
@@ -308,100 +315,100 @@ namespace SplatAIO {
             }
             
         }
-        public void octohax(uint tnksimple1, uint tnksimple2, uint player00, uint player00_hlf, uint rival_squid, uint tnksimple3, uint tnksimple4, uint tnksimple5, bool Octo)
+
+        public void octohax(bool octopus)
         {
-            //TNK_SIMPLE 1
-            Gecko.poke32(tnksimple1, 0x546E6B5F);
-            Gecko.poke32(tnksimple1 + 0x4, 0x53696D70);
-            Gecko.poke32(tnksimple1 + 0x8, 0x6C650000);
+            // Tnk_Simple 1
+            Gecko.poke32(tnkSimpleOneAddress, 0x546E6B5F);
+            Gecko.poke32(tnkSimpleOneAddress + 0x4, 0x53696D70);
+            Gecko.poke32(tnkSimpleOneAddress + 0x8, 0x6C650000);
 
-            //TNK_SIMPLE 2
-            Gecko.poke32(tnksimple2, 0x546E6B5F);
-            Gecko.poke32(tnksimple2 + 0x4, 0x53696D70);
-            Gecko.poke32(tnksimple2 + 0x8, 0x6C650000);
+            // Tnk_Simple 2
+            Gecko.poke32(tnkSimpleTwoAddress, 0x546E6B5F);
+            Gecko.poke32(tnkSimpleTwoAddress + 0x4, 0x53696D70);
+            Gecko.poke32(tnkSimpleTwoAddress + 0x8, 0x6C650000);
 
-            //PLAYER00
-            Gecko.poke32(player00, 0x52697661);
-            Gecko.poke32(player00 + 0x4, 0x6C303000);
+            // Player00
+            Gecko.poke32(player00Address, 0x52697661);
+            Gecko.poke32(player00Address + 0x4, 0x6C303000);
 
-            //PLAYER00_HLF
-            Gecko.poke32(player00_hlf, 0x52697661);
-            Gecko.poke32(player00_hlf + 0x4, 0x6C30305F);
-            Gecko.poke32(player00_hlf + 0x8, 0x486C6600);
+            // Player00_Hlf
+            Gecko.poke32(player00HlfAddress, 0x52697661);
+            Gecko.poke32(player00HlfAddress + 0x4, 0x6C30305F);
+            Gecko.poke32(player00HlfAddress + 0x8, 0x486C6600);
 
-            switch (Octo)
+            // Rival_Squid
+            if (octopus)
             {
-                //RIVAL_SQUID
-                case true:
-                    Gecko.poke32(rival_squid, 0x52697661);
-                    Gecko.poke32(rival_squid + 0x4, 0x6C5F5371);
-                    Gecko.poke32(rival_squid + 0x8, 0x75696400);
-                    break;
-
-                case false:
-                    Gecko.poke32(rival_squid, 0x506C6179);
-                    Gecko.poke32(rival_squid + 0x4, 0x65725F53);
-                    Gecko.poke32(rival_squid + 0x8, 0x71756964);
-                    break;
+                Gecko.poke32(rivalSquidAddress, 0x52697661);
+                Gecko.poke32(rivalSquidAddress + 0x4, 0x6C5F5371);
+                Gecko.poke32(rivalSquidAddress + 0x8, 0x75696400);
+            }
+            else
+            {
+                Gecko.poke32(rivalSquidAddress, 0x506C6179);
+                Gecko.poke32(rivalSquidAddress + 0x4, 0x65725F53);
+                Gecko.poke32(rivalSquidAddress + 0x8, 0x71756964);
             }
 
-            //TNK_SIMPLE 3
-            Gecko.poke32(tnksimple3, 0x546E6B5F);
-            Gecko.poke32(tnksimple3 + 0x4, 0x53696D70);
-            Gecko.poke32(tnksimple3 + 0x8, 0x6C650000);
+            // Tnk_Simple 3
+            Gecko.poke32(tnkSimpleThreeAddress, 0x546E6B5F);
+            Gecko.poke32(tnkSimpleThreeAddress + 0x4, 0x53696D70);
+            Gecko.poke32(tnkSimpleThreeAddress + 0x8, 0x6C650000);
 
-            //TNK_SIMPLE 4
-            Gecko.poke32(tnksimple4, 0x546E6B5F);
-            Gecko.poke32(tnksimple4 + 0x4, 0x53696D70);
-            Gecko.poke32(tnksimple4 + 0x8, 0x6C650000);
+            // Tnk_Simple 4
+            Gecko.poke32(tnkSimpleFourAddress, 0x546E6B5F);
+            Gecko.poke32(tnkSimpleFourAddress + 0x4, 0x53696D70);
+            Gecko.poke32(tnkSimpleFourAddress + 0x8, 0x6C650000);
 
-            //TNK_SIMPLE 5
-            Gecko.poke32(tnksimple5, 0x546E6B5F);
-            Gecko.poke32(tnksimple5 + 0x4, 0x53696D70);
-            Gecko.poke32(tnksimple5 + 0x8, 0x6C650000);
+            // Tnk_Simple 5
+            Gecko.poke32(tnkSimpleFiveAddress, 0x546E6B5F);
+            Gecko.poke32(tnkSimpleFiveAddress + 0x4, 0x53696D70);
+            Gecko.poke32(tnkSimpleFiveAddress + 0x8, 0x6C650000);
         }
-        public void sisterhax(uint address1, uint address2, string mode)
+
+        public void sisterhax(string mode)
         {
             switch(mode)
             {
                 case "aori":
-                    Gecko.poke32(address1, 0x4E70635F);
-                    Gecko.poke32(address1 + 4, 0x49646F6C);
-                    Gecko.poke32(address1 + 8, 0x41000000);
+                    Gecko.poke32(aoriAddress, 0x4E70635F);
+                    Gecko.poke32(aoriAddress + 4, 0x49646F6C);
+                    Gecko.poke32(aoriAddress + 8, 0x41000000);
 
-                    Gecko.poke32(address2, 0x4E70635F);
-                    Gecko.poke32(address2 + 4, 0x49646F6C);
-                    Gecko.poke32(address2 + 8, 0x41000000);
+                    Gecko.poke32(hotaruAddress, 0x4E70635F);
+                    Gecko.poke32(hotaruAddress + 4, 0x49646F6C);
+                    Gecko.poke32(hotaruAddress + 8, 0x41000000);
                     break;
 
                 case "hotaru":
-                    Gecko.poke32(address1, 0x4E70635F);
-                    Gecko.poke32(address1 + 4, 0x49646F6C);
-                    Gecko.poke32(address1 + 8, 0x42000000);
+                    Gecko.poke32(aoriAddress, 0x4E70635F);
+                    Gecko.poke32(aoriAddress + 4, 0x49646F6C);
+                    Gecko.poke32(aoriAddress + 8, 0x42000000);
 
-                    Gecko.poke32(address2, 0x4E70635F);
-                    Gecko.poke32(address2 + 4, 0x49646F6C);
-                    Gecko.poke32(address2 + 8, 0x42000000);
+                    Gecko.poke32(hotaruAddress, 0x4E70635F);
+                    Gecko.poke32(hotaruAddress + 4, 0x49646F6C);
+                    Gecko.poke32(hotaruAddress + 8, 0x42000000);
                     break;
 
                 case "swap":
-                    Gecko.poke32(address1, 0x4E70635F);
-                    Gecko.poke32(address1 + 4, 0x49646F6C);
-                    Gecko.poke32(address1 + 8, 0x42000000);
+                    Gecko.poke32(aoriAddress, 0x4E70635F);
+                    Gecko.poke32(aoriAddress + 4, 0x49646F6C);
+                    Gecko.poke32(aoriAddress + 8, 0x42000000);
 
-                    Gecko.poke32(address2, 0x4E70635F);
-                    Gecko.poke32(address2 + 4, 0x49646F6C);
-                    Gecko.poke32(address2 + 8, 0x41000000);
+                    Gecko.poke32(hotaruAddress, 0x4E70635F);
+                    Gecko.poke32(hotaruAddress + 4, 0x49646F6C);
+                    Gecko.poke32(hotaruAddress + 8, 0x41000000);
                     break;
 
                 case "normal":
-                    Gecko.poke32(address1, 0x4E70635F);
-                    Gecko.poke32(address1 + 4, 0x49646F6C);
-                    Gecko.poke32(address1 + 8, 0x41000000);
+                    Gecko.poke32(aoriAddress, 0x4E70635F);
+                    Gecko.poke32(aoriAddress + 4, 0x49646F6C);
+                    Gecko.poke32(aoriAddress + 8, 0x41000000);
 
-                    Gecko.poke32(address2, 0x4E70635F);
-                    Gecko.poke32(address2 + 4, 0x49646F6C);
-                    Gecko.poke32(address2 + 8, 0x42000000);
+                    Gecko.poke32(hotaruAddress, 0x4E70635F);
+                    Gecko.poke32(hotaruAddress + 4, 0x49646F6C);
+                    Gecko.poke32(hotaruAddress + 8, 0x42000000);
                     break;
             }
         }
@@ -505,34 +512,39 @@ namespace SplatAIO {
             progressBitsForm.ShowDialog(this);
         }
 
-        private void amiiboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ikaBox_Click(object sender, EventArgs e)
         {
-
+            octohax(false);
         }
 
         private void takoBox_Click(object sender, EventArgs e)
         {
-            octohax(0x10506BC0, 0x105E62A0, 0x105EF3A0, 0x105EF3AC, 0x105EF3BC, 0x12BF4354, 0x12BF43A0, 0x12BF43EC, true);
+            octohax(true);
         }
 
         private void aoriBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5DC, 0x105EB5E8, "aori");
+            sisterhax("aori");
         }
 
         private void hotaruBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5DC, 0x105EB5E8, "hotaru");
+            sisterhax("hotaru");
         }
 
         private void swapBox_Click(object sender, EventArgs e)
         {
-            sisterhax(0x105EB5DC, 0x105EB5E8, "swap");
+            sisterhax("swap");
+        }
+
+        private void normalBox_Click(object sender, EventArgs e)
+        {
+            sisterhax("normal");
         }
 
         private void gameButton_Click(object sender, EventArgs e)
         {
-            Gecko.poke32(0x12CD1C40 + diff, 0x000F0000);
+            Gecko.poke32(minigamesAddress + diff, 0x000F0000);
         }
 
         private void bukiButton_Click(object sender, EventArgs e)
@@ -840,9 +852,9 @@ namespace SplatAIO {
 
         private void gearButton_Click_1(object sender, EventArgs e)
         {
-            PokeGear(0x12CD7DA0 + diff, hats);
-            PokeGear(0x12CD4DA0 + diff, clothes);
-            PokeGear(0x12CD1DA0 + diff, shoes);
+            PokeGear(hatsAddress + diff, hats);
+            PokeGear(clothesAddress + diff, clothes);
+            PokeGear(shoesAddress + diff, shoes);
         }
 
         private void singlePlayerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -856,7 +868,6 @@ namespace SplatAIO {
             TimerHaxForm timerHaxForm = new TimerHaxForm();
             timerHaxForm.ShowDialog(this);
         }
+
     }
-
-
 }

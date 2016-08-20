@@ -140,6 +140,7 @@
             this.Controls.Add(this.rankedNewsBox);
             this.Controls.Add(this.splatfestBox);
             this.Controls.Add(this.tutorialBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ProgressBitsForm";
             this.Load += new System.EventHandler(this.ProgressBitsForm_Load);
             this.ResumeLayout(false);

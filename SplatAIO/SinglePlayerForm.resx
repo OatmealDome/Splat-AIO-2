@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="burstBombBox.Items3" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;clearEnvironmentButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -161,9 +164,6 @@
   <data name="powerEggsBox.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Burst Bomb</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
@@ -201,9 +201,6 @@
   <data name="OKButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
-  <data name="&gt;&gt;seekerBox.Name" xml:space="preserve">
-    <value>seekerBox</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
   </data>
@@ -213,20 +210,14 @@
   <data name="&gt;&gt;setEnvironmentButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="&gt;&gt;heroShotBox.Parent" xml:space="preserve">
     <value>upgradesGroup</value>
   </data>
   <data name="clearStateColumn.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
-  <data name="&gt;&gt;levelGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;inkTankBox.Parent" xml:space="preserve">
-    <value>upgradesGroup</value>
+  <data name="heroShotBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 21</value>
   </data>
   <data name="&gt;&gt;upgradesGroup.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -252,8 +243,8 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="heroShotBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -273,14 +264,17 @@
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;scrollColumn.Name" xml:space="preserve">
     <value>scrollColumn</value>
   </data>
-  <data name="&gt;&gt;inkTankBox.Name" xml:space="preserve">
-    <value>inkTankBox</value>
+  <data name="levelColumn.Text" xml:space="preserve">
+    <value>Level</value>
   </data>
   <data name="powerEggsBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 154</value>
@@ -306,9 +300,6 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Splat Bomb</value>
   </data>
-  <data name="&gt;&gt;splatBombBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Seeker</value>
   </data>
@@ -318,20 +309,17 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="upgradesGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 183</value>
+  </data>
   <data name="&gt;&gt;OKButton.Name" xml:space="preserve">
     <value>OKButton</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;resetAllButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;inkTankBox.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 13</value>
   </data>
   <data name="&gt;&gt;addButton.Name" xml:space="preserve">
     <value>addButton</value>
@@ -345,6 +333,9 @@
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>upgradesGroup</value>
   </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>upgradesGroup</value>
+  </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
@@ -354,17 +345,23 @@
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;inkTankBox.Name" xml:space="preserve">
+    <value>inkTankBox</value>
+  </data>
   <data name="&gt;&gt;levelDataView.Parent" xml:space="preserve">
     <value>levelGroup</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
+  <data name="seekerBox.Items3" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Hero Shot</value>
+  </data>
+  <data name="splatBombBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;levelDataView.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -374,6 +371,9 @@
   </data>
   <data name="addButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
+  </data>
+  <data name="splatBombBox.Items1" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 22</value>
@@ -408,8 +408,8 @@
   <data name="&gt;&gt;burstBombBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="seekerBox.Items3" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
   </data>
   <data name="levelDataView.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 247</value>
@@ -426,8 +426,11 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="levelColumn.Text" xml:space="preserve">
-    <value>Level</value>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>upgradesGroup</value>
+  </data>
+  <data name="clearEnvironmentButton.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -456,11 +459,11 @@
   <data name="seekerBox.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;levelDataView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 130</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;seekerBox.Parent" xml:space="preserve">
     <value>upgradesGroup</value>
@@ -485,6 +488,9 @@
   </data>
   <data name="&gt;&gt;setEnvironmentButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;levelGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="clearEnvironmentButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 23</value>
@@ -519,14 +525,17 @@
   <data name="&gt;&gt;powerEggsBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;levelDataView.Name" xml:space="preserve">
+    <value>levelDataView</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 76</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="burstBombBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 100</value>
   </data>
-  <data name="&gt;&gt;burstBombBox.Parent" xml:space="preserve">
-    <value>upgradesGroup</value>
+  <data name="heroShotBox.Items" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -534,17 +543,11 @@
   <data name="setEnvironmentButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>280, 230</value>
   </data>
-  <data name="burstBombBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 100</value>
-  </data>
   <data name="resetAllButton.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="burstBombBox.Items1" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;OKButton.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SinglePlayerForm</value>
@@ -555,29 +558,26 @@
   <data name="&gt;&gt;levelGroup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="addButton.Text" xml:space="preserve">
-    <value>Add Level</value>
+  <data name="&gt;&gt;resetAllButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;powerEggsBox.Parent" xml:space="preserve">
     <value>upgradesGroup</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="splatBombBox.Items3" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;deleteToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>upgradesGroup</value>
+  <data name="&gt;&gt;splatBombBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;deleteToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="levelColumn.Width" type="System.Int32, mscorlib">
     <value>80</value>
@@ -606,9 +606,6 @@
   <data name="powerEggsBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 20</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -630,17 +627,14 @@
   <data name="&gt;&gt;setEnvironmentButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="seekerBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
+  <data name="splatBombBox.Items3" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;setEnvironmentButton.Name" xml:space="preserve">
-    <value>setEnvironmentButton</value>
+  <data name="&gt;&gt;burstBombBox.Parent" xml:space="preserve">
+    <value>upgradesGroup</value>
   </data>
   <data name="seekerBox.Items2" xml:space="preserve">
     <value>2</value>
@@ -648,11 +642,11 @@
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete</value>
+  <data name="&gt;&gt;OKButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="heroShotBox.Items" xml:space="preserve">
-    <value>1</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 13</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -669,14 +663,11 @@
   <data name="levelGroup.Text" xml:space="preserve">
     <value>Level Save Data</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 49</value>
-  </data>
   <data name="setEnvironmentButton.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="burstBombBox.Items3" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
   <data name="OKButton.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -690,8 +681,8 @@
   <data name="seekerBox.Items4" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 49</value>
   </data>
   <data name="setEnvironmentButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 23</value>
@@ -708,26 +699,35 @@
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
   </data>
-  <data name="splatBombBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;addButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;inkTankBox.Parent" xml:space="preserve">
+    <value>upgradesGroup</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;addButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="addButton.Text" xml:space="preserve">
+    <value>Add Level</value>
+  </data>
   <data name="burstBombBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="OKButton.Text" xml:space="preserve">
-    <value>Apply</value>
   </data>
   <data name="burstBombBox.Items" xml:space="preserve">
     <value>(Locked)</value>
   </data>
+  <data name="OKButton.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="&gt;&gt;powerEggsBox.Name" xml:space="preserve">
     <value>powerEggsBox</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;addButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -741,14 +741,14 @@
   <data name="&gt;&gt;clearStateColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>upgradesGroup</value>
+  <data name="&gt;&gt;setEnvironmentButton.Name" xml:space="preserve">
+    <value>setEnvironmentButton</value>
   </data>
   <data name="resetAllButton.Text" xml:space="preserve">
     <value>Reset Octo Valley</value>
   </data>
-  <data name="clearEnvironmentButton.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="seekerBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 21</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -765,11 +765,11 @@
   <data name="inkTankBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
   </data>
-  <data name="splatBombBox.Items1" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;seekerBox.Name" xml:space="preserve">
+    <value>seekerBox</value>
   </data>
-  <data name="&gt;&gt;levelDataView.Name" xml:space="preserve">
-    <value>levelDataView</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Burst Bomb</value>
   </data>
   <data name="heroShotBox.Items3" xml:space="preserve">
     <value>4</value>
@@ -777,14 +777,11 @@
   <data name="&gt;&gt;levelColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="upgradesGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 183</value>
+  <data name="&gt;&gt;levelDataView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="contextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en-US</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

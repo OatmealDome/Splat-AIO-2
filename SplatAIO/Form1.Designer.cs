@@ -185,7 +185,6 @@
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -278,7 +277,6 @@
             resources.GetString("genderBox.Items"),
             resources.GetString("genderBox.Items1")});
             this.genderBox.Name = "genderBox";
-            this.genderBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -300,7 +298,7 @@
             resources.ApplyResources(this.ikaBox, "ikaBox");
             this.ikaBox.Name = "ikaBox";
             this.ikaBox.UseVisualStyleBackColor = true;
-            this.ikaBox.Click += new System.EventHandler(this.button4_Click);
+            this.ikaBox.Click += new System.EventHandler(this.ikaBox_Click);
             // 
             // groupBox4
             // 
@@ -317,7 +315,7 @@
             resources.ApplyResources(this.normalBox, "normalBox");
             this.normalBox.Name = "normalBox";
             this.normalBox.UseVisualStyleBackColor = true;
-            this.normalBox.Click += new System.EventHandler(this.button9_Click);
+            this.normalBox.Click += new System.EventHandler(this.normalBox_Click);
             // 
             // swapBox
             // 
@@ -352,7 +350,6 @@
             resources.GetString("amiiboBox.Items4"),
             resources.GetString("amiiboBox.Items5")});
             this.amiiboBox.Name = "amiiboBox";
-            this.amiiboBox.SelectedIndexChanged += new System.EventHandler(this.amiiboBox_SelectedIndexChanged);
             // 
             // label8
             // 

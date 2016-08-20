@@ -16,8 +16,6 @@ namespace SplatAIO
         private int reconTimerAddr;
         private int amiiboTimerAddr;
 
-        private TCPGecko gecko;
-
         public TimerHaxForm()
         {
             InitializeComponent();
