@@ -103,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Statistics.cs" />
     <Compile Include="tcpconn.cs" />
     <Compile Include="TCPGecko.cs" />
     <Compile Include="Checker.cs">
