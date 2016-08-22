@@ -401,6 +401,7 @@
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
+            this.label10.ForeColor = System.Drawing.Color.SlateGray;
             this.label10.Name = "label10";
             // 
             // menuStrip1
@@ -434,6 +435,7 @@
             // TimerHaxCredits
             // 
             resources.ApplyResources(this.TimerHaxCredits, "TimerHaxCredits");
+            this.TimerHaxCredits.ForeColor = System.Drawing.Color.SlateGray;
             this.TimerHaxCredits.Name = "TimerHaxCredits";
             // 
             // Form1

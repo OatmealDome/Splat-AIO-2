@@ -50,10 +50,24 @@ namespace SplatAIO {
 
         // Addresses END
 
+        //general vars
+
+        public int rank;
+        public int okane;
+        public int ude;
+        public int mae;
+        public int sazae;
+        public int gender;
+        public int eyes;
+        public int skin;
+        public uint figure;
+
         public readonly int ver = 112;
 
         public uint diff;
         public TCPGecko Gecko;
+
+        public bool sendStats = false;
 
         public Form1()
         {
@@ -67,6 +81,8 @@ namespace SplatAIO {
             {
                 checker.ShowDialog();
             }
+
+            sendStats = Statistics.WorkingConnection();
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -168,15 +184,15 @@ namespace SplatAIO {
         {
             hold();
 
-            int rank = ToInt32(Gecko.peek(rankAddress + diff)) + 1;
-            int okane = ToInt32(Gecko.peek(okaneAddress + diff));
-            int ude = ToInt32(Gecko.peek(udeAddress + diff));
-            int mae = ToInt32(Gecko.peek(maeAddress + diff));
-            int sazae = ToInt32(Gecko.peek(sazaeAddress + diff));
-            int gender = ToInt32(Gecko.peek(genderAddress + diff));
-            int eyes = ToInt32(Gecko.peek(eyesAddress + diff));
-            int skin = ToInt32(Gecko.peek(skinAddress + diff));
-            uint figure = Gecko.peek(amiiboAddress + diff);
+            rank = ToInt32(Gecko.peek(rankAddress + diff)) + 1;
+            okane = ToInt32(Gecko.peek(okaneAddress + diff));
+            ude = ToInt32(Gecko.peek(udeAddress + diff));
+            mae = ToInt32(Gecko.peek(maeAddress + diff));
+            sazae = ToInt32(Gecko.peek(sazaeAddress + diff));
+            gender = ToInt32(Gecko.peek(genderAddress + diff));
+            eyes = ToInt32(Gecko.peek(eyesAddress + diff));
+            skin = ToInt32(Gecko.peek(skinAddress + diff));
+            figure = Gecko.peek(amiiboAddress + diff);
 
             try
             {
@@ -264,6 +280,38 @@ namespace SplatAIO {
         {
             hold();
 
+            if (sendStats)
+            {
+                if(kaneBox.Value != okane)
+                {
+                    Statistics.WriteToSlot(0, Math.Abs((kaneBox.Value - okane)));
+                }
+                if (rankBox.Value != rank)
+                {
+                    Statistics.WriteToSlot(3, Math.Abs((rankBox.Value - rank)));
+                }
+                if (sazaeBox.Value != sazae)
+                {
+                    Statistics.WriteToSlot(1, Math.Abs((sazaeBox.Value - sazae)));
+                }
+                if (eyeBox.SelectedIndex != eyes)
+                {
+                    Statistics.WriteToSlot(5, 1);
+                }
+                if (genderBox.SelectedIndex != gender)
+                {
+                    Statistics.WriteToSlot(4, 1);
+                }
+                if (skinBox.SelectedIndex != skin)
+                {
+                    Statistics.WriteToSlot(6, 1);
+                }
+                if (udeBox.SelectedIndex != ude||maeBox.Value != mae)
+                {
+                    Statistics.WriteToSlot(2, 1);
+                }
+            }
+
             pokeRank(rankAddress + diff); // rank
             Gecko.poke32(okaneAddress + diff, ToUInt32(kaneBox.Value)); // okane
             Gecko.poke32(udeAddress + diff, ToUInt32(udeBox.SelectedIndex)); // ude
@@ -312,8 +360,11 @@ namespace SplatAIO {
             else
             {
                 Gecko.poke32(address, ToUInt32(amiiboBox.SelectedIndex - 1));
+                if (sendStats)
+                {
+                    Statistics.WriteToSlot(7, 1);
+                }
             }
-            
         }
 
         public void octohax(bool octopus)
@@ -365,6 +416,11 @@ namespace SplatAIO {
             Gecko.poke32(tnkSimpleFiveAddress, 0x546E6B5F);
             Gecko.poke32(tnkSimpleFiveAddress + 0x4, 0x53696D70);
             Gecko.poke32(tnkSimpleFiveAddress + 0x8, 0x6C650000);
+
+            if (sendStats)
+            {
+                Statistics.WriteToSlot(9, 1);
+            }
         }
 
         public void sisterhax(string mode)
@@ -410,6 +466,11 @@ namespace SplatAIO {
                     Gecko.poke32(hotaruAddress + 4, 0x49646F6C);
                     Gecko.poke32(hotaruAddress + 8, 0x42000000);
                     break;
+            }
+
+            if (sendStats)
+            {
+                Statistics.WriteToSlot(8, 1);
             }
         }
         public void weaponhax(uint specialdiff)
@@ -848,6 +909,11 @@ namespace SplatAIO {
                 // debug
                 // Console.WriteLine("poked (objectId = " + objectId + ", new baseAddress = " + baseAddress + ")");
             }
+
+            if (sendStats)
+            {
+                Statistics.WriteToSlot(10, 1);
+            }
         }
 
         private void gearButton_Click_1(object sender, EventArgs e)
@@ -868,6 +934,5 @@ namespace SplatAIO {
             TimerHaxForm timerHaxForm = new TimerHaxForm();
             timerHaxForm.ShowDialog(this);
         }
-
     }
 }

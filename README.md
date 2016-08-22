@@ -5,3 +5,5 @@ Load Gecko, start your game and go.
 
 Oatmeal ported gearhax because I was too lazy to</br>
 ![AIO](http://imgur.com/XWYfAvu.png)
+
+This app collects some anonymous usage info because why not, you can look at it [here](https://wiiucodes.tk/aio_stats.php).
