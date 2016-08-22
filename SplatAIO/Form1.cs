@@ -360,11 +360,10 @@ namespace SplatAIO {
             else
             {
                 Gecko.poke32(address, ToUInt32(amiiboBox.SelectedIndex - 1));
-            }
-
-            if (sendStats)
-            {
-                Statistics.WriteToSlot(7, 1);
+                if (sendStats)
+                {
+                    Statistics.WriteToSlot(7, 1);
+                }
             }
         }
 

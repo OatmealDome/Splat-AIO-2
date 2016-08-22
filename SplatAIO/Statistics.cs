@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Security;
@@ -12,7 +13,7 @@ namespace SplatAIO
 
     class Statistics
     {
-        private static string url = "http://217.160.180.175/statistics_bg.php";
+        private static string url = "https://wiiucodes.tk/statistics_bg.php";
         private static string agent = "AIOStats/1.0";
 
         public static void WriteToSlot(int slotnum, decimal content)
@@ -32,12 +33,14 @@ namespace SplatAIO
 
         public static bool WorkingConnection()
         {
+            CultureInfo ci = CultureInfo.InstalledUICulture;
+
             WebClient client = new WebClient();
             client.Headers.Add("user-agent", agent);
 
             try
             {
-                string reply = client.DownloadString(url + "?id=2&testing=true");
+                string reply = client.DownloadString(url + "?id=2&testing=true&os=" +  Environment.OSVersion + "&lang=" + ci.EnglishName);
 
                 if (reply == "working")
                 {
@@ -54,24 +57,5 @@ namespace SplatAIO
             }
 
         }
-
-        public static void NoSSLTrust()
-        {
-            try
-            {
-                //Change SSL checks so that all checks pass
-                ServicePointManager.ServerCertificateValidationCallback =
-                   new RemoteCertificateValidationCallback(
-                        delegate
-                        { return true; }
-                    );
-            }
-
-            catch (Exception exc)
-            {
-
-            }
-        }
-
     }
 }
