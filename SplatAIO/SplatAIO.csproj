@@ -163,6 +163,9 @@
     <EmbeddedResource Include="Checker.resx">
       <DependentUpon>Checker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TimerHaxForm.ja.resx">
+      <DependentUpon>TimerHaxForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimerHaxForm.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
