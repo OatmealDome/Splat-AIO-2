@@ -285,37 +285,30 @@ namespace SplatAIO {
                 if(kaneBox.Value != okane)
                 {
                     Statistics.WriteToSlot(0, Math.Abs((kaneBox.Value - okane)));
-                    MessageBox.Show("kane changed:" + Math.Abs((kaneBox.Value - okane)), "", MessageBoxButtons.OK);
                 }
                 if (rankBox.Value != rank)
                 {
                     Statistics.WriteToSlot(3, Math.Abs((rankBox.Value - rank)));
-                    MessageBox.Show("rank changed:" + Math.Abs((rankBox.Value - rank)), "", MessageBoxButtons.OK);
                 }
                 if (sazaeBox.Value != sazae)
                 {
                     Statistics.WriteToSlot(1, Math.Abs((sazaeBox.Value - sazae)));
-                    MessageBox.Show("sazae changed:" + Math.Abs((sazaeBox.Value - sazae)), "", MessageBoxButtons.OK);
                 }
                 if (eyeBox.SelectedIndex != eyes)
                 {
                     Statistics.WriteToSlot(5, 1);
-                    MessageBox.Show("eyes changed", "", MessageBoxButtons.OK);
                 }
                 if (genderBox.SelectedIndex != gender)
                 {
                     Statistics.WriteToSlot(4, 1);
-                    MessageBox.Show("gender changed", "", MessageBoxButtons.OK);
                 }
                 if (skinBox.SelectedIndex != skin)
                 {
                     Statistics.WriteToSlot(6, 1);
-                    MessageBox.Show("skin changed", "", MessageBoxButtons.OK);
                 }
                 if (udeBox.SelectedIndex != ude||maeBox.Value != mae)
                 {
                     Statistics.WriteToSlot(2, 1);
-                    MessageBox.Show("udemae changed", "", MessageBoxButtons.OK);
                 }
             }
 
