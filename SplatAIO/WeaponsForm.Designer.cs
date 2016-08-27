@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeaponsForm));
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(WeaponsForm));
             this.weaponsList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.equipBox = new System.Windows.Forms.Button();

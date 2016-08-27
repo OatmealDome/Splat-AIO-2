@@ -80,7 +80,7 @@ namespace SplatAIO {
         private void Form1_Load(object sender, EventArgs e)
         {
             Checker checker = new Checker();
-            if (checker.getdata() == 0 && checker.ver != ver)
+            if (checker.getdata() == 0 && checker.ver > ver)
             {
                 checker.ShowDialog();
             }
