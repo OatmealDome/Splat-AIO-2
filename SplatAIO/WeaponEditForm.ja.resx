@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="weaponBox.Items" xml:space="preserve">
+    <value>わかばシューター</value>
+  </data>
+  <data name="weaponBox.Items1" xml:space="preserve">
+    <value>もみじシューター</value>
+  </data>
+  <data name="weaponBox.Items2" xml:space="preserve">
+    <value>スプラシューター</value>
+  </data>
+  <data name="weaponBox.Items3" xml:space="preserve">
+    <value>スプラシューターコラボ</value>
+  </data>
+  <data name="weaponBox.Items4" xml:space="preserve">
+    <value>ヒーローシューター レプリカ</value>
+  </data>
+  <data name="weaponBox.Items5" xml:space="preserve">
+    <value>オクタシューター レプリカ</value>
+  </data>
+  <data name="weaponBox.Items6" xml:space="preserve">
+    <value>スプラシューターワサビ</value>
+  </data>
+  <data name="weaponBox.Items7" xml:space="preserve">
+    <value>プライムシューター</value>
+  </data>
+  <data name="weaponBox.Items8" xml:space="preserve">
+    <value>プライムシューターコラボ</value>
+  </data>
+  <data name="weaponBox.Items9" xml:space="preserve">
+    <value>プライムシューターベリー</value>
+  </data>
+  <data name="weaponBox.Items10" xml:space="preserve">
+    <value>プロモデラーMG</value>
+  </data>
+  <data name="weaponBox.Items11" xml:space="preserve">
+    <value>プロモデラーRG</value>
+  </data>
+  <data name="weaponBox.Items12" xml:space="preserve">
+    <value>プロモデラーPG</value>
+  </data>
+  <data name="weaponBox.Items13" xml:space="preserve">
+    <value>ジェットスイーパー</value>
+  </data>
+  <data name="weaponBox.Items14" xml:space="preserve">
+    <value>ジェットスイーパーカスタム</value>
+  </data>
+  <data name="weaponBox.Items15" xml:space="preserve">
+    <value>デュアルスイーパー</value>
+  </data>
+  <data name="weaponBox.Items16" xml:space="preserve">
+    <value>デュアルスイーパーカスタム</value>
+  </data>
+  <data name="weaponBox.Items17" xml:space="preserve">
+    <value>L3リールガン</value>
+  </data>
+  <data name="weaponBox.Items18" xml:space="preserve">
+    <value>L3リールガンD</value>
+  </data>
+  <data name="weaponBox.Items19" xml:space="preserve">
+    <value>H3リールガン</value>
+  </data>
+  <data name="weaponBox.Items20" xml:space="preserve">
+    <value>H3リールガンD</value>
+  </data>
+  <data name="weaponBox.Items21" xml:space="preserve">
+    <value>H3リールガンチェリー</value>
+  </data>
+  <data name="weaponBox.Items25" xml:space="preserve">
+    <value>シャープマーカー</value>
+  </data>
+  <data name="weaponBox.Items26" xml:space="preserve">
+    <value>シャープマーカーネオ</value>
+  </data>
+  <data name="weaponBox.Items27" xml:space="preserve">
+    <value>ボールドマーカー</value>
+  </data>
+  <data name="weaponBox.Items28" xml:space="preserve">
+    <value>ボールドマーカーネオ</value>
+  </data>
+  <data name="weaponBox.Items29" xml:space="preserve">
+    <value>ボールドマーカー7</value>
+  </data>
+  <data name="weaponBox.Items30" xml:space="preserve">
+    <value>.52ガロン</value>
+  </data>
+  <data name="weaponBox.Items31" xml:space="preserve">
+    <value>.52ガロンデコ</value>
+  </data>
+  <data name="weaponBox.Items32" xml:space="preserve">
+    <value>.96ガロン</value>
+  </data>
+  <data name="weaponBox.Items33" xml:space="preserve">
+    <value>.96ガロンデコ</value>
+  </data>
+  <data name="weaponBox.Items34" xml:space="preserve">
+    <value>ホットブラスター</value>
+  </data>
+  <data name="weaponBox.Items35" xml:space="preserve">
+    <value>ホットブラスターカスタム</value>
+  </data>
+  <data name="weaponBox.Items36" xml:space="preserve">
+    <value>ロングブラスター</value>
+  </data>
+  <data name="weaponBox.Items37" xml:space="preserve">
+    <value>ロングブラスターカスタム</value>
+  </data>
+  <data name="weaponBox.Items38" xml:space="preserve">
+    <value>ロングブラスターネクロ</value>
+  </data>
+  <data name="weaponBox.Items39" xml:space="preserve">
+    <value>ラピッドブラスター</value>
+  </data>
+  <data name="weaponBox.Items40" xml:space="preserve">
+    <value>ラピッドブラスターデコ</value>
+  </data>
+  <data name="weaponBox.Items41" xml:space="preserve">
+    <value>Rブラスターエリート</value>
+  </data>
+  <data name="weaponBox.Items42" xml:space="preserve">
+    <value>Rブラスターエリートデコ</value>
+  </data>
+  <data name="weaponBox.Items43" xml:space="preserve">
+    <value>ノヴァブラスター</value>
+  </data>
+  <data name="weaponBox.Items44" xml:space="preserve">
+    <value>ノヴァブラスターネオ</value>
+  </data>
+  <data name="weaponBox.Items45" xml:space="preserve">
+    <value>スプラチャージャー</value>
+  </data>
+  <data name="weaponBox.Items46" xml:space="preserve">
+    <value>スプラチャージャーワカメ</value>
+  </data>
+  <data name="weaponBox.Items47" xml:space="preserve">
+    <value>ヒーローチャージャー レプリカ</value>
+  </data>
+  <data name="weaponBox.Items48" xml:space="preserve">
+    <value>スプラチャージャーベントー</value>
+  </data>
+  <data name="weaponBox.Items49" xml:space="preserve">
+    <value>スプラスコープ</value>
+  </data>
+  <data name="weaponBox.Items50" xml:space="preserve">
+    <value>スプラスコープワカメ</value>
+  </data>
+  <data name="weaponBox.Items51" xml:space="preserve">
+    <value>スプラスコープベントー</value>
+  </data>
+  <data name="weaponBox.Items52" xml:space="preserve">
+    <value>リッター3K</value>
+  </data>
+  <data name="weaponBox.Items53" xml:space="preserve">
+    <value>リッター3Kカスタム</value>
+  </data>
+  <data name="weaponBox.Items54" xml:space="preserve">
+    <value>3Kスコープ</value>
+  </data>
+  <data name="weaponBox.Items55" xml:space="preserve">
+    <value>3Kスコープカスタム</value>
+  </data>
+  <data name="weaponBox.Items56" xml:space="preserve">
+    <value>スクイックリンα</value>
+  </data>
+  <data name="weaponBox.Items57" xml:space="preserve">
+    <value>スクイックリンβ</value>
+  </data>
+  <data name="weaponBox.Items58" xml:space="preserve">
+    <value>スクイックリンγ</value>
+  </data>
+  <data name="weaponBox.Items59" xml:space="preserve">
+    <value>14式竹筒銃・甲</value>
+  </data>
+  <data name="weaponBox.Items60" xml:space="preserve">
+    <value>14式竹筒銃・乙</value>
+  </data>
+  <data name="weaponBox.Items61" xml:space="preserve">
+    <value>14式竹筒銃・丙</value>
+  </data>
+  <data name="weaponBox.Items62" xml:space="preserve">
+    <value>スプラローラー</value>
+  </data>
+  <data name="weaponBox.Items63" xml:space="preserve">
+    <value>スプラローラーコラボ</value>
+  </data>
+  <data name="weaponBox.Items64" xml:space="preserve">
+    <value>ヒーローローラー レプリカ</value>
+  </data>
+  <data name="weaponBox.Items65" xml:space="preserve">
+    <value>スプラローラーコロコロ</value>
+  </data>
+  <data name="weaponBox.Items66" xml:space="preserve">
+    <value>ダイナモローラー</value>
+  </data>
+  <data name="weaponBox.Items67" xml:space="preserve">
+    <value>ダイナモローラーテスラ</value>
+  </data>
+  <data name="weaponBox.Items68" xml:space="preserve">
+    <value>ダイナモローラーバーンド</value>
+  </data>
+  <data name="weaponBox.Items69" xml:space="preserve">
+    <value>カーボンローラー</value>
+  </data>
+  <data name="weaponBox.Items70" xml:space="preserve">
+    <value>カーボンローラーデコ</value>
+  </data>
+  <data name="weaponBox.Items71" xml:space="preserve">
+    <value>パブロ</value>
+  </data>
+  <data name="weaponBox.Items72" xml:space="preserve">
+    <value>パブロ・ヒュー</value>
+  </data>
+  <data name="weaponBox.Items73" xml:space="preserve">
+    <value>パーマネント・パブロ</value>
+  </data>
+  <data name="weaponBox.Items74" xml:space="preserve">
+    <value>ホクサイ</value>
+  </data>
+  <data name="weaponBox.Items75" xml:space="preserve">
+    <value>ホクサイ・ヒュー</value>
+  </data>
+  <data name="weaponBox.Items76" xml:space="preserve">
+    <value>バケットスロッシャー</value>
+  </data>
+  <data name="weaponBox.Items77" xml:space="preserve">
+    <value>バケットスロッシャーデコ</value>
+  </data>
+  <data name="weaponBox.Items78" xml:space="preserve">
+    <value>バケットスロッシャーソーダ</value>
+  </data>
+  <data name="weaponBox.Items79" xml:space="preserve">
+    <value>ヒッセン</value>
+  </data>
+  <data name="weaponBox.Items80" xml:space="preserve">
+    <value>ヒッセン・ヒュー</value>
+  </data>
+  <data name="weaponBox.Items81" xml:space="preserve">
+    <value>スクリュースロッシャー</value>
+  </data>
+  <data name="weaponBox.Items82" xml:space="preserve">
+    <value>スクリュースロッシャーネオ</value>
+  </data>
+  <data name="weaponBox.Items83" xml:space="preserve">
+    <value>バレルスピナー</value>
+  </data>
+  <data name="weaponBox.Items84" xml:space="preserve">
+    <value>バレルスピナーデコ</value>
+  </data>
+  <data name="weaponBox.Items85" xml:space="preserve">
+    <value>バレルスピナーリミックス</value>
+  </data>
+  <data name="weaponBox.Items86" xml:space="preserve">
+    <value>スプラスピナー</value>
+  </data>
+  <data name="weaponBox.Items87" xml:space="preserve">
+    <value>スプラスピナーコラボ</value>
+  </data>
+  <data name="weaponBox.Items88" xml:space="preserve">
+    <value>スプラスピナーリペア</value>
+  </data>
+  <data name="weaponBox.Items89" xml:space="preserve">
+    <value>ハイドラント</value>
+  </data>
+  <data name="weaponBox.Items90" xml:space="preserve">
+    <value>ハイドラントカスタム</value>
+  </data>
+</root>

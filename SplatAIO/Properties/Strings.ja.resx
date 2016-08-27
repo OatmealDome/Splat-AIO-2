@@ -147,6 +147,12 @@
   <data name="BAD_UDE_2" xml:space="preserve">
     <value>です。10（S+）に変更しますか？（「いいえ」に決めると、実態数値が表示されなくなり、本体BANの危険があります）</value>
   </data>
+  <data name="CANNOT_REMOVE_JR_TEXT" xml:space="preserve">
+    <value>You cannot remove the Splattershot Jr.</value>
+  </data>
+  <data name="EQUIPPED" xml:space="preserve">
+    <value>(EQUIPPED)</value>
+  </data>
   <data name="FILL_IN_ALL_FIELDS_TEXT" xml:space="preserve">
     <value />
   </data>
@@ -170,6 +176,9 @@
   </data>
   <data name="SINGLE_PLAYER_RESET_TITLE" xml:space="preserve">
     <value>注意</value>
+  </data>
+  <data name="WEAPON_EXISTS_TEXT" xml:space="preserve">
+    <value>This weapon has already been added. If you wish to edit it, please right click it in the list.</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>はい</value>

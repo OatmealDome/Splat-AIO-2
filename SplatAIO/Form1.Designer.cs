@@ -67,11 +67,12 @@
             this.gearButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.editorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weaponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.singlePlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerHaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimerHaxCredits = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sazaeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maeBox)).BeginInit();
@@ -81,7 +82,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // ipBox
@@ -105,6 +106,7 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.sazaeBox);
             this.groupBox1.Controls.Add(this.maeBox);
             this.groupBox1.Controls.Add(this.kaneBox);
@@ -115,7 +117,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.udeBox);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -216,13 +217,13 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.skinBox);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.eyeBox);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.genderBox);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -280,9 +281,9 @@
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.takoBox);
             this.groupBox3.Controls.Add(this.ikaBox);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -302,11 +303,11 @@
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.normalBox);
             this.groupBox4.Controls.Add(this.swapBox);
             this.groupBox4.Controls.Add(this.hotaruBox);
             this.groupBox4.Controls.Add(this.aoriBox);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -363,10 +364,10 @@
             // 
             // groupBox5
             // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.gameButton);
             this.groupBox5.Controls.Add(this.bukiButton);
             this.groupBox5.Controls.Add(this.gearButton);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
@@ -401,48 +402,55 @@
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
-            this.label10.ForeColor = System.Drawing.Color.SlateGray;
+            this.label10.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label10.Name = "label10";
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            resources.ApplyResources(this.menuStrip, "menuStrip");
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editorsToolStripMenuItem,
             this.otherToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip.Name = "menuStrip";
+            // 
+            // editorsToolStripMenuItem
+            // 
+            resources.ApplyResources(this.editorsToolStripMenuItem, "editorsToolStripMenuItem");
+            this.editorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.weaponsToolStripMenuItem});
+            this.editorsToolStripMenuItem.Name = "editorsToolStripMenuItem";
+            // 
+            // weaponsToolStripMenuItem
+            // 
+            resources.ApplyResources(this.weaponsToolStripMenuItem, "weaponsToolStripMenuItem");
+            this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
+            this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.weaponsToolStripMenuItem_Click);
             // 
             // otherToolStripMenuItem
             // 
+            resources.ApplyResources(this.otherToolStripMenuItem, "otherToolStripMenuItem");
             this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.singlePlayerToolStripMenuItem,
             this.timerHaxToolStripMenuItem});
-            resources.ApplyResources(this.otherToolStripMenuItem, "otherToolStripMenuItem");
             this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
             // 
             // singlePlayerToolStripMenuItem
             // 
-            this.singlePlayerToolStripMenuItem.Name = "singlePlayerToolStripMenuItem";
             resources.ApplyResources(this.singlePlayerToolStripMenuItem, "singlePlayerToolStripMenuItem");
+            this.singlePlayerToolStripMenuItem.Name = "singlePlayerToolStripMenuItem";
             this.singlePlayerToolStripMenuItem.Click += new System.EventHandler(this.singlePlayerToolStripMenuItem_Click);
             // 
             // timerHaxToolStripMenuItem
             // 
-            this.timerHaxToolStripMenuItem.Name = "timerHaxToolStripMenuItem";
             resources.ApplyResources(this.timerHaxToolStripMenuItem, "timerHaxToolStripMenuItem");
+            this.timerHaxToolStripMenuItem.Name = "timerHaxToolStripMenuItem";
             this.timerHaxToolStripMenuItem.Click += new System.EventHandler(this.timerHaxToolStripMenuItem_Click);
-            // 
-            // TimerHaxCredits
-            // 
-            resources.ApplyResources(this.TimerHaxCredits, "TimerHaxCredits");
-            this.TimerHaxCredits.ForeColor = System.Drawing.Color.SlateGray;
-            this.TimerHaxCredits.Name = "TimerHaxCredits";
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.TimerHaxCredits);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.groupBox5);
@@ -456,9 +464,9 @@
             this.Controls.Add(this.disconnectBox);
             this.Controls.Add(this.connectBox);
             this.Controls.Add(this.ipBox);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -473,8 +481,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,11 +528,12 @@
         private System.Windows.Forms.NumericUpDown maeBox;
         private System.Windows.Forms.NumericUpDown sazaeBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem singlePlayerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem timerHaxToolStripMenuItem;
-        private System.Windows.Forms.Label TimerHaxCredits;
+        private System.Windows.Forms.ToolStripMenuItem editorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weaponsToolStripMenuItem;
     }
 }
 
