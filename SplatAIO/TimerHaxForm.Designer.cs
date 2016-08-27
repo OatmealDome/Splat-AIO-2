@@ -96,13 +96,13 @@
             // 
             // ControlsGroupBox
             // 
-            resources.ApplyResources(this.ControlsGroupBox, "ControlsGroupBox");
             this.ControlsGroupBox.Controls.Add(this.FreezeCheckBox);
             this.ControlsGroupBox.Controls.Add(this.ReconRadioButton);
             this.ControlsGroupBox.Controls.Add(this.TimerLabel);
             this.ControlsGroupBox.Controls.Add(this.BattleDojoRadioButton);
             this.ControlsGroupBox.Controls.Add(this.AmiiboRadioButton);
             this.ControlsGroupBox.Controls.Add(this.TimerBox);
+            resources.ApplyResources(this.ControlsGroupBox, "ControlsGroupBox");
             this.ControlsGroupBox.Name = "ControlsGroupBox";
             this.ControlsGroupBox.TabStop = false;
             // 
