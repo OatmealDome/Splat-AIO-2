@@ -151,6 +151,24 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot remove the Splattershot Jr..
+        /// </summary>
+        public static string CANNOT_REMOVE_JR_TEXT {
+            get {
+                return ResourceManager.GetString("CANNOT_REMOVE_JR_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (EQUIPPED).
+        /// </summary>
+        public static string EQUIPPED {
+            get {
+                return ResourceManager.GetString("EQUIPPED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill in all fields..
         /// </summary>
         public static string FILL_IN_ALL_FIELDS_TEXT {
@@ -219,6 +237,15 @@ namespace SplatAIO.Properties {
         public static string SINGLE_PLAYER_RESET_TITLE {
             get {
                 return ResourceManager.GetString("SINGLE_PLAYER_RESET_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This weapon has already been added. If you wish to edit it, please right click it in the list..
+        /// </summary>
+        public static string WEAPON_EXISTS_TEXT {
+            get {
+                return ResourceManager.GetString("WEAPON_EXISTS_TEXT", resourceCulture);
             }
         }
         

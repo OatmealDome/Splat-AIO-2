@@ -147,6 +147,12 @@
   <data name="BAD_UDE_2" xml:space="preserve">
     <value>. (The game displays invalid values as the max.) This may have been caused by a bad tool/script, such as the max stats script that used to be on the Modding Hub. Do you want to change it to 10 (S+), the maximum, to fix it? (You can change it to another value later.) If you select "No" here, the true value will not display in the AIO and you are at risk for a ban.</value>
   </data>
+  <data name="CANNOT_REMOVE_JR_TEXT" xml:space="preserve">
+    <value>You cannot remove the Splattershot Jr.</value>
+  </data>
+  <data name="EQUIPPED" xml:space="preserve">
+    <value>(EQUIPPED)</value>
+  </data>
   <data name="FILL_IN_ALL_FIELDS_TEXT" xml:space="preserve">
     <value>Please fill in all fields.</value>
   </data>
@@ -170,6 +176,9 @@
   </data>
   <data name="SINGLE_PLAYER_RESET_TITLE" xml:space="preserve">
     <value>Alert</value>
+  </data>
+  <data name="WEAPON_EXISTS_TEXT" xml:space="preserve">
+    <value>This weapon has already been added. If you wish to edit it, please right click it in the list.</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>Yes</value>

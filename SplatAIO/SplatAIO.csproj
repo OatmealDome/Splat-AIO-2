@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abilities.cs" />
     <Compile Include="EditLevelDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,8 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Statistics.cs" />
+    <Compile Include="SpecialWeapon.cs" />
+    <Compile Include="SubWeapon.cs" />
     <Compile Include="tcpconn.cs" />
     <Compile Include="TCPGecko.cs" />
     <Compile Include="Checker.cs">
@@ -117,6 +120,20 @@
     </Compile>
     <Compile Include="TimerHaxForm.Designer.cs">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponDatabase.cs" />
+    <Compile Include="WeaponEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeaponEditForm.Designer.cs">
+      <DependentUpon>WeaponEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeaponsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeaponsForm.Designer.cs">
+      <DependentUpon>WeaponsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EditLevelDataForm.ja.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
@@ -169,6 +186,15 @@
     <EmbeddedResource Include="TimerHaxForm.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WeaponEditForm.ja.resx">
+      <DependentUpon>WeaponEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeaponEditForm.resx">
+      <DependentUpon>WeaponEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeaponsForm.resx">
+      <DependentUpon>WeaponsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -199,8 +225,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
-"$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"</PostBuildEvent>
+    <PostBuildEvent>rem move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
+rem "$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>"$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"

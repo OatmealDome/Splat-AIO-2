@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
-using static System.Convert;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +27,7 @@ namespace SplatAIO
         { 
             try
             {
-                ver = ToInt32(vers.DownloadString("https://seresaa.github.io/AIO2/version.txt"));
+                ver = Convert.ToInt32(vers.DownloadString("https://seresaa.github.io/AIO2/version.txt"));
                 return 0;
 
             }

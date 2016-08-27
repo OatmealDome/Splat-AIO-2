@@ -55,6 +55,7 @@ namespace SplatAIO
                 // skip if an empty save slot
                 if (levelNumber == 0xFFFFFFFF)
                 {
+                    currentPosition += 0xC;
                     continue;
                 }
 

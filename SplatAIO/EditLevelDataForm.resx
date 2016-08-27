@@ -117,24 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="clearStateBox.Items2" xml:space="preserve">
     <value>Cleared</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>213, 124</value>
   </data>
   <data name="levelBox.Items29" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="&gt;&gt;scrollBox.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;levelBox.Name" xml:space="preserve">
+    <value>levelBox</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 89</value>
   </data>
   <data name="&gt;&gt;clearStateBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
-    <value>saveButton</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>EditLevelDataForm</value>
   </data>
   <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -145,8 +151,11 @@
   <data name="levelBox.Items8" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;levelBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;scrollBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="levelBox.Items23" xml:space="preserve">
     <value>19</value>
@@ -166,8 +175,8 @@
   <data name="levelBox.Items7" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="levelBox.Items18" xml:space="preserve">
-    <value>14</value>
+  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
+    <value>saveButton</value>
   </data>
   <data name="levelBox.Items14" xml:space="preserve">
     <value>10</value>
@@ -215,9 +224,6 @@
   <data name="levelBox.Items1" xml:space="preserve">
     <value>Octonozzle</value>
   </data>
-  <data name="&gt;&gt;scrollBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="levelBox.Items12" xml:space="preserve">
     <value>8</value>
   </data>
@@ -229,9 +235,6 @@
   </data>
   <data name="levelBox.Items9" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="levelBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 13</value>
   </data>
   <data name="clearStateBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 39</value>
@@ -245,17 +248,20 @@
   <data name="clearStateBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
   </data>
-  <data name="&gt;&gt;levelBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="levelBox.Items2" xml:space="preserve">
+    <value>Octowhirl</value>
   </data>
-  <data name="levelBox.Items15" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="levelBox.Items4" xml:space="preserve">
+    <value>DJ Octavio</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;levelBox.Name" xml:space="preserve">
-    <value>levelBox</value>
+  <data name="&gt;&gt;levelBox.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;clearStateBox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -269,10 +275,10 @@
   <data name="levelBox.Items" xml:space="preserve">
     <value>Octostomp</value>
   </data>
-  <data name="levelBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;scrollBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
@@ -305,9 +311,6 @@
   <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>EditLevelDataForm</value>
-  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 16</value>
   </data>
@@ -326,8 +329,8 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 42</value>
   </data>
-  <data name="&gt;&gt;levelBox.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="levelBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 13</value>
   </data>
   <data name="levelBox.Items24" xml:space="preserve">
     <value>20</value>
@@ -335,14 +338,14 @@
   <data name="clearStateBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="levelBox.Items4" xml:space="preserve">
-    <value>DJ Octavio</value>
+  <data name="&gt;&gt;levelBox.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;scrollBox.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="levelBox.Items17" xml:space="preserve">
-    <value>13</value>
+  <data name="levelBox.Items18" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="levelBox.Items13" xml:space="preserve">
     <value>9</value>
@@ -353,23 +356,23 @@
   <data name="levelBox.Items26" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="&gt;&gt;scrollBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;levelBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="levelBox.Items6" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>213, 124</value>
+  <data name="levelBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="levelBox.Items17" xml:space="preserve">
+    <value>13</value>
   </data>
   <data name="scrollBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 17</value>
   </data>
-  <data name="levelBox.Items2" xml:space="preserve">
-    <value>Octowhirl</value>
+  <data name="levelBox.Items15" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="clearStateBox.Items1" xml:space="preserve">
     <value>Not Cleared</value>
@@ -377,19 +380,13 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Level</value>
-  </data>
   <data name="scrollBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Level</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja</value>
   </metadata>
 </root>
