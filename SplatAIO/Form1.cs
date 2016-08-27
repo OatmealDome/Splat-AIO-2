@@ -196,15 +196,15 @@ namespace SplatAIO {
         {
             hold();
 			
-            int rank = Convert.ToInt32(Gecko.peek(rankAddress + diff)) + 1;
-            int okane = Convert.ToInt32(Gecko.peek(okaneAddress + diff));
-            int ude = Convert.ToInt32(Gecko.peek(udeAddress + diff));
-            int mae = Convert.ToInt32(Gecko.peek(maeAddress + diff));
-            int sazae = Convert.ToInt32(Gecko.peek(sazaeAddress + diff));
-            int gender = Convert.ToInt32(Gecko.peek(genderAddress + diff));
-            int eyes = Convert.ToInt32(Gecko.peek(eyesAddress + diff));
-            int skin = Convert.ToInt32(Gecko.peek(skinAddress + diff));
-            uint figure = Gecko.peek(amiiboAddress + diff);
+            rank = Convert.ToInt32(Gecko.peek(rankAddress + diff)) + 1;
+            okane = Convert.ToInt32(Gecko.peek(okaneAddress + diff));
+            ude = Convert.ToInt32(Gecko.peek(udeAddress + diff));
+            mae = Convert.ToInt32(Gecko.peek(maeAddress + diff));
+            sazae = Convert.ToInt32(Gecko.peek(sazaeAddress + diff));
+            gender = Convert.ToInt32(Gecko.peek(genderAddress + diff));
+            eyes = Convert.ToInt32(Gecko.peek(eyesAddress + diff));
+            skin = Convert.ToInt32(Gecko.peek(skinAddress + diff));
+            figure = Gecko.peek(amiiboAddress + diff);
 
             try
             {
