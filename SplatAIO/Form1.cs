@@ -98,11 +98,11 @@ namespace SplatAIO {
             }
             catch (ETCPGeckoException)
             {
-                MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
+                MessageBox.Show(Properties.Strings.CONNECTION_FAILED_TEXT);
             }
             catch (System.Net.Sockets.SocketException)
             {
-                MessageBox.Show("Invalid IP entry.");
+                MessageBox.Show(Properties.Strings.INVALID_IP_TEXT);
             }
 
             if (Gecko.peek(0x12CDADA0) == 0x000003F2)
@@ -119,7 +119,16 @@ namespace SplatAIO {
             }
             else
             {
-                MessageBox.Show("Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon.");
+                MessageBox.Show(Properties.Strings.FIND_DIFF_FAILED_TEXT);
+
+                Gecko.Disconnect();
+                return;
+            }
+
+            // do a version check using "ToHu" of "ToHuman"
+            if (Gecko.peek(0x105EF3F0) != 0x546F4875)
+            {
+                MessageBox.Show(Properties.Strings.VERSION_CHECK_FAILED_TEXT);
 
                 Gecko.Disconnect();
                 return;
@@ -841,7 +850,7 @@ namespace SplatAIO {
 
         private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TimerHaxForm timerHaxForm = new TimerHaxForm();
+            TimerHaxForm timerHaxForm = new TimerHaxForm(Gecko, diff);
             timerHaxForm.ShowDialog(this);
         }
 
