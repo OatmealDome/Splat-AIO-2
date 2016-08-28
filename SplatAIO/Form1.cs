@@ -65,7 +65,7 @@ namespace SplatAIO {
         public int skin;
         public uint figure;
 
-        public readonly int ver = 120;
+        public static readonly int ver = 120;
 
         public uint diff;
         public TCPGecko Gecko;
@@ -85,7 +85,17 @@ namespace SplatAIO {
                 checker.ShowDialog();
             }
 
-            sendStats = Statistics.WorkingConnection();
+            Configuration.Load();
+            ipBox.Text = Configuration.currentConfig.lastIp;
+
+            if (Configuration.currentConfig.allowStatistics)
+            {
+                sendStats = Statistics.WorkingConnection();
+            }
+            else
+            {
+                sendStats = false;
+            }
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -133,6 +143,9 @@ namespace SplatAIO {
                 Gecko.Disconnect();
                 return;
             }
+
+            Configuration.currentConfig.lastIp = ipBox.Text;
+            Configuration.Save();
 
             connectBox.Enabled = false;
             disconnectBox.Enabled = true;

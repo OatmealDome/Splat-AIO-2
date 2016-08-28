@@ -65,6 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities.cs" />
+    <Compile Include="AllowStatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllowStatisticsForm.Designer.cs">
+      <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs" />
     <Compile Include="EditLevelDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +142,9 @@
     <Compile Include="WeaponsForm.Designer.cs">
       <DependentUpon>WeaponsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AllowStatisticsForm.resx">
+      <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditLevelDataForm.ja.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
