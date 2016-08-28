@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -871,6 +872,27 @@ namespace SplatAIO {
         {
             WeaponsForm weaponsForm = new WeaponsForm(Gecko, diff);
             weaponsForm.ShowDialog(this);
+        }
+
+        public static uint[] DumpSaveSlots(TCPGecko gecko, uint diff, uint start, uint size)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                // dump all save slots
+                gecko.Dump(start + diff, start + diff + size, memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                // convert to a uint array
+                uint[] saveSlots = new uint[size / 4];
+                for (int i = 0; i < saveSlots.Length; i++)
+                {
+                    Byte[] buffer = new Byte[4];
+                    memoryStream.Read(buffer, 0, 4);
+                    saveSlots[i] = ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
+                }
+
+                return saveSlots;
+            }
         }
 		
     }

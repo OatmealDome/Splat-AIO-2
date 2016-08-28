@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,28 +46,33 @@ namespace SplatAIO
             seekerAddress += mainForm.diff;
             powerEggsAddress += mainForm.diff;
 
-            // load level information
-            // iterate over all 64 save slots
-            uint currentPosition = saveSlotsAddress;
-            for (int i = 0; i < 64; i++)
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                uint levelNumber = gecko.peek(currentPosition);
+                // dump all single player save slots
+                uint[] rawLevelData = Form1.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
 
-                // skip if an empty save slot
-                if (levelNumber == 0xFFFFFFFF)
+                // read data from slots
+                int j = 0;
+                while (j < rawLevelData.Length)
                 {
-                    currentPosition += 0xC;
-                    continue;
+                    uint levelNumber = rawLevelData[j];
+
+                    // check if an empty save slot
+                    if (levelNumber == 0xFFFFFFFF)
+                    {
+                        // we've reached the end
+                        break;
+                    }
+
+                    uint clearState = rawLevelData[j + 1];
+                    bool scroll = Convert.ToBoolean(rawLevelData[j + 2]);
+
+                    // add to the list
+                    levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
+
+                    // move to next slot
+                    j += 3;
                 }
-
-                uint clearState = gecko.peek(currentPosition + 0x4);
-                bool scroll = Convert.ToBoolean(gecko.peek(currentPosition + 0x8));
-
-                // add to the list
-                levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
-
-                // move to next save slot
-                currentPosition += 0xC;
             }
 
             // load the list view

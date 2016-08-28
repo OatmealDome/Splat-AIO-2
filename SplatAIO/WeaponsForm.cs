@@ -38,18 +38,8 @@ namespace SplatAIO
 
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                // dump all save slots
-                gecko.Dump(Form1.weaponsAddress + diff, Form1.weaponsAddress + diff + 5210, memoryStream);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-
-                // convert to a uint array
-                uint[] weaponData = new uint[5120];
-                for (int i = 0; i < 5120; i++)
-                {
-                    Byte[] buffer = new Byte[4];
-                    memoryStream.Read(buffer, 0, 4);
-                    weaponData[i] = ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
-                }
+                // dump all weapon save slots
+                uint[] weaponData = Form1.DumpSaveSlots(gecko, diff, Form1.weaponsAddress, 5120);
 
                 // read data from slots
                 int j = 0;
