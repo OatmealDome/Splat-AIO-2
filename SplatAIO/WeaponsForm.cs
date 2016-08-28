@@ -52,7 +52,8 @@ namespace SplatAIO
                 }
 
                 // read data from slots
-                for (int j = 0; j < weaponData.Length;)
+                int j = 0;
+                while (j < weaponData.Length)
                 {
                     uint id = weaponData[j];
 
