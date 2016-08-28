@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,33 +45,30 @@ namespace SplatAIO
             seekerAddress += mainForm.diff;
             powerEggsAddress += mainForm.diff;
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            // dump all single player save slots
+            uint[] rawLevelData = Form1.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
+
+            // read data from slots
+            int j = 0;
+            while (j < rawLevelData.Length)
             {
-                // dump all single player save slots
-                uint[] rawLevelData = Form1.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
+                uint levelNumber = rawLevelData[j];
 
-                // read data from slots
-                int j = 0;
-                while (j < rawLevelData.Length)
+                // check if an empty save slot
+                if (levelNumber == 0xFFFFFFFF)
                 {
-                    uint levelNumber = rawLevelData[j];
-
-                    // check if an empty save slot
-                    if (levelNumber == 0xFFFFFFFF)
-                    {
-                        // we've reached the end
-                        break;
-                    }
-
-                    uint clearState = rawLevelData[j + 1];
-                    bool scroll = Convert.ToBoolean(rawLevelData[j + 2]);
-
-                    // add to the list
-                    levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
-
-                    // move to next slot
-                    j += 3;
+                    // we've reached the end
+                    break;
                 }
+
+                uint clearState = rawLevelData[j + 1];
+                bool scroll = Convert.ToBoolean(rawLevelData[j + 2]);
+
+                // add to the list
+                levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
+
+                // move to next slot
+                j += 3;
             }
 
             // load the list view

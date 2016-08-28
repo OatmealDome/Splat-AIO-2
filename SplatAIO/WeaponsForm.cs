@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,36 +35,33 @@ namespace SplatAIO
 
             equippedWeapon = gecko.peek(Form1.equippedWeaponAddress + diff);
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            // dump all weapon save slots
+            uint[] weaponData = Form1.DumpSaveSlots(gecko, diff, Form1.weaponsAddress, 5120);
+
+            // read data from slots
+            int j = 0;
+            while (j < weaponData.Length)
             {
-                // dump all weapon save slots
-                uint[] weaponData = Form1.DumpSaveSlots(gecko, diff, Form1.weaponsAddress, 5120);
+                uint id = weaponData[j];
 
-                // read data from slots
-                int j = 0;
-                while (j < weaponData.Length)
+                // check if an empty save slot
+                if (id == 0xFFFFFFFF)
                 {
-                    uint id = weaponData[j];
-
-                    // check if an empty save slot
-                    if (id == 0xFFFFFFFF)
-                    {
-                        // we've reached the end
-                        break;
-                    }
-
-                    uint number = weaponData[j + 1];
-                    SubWeapon sub = (SubWeapon)weaponData[j + 2];
-                    SpecialWeapon special = (SpecialWeapon)weaponData[j + 3];
-                    uint turfInked = weaponData[j + 4];
-                    uint timestamp = weaponData[j + 7];
-                    bool newFlag = weaponData[j + 8] == 0x0;
-
-                    weapons.Add(new Weapon(id, number, sub, special, turfInked, timestamp, newFlag));
-
-                    // move to next slot
-                    j += 10;
+                    // we've reached the end
+                    break;
                 }
+
+                uint number = weaponData[j + 1];
+                SubWeapon sub = (SubWeapon)weaponData[j + 2];
+                SpecialWeapon special = (SpecialWeapon)weaponData[j + 3];
+                uint turfInked = weaponData[j + 4];
+                uint timestamp = weaponData[j + 7];
+                bool newFlag = weaponData[j + 8] == 0x0;
+
+                weapons.Add(new Weapon(id, number, sub, special, turfInked, timestamp, newFlag));
+
+                // move to next slot
+                j += 10;
             }
 
             // reload the list
