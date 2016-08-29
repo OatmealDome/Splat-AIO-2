@@ -160,6 +160,15 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection failed.\nMake sure that the provided IP address is correct and that TCPGecko is not being blocked by firewalls..
+        /// </summary>
+        public static string CONNECTION_FAILED_TEXT {
+            get {
+                return ResourceManager.GetString("CONNECTION_FAILED_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (EQUIPPED).
         /// </summary>
         public static string EQUIPPED {
@@ -178,6 +187,15 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon..
+        /// </summary>
+        public static string FIND_DIFF_FAILED_TEXT {
+            get {
+                return ResourceManager.GetString("FIND_DIFF_FAILED_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid.
         /// </summary>
         public static string INVALID {
@@ -192,6 +210,15 @@ namespace SplatAIO.Properties {
         public static string INVALID_CLEAR_STATE {
             get {
                 return ResourceManager.GetString("INVALID_CLEAR_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An invalid IP address was provided..
+        /// </summary>
+        public static string INVALID_IP_TEXT {
+            get {
+                return ResourceManager.GetString("INVALID_IP_TEXT", resourceCulture);
             }
         }
         
@@ -223,6 +250,15 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a timer type..
+        /// </summary>
+        public static string SELECT_TIMER_TYPE_TEXT {
+            get {
+                return ResourceManager.GetString("SELECT_TIMER_TYPE_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Splat-AIO will reset all Octo Valley flags, removing all single player progress currently on your save file. Are you sure you want to continue?.
         /// </summary>
         public static string SINGLE_PLAYER_RESET_TEXT {
@@ -237,6 +273,15 @@ namespace SplatAIO.Properties {
         public static string SINGLE_PLAYER_RESET_TITLE {
             get {
                 return ResourceManager.GetString("SINGLE_PLAYER_RESET_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The AIO is incompatible with this version of Splatoon. If there is an update available, please download the new update to continue using the AIO..
+        /// </summary>
+        public static string VERSION_CHECK_FAILED_TEXT {
+            get {
+                return ResourceManager.GetString("VERSION_CHECK_FAILED_TEXT", resourceCulture);
             }
         }
         

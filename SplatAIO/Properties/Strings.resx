@@ -150,17 +150,26 @@
   <data name="CANNOT_REMOVE_JR_TEXT" xml:space="preserve">
     <value>You cannot remove the Splattershot Jr.</value>
   </data>
+  <data name="CONNECTION_FAILED_TEXT" xml:space="preserve">
+    <value>Connection failed.\nMake sure that the provided IP address is correct and that TCPGecko is not being blocked by firewalls.</value>
+  </data>
   <data name="EQUIPPED" xml:space="preserve">
     <value>(EQUIPPED)</value>
   </data>
   <data name="FILL_IN_ALL_FIELDS_TEXT" xml:space="preserve">
     <value>Please fill in all fields.</value>
   </data>
+  <data name="FIND_DIFF_FAILED_TEXT" xml:space="preserve">
+    <value>Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon.</value>
+  </data>
   <data name="INVALID" xml:space="preserve">
     <value>Invalid</value>
   </data>
   <data name="INVALID_CLEAR_STATE" xml:space="preserve">
     <value>Invalid clear state.</value>
+  </data>
+  <data name="INVALID_IP_TEXT" xml:space="preserve">
+    <value>An invalid IP address was provided.</value>
   </data>
   <data name="INVALID_LEVEL_NUMBER" xml:space="preserve">
     <value>Invalid level number.</value>
@@ -171,11 +180,17 @@
   <data name="NO" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="SELECT_TIMER_TYPE_TEXT" xml:space="preserve">
+    <value>Please select a timer type.</value>
+  </data>
   <data name="SINGLE_PLAYER_RESET_TEXT" xml:space="preserve">
     <value>Splat-AIO will reset all Octo Valley flags, removing all single player progress currently on your save file. Are you sure you want to continue?</value>
   </data>
   <data name="SINGLE_PLAYER_RESET_TITLE" xml:space="preserve">
     <value>Alert</value>
+  </data>
+  <data name="VERSION_CHECK_FAILED_TEXT" xml:space="preserve">
+    <value>The AIO is incompatible with this version of Splatoon. If there is an update available, please download the new update to continue using the AIO.</value>
   </data>
   <data name="WEAPON_EXISTS_TEXT" xml:space="preserve">
     <value>This weapon has already been added. If you wish to edit it, please right click it in the list.</value>

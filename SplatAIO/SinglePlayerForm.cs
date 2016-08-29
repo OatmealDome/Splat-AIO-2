@@ -45,28 +45,30 @@ namespace SplatAIO
             seekerAddress += mainForm.diff;
             powerEggsAddress += mainForm.diff;
 
-            // load level information
-            // iterate over all 64 save slots
-            uint currentPosition = saveSlotsAddress;
-            for (int i = 0; i < 64; i++)
-            {
-                uint levelNumber = gecko.peek(currentPosition);
+            // dump all single player save slots
+            uint[] rawLevelData = Form1.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
 
-                // skip if an empty save slot
+            // read data from slots
+            int j = 0;
+            while (j < rawLevelData.Length)
+            {
+                uint levelNumber = rawLevelData[j];
+
+                // check if an empty save slot
                 if (levelNumber == 0xFFFFFFFF)
                 {
-                    currentPosition += 0xC;
-                    continue;
+                    // we've reached the end
+                    break;
                 }
 
-                uint clearState = gecko.peek(currentPosition + 0x4);
-                bool scroll = Convert.ToBoolean(gecko.peek(currentPosition + 0x8));
+                uint clearState = rawLevelData[j + 1];
+                bool scroll = Convert.ToBoolean(rawLevelData[j + 2]);
 
                 // add to the list
                 levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
 
-                // move to next save slot
-                currentPosition += 0xC;
+                // move to next slot
+                j += 3;
             }
 
             // load the list view

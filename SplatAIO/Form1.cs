@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -65,7 +66,7 @@ namespace SplatAIO {
         public int skin;
         public uint figure;
 
-        public readonly int ver = 120;
+        public static readonly int ver = 120;
 
         public uint diff;
         public TCPGecko Gecko;
@@ -85,7 +86,17 @@ namespace SplatAIO {
                 checker.ShowDialog();
             }
 
-            sendStats = Statistics.WorkingConnection();
+            Configuration.Load();
+            ipBox.Text = Configuration.currentConfig.lastIp;
+
+            if (Configuration.currentConfig.allowStatistics)
+            {
+                sendStats = Statistics.WorkingConnection();
+            }
+            else
+            {
+                sendStats = false;
+            }
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -98,11 +109,11 @@ namespace SplatAIO {
             }
             catch (ETCPGeckoException)
             {
-                MessageBox.Show("Connection failed.\nTry making sure your IP is correct and that TCPGecko is not being blocked by firewalls.");
+                MessageBox.Show(Properties.Strings.CONNECTION_FAILED_TEXT);
             }
             catch (System.Net.Sockets.SocketException)
             {
-                MessageBox.Show("Invalid IP entry.");
+                MessageBox.Show(Properties.Strings.INVALID_IP_TEXT);
             }
 
             if (Gecko.peek(0x12CDADA0) == 0x000003F2)
@@ -119,11 +130,23 @@ namespace SplatAIO {
             }
             else
             {
-                MessageBox.Show("Could not find the Splattershot Jr. in memory. Try using TCPGecko from loadiine.ovh. If that does not work, then the AIO may need to be updated for a new version of Splatoon.");
+                MessageBox.Show(Properties.Strings.FIND_DIFF_FAILED_TEXT);
 
                 Gecko.Disconnect();
                 return;
             }
+
+            // do a version check using "ToHu" of "ToHuman"
+            if (Gecko.peek(0x105EF3F0) != 0x546F4875)
+            {
+                MessageBox.Show(Properties.Strings.VERSION_CHECK_FAILED_TEXT);
+
+                Gecko.Disconnect();
+                return;
+            }
+
+            Configuration.currentConfig.lastIp = ipBox.Text;
+            Configuration.Save();
 
             connectBox.Enabled = false;
             disconnectBox.Enabled = true;
@@ -187,15 +210,15 @@ namespace SplatAIO {
         {
             hold();
 			
-            int rank = Convert.ToInt32(Gecko.peek(rankAddress + diff)) + 1;
-            int okane = Convert.ToInt32(Gecko.peek(okaneAddress + diff));
-            int ude = Convert.ToInt32(Gecko.peek(udeAddress + diff));
-            int mae = Convert.ToInt32(Gecko.peek(maeAddress + diff));
-            int sazae = Convert.ToInt32(Gecko.peek(sazaeAddress + diff));
-            int gender = Convert.ToInt32(Gecko.peek(genderAddress + diff));
-            int eyes = Convert.ToInt32(Gecko.peek(eyesAddress + diff));
-            int skin = Convert.ToInt32(Gecko.peek(skinAddress + diff));
-            uint figure = Gecko.peek(amiiboAddress + diff);
+            rank = Convert.ToInt32(Gecko.peek(rankAddress + diff)) + 1;
+            okane = Convert.ToInt32(Gecko.peek(okaneAddress + diff));
+            ude = Convert.ToInt32(Gecko.peek(udeAddress + diff));
+            mae = Convert.ToInt32(Gecko.peek(maeAddress + diff));
+            sazae = Convert.ToInt32(Gecko.peek(sazaeAddress + diff));
+            gender = Convert.ToInt32(Gecko.peek(genderAddress + diff));
+            eyes = Convert.ToInt32(Gecko.peek(eyesAddress + diff));
+            skin = Convert.ToInt32(Gecko.peek(skinAddress + diff));
+            figure = Gecko.peek(amiiboAddress + diff);
 
             try
             {
@@ -841,7 +864,7 @@ namespace SplatAIO {
 
         private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TimerHaxForm timerHaxForm = new TimerHaxForm();
+            TimerHaxForm timerHaxForm = new TimerHaxForm(Gecko, diff);
             timerHaxForm.ShowDialog(this);
         }
 
@@ -849,6 +872,27 @@ namespace SplatAIO {
         {
             WeaponsForm weaponsForm = new WeaponsForm(Gecko, diff);
             weaponsForm.ShowDialog(this);
+        }
+
+        public static uint[] DumpSaveSlots(TCPGecko gecko, uint diff, uint start, uint size)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                // dump all save slots
+                gecko.Dump(start + diff, start + diff + size, memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                // convert to a uint array
+                uint[] saveSlots = new uint[size / 4];
+                for (int i = 0; i < saveSlots.Length; i++)
+                {
+                    Byte[] buffer = new Byte[4];
+                    memoryStream.Read(buffer, 0, 4);
+                    saveSlots[i] = ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
+                }
+
+                return saveSlots;
+            }
         }
 		
     }

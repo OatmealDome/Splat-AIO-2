@@ -12,98 +12,78 @@ namespace SplatAIO
 {
     public partial class TimerHaxForm : Form
     {
-        private int dojoTimerAddr;
-        private int reconTimerAddr;
-        private int amiiboTimerAddr;
+        private readonly uint dojoAddress = 0x1CAAA218;
+        private readonly uint dojoGeckiineAddress = 0x1CAA9D58;
+        private readonly uint reconAddress = 0x1CAAA144;
+        private readonly uint reconGeckiineAddress = 0x1CAA9C84;
+        private readonly uint amiiboAddress = 0x1CAB5778;
+        private readonly uint amiiboGeckiineAddress = 0x1CAB52B8;
 
-        public TimerHaxForm()
+        private TCPGecko gecko;
+        private uint diff;
+        private uint timerAddress;
+
+        public TimerHaxForm(TCPGecko gecko, uint diff)
         {
             InitializeComponent();
-        }
 
-        private void TimerHaxFreezeButton_Click(object sender, EventArgs e)
-        {
-            Form1 mainForm = (Form1)this.Owner;
-            TCPGecko gecko = mainForm.Gecko;
-
-            if (BattleDojoRadioButton.Checked)
-            {
-                dojoTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA218)) + 0x280;
-                gecko.poke(Convert.ToUInt32(dojoTimerAddr), 0xFFFFFFFE);
-            }
-            else if (ReconRadioButton.Checked)
-            {
-                reconTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA144)) + 0x280;
-                gecko.poke(Convert.ToUInt32(reconTimerAddr), 0xFFFFFFFE);
-            }
-            else if (AmiiboRadioButton.Checked)
-            {
-                amiiboTimerAddr = Convert.ToInt32(gecko.peek(0x1CAB5778)) + 0x2B4;
-                gecko.poke(Convert.ToUInt32(amiiboTimerAddr), 0xFFFFFFFE);
-            }
+            this.gecko = gecko;
+            this.diff = diff;
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.Owner;
-            TCPGecko gecko = mainForm.Gecko;
+            RecalculatePointer();
 
-            if (BattleDojoRadioButton.Checked)
+            if (!BattleDojoRadioButton.Checked && !ReconRadioButton.Checked && !AmiiboRadioButton.Checked)
             {
-                dojoTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA218)) + 0x280;
-                gecko.poke(Convert.ToUInt32(dojoTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
+                MessageBox.Show(Properties.Strings.SELECT_TIMER_TYPE_TEXT);
+                return;
             }
-            else if (ReconRadioButton.Checked)
+
+            if (!FreezeCheckBox.Checked)
             {
-                reconTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA144)) + 0x280;
-                gecko.poke(Convert.ToUInt32(reconTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
+                gecko.poke32(timerAddress, Convert.ToUInt32(TimerBox.Value * 60));
             }
-            else if (AmiiboRadioButton.Checked)
+            else
             {
-                amiiboTimerAddr = Convert.ToInt32(gecko.peek(0x1CAB5778)) + 0x2B4;
-                gecko.poke(Convert.ToUInt32(amiiboTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
+                gecko.poke32(timerAddress, 0xFFFFFFFE);
             }
         }
 
         private void FreezeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.Owner;
-            TCPGecko gecko = mainForm.Gecko;
-            if (FreezeCheckBox.Checked)
+            TimerBox.Enabled = !FreezeCheckBox.Checked;
+        }
+
+        private void RecalculatePointer()
+        {
+            if (BattleDojoRadioButton.Checked)
             {
-                if (BattleDojoRadioButton.Checked)
-                {
-                    dojoTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA218)) + 0x280;
-                    gecko.poke(Convert.ToUInt32(dojoTimerAddr), 0xFFFFFFFE);
-                }
-                else if (ReconRadioButton.Checked)
-                {
-                    reconTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA144)) + 0x280;
-                    gecko.poke(Convert.ToUInt32(reconTimerAddr), 0xFFFFFFFE);
-                }
-                else if (AmiiboRadioButton.Checked)
-                {
-                    amiiboTimerAddr = Convert.ToInt32(gecko.peek(0x1CAB5778)) + 0x2B4;
-                    gecko.poke(Convert.ToUInt32(amiiboTimerAddr), 0xFFFFFFFE);
-                }
-            }else if (!FreezeCheckBox.Checked)
+                // TODO: geckiine
+                timerAddress = gecko.peek(dojoAddress + diff) + 0x280;
+            }
+            else if (ReconRadioButton.Checked)
             {
-                if (BattleDojoRadioButton.Checked)
-                {
-                    dojoTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA218)) + 0x280;
-                    gecko.poke(Convert.ToUInt32(dojoTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
-                }
-                else if (ReconRadioButton.Checked)
-                {
-                    reconTimerAddr = Convert.ToInt32(gecko.peek(0x1CAAA144)) + 0x280;
-                    gecko.poke(Convert.ToUInt32(reconTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
-                }
-                else if (AmiiboRadioButton.Checked)
-                {
-                    amiiboTimerAddr = Convert.ToInt32(gecko.peek(0x1CAB5778)) + 0x2B4;
-                    gecko.poke(Convert.ToUInt32(amiiboTimerAddr), Convert.ToUInt32(TimerBox.Value * 60));
-                }
+                timerAddress = GetPointerVal(reconAddress, reconGeckiineAddress, 0x1F000000, 0x20000000) + 0x280;
+            }
+            else if (AmiiboRadioButton.Checked)
+            {
+                timerAddress = GetPointerVal(amiiboAddress, amiiboGeckiineAddress, 0x20000000, 0x21000000) + 0x2B4;
             }
         }
+
+        public uint GetPointerVal(uint regular, uint geckiine, uint rangeStart, uint rangeEnd)
+        {
+            uint pointerVal = gecko.peek(regular + diff);
+            if (pointerVal < rangeStart || pointerVal > rangeEnd)
+            {
+                // pointer is invalid, fallback to geckiine pointer
+                pointerVal = gecko.peek(geckiine);
+            }
+
+            return pointerVal;
+        }
+
     }
 }
