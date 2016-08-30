@@ -123,43 +123,19 @@
   <data name="disconnectBox.Text" xml:space="preserve">
     <value>切断</value>
   </data>
-  <data name="progressFlagsBox.Text" xml:space="preserve">
-    <value>記録フラグ</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>ウデマエ</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>サザエ</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>おカネ</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>ランク</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>統計</value>
-  </data>
   <data name="skinBox.Items" xml:space="preserve">
     <value>1 - 白</value>
   </data>
   <data name="skinBox.Items6" xml:space="preserve">
     <value>7 - 茶</value>
   </data>
+  <data name="OKButton.Text" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="progressFlagsBox.Text" xml:space="preserve">
+    <value>記録フラグ</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
   </data>
@@ -199,14 +175,38 @@
   <data name="label5.Text" xml:space="preserve">
     <value>性別</value>
   </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>ウデマエ</value>
+  </data>
   <data name="genderBox.Items" xml:space="preserve">
     <value>♀</value>
   </data>
   <data name="genderBox.Items1" xml:space="preserve">
     <value>♂</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>プレイヤー</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>サザエ</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>おカネ</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>ランク</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>統計</value>
   </data>
   <data name="takoBox.Text" xml:space="preserve">
     <value>ZLでタコ</value>
@@ -276,12 +276,6 @@
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>アンロック</value>
-  </data>
-  <data name="OKButton.Text" xml:space="preserve">
-    <value>送信</value>
-  </data>
-  <data name="weaponsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
   </data>
   <data name="singlePlayerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
