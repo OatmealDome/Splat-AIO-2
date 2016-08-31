@@ -176,6 +176,7 @@ namespace SplatAIO {
             gameButton.Enabled = true;
             bukiButton.Enabled = true;
             gearButton.Enabled = true;
+            refreshButton.Enabled = true;
             OKButton.Enabled = true;
             menuStrip.Enabled = true;
         }
@@ -202,6 +203,7 @@ namespace SplatAIO {
             gameButton.Enabled = false;
             bukiButton.Enabled = false;
             gearButton.Enabled = false;
+            refreshButton.Enabled = false;
             OKButton.Enabled = false;
             menuStrip.Enabled = false;
         }
@@ -292,6 +294,11 @@ namespace SplatAIO {
             eyeBox.SelectedIndex = eyes;
             skinBox.SelectedIndex = skin;
             release();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            load();
         }
 
         private void disconnectBox_Click(object sender, EventArgs e)

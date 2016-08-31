@@ -33,23 +33,24 @@
             this.connectBox = new System.Windows.Forms.Button();
             this.disconnectBox = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.skinBox = new System.Windows.Forms.ComboBox();
+            this.OKButton = new System.Windows.Forms.Button();
             this.sazaeBox = new System.Windows.Forms.NumericUpDown();
-            this.maeBox = new System.Windows.Forms.NumericUpDown();
-            this.kaneBox = new System.Windows.Forms.NumericUpDown();
-            this.rankBox = new System.Windows.Forms.NumericUpDown();
             this.progressFlagsBox = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.maeBox = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.kaneBox = new System.Windows.Forms.NumericUpDown();
+            this.eyeBox = new System.Windows.Forms.ComboBox();
+            this.rankBox = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.genderBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.udeBox = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.skinBox = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.eyeBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.genderBox = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.takoBox = new System.Windows.Forms.Button();
             this.ikaBox = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.gameButton = new System.Windows.Forms.Button();
             this.bukiButton = new System.Windows.Forms.Button();
             this.gearButton = new System.Windows.Forms.Button();
-            this.OKButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.editorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.maeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kaneBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rankBox)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -107,18 +106,54 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.refreshButton);
+            this.groupBox1.Controls.Add(this.skinBox);
+            this.groupBox1.Controls.Add(this.OKButton);
             this.groupBox1.Controls.Add(this.sazaeBox);
-            this.groupBox1.Controls.Add(this.maeBox);
-            this.groupBox1.Controls.Add(this.kaneBox);
-            this.groupBox1.Controls.Add(this.rankBox);
             this.groupBox1.Controls.Add(this.progressFlagsBox);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.maeBox);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.kaneBox);
+            this.groupBox1.Controls.Add(this.eyeBox);
+            this.groupBox1.Controls.Add(this.rankBox);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.genderBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.udeBox);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // refreshButton
+            // 
+            resources.ApplyResources(this.refreshButton, "refreshButton");
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // skinBox
+            // 
+            resources.ApplyResources(this.skinBox, "skinBox");
+            this.skinBox.FormattingEnabled = true;
+            this.skinBox.Items.AddRange(new object[] {
+            resources.GetString("skinBox.Items"),
+            resources.GetString("skinBox.Items1"),
+            resources.GetString("skinBox.Items2"),
+            resources.GetString("skinBox.Items3"),
+            resources.GetString("skinBox.Items4"),
+            resources.GetString("skinBox.Items5"),
+            resources.GetString("skinBox.Items6")});
+            this.skinBox.Name = "skinBox";
+            // 
+            // OKButton
+            // 
+            resources.ApplyResources(this.OKButton, "OKButton");
+            this.OKButton.Name = "OKButton";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // sazaeBox
             // 
@@ -130,6 +165,18 @@
             0});
             this.sazaeBox.Name = "sazaeBox";
             // 
+            // progressFlagsBox
+            // 
+            resources.ApplyResources(this.progressFlagsBox, "progressFlagsBox");
+            this.progressFlagsBox.Name = "progressFlagsBox";
+            this.progressFlagsBox.UseVisualStyleBackColor = true;
+            this.progressFlagsBox.Click += new System.EventHandler(this.progressFlagsBox_Click);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
             // maeBox
             // 
             resources.ApplyResources(this.maeBox, "maeBox");
@@ -140,6 +187,11 @@
             0});
             this.maeBox.Name = "maeBox";
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // kaneBox
             // 
             resources.ApplyResources(this.kaneBox, "kaneBox");
@@ -149,6 +201,20 @@
             0,
             0});
             this.kaneBox.Name = "kaneBox";
+            // 
+            // eyeBox
+            // 
+            resources.ApplyResources(this.eyeBox, "eyeBox");
+            this.eyeBox.FormattingEnabled = true;
+            this.eyeBox.Items.AddRange(new object[] {
+            resources.GetString("eyeBox.Items"),
+            resources.GetString("eyeBox.Items1"),
+            resources.GetString("eyeBox.Items2"),
+            resources.GetString("eyeBox.Items3"),
+            resources.GetString("eyeBox.Items4"),
+            resources.GetString("eyeBox.Items5"),
+            resources.GetString("eyeBox.Items6")});
+            this.eyeBox.Name = "eyeBox";
             // 
             // rankBox
             // 
@@ -170,17 +236,24 @@
             0,
             0});
             // 
-            // progressFlagsBox
+            // label5
             // 
-            resources.ApplyResources(this.progressFlagsBox, "progressFlagsBox");
-            this.progressFlagsBox.Name = "progressFlagsBox";
-            this.progressFlagsBox.UseVisualStyleBackColor = true;
-            this.progressFlagsBox.Click += new System.EventHandler(this.progressFlagsBox_Click);
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            // 
+            // genderBox
+            // 
+            resources.ApplyResources(this.genderBox, "genderBox");
+            this.genderBox.FormattingEnabled = true;
+            this.genderBox.Items.AddRange(new object[] {
+            resources.GetString("genderBox.Items"),
+            resources.GetString("genderBox.Items1")});
+            this.genderBox.Name = "genderBox";
             // 
             // label3
             // 
@@ -214,70 +287,6 @@
             resources.GetString("udeBox.Items9"),
             resources.GetString("udeBox.Items10")});
             this.udeBox.Name = "udeBox";
-            // 
-            // groupBox2
-            // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.skinBox);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.eyeBox);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.genderBox);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // skinBox
-            // 
-            resources.ApplyResources(this.skinBox, "skinBox");
-            this.skinBox.FormattingEnabled = true;
-            this.skinBox.Items.AddRange(new object[] {
-            resources.GetString("skinBox.Items"),
-            resources.GetString("skinBox.Items1"),
-            resources.GetString("skinBox.Items2"),
-            resources.GetString("skinBox.Items3"),
-            resources.GetString("skinBox.Items4"),
-            resources.GetString("skinBox.Items5"),
-            resources.GetString("skinBox.Items6")});
-            this.skinBox.Name = "skinBox";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // eyeBox
-            // 
-            resources.ApplyResources(this.eyeBox, "eyeBox");
-            this.eyeBox.FormattingEnabled = true;
-            this.eyeBox.Items.AddRange(new object[] {
-            resources.GetString("eyeBox.Items"),
-            resources.GetString("eyeBox.Items1"),
-            resources.GetString("eyeBox.Items2"),
-            resources.GetString("eyeBox.Items3"),
-            resources.GetString("eyeBox.Items4"),
-            resources.GetString("eyeBox.Items5"),
-            resources.GetString("eyeBox.Items6")});
-            this.eyeBox.Name = "eyeBox";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // genderBox
-            // 
-            resources.ApplyResources(this.genderBox, "genderBox");
-            this.genderBox.FormattingEnabled = true;
-            this.genderBox.Items.AddRange(new object[] {
-            resources.GetString("genderBox.Items"),
-            resources.GetString("genderBox.Items1")});
-            this.genderBox.Name = "genderBox";
             // 
             // groupBox3
             // 
@@ -392,13 +401,6 @@
             this.gearButton.UseVisualStyleBackColor = true;
             this.gearButton.Click += new System.EventHandler(this.gearButton_Click_1);
             // 
-            // OKButton
-            // 
-            resources.ApplyResources(this.OKButton, "OKButton");
-            this.OKButton.Name = "OKButton";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
-            // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
@@ -452,14 +454,12 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.OKButton);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.amiiboBox);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.disconnectBox);
             this.Controls.Add(this.connectBox);
@@ -476,8 +476,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.maeBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kaneBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rankBox)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -500,7 +498,6 @@
         private System.Windows.Forms.ComboBox udeBox;
         private System.Windows.Forms.Button progressFlagsBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox genderBox;
         private System.Windows.Forms.ComboBox skinBox;
@@ -534,6 +531,7 @@
         private System.Windows.Forms.ToolStripMenuItem timerHaxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem weaponsToolStripMenuItem;
+        private System.Windows.Forms.Button refreshButton;
     }
 }
 
