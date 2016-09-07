@@ -34,9 +34,9 @@ namespace SplatAIO {
         private readonly uint player00Address = 0x105EF3A0;
         private readonly uint player00HlfAddress = 0x105EF3AC;
         private readonly uint rivalSquidAddress = 0x105EF3BC;
-        private readonly uint tnkSimpleThreeAddress = 0x12BF4354;
-        private readonly uint tnkSimpleFourAddress = 0x12BF43A0;
-        private readonly uint tnkSimpleFiveAddress = 0x12BF43EC;
+        private readonly uint tnkSimpleThreeAddress = 0x12BEB354;
+        private readonly uint tnkSimpleFourAddress = 0x12BEB3A0;
+        private readonly uint tnkSimpleFiveAddress = 0x12BEB3EC;
 
         // Sisterhax
         private readonly uint aoriAddress = 0x105EB5DC;
