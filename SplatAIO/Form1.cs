@@ -402,15 +402,16 @@ namespace SplatAIO {
 
         public void octohax(bool octopus)
         {
+            uint tnkRvlOne = 0x52766C30; // "Rvl0"
+            uint tnkRvlTwo = 0x30000000; // "0"
+
             // Tnk_Simple 1
-            Gecko.poke32(tnkSimpleOneAddress, 0x546E6B5F);
-            Gecko.poke32(tnkSimpleOneAddress + 0x4, 0x53696D70);
-            Gecko.poke32(tnkSimpleOneAddress + 0x8, 0x6C650000);
+            Gecko.poke32(tnkSimpleOneAddress + 0x4, tnkRvlOne);
+            Gecko.poke32(tnkSimpleOneAddress + 0x8, tnkRvlTwo);
 
             // Tnk_Simple 2
-            Gecko.poke32(tnkSimpleTwoAddress, 0x546E6B5F);
-            Gecko.poke32(tnkSimpleTwoAddress + 0x4, 0x53696D70);
-            Gecko.poke32(tnkSimpleTwoAddress + 0x8, 0x6C650000);
+            Gecko.poke32(tnkSimpleTwoAddress + 0x4, tnkRvlOne);
+            Gecko.poke32(tnkSimpleTwoAddress + 0x8, tnkRvlTwo);
 
             // Player00
             Gecko.poke32(player00Address, 0x52697661);
@@ -436,19 +437,16 @@ namespace SplatAIO {
             }
 
             // Tnk_Simple 3
-            Gecko.poke32(tnkSimpleThreeAddress, 0x546E6B5F);
-            Gecko.poke32(tnkSimpleThreeAddress + 0x4, 0x53696D70);
-            Gecko.poke32(tnkSimpleThreeAddress + 0x8, 0x6C650000);
+            Gecko.poke32(tnkSimpleThreeAddress + 0x4, tnkRvlOne);
+            Gecko.poke32(tnkSimpleThreeAddress + 0x8, tnkRvlTwo);
 
             // Tnk_Simple 4
-            Gecko.poke32(tnkSimpleFourAddress, 0x546E6B5F);
-            Gecko.poke32(tnkSimpleFourAddress + 0x4, 0x53696D70);
-            Gecko.poke32(tnkSimpleFourAddress + 0x8, 0x6C650000);
+            Gecko.poke32(tnkSimpleFourAddress + 0x4, tnkRvlOne);
+            Gecko.poke32(tnkSimpleFourAddress + 0x8, tnkRvlTwo);
 
             // Tnk_Simple 5
-            Gecko.poke32(tnkSimpleFiveAddress, 0x546E6B5F);
-            Gecko.poke32(tnkSimpleFiveAddress + 0x4, 0x53696D70);
-            Gecko.poke32(tnkSimpleFiveAddress + 0x8, 0x6C650000);
+            Gecko.poke32(tnkSimpleFiveAddress + 0x4, tnkRvlOne);
+            Gecko.poke32(tnkSimpleFiveAddress + 0x8, tnkRvlTwo);
 
             if (sendStats)
             {
