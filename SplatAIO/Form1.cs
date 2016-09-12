@@ -926,7 +926,7 @@ namespace SplatAIO {
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e) //refresh timer event listener
+        private void timer1_Tick(object sender, EventArgs e) //refresh on interval
         {
             if (autoRefresh)
             {
