@@ -73,6 +73,8 @@ namespace SplatAIO {
 
         public bool sendStats = false;
 
+        public bool autoRefresh = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -97,6 +99,7 @@ namespace SplatAIO {
             {
                 sendStats = false;
             }
+
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -179,6 +182,8 @@ namespace SplatAIO {
             refreshButton.Enabled = true;
             OKButton.Enabled = true;
             menuStrip.Enabled = true;
+            checkBox1.Enabled = true;
+            autoRefreshTimer.Enabled = true;
         }
 
         public void hold()
@@ -206,6 +211,8 @@ namespace SplatAIO {
             refreshButton.Enabled = false;
             OKButton.Enabled = false;
             menuStrip.Enabled = false;
+            checkBox1.Enabled = false;
+            autoRefreshTimer.Enabled = false;
         }
 
         public void load()
@@ -897,6 +904,33 @@ namespace SplatAIO {
                 }
 
                 return saveSlots;
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) //autorefresh checkbox
+        {
+            if (checkBox1.Checked == true)
+            {
+                autoRefresh = true;
+                autoRefreshTimer.Enabled = true;
+            }
+            else
+            {
+                autoRefresh = false;
+                autoRefreshTimer.Enabled = false;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) //refresh timer event listener
+        {
+            if (autoRefresh)
+            {
+                load();    
             }
         }
 		
