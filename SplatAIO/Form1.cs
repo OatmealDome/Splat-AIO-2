@@ -39,8 +39,8 @@ namespace SplatAIO {
         private readonly uint tnkSimpleFiveAddress = 0x12BEB3EC;
 
         // Sisterhax
-        private readonly uint aoriAddress = 0x105EB5DC;
-        private readonly uint hotaruAddress = 0x105EB5E8;
+        private readonly uint aoriAddress = 0x105EB5EC;
+        private readonly uint hotaruAddress = 0x105EB5F8;
 
         // Gear
         public static readonly uint weaponsAddress = 0x12CDADA0;
@@ -140,13 +140,13 @@ namespace SplatAIO {
             }
 
             // do a version check using "ToHu" of "ToHuman"
-            if (Gecko.peek(0x105EF3F0) != 0x546F4875)
+            /*if (Gecko.peek(0x105EF3F0) != 0x546F4875)
             {
                 MessageBox.Show(Properties.Strings.VERSION_CHECK_FAILED_TEXT);
 
                 Gecko.Disconnect();
                 return;
-            }
+            }*/
 
             Configuration.currentConfig.lastIp = ipBox.Text;
             Configuration.Save();
