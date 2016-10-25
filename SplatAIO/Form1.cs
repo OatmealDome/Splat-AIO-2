@@ -140,13 +140,13 @@ namespace SplatAIO {
             }
 
             // do a version check using "ToHu" of "ToHuman"
-            /*if (Gecko.peek(0x105EF3F0) != 0x546F4875)
+            if (Gecko.peek(0x105EF3F0) != 0x546F4875)
             {
                 MessageBox.Show(Properties.Strings.VERSION_CHECK_FAILED_TEXT);
 
                 Gecko.Disconnect();
                 return;
-            }*/
+            }
 
             Configuration.currentConfig.lastIp = ipBox.Text;
             Configuration.Save();
