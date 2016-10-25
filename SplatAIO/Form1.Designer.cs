@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(Form1));
             this.ipBox = new System.Windows.Forms.TextBox();
             this.connectBox = new System.Windows.Forms.Button();
             this.disconnectBox = new System.Windows.Forms.Button();
@@ -108,6 +108,7 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.refreshButton);
             this.groupBox1.Controls.Add(this.skinBox);
@@ -127,7 +128,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.udeBox);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -303,9 +303,9 @@
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.takoBox);
             this.groupBox3.Controls.Add(this.ikaBox);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -325,11 +325,11 @@
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.normalBox);
             this.groupBox4.Controls.Add(this.swapBox);
             this.groupBox4.Controls.Add(this.hotaruBox);
             this.groupBox4.Controls.Add(this.aoriBox);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -386,10 +386,10 @@
             // 
             // groupBox5
             // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.gameButton);
             this.groupBox5.Controls.Add(this.bukiButton);
             this.groupBox5.Controls.Add(this.gearButton);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
@@ -431,35 +431,35 @@
             // 
             // editorsToolStripMenuItem
             // 
+            resources.ApplyResources(this.editorsToolStripMenuItem, "editorsToolStripMenuItem");
             this.editorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.weaponsToolStripMenuItem});
             this.editorsToolStripMenuItem.Name = "editorsToolStripMenuItem";
-            resources.ApplyResources(this.editorsToolStripMenuItem, "editorsToolStripMenuItem");
             // 
             // weaponsToolStripMenuItem
             // 
-            this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
             resources.ApplyResources(this.weaponsToolStripMenuItem, "weaponsToolStripMenuItem");
+            this.weaponsToolStripMenuItem.Name = "weaponsToolStripMenuItem";
             this.weaponsToolStripMenuItem.Click += new System.EventHandler(this.weaponsToolStripMenuItem_Click);
             // 
             // otherToolStripMenuItem
             // 
+            resources.ApplyResources(this.otherToolStripMenuItem, "otherToolStripMenuItem");
             this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.singlePlayerToolStripMenuItem,
             this.timerHaxToolStripMenuItem});
             this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
-            resources.ApplyResources(this.otherToolStripMenuItem, "otherToolStripMenuItem");
             // 
             // singlePlayerToolStripMenuItem
             // 
-            this.singlePlayerToolStripMenuItem.Name = "singlePlayerToolStripMenuItem";
             resources.ApplyResources(this.singlePlayerToolStripMenuItem, "singlePlayerToolStripMenuItem");
+            this.singlePlayerToolStripMenuItem.Name = "singlePlayerToolStripMenuItem";
             this.singlePlayerToolStripMenuItem.Click += new System.EventHandler(this.singlePlayerToolStripMenuItem_Click);
             // 
             // timerHaxToolStripMenuItem
             // 
-            this.timerHaxToolStripMenuItem.Name = "timerHaxToolStripMenuItem";
             resources.ApplyResources(this.timerHaxToolStripMenuItem, "timerHaxToolStripMenuItem");
+            this.timerHaxToolStripMenuItem.Name = "timerHaxToolStripMenuItem";
             this.timerHaxToolStripMenuItem.Click += new System.EventHandler(this.timerHaxToolStripMenuItem_Click);
             // 
             // autoRefreshTimer
