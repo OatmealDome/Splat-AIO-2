@@ -88,6 +88,8 @@ namespace SplatAIO {
 
             Configuration.Load();
             ipBox.Text = Configuration.currentConfig.lastIp;
+            
+            this.Text += " (" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + ")";
 
             if (Configuration.currentConfig.allowStatistics)
             {
