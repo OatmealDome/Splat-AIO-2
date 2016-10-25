@@ -66,8 +66,6 @@ namespace SplatAIO {
         public int skin;
         public uint figure;
 
-        public static readonly int ver = 120;
-
         public uint diff;
         public TCPGecko Gecko;
 
@@ -83,7 +81,7 @@ namespace SplatAIO {
         private void Form1_Load(object sender, EventArgs e)
         {
             Checker checker = new Checker();
-            if (checker.getdata() == 0 && checker.ver > ver)
+            if (checker.getdata() == 0 && checker.ver > GetCurrentVersion())
             {
                 checker.ShowDialog();
             }
@@ -933,6 +931,22 @@ namespace SplatAIO {
                 load();    
             }
         }
-		
+
+        public static int GetCurrentVersion()
+        {
+            String version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            StringBuilder builder = new StringBuilder(version.Length);
+
+            for (int i = 0; i < version.Length; i++)
+            {
+                if (!version[i].Equals('.'))
+                {
+                    builder.Append(version[i]);
+                }
+            }
+
+            return Convert.ToInt32(builder.ToString());
+        }
+
     }
 }

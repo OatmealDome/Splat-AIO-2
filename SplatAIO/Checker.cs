@@ -27,7 +27,7 @@ namespace SplatAIO
         { 
             try
             {
-                ver = Convert.ToInt32(vers.DownloadString("https://seresaa.github.io/AIO2/version.txt"));
+                ver = Convert.ToInt32(vers.DownloadString("https://oatmealdome.github.io/AIO2/version.txt"));
                 return 0;
 
             }
@@ -41,7 +41,7 @@ namespace SplatAIO
 
         private void Update_Load(object sender, EventArgs e)
         {
-            updateBox.Text = vers.DownloadString("https://seresaa.github.io/AIO2/changelog.txt");
+            updateBox.Text = vers.DownloadString("https://oatmealdome.github.io/AIO2/changelog.txt");
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace SplatAIO
 
         private void githubButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/seresaa/Splat-AIO-2/releases/latest");
+            System.Diagnostics.Process.Start("https://github.com/OatmealDome/Splat-AIO-2/releases/latest");
             Close();
         }
     }

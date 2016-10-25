@@ -26,7 +26,7 @@ namespace SplatAIO
                 allowStatisticsForm.ShowDialog();
 
                 currentConfig = new Configuration();
-                currentConfig.version = Form1.ver;
+                currentConfig.version = Form1.GetCurrentVersion();
                 currentConfig.lastIp = "";
                 currentConfig.allowStatistics = allowStatisticsForm.allowCollection;
 
