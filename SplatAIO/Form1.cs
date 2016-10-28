@@ -30,10 +30,10 @@ namespace SplatAIO {
 
         // Octohax
         private readonly uint tnkSimpleOneAddress = 0x10506BC0;
-        private readonly uint tnkSimpleTwoAddress = 0x105E62A0;
-        private readonly uint player00Address = 0x105EF3A0;
-        private readonly uint player00HlfAddress = 0x105EF3AC;
-        private readonly uint rivalSquidAddress = 0x105EF3BC;
+        private readonly uint tnkSimpleTwoAddress = 0x105E62B0;
+        private readonly uint player00Address = 0x105EF3B0;
+        private readonly uint player00HlfAddress = 0x105EF3BC;
+        private readonly uint rivalSquidAddress = 0x105EF3CC;
         private readonly uint tnkSimpleThreeAddress = 0x12BEB354;
         private readonly uint tnkSimpleFourAddress = 0x12BEB3A0;
         private readonly uint tnkSimpleFiveAddress = 0x12BEB3EC;
@@ -140,7 +140,7 @@ namespace SplatAIO {
             }
 
             // do a version check using "ToHu" of "ToHuman"
-            if (Gecko.peek(0x105EF3F0) != 0x546F4875)
+            if (Gecko.peek(player00Address + 0x50) != 0x546F4875)
             {
                 MessageBox.Show(Properties.Strings.VERSION_CHECK_FAILED_TEXT);
 
