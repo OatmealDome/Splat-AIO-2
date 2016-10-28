@@ -28,7 +28,6 @@ namespace SplatAIO
             try
             {
                 ver = Convert.ToInt32(vers.DownloadString("https://oatmealdome.github.io/AIO2/version.txt"));
-                ver = 9999;
                 return 0;
 
             }
