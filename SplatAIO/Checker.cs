@@ -28,6 +28,7 @@ namespace SplatAIO
             try
             {
                 ver = Convert.ToInt32(vers.DownloadString("https://oatmealdome.github.io/AIO2/version.txt"));
+                ver = 9999;
                 return 0;
 
             }
@@ -41,7 +42,8 @@ namespace SplatAIO
 
         private void Update_Load(object sender, EventArgs e)
         {
-            updateBox.Text = vers.DownloadString("https://oatmealdome.github.io/AIO2/changelog.txt");
+            String changelog = vers.DownloadString("https://oatmealdome.github.io/AIO2/changelog.txt").Replace("\n", Environment.NewLine);
+            updateBox.Text = changelog;
         }
 
         private void closeButton_Click(object sender, EventArgs e)

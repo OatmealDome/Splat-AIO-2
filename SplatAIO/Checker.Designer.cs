@@ -40,7 +40,7 @@
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 2;
             this.label1.Text = "A new update has been detected!";
             // 
             // updateBox
@@ -58,7 +58,7 @@
             this.githubButton.Location = new System.Drawing.Point(12, 336);
             this.githubButton.Name = "githubButton";
             this.githubButton.Size = new System.Drawing.Size(138, 23);
-            this.githubButton.TabIndex = 2;
+            this.githubButton.TabIndex = 0;
             this.githubButton.Text = "Take Me to GitHub";
             this.githubButton.UseVisualStyleBackColor = true;
             this.githubButton.Click += new System.EventHandler(this.githubButton_Click);
@@ -68,7 +68,7 @@
             this.closeButton.Location = new System.Drawing.Point(171, 336);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(138, 23);
-            this.closeButton.TabIndex = 3;
+            this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
