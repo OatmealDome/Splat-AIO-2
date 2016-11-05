@@ -385,9 +385,10 @@ namespace SplatAIO {
             Gecko.poke32(address, rank - 1); // rank
             Gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
-            // we need to set the rank cap progression bit appropriately
+            // set progression bits appropriately
             uint progression = Gecko.peek(ProgressBitsForm.progressBitsAddress + diff);
-            ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20); // remove if rank < 20, set if rank >= 20
+            ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20); // rank cap flag, remove if rank < 20, set if rank >= 20
+            ProgressBitsForm.SetFlag(ref progression, 0x800, rank >= 10); // gachi unlocked flag, remove if rank < 10, set if rank >= 10
             Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
         }
 
