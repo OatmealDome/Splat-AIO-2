@@ -232,6 +232,15 @@ namespace SplatAIO.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find timer address. Please go into one of the supported modes before proceeding..
+        /// </summary>
+        public static string INVALID_TIME_ADDR {
+            get {
+                return ResourceManager.GetString("INVALID_TIME_ADDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This level has already been added. If you wish to edit it, please right click it in the list..
         /// </summary>
         public static string LEVEL_ALREADY_ADDED_TEXT {

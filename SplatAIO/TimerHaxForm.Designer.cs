@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(TimerHaxForm));
-            this.BattleDojoRadioButton = new System.Windows.Forms.RadioButton();
-            this.ReconRadioButton = new System.Windows.Forms.RadioButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerHaxForm));
+            this.ReconDojoRadioButton = new System.Windows.Forms.RadioButton();
             this.AmiiboRadioButton = new System.Windows.Forms.RadioButton();
             this.TimerBox = new System.Windows.Forms.NumericUpDown();
             this.ApplyButton = new System.Windows.Forms.Button();
@@ -41,25 +40,18 @@
             this.ControlsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // BattleDojoRadioButton
+            // ReconDojoRadioButton
             // 
-            resources.ApplyResources(this.BattleDojoRadioButton, "BattleDojoRadioButton");
-            this.BattleDojoRadioButton.Name = "BattleDojoRadioButton";
-            this.BattleDojoRadioButton.TabStop = true;
-            this.BattleDojoRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ReconRadioButton
-            // 
-            resources.ApplyResources(this.ReconRadioButton, "ReconRadioButton");
-            this.ReconRadioButton.Name = "ReconRadioButton";
-            this.ReconRadioButton.TabStop = true;
-            this.ReconRadioButton.UseVisualStyleBackColor = true;
+            this.ReconDojoRadioButton.Checked = true;
+            resources.ApplyResources(this.ReconDojoRadioButton, "ReconDojoRadioButton");
+            this.ReconDojoRadioButton.Name = "ReconDojoRadioButton";
+            this.ReconDojoRadioButton.TabStop = true;
+            this.ReconDojoRadioButton.UseVisualStyleBackColor = true;
             // 
             // AmiiboRadioButton
             // 
             resources.ApplyResources(this.AmiiboRadioButton, "AmiiboRadioButton");
             this.AmiiboRadioButton.Name = "AmiiboRadioButton";
-            this.AmiiboRadioButton.TabStop = true;
             this.AmiiboRadioButton.UseVisualStyleBackColor = true;
             // 
             // TimerBox
@@ -70,17 +62,13 @@
             0,
             0,
             0});
-            this.TimerBox.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.TimerBox.Name = "TimerBox";
             this.TimerBox.Value = new decimal(new int[] {
-            30,
+            60,
             0,
             0,
             0});
+            this.TimerBox.ValueChanged += new System.EventHandler(this.TimerBox_ValueChanged);
             // 
             // ApplyButton
             // 
@@ -92,14 +80,14 @@
             // TimerLabel
             // 
             resources.ApplyResources(this.TimerLabel, "TimerLabel");
+            this.TimerLabel.BackColor = System.Drawing.Color.Transparent;
             this.TimerLabel.Name = "TimerLabel";
             // 
             // ControlsGroupBox
             // 
             this.ControlsGroupBox.Controls.Add(this.FreezeCheckBox);
-            this.ControlsGroupBox.Controls.Add(this.ReconRadioButton);
             this.ControlsGroupBox.Controls.Add(this.TimerLabel);
-            this.ControlsGroupBox.Controls.Add(this.BattleDojoRadioButton);
+            this.ControlsGroupBox.Controls.Add(this.ReconDojoRadioButton);
             this.ControlsGroupBox.Controls.Add(this.AmiiboRadioButton);
             this.ControlsGroupBox.Controls.Add(this.TimerBox);
             resources.ApplyResources(this.ControlsGroupBox, "ControlsGroupBox");
@@ -130,8 +118,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton BattleDojoRadioButton;
-        private System.Windows.Forms.RadioButton ReconRadioButton;
+        private System.Windows.Forms.RadioButton ReconDojoRadioButton;
         private System.Windows.Forms.RadioButton AmiiboRadioButton;
         private System.Windows.Forms.NumericUpDown TimerBox;
         private System.Windows.Forms.Button ApplyButton;

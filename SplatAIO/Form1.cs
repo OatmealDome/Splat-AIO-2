@@ -99,7 +99,6 @@ namespace SplatAIO {
             {
                 sendStats = false;
             }
-
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -119,17 +118,11 @@ namespace SplatAIO {
                 MessageBox.Show(Properties.Strings.INVALID_IP_TEXT);
             }
 
-            if (Gecko.peek(0x12CDADA0) == 0x000003F2)
+            //offset difference checker
+            uint JRAddr = Gecko.peek(0x106E975C) + 0x92D8;
+            if (Gecko.peek(JRAddr) == 0x000003F2)
             {
-                diff = 0x0;
-            }
-            else if (Gecko.peek(0x12CE2DA0) == 0x000003F2)
-            {
-                diff = 0x8000;
-            }
-            else if (Gecko.peek(0x12CE3DA0) == 0x000003F2)
-            {
-                diff = 0x9000;
+                diff = JRAddr - 0x12CDADA0;
             }
             else
             {
@@ -877,7 +870,7 @@ namespace SplatAIO {
 
         private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TimerHaxForm timerHaxForm = new TimerHaxForm(Gecko, diff);
+            TimerHaxForm timerHaxForm = new TimerHaxForm(Gecko);
             timerHaxForm.ShowDialog(this);
         }
 

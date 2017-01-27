@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,43 +10,36 @@ namespace SplatAIO
 {
     public partial class TimerHaxForm : Form
     {
-        private readonly uint dojoAddress = 0x1CAAA218;
-        private readonly uint dojoGeckiineAddress = 0x1CAA9D58;
-        private readonly uint reconAddress = 0x1CAAA144;
-        private readonly uint reconGeckiineAddress = 0x1CAA9C84;
-        private readonly uint amiiboAddress = 0x1CAB5778;
-        private readonly uint amiiboGeckiineAddress = 0x1CAB52B8;
+        private readonly uint basePointer = 0x106E5814;
+        private readonly uint offsetOne = 0x2A4;
+        private readonly uint offsetTwo = 0x280;
+        private readonly uint offsetTwoAmiibo = 0x2B4;
 
-        private TCPGecko gecko;
-        private uint diff;
+        private TCPGecko Gecko;
         private uint timerAddress;
 
-        public TimerHaxForm(TCPGecko gecko, uint diff)
+        public TimerHaxForm(TCPGecko Gecko)
         {
             InitializeComponent();
-
-            this.gecko = gecko;
-            this.diff = diff;
+            this.Gecko = Gecko;
+            TimerLabel.Text = "Set timer to: " + timeFormat();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
+            hold();
             RecalculatePointer();
-
-            if (!BattleDojoRadioButton.Checked && !ReconRadioButton.Checked && !AmiiboRadioButton.Checked)
-            {
-                MessageBox.Show(Properties.Strings.SELECT_TIMER_TYPE_TEXT);
-                return;
-            }
 
             if (!FreezeCheckBox.Checked)
             {
-                gecko.poke32(timerAddress, Convert.ToUInt32(TimerBox.Value * 60));
+                Gecko.poke32(timerAddress, (uint)TimerBox.Value * 60);
             }
             else
             {
-                gecko.poke32(timerAddress, 0xFFFFFFFE);
+                Gecko.poke32(timerAddress, 0xFFFFFFFE);
             }
+
+            release();
         }
 
         private void FreezeCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -58,31 +49,63 @@ namespace SplatAIO
 
         private void RecalculatePointer()
         {
-            if (BattleDojoRadioButton.Checked)
+           if (ReconDojoRadioButton.Checked)
             {
-                // TODO: geckiine
-                timerAddress = gecko.peek(dojoAddress + diff) + 0x280;
+                timerAddress = GetPointerVal(basePointer, offsetOne, offsetTwo);
             }
-            else if (ReconRadioButton.Checked)
+            else
             {
-                timerAddress = GetPointerVal(reconAddress, reconGeckiineAddress, 0x1F000000, 0x20000000) + 0x280;
-            }
-            else if (AmiiboRadioButton.Checked)
-            {
-                timerAddress = GetPointerVal(amiiboAddress, amiiboGeckiineAddress, 0x20000000, 0x21000000) + 0x2B4;
+                timerAddress = GetPointerVal(basePointer, offsetOne, offsetTwoAmiibo);
             }
         }
 
-        public uint GetPointerVal(uint regular, uint geckiine, uint rangeStart, uint rangeEnd)
+        public uint GetPointerVal(uint basePointer, uint offset1, uint offset2)
         {
-            uint pointerVal = gecko.peek(regular + diff);
-            if (pointerVal < rangeStart || pointerVal > rangeEnd)
+            try
             {
-                // pointer is invalid, fallback to geckiine pointer
-                pointerVal = gecko.peek(geckiine);
-            }
+                uint pointerVal = Gecko.peek(Gecko.peek(basePointer) + offset1) + offset2;
 
-            return pointerVal;
+                if (pointerVal > 0x1F000000 && pointerVal < 0x21000000)
+                {
+                    return pointerVal;
+                }
+                else
+                {
+                    return timerError();
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return timerError();
+            }
+        }
+
+        private uint timerError()
+        {
+            MessageBox.Show(Properties.Strings.INVALID_TIME_ADDR, "Timer Address Cannot Be Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //safe area to poke if error occurs
+            return 0x10000004;
+        }
+
+        private void hold()
+        {
+            ControlsGroupBox.Enabled = ApplyButton.Enabled = false;
+        }
+        private void release()
+        {
+            ControlsGroupBox.Enabled = ApplyButton.Enabled = true;
+        }
+
+        private void TimerBox_ValueChanged(object sender, EventArgs e)
+        {
+            TimerLabel.Text = "Set timer to: " + timeFormat();
+        }
+
+        private string timeFormat()
+        {
+            uint min = (uint)TimerBox.Value / 60;
+            uint sec = (uint)TimerBox.Value % 60;
+            return min.ToString("00") + ":" + sec.ToString("00");
         }
 
     }
