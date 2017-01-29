@@ -117,74 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BattleDojoRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BattleDojoRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 18</value>
+  <data name="ReconDojoRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 25</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BattleDojoRadioButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ReconDojoRadioButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="BattleDojoRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 17</value>
+  <data name="ReconDojoRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 17</value>
   </data>
-  <data name="BattleDojoRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ReconDojoRadioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="BattleDojoRadioButton.Text" xml:space="preserve">
-    <value>Battle Dojo</value>
+  <data name="ReconDojoRadioButton.Text" xml:space="preserve">
+    <value>Recon/Battle Dojo</value>
   </data>
-  <data name="&gt;&gt;BattleDojoRadioButton.Name" xml:space="preserve">
-    <value>BattleDojoRadioButton</value>
+  <data name="&gt;&gt;ReconDojoRadioButton.Name" xml:space="preserve">
+    <value>ReconDojoRadioButton</value>
   </data>
-  <data name="&gt;&gt;BattleDojoRadioButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;ReconDojoRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BattleDojoRadioButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ReconDojoRadioButton.Parent" xml:space="preserve">
     <value>ControlsGroupBox</value>
   </data>
-  <data name="&gt;&gt;BattleDojoRadioButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ReconRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ReconRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 36</value>
-  </data>
-  <data name="ReconRadioButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="ReconRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="ReconRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ReconRadioButton.Text" xml:space="preserve">
-    <value>Recon</value>
-  </data>
-  <data name="&gt;&gt;ReconRadioButton.Name" xml:space="preserve">
-    <value>ReconRadioButton</value>
-  </data>
-  <data name="&gt;&gt;ReconRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ReconRadioButton.Parent" xml:space="preserve">
-    <value>ControlsGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ReconRadioButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="AmiiboRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;ReconDojoRadioButton.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="AmiiboRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 55</value>
+    <value>11, 45</value>
   </data>
   <data name="AmiiboRadioButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -193,7 +157,7 @@
     <value>140, 17</value>
   </data>
   <data name="AmiiboRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="AmiiboRadioButton.Text" xml:space="preserve">
     <value>amiibo Squid Challenges</value>
@@ -208,7 +172,7 @@
     <value>ControlsGroupBox</value>
   </data>
   <data name="&gt;&gt;AmiiboRadioButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="TimerBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.875pt</value>
@@ -220,7 +184,7 @@
     <value>111, 19</value>
   </data>
   <data name="TimerBox.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>0</value>
   </data>
   <data name="TimerBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -235,7 +199,7 @@
     <value>ControlsGroupBox</value>
   </data>
   <data name="&gt;&gt;TimerBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="ApplyButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -247,10 +211,10 @@
     <value>6, 90</value>
   </data>
   <data name="ApplyButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 35</value>
+    <value>278, 35</value>
   </data>
   <data name="ApplyButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>0</value>
   </data>
   <data name="ApplyButton.Text" xml:space="preserve">
     <value>Apply</value>
@@ -295,49 +259,7 @@
     <value>ControlsGroupBox</value>
   </data>
   <data name="&gt;&gt;TimerLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;FreezeCheckBox.Name" xml:space="preserve">
-    <value>FreezeCheckBox</value>
-  </data>
-  <data name="&gt;&gt;FreezeCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FreezeCheckBox.Parent" xml:space="preserve">
-    <value>ControlsGroupBox</value>
-  </data>
-  <data name="&gt;&gt;FreezeCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ControlsGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="ControlsGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="ControlsGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="ControlsGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 79</value>
-  </data>
-  <data name="ControlsGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="ControlsGroupBox.Text" xml:space="preserve">
-    <value>Controls</value>
-  </data>
-  <data name="&gt;&gt;ControlsGroupBox.Name" xml:space="preserve">
-    <value>ControlsGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ControlsGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ControlsGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ControlsGroupBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="FreezeCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +274,7 @@
     <value>87, 17</value>
   </data>
   <data name="FreezeCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>1</value>
   </data>
   <data name="FreezeCheckBox.Text" xml:space="preserve">
     <value>Freeze Timer</value>
@@ -369,6 +291,36 @@
   <data name="&gt;&gt;FreezeCheckBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ControlsGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 6</value>
+  </data>
+  <data name="ControlsGroupBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="ControlsGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="ControlsGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 79</value>
+  </data>
+  <data name="ControlsGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ControlsGroupBox.Text" xml:space="preserve">
+    <value>Controls</value>
+  </data>
+  <data name="&gt;&gt;ControlsGroupBox.Name" xml:space="preserve">
+    <value>ControlsGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ControlsGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ControlsGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -379,7 +331,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>289, 135</value>
+    <value>290, 137</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
