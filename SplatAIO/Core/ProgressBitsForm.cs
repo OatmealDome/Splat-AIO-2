@@ -19,7 +19,7 @@ namespace SplatAIO.Core
         {
             SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
             gecko = mainForm.Gecko;
-            progression = gecko.peek(progressBitsAddress + mainForm.diff);
+            progression = gecko.peek(progressBitsAddress + mainForm.Offset);
 
             tutorialBox.Checked = (progression & 0x1) != 0;
             splatfestBox.Checked = (progression & 0x2) != 0;
@@ -50,7 +50,7 @@ namespace SplatAIO.Core
             SetFlag(ref progression, 0x100000, levelCapRaisedBox.Checked);
             SetFlag(ref progression, 0x200000, warningBox.Checked);
 
-            gecko.poke32(progressBitsAddress + ((SplatAIOForm)this.Owner).diff, progression);
+            gecko.poke32(progressBitsAddress + ((SplatAIOForm)this.Owner).Offset, progression);
         }
 
         public static void SetFlag(ref uint progression, uint flag, bool checkbox)

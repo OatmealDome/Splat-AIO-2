@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using SplatAIO.Memory;
 
 namespace SplatAIO.Gecko
 {
@@ -295,12 +296,12 @@ namespace SplatAIO.Gecko
             //Reset connection
             InitGecko();
 
-            if (SplatAIO.ValidMemory.rangeCheckId(startdump) != SplatAIO.ValidMemory.rangeCheckId(enddump))
+            if (ValidMemory.rangeCheckId(startdump) != ValidMemory.rangeCheckId(enddump))
             {
-                enddump = SplatAIO.ValidMemory.ValidAreas[SplatAIO.ValidMemory.rangeCheckId(startdump)].high;
+                enddump = ValidMemory.ValidAreas[ValidMemory.rangeCheckId(startdump)].high;
             }
 
-            if (!SplatAIO.ValidMemory.validAddress(startdump)) return;
+            if (!ValidMemory.validAddress(startdump)) return;
 
             //How many bytes of data have to be transferred
             UInt32 memlength = enddump - startdump;
@@ -1181,7 +1182,7 @@ namespace SplatAIO.Gecko
 
         public UInt32 peek(UInt32 address)
         {
-            if (!SplatAIO.ValidMemory.validAddress(address))
+            if (!ValidMemory.validAddress(address))
             {
                 return 0;
             }

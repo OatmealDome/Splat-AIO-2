@@ -31,14 +31,14 @@ namespace SplatAIO.Core
             TCPGecko gecko = mainForm.Gecko;
 
             // apply diff to the addresses
-            saveSlotsAddress += mainForm.diff;
-            environmentFlagsAddress += mainForm.diff;
-            heroShotAddress += mainForm.diff;
-            inkTankAddress += mainForm.diff;
-            splatBombAddress += mainForm.diff;
-            burstBombAddress += mainForm.diff;
-            seekerAddress += mainForm.diff;
-            powerEggsAddress += mainForm.diff;
+            saveSlotsAddress += mainForm.Offset;
+            environmentFlagsAddress += mainForm.Offset;
+            heroShotAddress += mainForm.Offset;
+            inkTankAddress += mainForm.Offset;
+            splatBombAddress += mainForm.Offset;
+            burstBombAddress += mainForm.Offset;
+            seekerAddress += mainForm.Offset;
+            powerEggsAddress += mainForm.Offset;
 
             // dump all single player save slots
             uint[] rawLevelData = SplatAIOForm.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
@@ -206,13 +206,13 @@ namespace SplatAIO.Core
 
                 // Reset single player flags in the Inkopolis progress bits
                 SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
-                uint progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.diff);
+                uint progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.Offset);
 
                 ProgressBitsForm.SetFlag(ref progression, 0x10, false); // octo valley intro
                 ProgressBitsForm.SetFlag(ref progression, 0x80, false); // great zapfish returned
                 ProgressBitsForm.SetFlag(ref progression, 0x100, false); // credits block available
 
-                mainForm.Gecko.poke32(ProgressBitsForm.progressBitsAddress + mainForm.diff, progression);
+                mainForm.Gecko.poke32(ProgressBitsForm.progressBitsAddress + mainForm.Offset, progression);
             }
         }
 

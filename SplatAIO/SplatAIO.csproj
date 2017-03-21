@@ -69,6 +69,11 @@
     <Compile Include="Gecko\ByteSwap.cs" />
     <Compile Include="Gecko\Dump.cs" />
     <Compile Include="Gecko\ETCPGeckoException.cs" />
+    <Compile Include="Memory\Addresses\Gear.cs" />
+    <Compile Include="Memory\Addresses\Octohax.cs" />
+    <Compile Include="Memory\Addresses\Player.cs" />
+    <Compile Include="Memory\Addresses\Sisterhax.cs" />
+    <Compile Include="Memory\ValidMemory.cs" />
     <Compile Include="Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,7 +94,7 @@
       <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\LevelData.cs" />
-    <Compile Include="Core\MemAreas.cs" />
+    <Compile Include="Memory\AddressRange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Core\ProgressBitsForm.cs">
       <SubType>Form</SubType>
