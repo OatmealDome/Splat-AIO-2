@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SplatAIO
@@ -17,14 +14,13 @@ namespace SplatAIO
         static void Main()
         {
             // for debugging purposes
-            /*CultureInfo japaneseCulture = new CultureInfo("ja-JP");
+/*#if DEBUG
+            CultureInfo japaneseCulture = new CultureInfo("ja-JP");
             Thread.CurrentThread.CurrentCulture = japaneseCulture;
             Thread.CurrentThread.CurrentUICulture = japaneseCulture;
             CultureInfo.DefaultThreadCurrentCulture = japaneseCulture;
-            CultureInfo.DefaultThreadCurrentUICulture = japaneseCulture;*/
-
-            // Generate the weapon database on start up
-            WeaponDatabase.NoOperation();
+            CultureInfo.DefaultThreadCurrentUICulture = japaneseCulture
+#endif*/
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

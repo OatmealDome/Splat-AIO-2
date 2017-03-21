@@ -8,7 +8,7 @@ namespace SplatAIO
 {
     class WeaponDatabase
     {
-        public static readonly List<Weapon> weapons = new List<Weapon>();
+        private static readonly List<Weapon> weapons = new List<Weapon>();
         private static readonly Dictionary<uint, int> idToIndex = new Dictionary<uint, int>();
 
         static WeaponDatabase()
@@ -119,9 +119,9 @@ namespace SplatAIO
             return idToIndex[id];
         }
 
-        public static void NoOperation()
+        public static List<Weapon> GetWeapons()
         {
-            // ¯\_(ツ)_/¯
+            return weapons;
         }
 
     }

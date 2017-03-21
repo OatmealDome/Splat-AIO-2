@@ -549,7 +549,7 @@ namespace SplatAIO {
 
         private void bukiButton_Click(object sender, EventArgs e)
         {
-            WeaponsForm.PokeWeapons(WeaponDatabase.weapons, Gecko, diff);
+            WeaponsForm.PokeWeapons(WeaponDatabase.GetWeapons(), Gecko, diff);
         }
 
         private readonly Dictionary<uint, uint[]> hats = new Dictionary<uint, uint[]>()
