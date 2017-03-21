@@ -36,7 +36,7 @@ namespace SplatAIO.Weapons
             if (weaponBox.Enabled != false)
             {
                 WeaponsForm weaponsForm = (WeaponsForm)this.Owner;
-                Weapon selectedWeapon = WeaponDatabase.GetWeapons()[weaponBox.SelectedIndex];
+                Weapon selectedWeapon = WeaponDatabase.Weapons[weaponBox.SelectedIndex];
 
                 // make sure this new weapon isn't already in the list
                 foreach (Weapon existingWeapon in weaponsForm.weapons)
