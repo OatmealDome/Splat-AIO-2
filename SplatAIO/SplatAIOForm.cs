@@ -509,7 +509,7 @@ namespace SplatAIO
 
         private void bukiButton_Click(object sender, EventArgs e)
         {
-            WeaponsForm.PokeWeapons(WeaponDatabase.GetWeapons(), Gecko, Offset);
+            WeaponsForm.PokeWeapons(WeaponDatabase.Weapons, Gecko, Offset);
         }
 
         private readonly Dictionary<uint, uint[]> hats = new Dictionary<uint, uint[]>()

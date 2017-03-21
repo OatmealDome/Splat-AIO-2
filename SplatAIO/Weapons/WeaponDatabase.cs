@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SplatAIO.Weapons
 {
-    class WeaponDatabase
+    public class WeaponDatabase
     {
         private static readonly List<Weapon> weapons = new List<Weapon>();
         private static readonly Dictionary<uint, int> idToIndex = new Dictionary<uint, int>();
+
+        public static List<Weapon> Weapons { get { return weapons; } }
 
         static WeaponDatabase()
         {
@@ -114,15 +116,9 @@ namespace SplatAIO.Weapons
             idToIndex.Add(id, weapons.Count - 1);
         }
 
-        public static int getIndex(uint id)
+        public static int GetIndex(uint id)
         {
             return idToIndex[id];
-        }
-
-        public static List<Weapon> GetWeapons()
-        {
-            return weapons;
-        }
-
+        }        
     }
 }

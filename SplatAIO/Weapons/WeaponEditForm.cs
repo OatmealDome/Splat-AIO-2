@@ -24,7 +24,7 @@ namespace SplatAIO.Weapons
             InitializeComponent();
 
             weapon = wep;
-            weaponBox.SelectedIndex = WeaponDatabase.getIndex(weapon.id);
+            weaponBox.SelectedIndex = WeaponDatabase.GetIndex(weapon.id);
             weaponBox.Enabled = false;
             turfInkedBox.Value = Convert.ToInt32(weapon.turfInked);
             newFlagBox.Checked = weapon.isNew;

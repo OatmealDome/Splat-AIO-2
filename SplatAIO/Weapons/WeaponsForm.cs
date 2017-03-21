@@ -122,7 +122,7 @@ namespace SplatAIO.Weapons
             {
                 String name;
 
-                int index = WeaponDatabase.getIndex(weapon.id);
+                int index = WeaponDatabase.GetIndex(weapon.id);
                 if (index == 0)
                 {
                     name = weaponEditFormResources.GetString("weaponBox.Items");
