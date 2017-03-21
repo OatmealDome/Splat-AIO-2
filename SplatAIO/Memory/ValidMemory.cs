@@ -12,16 +12,16 @@ namespace SplatAIO.Memory
         public static bool addressDebug = false;
 
         public static readonly AddressRange[] ValidAreas = new AddressRange[] {
-             new AddressRange(AddressType.Ex,  0x01000000,0x01800000),
-             new AddressRange(AddressType.Ex,  0x0e300000,0x10000000),
-             new AddressRange(AddressType.Rw,  0x10000000,0x50000000),
-             new AddressRange(AddressType.Ro,  0xe0000000,0xe4000000),
-             new AddressRange(AddressType.Ro,  0xe8000000,0xea000000),
-             new AddressRange(AddressType.Ro,  0xf4000000,0xf6000000),
-             new AddressRange(AddressType.Ro,  0xf6000000,0xf6800000),
-             new AddressRange(AddressType.Ro,  0xf8000000,0xfb000000),
-             new AddressRange(AddressType.Ro,  0xfb000000,0xfb800000),
-             new AddressRange(AddressType.Rw,  0xfffe0000,0xffffffff)
+             new AddressRange(AddressType.Ex, 0x01000000, 0x01800000),
+             new AddressRange(AddressType.Ex, 0x0e300000, 0x10000000),
+             new AddressRange(AddressType.Rw, 0x10000000, 0x50000000),
+             new AddressRange(AddressType.Ro, 0xe0000000, 0xe4000000),
+             new AddressRange(AddressType.Ro, 0xe8000000, 0xea000000),
+             new AddressRange(AddressType.Ro, 0xf4000000, 0xf6000000),
+             new AddressRange(AddressType.Ro, 0xf6000000, 0xf6800000),
+             new AddressRange(AddressType.Ro, 0xf8000000, 0xfb000000),
+             new AddressRange(AddressType.Ro, 0xfb000000, 0xfb800000),
+             new AddressRange(AddressType.Rw, 0xfffe0000, 0xffffffff)
         };
 
         public static AddressType rangeCheck(UInt32 address)
@@ -46,9 +46,7 @@ namespace SplatAIO.Memory
 
         public static bool validAddress(UInt32 address, bool debug)
         {
-            if (debug)
-                return true;
-            return (rangeCheckId(address) >= 0);
+            return debug || (rangeCheckId(address) >= 0);
         }
 
         public static bool validAddress(UInt32 address)
@@ -58,9 +56,7 @@ namespace SplatAIO.Memory
 
         public static bool validRange(UInt32 low, UInt32 high, bool debug)
         {
-            if (debug)
-                return true;
-            return (rangeCheckId(low) == rangeCheckId(high - 1));
+            return debug || (rangeCheckId(low) == rangeCheckId(high - 1));
         }
 
         public static bool validRange(UInt32 low, UInt32 high)
@@ -79,7 +75,6 @@ namespace SplatAIO.Memory
                     break;
                 case 500:
                 case 510:
-                    return;
                 // TODO: This doesn't work for some reason - crashes on connection?
                 //mem = upper.peek_kern(0xffe8591c);
                 //break;
