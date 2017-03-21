@@ -5,190 +5,8 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace SplatAIO
+namespace SplatAIO.Gecko
 {
-    public class ByteSwap
-    {
-        public static UInt16 Swap(UInt16 input)
-        {
-            if (BitConverter.IsLittleEndian)
-                return ((UInt16)(
-                    ((0xFF00 & input) >> 8) |
-                    ((0x00FF & input) << 8)));
-            else
-                return input;
-        }
-
-        public static UInt32 Swap(UInt32 input)
-        {
-            if (BitConverter.IsLittleEndian)
-                return ((UInt32)(
-                    ((0xFF000000 & input) >> 24) |
-                    ((0x00FF0000 & input) >> 8) |
-                    ((0x0000FF00 & input) << 8) |
-                    ((0x000000FF & input) << 24)));
-            else
-                return input;
-        }
-
-        public static UInt64 Swap(UInt64 input)
-        {
-            if (BitConverter.IsLittleEndian)
-                return ((UInt64)(
-                    ((0xFF00000000000000 & input) >> 56) |
-                    ((0x00FF000000000000 & input) >> 40) |
-                    ((0x0000FF0000000000 & input) >> 24) |
-                    ((0x000000FF00000000 & input) >> 8) |
-                    ((0x00000000FF000000 & input) << 8) |
-                    ((0x0000000000FF0000 & input) << 24) |
-                    ((0x000000000000FF00 & input) << 40) |
-                    ((0x00000000000000FF & input) << 56)));
-            else
-                return input;
-        }
-    }
-
-    public class Dump
-    {
-        public Dump(UInt32 theStartAddress, UInt32 theEndAddress)
-        {
-            Construct(theStartAddress, theEndAddress, 0);
-        }
-
-        public Dump(UInt32 theStartAddress, UInt32 theEndAddress, int theFileNumber)
-        {
-            Construct(theStartAddress, theEndAddress, theFileNumber);
-        }
-
-        private void Construct(UInt32 theStartAddress, UInt32 theEndAddress, int theFileNumber)
-        {
-            startAddress = theStartAddress;
-            endAddress = theEndAddress;
-            readCompletedAddress = theStartAddress;
-            mem = new Byte[endAddress - startAddress];
-            fileNumber = theFileNumber;
-        }
-
-
-        public UInt32 ReadAddress32(UInt32 addressToRead)
-        {
-            //dumpStream.Seek(addressToRead - startAddress, SeekOrigin.Begin);
-            //byte [] buffer = new byte[4];
-
-            //dumpStream.Read(buffer, 0, 4);
-            if (addressToRead < startAddress) return 0;
-            if (addressToRead > endAddress - 4) return 0;
-            Byte[] buffer = new Byte[4];
-            Buffer.BlockCopy(mem, index(addressToRead), buffer, 0, 4);
-            //GeckoApp.SubArray<byte> buffer = new GeckoApp.SubArray<byte>(mem, (int)(addressToRead - startAddress), 4);
-
-            //Read buffer
-            UInt32 result = BitConverter.ToUInt32(buffer, 0);
-
-            //Swap to machine endianness and return
-            return ByteSwap.Swap(result);
-        }
-
-        private int index(UInt32 addressToRead)
-        {
-            return (int)(addressToRead - startAddress);
-        }
-
-        public UInt32 ReadAddress(UInt32 addressToRead, int numBytes)
-        {
-            if (addressToRead < startAddress) return 0;
-            if (addressToRead > endAddress - numBytes) return 0;
-
-            Byte[] buffer = new Byte[4];
-            Buffer.BlockCopy(mem, index(addressToRead), buffer, 0, numBytes);
-
-            //Read buffer
-            switch (numBytes)
-            {
-                case 4:
-                    UInt32 result = BitConverter.ToUInt32(buffer, 0);
-
-                    //Swap to machine endianness and return
-                    return ByteSwap.Swap(result);
-
-                case 2:
-                    UInt16 result16 = BitConverter.ToUInt16(buffer, 0);
-
-                    //Swap to machine endianness and return
-                    return ByteSwap.Swap(result16);
-
-                default:
-                    return buffer[0];
-            }
-        }
-
-        public void WriteStreamToDisk()
-        {
-            string myDirectory = Environment.CurrentDirectory + @"\searchdumps\";
-            if (!Directory.Exists(myDirectory))
-            {
-                Directory.CreateDirectory(myDirectory);
-            }
-            string myFile = myDirectory + "dump" + fileNumber.ToString() + ".dmp";
-
-            WriteStreamToDisk(myFile);
-        }
-
-        public void WriteStreamToDisk(string filepath)
-        {
-            FileStream foo = new FileStream(filepath, FileMode.Create);
-            foo.Write(mem, 0, (int)(endAddress - startAddress));
-            foo.Close();
-            foo.Dispose();
-        }
-
-        /*
-        public void WriteCompressedStreamToDisk(string filepath)
-        {
-            ZipFile foo = new ZipFile(filepath);
-            foo.AddEntry("mem", mem);
-            foo.Dispose();
-        }
-        */
-
-        public Byte[] mem;
-        private UInt32 startAddress;
-        public UInt32 StartAddress
-        {
-            get { return startAddress; }
-        }
-        private UInt32 endAddress;
-        public UInt32 EndAddress
-        {
-            get { return endAddress; }
-        }
-        private UInt32 readCompletedAddress;
-        public UInt32 ReadCompletedAddress
-        {
-            get { return readCompletedAddress; }
-            set { readCompletedAddress = value; }
-        }
-        private int fileNumber;
-    }
-
-    public enum ETCPErrorCode
-    {
-        FTDIQueryError,
-        noFTDIDevicesFound,
-        noTCPGeckoFound,
-        FTDIResetError,
-        FTDIPurgeRxError,
-        FTDIPurgeTxError,
-        FTDITimeoutSetError,
-        FTDITransferSetError,
-        FTDICommandSendError,
-        FTDIReadDataError,
-        FTDIInvalidReply,
-        TooManyRetries,
-        REGStreamSizeInvalid,
-        CheatStreamSizeInvalid
-    }
-
     public enum FTDICommand
     {
         CMD_ResultError,
@@ -238,38 +56,10 @@ namespace SplatAIO
     }
 
     public delegate void GeckoProgress(UInt32 address, UInt32 currentchunk, UInt32 allchunks, UInt32 transferred, UInt32 length, bool okay, bool dump);
-
-    public class ETCPGeckoException : Exception
-    {
-        private ETCPErrorCode PErrorCode;
-        public ETCPErrorCode ErrorCode
-        {
-            get
-            {
-                return PErrorCode;
-            }
-        }
-
-        public ETCPGeckoException(ETCPErrorCode code)
-            : base()
-        {
-            PErrorCode = code;
-        }
-        public ETCPGeckoException(ETCPErrorCode code, string message)
-            : base(message)
-        {
-            PErrorCode = code;
-        }
-        public ETCPGeckoException(ETCPErrorCode code, string message, Exception inner)
-            : base(message, inner)
-        {
-            PErrorCode = code;
-        }
-    }
-
+    
     public class TCPGecko
     {
-        private tcpconn PTCP;
+        private TCPConnector PTCP;
 
         #region base constants
         private const UInt32 packetsize = 0x400;
@@ -369,14 +159,14 @@ namespace SplatAIO
             {
                 if (!PConnected)
                 {
-                    PTCP = new tcpconn(value, PTCP.Port);
+                    PTCP = new TCPConnector(value, PTCP.Port);
                 }
             }
         }
 
         public TCPGecko(string host, int port)
         {
-            PTCP = new tcpconn(host, port);
+            PTCP = new TCPConnector(host, port);
             PConnected = false;
             PChunkUpdate = null;
         }

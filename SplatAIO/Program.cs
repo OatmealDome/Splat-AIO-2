@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace SplatAIO
@@ -24,7 +22,7 @@ namespace SplatAIO
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SplatAIOForm());
 
         }
     }

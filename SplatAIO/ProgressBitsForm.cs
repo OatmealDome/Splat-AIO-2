@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SplatAIO.Gecko;
+using System;
 using System.Windows.Forms;
 
 namespace SplatAIO
@@ -23,7 +17,7 @@ namespace SplatAIO
 
         private void ProgressBitsForm_Load(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.Owner;
+            SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
             gecko = mainForm.Gecko;
             progression = gecko.peek(progressBitsAddress + mainForm.diff);
 
@@ -56,7 +50,7 @@ namespace SplatAIO
             SetFlag(ref progression, 0x100000, levelCapRaisedBox.Checked);
             SetFlag(ref progression, 0x200000, warningBox.Checked);
 
-            gecko.poke32(progressBitsAddress + ((Form1)this.Owner).diff, progression);
+            gecko.poke32(progressBitsAddress + ((SplatAIOForm)this.Owner).diff, progression);
         }
 
         public static void SetFlag(ref uint progression, uint flag, bool checkbox)

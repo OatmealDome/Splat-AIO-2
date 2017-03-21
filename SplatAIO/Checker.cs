@@ -13,7 +13,6 @@ namespace SplatAIO
 {
     public partial class Checker : Form
     {
-        public Form1 main;
         public int ver;
         public string data;
         public WebClient vers = new WebClient();

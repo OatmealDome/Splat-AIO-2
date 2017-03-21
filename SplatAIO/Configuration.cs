@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SplatAIO.Statistics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace SplatAIO
                 allowStatisticsForm.ShowDialog();
 
                 currentConfig = new Configuration();
-                currentConfig.version = Form1.GetCurrentVersion();
+                currentConfig.version = SplatAIOForm.GetCurrentVersion();
                 currentConfig.lastIp = "";
                 currentConfig.allowStatistics = allowStatisticsForm.allowCollection;
 

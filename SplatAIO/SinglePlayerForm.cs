@@ -1,11 +1,6 @@
-﻿using System;
+﻿using SplatAIO.Gecko;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SplatAIO
@@ -32,7 +27,7 @@ namespace SplatAIO
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.Owner;
+            SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
             TCPGecko gecko = mainForm.Gecko;
 
             // apply diff to the addresses
@@ -46,7 +41,7 @@ namespace SplatAIO
             powerEggsAddress += mainForm.diff;
 
             // dump all single player save slots
-            uint[] rawLevelData = Form1.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
+            uint[] rawLevelData = SplatAIOForm.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
 
             // read data from slots
             int j = 0;
@@ -106,7 +101,7 @@ namespace SplatAIO
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((Form1)this.Owner).Gecko;
+            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
 
             // poke save slots in the list into memory
             uint currentPosition = saveSlotsAddress;
@@ -163,7 +158,7 @@ namespace SplatAIO
 
         private void clearEnvironmentButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((Form1)this.Owner).Gecko;
+            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
 
             gecko.poke32(environmentFlagsAddress, 0x0);
             gecko.poke32(environmentFlagsAddress + 0x4, 0x0);
@@ -173,7 +168,7 @@ namespace SplatAIO
 
         private void setEnvironmentButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((Form1)this.Owner).Gecko;
+            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
 
             gecko.poke32(environmentFlagsAddress, 0x0);
             gecko.poke32(environmentFlagsAddress + 0x4, 0x001FFFFF);
@@ -210,7 +205,7 @@ namespace SplatAIO
                 this.OKButton_Click(null, null);
 
                 // Reset single player flags in the Inkopolis progress bits
-                Form1 mainForm = (Form1)this.Owner;
+                SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
                 uint progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.diff);
 
                 ProgressBitsForm.SetFlag(ref progression, 0x10, false); // octo valley intro

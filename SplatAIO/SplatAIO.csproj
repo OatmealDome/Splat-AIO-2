@@ -52,7 +52,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,10 +66,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities.cs" />
-    <Compile Include="AllowStatisticsForm.cs">
+    <Compile Include="Gecko\ByteSwap.cs" />
+    <Compile Include="Gecko\Dump.cs" />
+    <Compile Include="Gecko\ETCPGeckoException.cs" />
+    <Compile Include="Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllowStatisticsForm.Designer.cs">
+    <Compile Include="Statistics\AllowStatisticsForm.Designer.cs">
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuration.cs" />
@@ -80,11 +82,11 @@
     <Compile Include="EditLevelDataForm.Designer.cs">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="SplatAIOForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SplatAIOForm.Designer.cs">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LevelData.cs" />
     <Compile Include="MemAreas.cs" />
@@ -113,11 +115,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Statistics.cs" />
+    <Compile Include="Statistics\StatisticTransmitter.cs" />
     <Compile Include="SpecialWeapon.cs" />
     <Compile Include="SubWeapon.cs" />
-    <Compile Include="tcpconn.cs" />
-    <Compile Include="TCPGecko.cs" />
+    <Compile Include="TCPConnector.cs" />
+    <Compile Include="Gecko\TCPGecko.cs" />
     <Compile Include="Checker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,7 +146,7 @@
     <Compile Include="WeaponsForm.Designer.cs">
       <DependentUpon>WeaponsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AllowStatisticsForm.resx">
+    <EmbeddedResource Include="Statistics\AllowStatisticsForm.resx">
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditLevelDataForm.ja.resx">
@@ -153,11 +155,11 @@
     <EmbeddedResource Include="EditLevelDataForm.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.ja.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SplatAIOForm.ja.resx">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SplatAIOForm.resx">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgressBitsForm.ja.resx">
       <DependentUpon>ProgressBitsForm.cs</DependentUpon>
@@ -236,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="_itshim.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
