@@ -1,5 +1,7 @@
-﻿using SplatAIO.Gecko;
+﻿using SplatAIO.Core;
+using SplatAIO.Gecko;
 using SplatAIO.Statistics;
+using SplatAIO.Weapons;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
