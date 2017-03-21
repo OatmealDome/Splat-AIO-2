@@ -1,10 +1,10 @@
 ﻿#define DIRECT
 
+using SplatAIO.Memory;
 using System;
-using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
-using SplatAIO.Memory;
+using System.IO;
 
 namespace SplatAIO.Gecko
 {

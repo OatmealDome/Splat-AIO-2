@@ -1,5 +1,4 @@
-﻿using SplatAIO.Gecko;
-using System;
+﻿using System;
 
 namespace SplatAIO.Memory
 {
