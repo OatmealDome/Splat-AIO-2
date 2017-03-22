@@ -47,11 +47,11 @@ namespace SplatAIO
             }
 
             Configuration.Load();
-            ipBox.Text = Configuration.currentConfig.lastIp;
+            ipBox.Text = Configuration.CurrentConfig.LastIp;
             
             this.Text += " (" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + ")";
 
-            if (Configuration.currentConfig.allowStatistics)
+            if (Configuration.CurrentConfig.AllowStatistics)
             {
                 sendStats = StatisticTransmitter.WorkingConnection();
             }
@@ -101,7 +101,7 @@ namespace SplatAIO
                 return;
             }
 
-            Configuration.currentConfig.lastIp = ipBox.Text;
+            Configuration.CurrentConfig.LastIp = ipBox.Text;
             Configuration.Save();
 
             connectBox.Enabled = false;

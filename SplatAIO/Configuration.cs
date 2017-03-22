@@ -8,42 +8,44 @@ namespace SplatAIO
     [Serializable]
     public class Configuration
     {
-        public int version;
-        public String lastIp;
-        public bool allowStatistics;
+        private const string CONFIG_FILE = "Configuration.xml";
 
-        private static XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
-        public static Configuration currentConfig;
-    
+        private static readonly XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
+        public static Configuration CurrentConfig { get; private set; }
+
+        public int Version { get; set; }
+        public string LastIp { get; set; }
+        public bool AllowStatistics { get; set; }
+
         public static void Load()
         {
-            if (!File.Exists("Configuration.xml"))
+            if (!File.Exists(CONFIG_FILE))
             {
                 AllowStatisticsForm allowStatisticsForm = new AllowStatisticsForm();
                 allowStatisticsForm.ShowDialog();
 
-                currentConfig = new Configuration();
-                currentConfig.version = SplatAIOForm.GetCurrentVersion();
-                currentConfig.lastIp = "";
-                currentConfig.allowStatistics = allowStatisticsForm.allowCollection;
+                CurrentConfig = new Configuration();
+                CurrentConfig.Version = SplatAIOForm.GetCurrentVersion();
+                CurrentConfig.LastIp = "";
+                CurrentConfig.AllowStatistics = allowStatisticsForm.allowCollection;
 
                 Save();
             }
             else
             {
-                using (FileStream stream = File.OpenRead("Configuration.xml"))
+                using (FileStream stream = File.OpenRead(CONFIG_FILE))
                 {
-                    currentConfig = (Configuration)serializer.Deserialize(stream);
+                    CurrentConfig = (Configuration)serializer.Deserialize(stream);
                 }
             }
         }
 
         public static void Save()
         {
-            File.Delete("Configuration.xml");
-            using (FileStream writer = File.OpenWrite("Configuration.xml"))
+            File.Delete(CONFIG_FILE);
+            using (FileStream writer = File.OpenWrite(CONFIG_FILE))
             {
-                serializer.Serialize(writer, currentConfig);
+                serializer.Serialize(writer, CurrentConfig);
             }
         }
 
