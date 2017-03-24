@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SplatAIO.UI;
+using System;
 using System.Windows.Forms;
 
 namespace SplatAIO
