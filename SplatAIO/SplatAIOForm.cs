@@ -28,10 +28,8 @@ namespace SplatAIO
         public uint Figure { get; set; }
         public uint Offset { get; set; }
         public TCPGecko Gecko { get; set; }
-
-        public bool sendStats = false;
-
-        public bool autoRefresh = false;
+        public bool SendStats { get; set; }
+        public bool AutoRefresh { get; set; }
 
         public SplatAIOForm()
         {
@@ -53,17 +51,17 @@ namespace SplatAIO
 
             if (Configuration.CurrentConfig.AllowStatistics)
             {
-                sendStats = StatisticTransmitter.WorkingConnection();
+                SendStats = StatisticTransmitter.WorkingConnection();
             }
             else
             {
-                sendStats = false;
+                SendStats = false;
             }
         }
 
         private void connectBox_Click(object sender, EventArgs e)
         {
-            Gecko = new TCPGecko(ipBox.Text, 7331);
+            Gecko = new TCPGecko(ipBox.Text);
 
             try
             {
@@ -273,7 +271,7 @@ namespace SplatAIO
         {
             hold();
 
-            if (sendStats)
+            if (SendStats)
             {
                 if(kaneBox.Value != Okane)
                 {
@@ -354,7 +352,7 @@ namespace SplatAIO
             else
             {
                 Gecko.poke32(address, Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
-                if (sendStats)
+                if (SendStats)
                 {
                     StatisticTransmitter.WriteToSlot(7, 1);
                 }
@@ -409,7 +407,7 @@ namespace SplatAIO
             Gecko.poke32((uint)Octohax.TnkSimpleFive + 0x4, tnkRvlOne);
             Gecko.poke32((uint)Octohax.TnkSimpleFive + 0x8, tnkRvlTwo);
 
-            if (sendStats)
+            if (SendStats)
             {
                 StatisticTransmitter.WriteToSlot(9, 1);
             }
@@ -460,7 +458,7 @@ namespace SplatAIO
                     break;
             }
 
-            if (sendStats)
+            if (SendStats)
             {
                 StatisticTransmitter.WriteToSlot(8, 1);
             }
@@ -809,7 +807,7 @@ namespace SplatAIO
                 // Console.WriteLine("poked (objectId = " + objectId + ", new baseAddress = " + baseAddress + ")");
             }
 
-            if (sendStats)
+            if (SendStats)
             {
                 StatisticTransmitter.WriteToSlot(10, 1);
             }
@@ -870,19 +868,19 @@ namespace SplatAIO
         {
             if (checkBox1.Checked == true)
             {
-                autoRefresh = true;
+                AutoRefresh = true;
                 autoRefreshTimer.Enabled = true;
             }
             else
             {
-                autoRefresh = false;
+                AutoRefresh = false;
                 autoRefreshTimer.Enabled = false;
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e) //refresh on interval
         {
-            if (autoRefresh)
+            if (AutoRefresh)
             {
                 load();    
             }

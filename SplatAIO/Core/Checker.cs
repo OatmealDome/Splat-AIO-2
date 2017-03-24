@@ -34,8 +34,6 @@ namespace SplatAIO.Core
             {
                 return 1;
             }
-
-            
         }
 
         private void Update_Load(object sender, EventArgs e)

@@ -165,7 +165,7 @@ namespace SplatAIO.Gecko
             }
         }
 
-        public TCPGecko(string host, int port)
+        public TCPGecko(string host, int port = 7331)
         {
             PTCP = new TCPConnector(host, port);
             PConnected = false;
