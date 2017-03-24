@@ -3,6 +3,7 @@ using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Memory.Addresses;
 using SplatAIO.Logic.Statistics;
 using SplatAIO.Logic.Weapons;
+using SplatAIO.UI.TimerHax;
 using SplatAIO.UI.Weapons;
 using System;
 using System.Collections.Generic;

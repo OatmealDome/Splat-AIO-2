@@ -74,6 +74,7 @@
     <Compile Include="Logic\Memory\Addresses\Player.cs" />
     <Compile Include="Logic\Memory\Addresses\Sisterhax.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
+    <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
     <Compile Include="UI\Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,10 +132,10 @@
     <Compile Include="UI\Checker.Designer.cs">
       <DependentUpon>Checker.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TimerHaxForm.cs">
+    <Compile Include="UI\TimerHax\TimerHaxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TimerHaxForm.Designer.cs">
+    <Compile Include="UI\TimerHax\TimerHaxForm.Designer.cs">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\Weapons\Weapon.cs" />
@@ -199,10 +200,10 @@
     <EmbeddedResource Include="UI\Checker.resx">
       <DependentUpon>Checker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TimerHaxForm.ja.resx">
+    <EmbeddedResource Include="UI\TimerHax\TimerHaxForm.ja.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TimerHaxForm.resx">
+    <EmbeddedResource Include="UI\TimerHax\TimerHaxForm.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Weapons\WeaponEditForm.ja.resx">
@@ -244,7 +245,9 @@
   <ItemGroup>
     <None Include="_itshim.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release (
