@@ -4,15 +4,14 @@ using System.Net;
 
 namespace SplatAIO.Logic.Statistics
 {
-
     public class StatisticTransmitter
     {
-        private static string url = "https://wiiucodes.tk/statistics_bg.php";
-        private static string agent = "AIOStats/1.0";
+        private static readonly string url = "https://wiiucodes.tk/statistics_bg.php";
+        private static readonly string agent = "AIOStats/1.0";
 
         public static void WriteToSlot(int slotnum, decimal content)
         {
-            WebClient client = new WebClient();
+            var client = new WebClient();
             client.Headers.Add("user-agent", agent);
 
             try //just in case
@@ -35,16 +34,18 @@ namespace SplatAIO.Logic.Statistics
 
         public static bool WorkingConnection()
         {
-            bool result = false;
-            CultureInfo ci = CultureInfo.InstalledUICulture;
+            var result = false;
+            var ci = CultureInfo.InstalledUICulture;
 
-            WebClient client = new WebClient();
+            var client = new WebClient();
             client.Headers.Add("user-agent", agent);
             try
             {
-                result = client.DownloadString(url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" + ci.EnglishName).Equals("working");
+                result =
+                    client.DownloadString(url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" +
+                                          ci.EnglishName).Equals("working");
             }
-            catch(ArgumentException e)
+            catch (ArgumentException e)
             {
                 // ToDo logging
             }

@@ -4,13 +4,10 @@ using System.Net.Sockets;
 
 namespace SplatAIO.Logic.Gecko
 {
-    class TCPConnector
+    internal class TCPConnector
     {
-        TcpClient client;
-        NetworkStream stream;
-
-        public string Host { get; private set; }
-        public int Port { get; private set; }
+        private TcpClient client;
+        private NetworkStream stream;
 
         public TCPConnector(string host, int port)
         {
@@ -20,17 +17,22 @@ namespace SplatAIO.Logic.Gecko
             stream = null;
         }
 
+        public string Host { get; }
+        public int Port { get; }
+
         public void Connect()
         {
             try
             {
                 Close();
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
             client = new TcpClient();
             client.NoDelay = true;
-            IAsyncResult ar = client.BeginConnect(Host, Port, null, null);
-            System.Threading.WaitHandle wh = ar.AsyncWaitHandle;
+            var ar = client.BeginConnect(Host, Port, null, null);
+            var wh = ar.AsyncWaitHandle;
             try
             {
                 if (!ar.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(5), false))
@@ -55,13 +57,12 @@ namespace SplatAIO.Logic.Gecko
             try
             {
                 if (client == null)
-                {
                     throw new IOException("Not connected.", new NullReferenceException());
-                }
                 client.Close();
-
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
             finally
             {
                 client = null;
@@ -71,30 +72,26 @@ namespace SplatAIO.Logic.Gecko
         public void Purge()
         {
             if (stream == null)
-            {
                 throw new IOException("Not connected.", new NullReferenceException());
-            }
             stream.Flush();
         }
 
-        public void Read(Byte[] buffer, UInt32 nobytes, ref UInt32 bytes_read)
+        public void Read(byte[] buffer, uint nobytes, ref uint bytes_read)
         {
             try
             {
-                int offset = 0;
+                var offset = 0;
                 if (stream == null)
-                {
                     throw new IOException("Not connected.", new NullReferenceException());
-                }
                 bytes_read = 0;
                 while (nobytes > 0)
                 {
-                    int read = stream.Read(buffer, offset, (int)nobytes);
+                    var read = stream.Read(buffer, offset, (int) nobytes);
                     if (read >= 0)
                     {
-                        bytes_read += (uint)read;
+                        bytes_read += (uint) read;
                         offset += read;
-                        nobytes -= (uint)read;
+                        nobytes -= (uint) read;
                     }
                     else
                     {
@@ -108,17 +105,15 @@ namespace SplatAIO.Logic.Gecko
             }
         }
 
-        public void Write(Byte[] buffer, Int32 nobytes, ref UInt32 bytes_written)
+        public void Write(byte[] buffer, int nobytes, ref uint bytes_written)
         {
             try
             {
                 if (stream == null)
-                {
                     throw new IOException("Not connected.", new NullReferenceException());
-                }
                 stream.Write(buffer, 0, nobytes);
                 if (nobytes >= 0)
-                    bytes_written = (uint)nobytes;
+                    bytes_written = (uint) nobytes;
                 else
                     bytes_written = 0;
                 stream.Flush();

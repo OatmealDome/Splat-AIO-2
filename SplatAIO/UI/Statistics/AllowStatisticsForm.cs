@@ -10,15 +10,14 @@ namespace SplatAIO.UI.Statistics
         public AllowStatisticsForm()
         {
             InitializeComponent();
-            this.ControlBox = false;
+            ControlBox = false;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             allowCollection = allowCheckBox.Checked;
 
-            this.Close();
+            Close();
         }
-
     }
 }

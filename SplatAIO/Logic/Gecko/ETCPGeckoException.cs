@@ -22,29 +22,23 @@ namespace SplatAIO.Logic.Gecko
 
     public class ETCPGeckoException : Exception
     {
-        private ETCPErrorCode PErrorCode;
-        public ETCPErrorCode ErrorCode
+        public ETCPGeckoException(ETCPErrorCode code)
         {
-            get
-            {
-                return PErrorCode;
-            }
+            ErrorCode = code;
         }
 
-        public ETCPGeckoException(ETCPErrorCode code)
-            : base()
-        {
-            PErrorCode = code;
-        }
         public ETCPGeckoException(ETCPErrorCode code, string message)
             : base(message)
         {
-            PErrorCode = code;
+            ErrorCode = code;
         }
+
         public ETCPGeckoException(ETCPErrorCode code, string message, Exception inner)
             : base(message, inner)
         {
-            PErrorCode = code;
+            ErrorCode = code;
         }
+
+        public ETCPErrorCode ErrorCode { get; }
     }
 }

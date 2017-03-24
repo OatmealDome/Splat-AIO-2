@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 
@@ -6,9 +7,10 @@ namespace SplatAIO.UI
 {
     public partial class Checker : Form
     {
-        public int ver;
         public string data;
+        public int ver;
         public WebClient vers = new WebClient();
+
         public Checker()
         {
             InitializeComponent();
@@ -16,12 +18,11 @@ namespace SplatAIO.UI
 
 
         public int getdata()
-        { 
+        {
             try
             {
                 ver = Convert.ToInt32(vers.DownloadString("https://oatmealdome.github.io/AIO2/version.txt"));
                 return 0;
-
             }
             catch
             {
@@ -31,18 +32,19 @@ namespace SplatAIO.UI
 
         private void Update_Load(object sender, EventArgs e)
         {
-            String changelog = vers.DownloadString("https://oatmealdome.github.io/AIO2/changelog.txt").Replace("\n", Environment.NewLine);
+            var changelog = vers.DownloadString("https://oatmealdome.github.io/AIO2/changelog.txt")
+                .Replace("\n", Environment.NewLine);
             updateBox.Text = changelog;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void githubButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/OatmealDome/Splat-AIO-2/releases/latest");
+            Process.Start("https://github.com/OatmealDome/Splat-AIO-2/releases/latest");
             Close();
         }
     }

@@ -1,5 +1,5 @@
-﻿using SplatAIO.Logic.Gecko;
-using System;
+﻿using System;
+using SplatAIO.Logic.Gecko;
 
 namespace SplatAIO.Logic.TimeHax
 {
@@ -12,26 +12,24 @@ namespace SplatAIO.Logic.TimeHax
         private const uint OffsetTwo = 0x280;
         private const uint OffsetTwoAmiibo = 0x2B4;
 
-        private TCPGecko Gecko { get; set; }
-        private uint TimerAddress { get; set; }
-
         public TimerHaxLogic(TCPGecko gecko)
         {
             Gecko = gecko;
         }
+
+        private TCPGecko Gecko { get; }
+        private uint TimerAddress { get; set; }
 
         public uint GetPointerValaue(uint basePointer, uint offset1, uint offset2)
         {
             uint result = 0;
             try
             {
-                uint pointerValue = Gecko.peek(Gecko.peek(basePointer) + offset1) + offset2;
+                var pointerValue = Gecko.peek(Gecko.peek(basePointer) + offset1) + offset2;
                 if (pointerValue > 0x1F000000 && pointerValue < 0x21000000)
-                {
                     result = pointerValue;
-                }
             }
-            catch(ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
                 // ToDo log
             }
@@ -48,9 +46,9 @@ namespace SplatAIO.Logic.TimeHax
             Gecko.poke32(TimerAddress, value);
         }
 
-        public UInt32 GetTimer()
+        public uint GetTimer()
         {
-            UInt32 time = 0;
+            uint time = 0;
             try
             {
                 time = Gecko.peek(TimerAddress);

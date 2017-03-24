@@ -1,25 +1,25 @@
-﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.TimeHax;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.TimeHax;
+using SplatAIO.Properties;
 
 namespace SplatAIO.UI.TimerHax
 {
     public partial class TimerHaxForm : Form
     {
-        public TimerHaxLogic TimerHaxLogic { get; private set; }
-                
         public TimerHaxForm(TCPGecko Gecko)
         {
             InitializeComponent();
             InitializeTimerHax(Gecko);
         }
 
+        public TimerHaxLogic TimerHaxLogic { get; private set; }
+
         public void InitializeTimerHax(TCPGecko Gecko)
         {
             TimerHaxLogic = new TimerHaxLogic(Gecko);
             if (TimerHaxLogic.RecalculatePointer())
-            {
                 try
                 {
                     TimerBox.Value = TimerHaxLogic.GetTimer();
@@ -28,40 +28,39 @@ namespace SplatAIO.UI.TimerHax
                 {
                     // ToDo log
                 }
-                
-            }
             TimerLabel.Text = "Set timer to: " + FormatTime();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             hold();
-            if(TimerHaxLogic.RecalculatePointer(ReconDojoRadioButton.Checked))
+            if (TimerHaxLogic.RecalculatePointer(ReconDojoRadioButton.Checked))
             {
-                TimerHaxLogic.SetTimer(!FreezeCheckBox.Checked ? (uint)TimerBox.Value * 60 : uint.MaxValue);
+                TimerHaxLogic.SetTimer(!FreezeCheckBox.Checked ? (uint) TimerBox.Value * 60 : uint.MaxValue);
                 release();
             }
             else
             {
                 ShowTimerError();
             }
-            
         }
 
         private void FreezeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             TimerBox.Enabled = !FreezeCheckBox.Checked;
         }
-        
+
         private void ShowTimerError()
         {
-            MessageBox.Show(Properties.Strings.INVALID_TIME_ADDR, "Timer Address Cannot Be Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Strings.INVALID_TIME_ADDR, "Timer Address Cannot Be Found", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
 
         private void hold()
         {
             ControlsGroupBox.Enabled = ApplyButton.Enabled = false;
         }
+
         private void release()
         {
             ControlsGroupBox.Enabled = ApplyButton.Enabled = true;
@@ -74,10 +73,9 @@ namespace SplatAIO.UI.TimerHax
 
         private string FormatTime()
         {
-            uint min = (uint)TimerBox.Value / 60;
-            uint sec = (uint)TimerBox.Value % 60;
+            var min = (uint) TimerBox.Value / 60;
+            var sec = (uint) TimerBox.Value % 60;
             return min.ToString("00") + ":" + sec.ToString("00");
         }
-
     }
 }

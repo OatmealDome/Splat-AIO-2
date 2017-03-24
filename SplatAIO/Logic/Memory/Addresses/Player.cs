@@ -11,6 +11,6 @@
         Eyes = 0x12CD1D98,
         Skin = 0x12CD1D94,
         Amiibo = 0x12D1F130,
-        Minigames = 0x12CD1C40            
-    }   
+        Minigames = 0x12CD1C40
+    }
 }

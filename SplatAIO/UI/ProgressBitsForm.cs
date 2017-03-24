@@ -1,6 +1,6 @@
-﻿using SplatAIO.Logic.Gecko;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using SplatAIO.Logic.Gecko;
 
 namespace SplatAIO.UI
 {
@@ -17,13 +17,13 @@ namespace SplatAIO.UI
 
         private void ProgressBitsForm_Load(object sender, EventArgs e)
         {
-            SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
+            var mainForm = (SplatAIOForm) Owner;
             gecko = mainForm.Gecko;
             progression = gecko.peek(progressBitsAddress + mainForm.Offset);
 
             tutorialBox.Checked = (progression & 0x1) != 0;
             splatfestBox.Checked = (progression & 0x2) != 0;
-            rankedNewsBox.Checked = ((progression & 0x4) != 0);
+            rankedNewsBox.Checked = (progression & 0x4) != 0;
             lobbyBox.Checked = (progression & 0x8) != 0;
             heroSuitBox.Checked = (progression & 0x10) != 0;
             greatZapfishBox.Checked = (progression & 0x80) != 0;
@@ -50,22 +50,15 @@ namespace SplatAIO.UI
             SetFlag(ref progression, 0x100000, levelCapRaisedBox.Checked);
             SetFlag(ref progression, 0x200000, warningBox.Checked);
 
-            gecko.poke32(progressBitsAddress + ((SplatAIOForm)this.Owner).Offset, progression);
+            gecko.poke32(progressBitsAddress + ((SplatAIOForm) Owner).Offset, progression);
         }
 
         public static void SetFlag(ref uint progression, uint flag, bool checkbox)
         {
-            if (((progression & flag) != 0) && !checkbox)
-            {
-                // the flag is set, but we don't want it to be, so remove the flag
+            if ((progression & flag) != 0 && !checkbox)
                 progression ^= flag;
-            }
-            else if (((progression & flag) == 0) && checkbox)
-            {
-                // the flag isn't set, but we need it to be, so set the flag
+            else if ((progression & flag) == 0 && checkbox)
                 progression |= flag;
-            }
         }
-
     }
 }

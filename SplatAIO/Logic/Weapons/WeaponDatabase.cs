@@ -4,10 +4,7 @@ namespace SplatAIO.Logic.Weapons
 {
     public class WeaponDatabase
     {
-        private static readonly List<Weapon> weapons = new List<Weapon>();
         private static readonly Dictionary<uint, int> idToIndex = new Dictionary<uint, int>();
-
-        public static List<Weapon> Weapons { get { return weapons; } }
 
         static WeaponDatabase()
         {
@@ -105,16 +102,18 @@ namespace SplatAIO.Logic.Weapons
             AddWeapon(0x139d, 0x1f9, SubWeapon.Sprinkler, SpecialWeapon.Bubbler);
         }
 
+        public static List<Weapon> Weapons { get; } = new List<Weapon>();
+
         private static void AddWeapon(uint id, uint uniqueNum, SubWeapon sub, SpecialWeapon special)
         {
-            Weapon weapon = new Weapon(id, uniqueNum, sub, special);
-            weapons.Add(weapon);
-            idToIndex.Add(id, weapons.Count - 1);
+            var weapon = new Weapon(id, uniqueNum, sub, special);
+            Weapons.Add(weapon);
+            idToIndex.Add(id, Weapons.Count - 1);
         }
 
         public static int GetIndex(uint id)
         {
             return idToIndex[id];
-        }        
+        }
     }
 }

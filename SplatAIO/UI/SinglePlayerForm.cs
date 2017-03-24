@@ -1,25 +1,25 @@
-﻿using SplatAIO.Logic;
-using SplatAIO.Logic.Gecko;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using SplatAIO.Logic;
+using SplatAIO.Properties;
 
 namespace SplatAIO.UI
 {
-
     public partial class SinglePlayerForm : Form
     {
-        private uint saveSlotsAddress = 0x12CDC2B8;
+        private readonly SingleAssemblyComponentResourceManager editFormResources =
+            new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
+
+        private uint burstBombAddress = 0x12CDC5D8;
         private uint environmentFlagsAddress = 0x12CDC5B8;
         private uint heroShotAddress = 0x12CDC5C8;
         private uint inkTankAddress = 0x12CDC5CC;
-        private uint splatBombAddress = 0x12CDC5D4;
-        private uint burstBombAddress = 0x12CDC5D8;
-        private uint seekerAddress = 0x12CDC5DC;
-        private uint powerEggsAddress = 0x12CDC5E0;
-
-        private readonly SingleAssemblyComponentResourceManager editFormResources = new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
         public List<LevelData> levelSaveData = new List<LevelData>();
+        private uint powerEggsAddress = 0x12CDC5E0;
+        private uint saveSlotsAddress = 0x12CDC2B8;
+        private uint seekerAddress = 0x12CDC5DC;
+        private uint splatBombAddress = 0x12CDC5D4;
 
         public SinglePlayerForm()
         {
@@ -28,8 +28,8 @@ namespace SplatAIO.UI
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
-            SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
-            TCPGecko gecko = mainForm.Gecko;
+            var mainForm = (SplatAIOForm) Owner;
+            var gecko = mainForm.Gecko;
 
             // apply diff to the addresses
             saveSlotsAddress += mainForm.Offset;
@@ -42,23 +42,20 @@ namespace SplatAIO.UI
             powerEggsAddress += mainForm.Offset;
 
             // dump all single player save slots
-            uint[] rawLevelData = SplatAIOForm.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
+            var rawLevelData = SplatAIOForm.DumpSaveSlots(gecko, 0, saveSlotsAddress, 768);
 
             // read data from slots
-            int j = 0;
+            var j = 0;
             while (j < rawLevelData.Length)
             {
-                uint levelNumber = rawLevelData[j];
+                var levelNumber = rawLevelData[j];
 
                 // check if an empty save slot
                 if (levelNumber == 0xFFFFFFFF)
-                {
-                    // we've reached the end
                     break;
-                }
 
-                uint clearState = rawLevelData[j + 1];
-                bool scroll = Convert.ToBoolean(rawLevelData[j + 2]);
+                var clearState = rawLevelData[j + 1];
+                var scroll = Convert.ToBoolean(rawLevelData[j + 2]);
 
                 // add to the list
                 levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
@@ -79,34 +76,26 @@ namespace SplatAIO.UI
             splatBombBox.SelectedIndex = Convert.ToInt32(gecko.peek(splatBombAddress));
 
             // for these upgrades, 0xFFFFFFFF = locked
-            uint burstBomb = gecko.peek(burstBombAddress);
+            var burstBomb = gecko.peek(burstBombAddress);
             if (burstBomb == 0xFFFFFFFF)
-            {
                 burstBombBox.SelectedIndex = 0;
-            }
             else
-            {
                 burstBombBox.SelectedIndex = Convert.ToInt32(burstBomb + 1);
-            }
 
-            uint seeker = gecko.peek(seekerAddress);
+            var seeker = gecko.peek(seekerAddress);
             if (seeker == 0xFFFFFFFF)
-            {
                 seekerBox.SelectedIndex = 0;
-            }
             else
-            {
                 seekerBox.SelectedIndex = Convert.ToInt32(seeker + 1);
-            }
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
+            var gecko = ((SplatAIOForm) Owner).Gecko;
 
             // poke save slots in the list into memory
-            uint currentPosition = saveSlotsAddress;
-            foreach (LevelData data in levelSaveData)
+            var currentPosition = saveSlotsAddress;
+            foreach (var data in levelSaveData)
             {
                 // poke values
                 gecko.poke32(currentPosition, data.levelNumber);
@@ -118,7 +107,7 @@ namespace SplatAIO.UI
             }
 
             // fill in the rest of the slots with dummy data
-            for (int i = levelSaveData.Count; i < 64; i++)
+            for (var i = levelSaveData.Count; i < 64; i++)
             {
                 // poke values
                 gecko.poke32(currentPosition, 0xFFFFFFFF);
@@ -139,27 +128,19 @@ namespace SplatAIO.UI
 
             // for these upgrades, 0xFFFFFFFF = locked
             if (burstBombBox.SelectedIndex == 0)
-            {
                 gecko.poke32(burstBombAddress, 0xFFFFFFFF);
-            }
             else
-            {
                 gecko.poke32(burstBombAddress, Convert.ToUInt32(burstBombBox.SelectedIndex - 1));
-            }
 
             if (seekerBox.SelectedIndex == 0)
-            {
                 gecko.poke32(seekerAddress, 0xFFFFFFFF);
-            }
             else
-            {
                 gecko.poke32(seekerAddress, Convert.ToUInt32(seekerBox.SelectedIndex - 1));
-            }
         }
 
         private void clearEnvironmentButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
+            var gecko = ((SplatAIOForm) Owner).Gecko;
 
             gecko.poke32(environmentFlagsAddress, 0x0);
             gecko.poke32(environmentFlagsAddress + 0x4, 0x0);
@@ -169,7 +150,7 @@ namespace SplatAIO.UI
 
         private void setEnvironmentButton_Click(object sender, EventArgs e)
         {
-            TCPGecko gecko = ((SplatAIOForm)this.Owner).Gecko;
+            var gecko = ((SplatAIOForm) Owner).Gecko;
 
             gecko.poke32(environmentFlagsAddress, 0x0);
             gecko.poke32(environmentFlagsAddress + 0x4, 0x001FFFFF);
@@ -179,14 +160,15 @@ namespace SplatAIO.UI
 
         private void resetAllButton_Click(object sender, EventArgs e)
         {
-            String dialogTitle = Properties.Strings.SINGLE_PLAYER_RESET_TITLE;
-            String dialogString = Properties.Strings.SINGLE_PLAYER_RESET_TEXT;
-            DialogResult result = MessageBox.Show(dialogString, dialogTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            var dialogTitle = Strings.SINGLE_PLAYER_RESET_TITLE;
+            var dialogString = Strings.SINGLE_PLAYER_RESET_TEXT;
+            var result = MessageBox.Show(dialogString, dialogTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button2);
 
             if (result == DialogResult.Yes)
             {
                 // Reset environment flags
-                this.clearEnvironmentButton_Click(null, null);
+                clearEnvironmentButton_Click(null, null);
 
                 // Reset levels
                 levelSaveData = new List<LevelData>();
@@ -203,11 +185,11 @@ namespace SplatAIO.UI
                 seekerBox.SelectedIndex = 0;
 
                 // Apply levels, upgrades, and power eggs
-                this.OKButton_Click(null, null);
+                OKButton_Click(null, null);
 
                 // Reset single player flags in the Inkopolis progress bits
-                SplatAIOForm mainForm = (SplatAIOForm)this.Owner;
-                uint progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.Offset);
+                var mainForm = (SplatAIOForm) Owner;
+                var progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.Offset);
 
                 ProgressBitsForm.SetFlag(ref progression, 0x10, false); // octo valley intro
                 ProgressBitsForm.SetFlag(ref progression, 0x80, false); // great zapfish returned
@@ -220,19 +202,15 @@ namespace SplatAIO.UI
         private void levelDataView_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {
-                if (levelDataView.FocusedItem.Bounds.Contains(e.Location) == true)
-                {
+                if (levelDataView.FocusedItem.Bounds.Contains(e.Location))
                     contextMenu.Show(Cursor.Position);
-                }
-            }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LevelData levelData = levelSaveData[levelDataView.SelectedIndices[0]];
+            var levelData = levelSaveData[levelDataView.SelectedIndices[0]];
 
-            EditLevelDataForm editLevelDataForm = new EditLevelDataForm(levelData);
+            var editLevelDataForm = new EditLevelDataForm(levelData);
             editLevelDataForm.ShowDialog(this);
 
             ReloadListView();
@@ -240,7 +218,7 @@ namespace SplatAIO.UI
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LevelData levelData = levelSaveData[levelDataView.SelectedIndices[0]];
+            var levelData = levelSaveData[levelDataView.SelectedIndices[0]];
             levelSaveData.Remove(levelData);
 
             ReloadListView();
@@ -248,7 +226,7 @@ namespace SplatAIO.UI
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            EditLevelDataForm editLevelDataForm = new EditLevelDataForm();
+            var editLevelDataForm = new EditLevelDataForm();
             editLevelDataForm.ShowDialog(this);
 
             if (editLevelDataForm.levelData != null)
@@ -262,28 +240,24 @@ namespace SplatAIO.UI
         {
             levelDataView.Items.Clear();
 
-            foreach (LevelData data in levelSaveData)
+            foreach (var data in levelSaveData)
             {
                 // add to the list view
-                String[] rowData = new String[]
-                    {
-                        GetLevelString(data.levelNumber),
-                        GetClearStateString(data.clearState),
-                        (data.scroll) ? Properties.Strings.YES : Properties.Strings.NO
-                    };
+                string[] rowData =
+                {
+                    GetLevelString(data.levelNumber),
+                    GetClearStateString(data.clearState),
+                    data.scroll ? Strings.YES : Strings.NO
+                };
                 levelDataView.Items.Add(new ListViewItem(rowData));
             }
         }
 
-        private String GetLevelString(uint levelNumber)
+        private string GetLevelString(uint levelNumber)
         {
             if (levelNumber == 0xFFFFFFFF) // placeholder level ID
-            {
-                // shouldn't happen, but just in case
-                throw new Exception(Properties.Strings.INVALID_LEVEL_NUMBER + " (levelNumber = " + levelNumber + ")");
-            }
-            else if (levelNumber >= 0x65) // boss level numbers are 0x65 and up
-            {
+                throw new Exception(Strings.INVALID_LEVEL_NUMBER + " (levelNumber = " + levelNumber + ")");
+            if (levelNumber >= 0x65) // boss level numbers are 0x65 and up
                 switch (levelNumber)
                 {
                     case 0x65:
@@ -297,16 +271,12 @@ namespace SplatAIO.UI
                     case 0x69:
                         return editFormResources.GetString("levelBox.Items4");
                     default:
-                        throw new Exception(Properties.Strings.INVALID_LEVEL_NUMBER + " (levelNumber = " + levelNumber + ")");
+                        throw new Exception(Strings.INVALID_LEVEL_NUMBER + " (levelNumber = " + levelNumber + ")");
                 }
-            }
-            else // regular level
-            {
-                return levelNumber.ToString();
-            }
+            return levelNumber.ToString();
         }
 
-        private String GetClearStateString(uint clearState)
+        private string GetClearStateString(uint clearState)
         {
             switch (clearState)
             {
@@ -317,9 +287,8 @@ namespace SplatAIO.UI
                 case 0x3:
                     return editFormResources.GetString("clearStateBox.Items2");
                 default:
-                    throw new Exception(Properties.Strings.INVALID_CLEAR_STATE + " (clearState = " + clearState + ")");
+                    throw new Exception(Strings.INVALID_CLEAR_STATE + " (clearState = " + clearState + ")");
             }
         }
-
     }
 }

@@ -1,8 +1,8 @@
-﻿using SplatAIO.UI;
-using SplatAIO.UI.Statistics;
-using System;
+﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using SplatAIO.UI;
+using SplatAIO.UI.Statistics;
 
 namespace SplatAIO.Logic
 {
@@ -22,7 +22,7 @@ namespace SplatAIO.Logic
         {
             if (!File.Exists(CONFIG_FILE))
             {
-                AllowStatisticsForm allowStatisticsForm = new AllowStatisticsForm();
+                var allowStatisticsForm = new AllowStatisticsForm();
                 allowStatisticsForm.ShowDialog();
 
                 CurrentConfig = new Configuration();
@@ -34,9 +34,9 @@ namespace SplatAIO.Logic
             }
             else
             {
-                using (FileStream stream = File.OpenRead(CONFIG_FILE))
+                using (var stream = File.OpenRead(CONFIG_FILE))
                 {
-                    CurrentConfig = (Configuration)serializer.Deserialize(stream);
+                    CurrentConfig = (Configuration) serializer.Deserialize(stream);
                 }
             }
         }
@@ -44,11 +44,10 @@ namespace SplatAIO.Logic
         public static void Save()
         {
             File.Delete(CONFIG_FILE);
-            using (FileStream writer = File.OpenWrite(CONFIG_FILE))
+            using (var writer = File.OpenWrite(CONFIG_FILE))
             {
                 serializer.Serialize(writer, CurrentConfig);
             }
         }
-
     }
 }

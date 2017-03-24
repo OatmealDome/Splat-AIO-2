@@ -4,42 +4,37 @@ namespace SplatAIO.Logic.Gecko
 {
     public class ByteSwap
     {
-        public static UInt16 Swap(UInt16 input)
+        public static ushort Swap(ushort input)
         {
             if (BitConverter.IsLittleEndian)
-                return ((UInt16)(
+                return (ushort) (
                     ((0xFF00 & input) >> 8) |
-                    ((0x00FF & input) << 8)));
-            else
-                return input;
+                    ((0x00FF & input) << 8));
+            return input;
         }
 
-        public static UInt32 Swap(UInt32 input)
+        public static uint Swap(uint input)
         {
             if (BitConverter.IsLittleEndian)
-                return ((UInt32)(
-                    ((0xFF000000 & input) >> 24) |
-                    ((0x00FF0000 & input) >> 8) |
-                    ((0x0000FF00 & input) << 8) |
-                    ((0x000000FF & input) << 24)));
-            else
-                return input;
+                return ((0xFF000000 & input) >> 24) |
+                       ((0x00FF0000 & input) >> 8) |
+                       ((0x0000FF00 & input) << 8) |
+                       ((0x000000FF & input) << 24);
+            return input;
         }
 
-        public static UInt64 Swap(UInt64 input)
+        public static ulong Swap(ulong input)
         {
             if (BitConverter.IsLittleEndian)
-                return ((UInt64)(
-                    ((0xFF00000000000000 & input) >> 56) |
-                    ((0x00FF000000000000 & input) >> 40) |
-                    ((0x0000FF0000000000 & input) >> 24) |
-                    ((0x000000FF00000000 & input) >> 8) |
-                    ((0x00000000FF000000 & input) << 8) |
-                    ((0x0000000000FF0000 & input) << 24) |
-                    ((0x000000000000FF00 & input) << 40) |
-                    ((0x00000000000000FF & input) << 56)));
-            else
-                return input;
+                return ((0xFF00000000000000 & input) >> 56) |
+                       ((0x00FF000000000000 & input) >> 40) |
+                       ((0x0000FF0000000000 & input) >> 24) |
+                       ((0x000000FF00000000 & input) >> 8) |
+                       ((0x00000000FF000000 & input) << 8) |
+                       ((0x0000000000FF0000 & input) << 24) |
+                       ((0x000000000000FF00 & input) << 40) |
+                       ((0x00000000000000FF & input) << 56);
+            return input;
         }
     }
 }

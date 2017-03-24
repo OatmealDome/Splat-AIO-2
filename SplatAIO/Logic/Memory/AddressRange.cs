@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SplatAIO.Logic.Memory
+﻿namespace SplatAIO.Logic.Memory
 {
     public enum AddressType
     {
@@ -13,26 +11,22 @@ namespace SplatAIO.Logic.Memory
 
     public class AddressRange
     {
-        private AddressType PDesc;
-        private Byte PId;
-        private UInt32 PLow;
-        private UInt32 PHigh;
-
-        public AddressType description { get { return PDesc; } }
-        public Byte id { get { return PId; } }
-        public UInt32 low { get { return PLow; } }
-        public UInt32 high { get { return PHigh; } }
-
-        public AddressRange(AddressType desc, Byte id, UInt32 low, UInt32 high)
+        public AddressRange(AddressType desc, byte id, uint low, uint high)
         {
-            this.PId = id;
-            this.PDesc = desc;
-            this.PLow = low;
-            this.PHigh = high;
+            this.id = id;
+            description = desc;
+            this.low = low;
+            this.high = high;
         }
 
-        public AddressRange(AddressType desc, UInt32 low, UInt32 high) :
-            this(desc, (Byte)(low >> 24), low, high)
-        { }
+        public AddressRange(AddressType desc, uint low, uint high) :
+            this(desc, (byte) (low >> 24), low, high)
+        {
+        }
+
+        public AddressType description { get; }
+        public byte id { get; }
+        public uint low { get; }
+        public uint high { get; }
     }
 }

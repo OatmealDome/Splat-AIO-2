@@ -3,12 +3,12 @@
     public class Weapon
     {
         public readonly uint id;
-        public readonly uint weaponSpecificNumber;
-        public readonly SubWeapon subWeapon;
         public readonly SpecialWeapon specialWeapon;
-        public uint turfInked;
-        public uint lastUsageTimestamp;
+        public readonly SubWeapon subWeapon;
+        public readonly uint weaponSpecificNumber;
         public bool isNew;
+        public uint lastUsageTimestamp;
+        public uint turfInked;
 
         public Weapon(uint id, uint number, SubWeapon sub, SpecialWeapon special)
         {
@@ -36,6 +36,5 @@
         {
             return new Weapon(id, weaponSpecificNumber, subWeapon, specialWeapon, turfInked, lastUsageTimestamp, isNew);
         }
-
     }
 }
