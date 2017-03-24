@@ -12,7 +12,24 @@ namespace SplatAIO.UI.TimerHax
         public TimerHaxForm(TCPGecko Gecko)
         {
             InitializeComponent();
+            InitializeTimerHax(Gecko);
+        }
+
+        public void InitializeTimerHax(TCPGecko Gecko)
+        {
             TimerHaxLogic = new TimerHaxLogic(Gecko);
+            if (TimerHaxLogic.RecalculatePointer())
+            {
+                try
+                {
+                    TimerBox.Value = TimerHaxLogic.GetTimer();
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    // ToDo log
+                }
+                
+            }
             TimerLabel.Text = "Set timer to: " + FormatTime();
         }
 

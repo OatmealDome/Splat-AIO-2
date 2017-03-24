@@ -47,5 +47,19 @@ namespace SplatAIO.Logic.TimeHax
         {
             Gecko.poke32(TimerAddress, value);
         }
+
+        public UInt32 GetTimer()
+        {
+            UInt32 time = 0;
+            try
+            {
+                time = Gecko.peek(TimerAddress);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                // ToDo log
+            }
+            return time;
+        }
     }
 }
