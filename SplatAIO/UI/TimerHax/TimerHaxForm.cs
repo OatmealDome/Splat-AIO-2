@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using SplatAIO.Logic.Gecko;
+﻿using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.TimeHax;
 using SplatAIO.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace SplatAIO.UI.TimerHax
 {
@@ -20,6 +20,7 @@ namespace SplatAIO.UI.TimerHax
         {
             TimerHaxLogic = new TimerHaxLogic(Gecko);
             if (TimerHaxLogic.RecalculatePointer())
+            {
                 try
                 {
                     TimerBox.Value = TimerHaxLogic.GetTimer();
@@ -28,6 +29,7 @@ namespace SplatAIO.UI.TimerHax
                 {
                     // ToDo log
                 }
+            }
             TimerLabel.Text = "Set timer to: " + FormatTime();
         }
 

@@ -2,20 +2,20 @@
 {
     public class LevelData
     {
-        public uint clearState;
-        public uint levelNumber;
-        public bool scroll;
+        public uint ClearState { get; set; }
+        public uint LevelNumber { get; set; }
+        public bool Scroll { get; set; }
 
         public LevelData(uint levelNumber, uint clearState, bool scroll)
         {
-            this.levelNumber = levelNumber;
-            this.clearState = clearState;
-            this.scroll = scroll;
+            this.LevelNumber = levelNumber;
+            this.ClearState = clearState;
+            this.Scroll = scroll;
         }
 
         public override string ToString()
         {
-            return "LevelData: levelNumber = " + levelNumber + ", clearState = " + clearState + ", scroll = " + scroll;
+            return "LevelData: levelNumber = " + LevelNumber + ", clearState = " + ClearState + ", scroll = " + Scroll;
         }
     }
 }

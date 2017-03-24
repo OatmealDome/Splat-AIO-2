@@ -2,39 +2,39 @@
 {
     public class Weapon
     {
-        public readonly uint id;
-        public readonly SpecialWeapon specialWeapon;
-        public readonly SubWeapon subWeapon;
-        public readonly uint weaponSpecificNumber;
-        public bool isNew;
-        public uint lastUsageTimestamp;
-        public uint turfInked;
+        public uint Id { get; }
+        public SpecialWeapon SpecialWeapon1 { get; }
+        public SubWeapon SubWeapon { get; }
+        public uint WeaponSpecificNumber { get; }
+        public bool IsNew { get; set; }
+        public uint LastUsageTimestamp { get; }
+        public uint TurfInked { get; set; }
 
         public Weapon(uint id, uint number, SubWeapon sub, SpecialWeapon special)
         {
-            this.id = id;
-            weaponSpecificNumber = number;
-            subWeapon = sub;
-            specialWeapon = special;
-            turfInked = 0;
-            lastUsageTimestamp = 0;
-            isNew = true;
+            Id = id;
+            WeaponSpecificNumber = number;
+            SubWeapon = sub;
+            SpecialWeapon1 = special;
+            TurfInked = 0;
+            LastUsageTimestamp = 0;
+            IsNew = true;
         }
 
         public Weapon(uint id, uint number, SubWeapon sub, SpecialWeapon special, uint inked, uint timestamp, bool isNew)
         {
-            this.id = id;
-            weaponSpecificNumber = number;
-            subWeapon = sub;
-            specialWeapon = special;
-            turfInked = inked;
-            lastUsageTimestamp = timestamp;
-            this.isNew = isNew;
+            Id = id;
+            WeaponSpecificNumber = number;
+            SubWeapon = sub;
+            SpecialWeapon1 = special;
+            TurfInked = inked;
+            LastUsageTimestamp = timestamp;
+            IsNew = isNew;
         }
-
+        
         public Weapon Copy()
         {
-            return new Weapon(id, weaponSpecificNumber, subWeapon, specialWeapon, turfInked, lastUsageTimestamp, isNew);
+            return new Weapon(Id, WeaponSpecificNumber, SubWeapon, SpecialWeapon1, TurfInked, LastUsageTimestamp, IsNew);
         }
     }
 }

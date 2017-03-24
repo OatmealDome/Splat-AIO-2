@@ -13,10 +13,10 @@
     {
         public AddressRange(AddressType desc, byte id, uint low, uint high)
         {
-            this.id = id;
-            description = desc;
-            this.low = low;
-            this.high = high;
+            Id = id;
+            Description = desc;
+            Low = low;
+            High = high;
         }
 
         public AddressRange(AddressType desc, uint low, uint high) :
@@ -24,9 +24,9 @@
         {
         }
 
-        public AddressType description { get; }
-        public byte id { get; }
-        public uint low { get; }
-        public uint high { get; }
+        public AddressType Description { get; }
+        public byte Id { get; }
+        public uint Low { get; }
+        public uint High { get; }
     }
 }

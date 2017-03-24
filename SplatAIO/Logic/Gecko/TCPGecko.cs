@@ -1,12 +1,12 @@
 ﻿#define DIRECT
 
+using SplatAIO.Logic.Memory;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
-using SplatAIO.Logic.Memory;
 
 namespace SplatAIO.Logic.Gecko
 {
@@ -216,7 +216,7 @@ namespace SplatAIO.Logic.Gecko
             InitGecko();
 
             if (ValidMemory.rangeCheckId(startdump) != ValidMemory.rangeCheckId(enddump))
-                enddump = ValidMemory.ValidAreas[ValidMemory.rangeCheckId(startdump)].high;
+                enddump = ValidMemory.ValidAreas[ValidMemory.rangeCheckId(startdump)].High;
 
             if (!ValidMemory.validAddress(startdump)) return;
 

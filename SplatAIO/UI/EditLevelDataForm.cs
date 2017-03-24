@@ -19,8 +19,8 @@ namespace SplatAIO.UI
             InitializeComponent();
 
             this.levelData = levelData;
-            var levelNumber = levelData.levelNumber;
-            var clearState = levelData.clearState;
+            var levelNumber = levelData.LevelNumber;
+            var clearState = levelData.ClearState;
 
             if (levelNumber >= 0x65) // boss stages are 0x65 and up
                 levelBox.SelectedIndex = Convert.ToInt32(levelNumber - 0x65);
@@ -33,7 +33,7 @@ namespace SplatAIO.UI
             // 0x1 is skipped in clearState
             clearStateBox.SelectedIndex = Convert.ToInt32(clearState != 0x0 ? clearState - 1 : clearState);
 
-            scrollBox.Checked = levelData.scroll;
+            scrollBox.Checked = levelData.Scroll;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace SplatAIO.UI
                 // check to make sure that this isn't already in the list
                 var singlePlayerForm = (SinglePlayerForm) Owner;
                 foreach (var data in singlePlayerForm.levelSaveData)
-                    if (data.levelNumber == levelNumber)
+                    if (data.LevelNumber == levelNumber)
                     {
                         // Refuse to save
                         MessageBox.Show(Strings.LEVEL_ALREADY_ADDED_TEXT);
@@ -77,9 +77,9 @@ namespace SplatAIO.UI
             }
             else
             {
-                levelData.levelNumber = levelNumber;
-                levelData.clearState = clearState;
-                levelData.scroll = scroll;
+                levelData.LevelNumber = levelNumber;
+                levelData.ClearState = clearState;
+                levelData.Scroll = scroll;
             }
 
             Close();

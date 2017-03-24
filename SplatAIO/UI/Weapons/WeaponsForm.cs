@@ -79,14 +79,14 @@ namespace SplatAIO.UI.Weapons
             var currentPosition = (uint) Gear.Weapons + offset;
             foreach (var weapon in weapons)
             {
-                gecko.poke32(currentPosition, weapon.id);
-                gecko.poke32(currentPosition + 0x4, weapon.weaponSpecificNumber);
-                gecko.poke32(currentPosition + 0x8, (uint) weapon.subWeapon);
-                gecko.poke32(currentPosition + 0xc, (uint) weapon.specialWeapon);
-                gecko.poke32(currentPosition + 0x10, weapon.turfInked);
-                gecko.poke32(currentPosition + 0x18, weapon.lastUsageTimestamp);
+                gecko.poke32(currentPosition, weapon.Id);
+                gecko.poke32(currentPosition + 0x4, weapon.WeaponSpecificNumber);
+                gecko.poke32(currentPosition + 0x8, (uint) weapon.SubWeapon);
+                gecko.poke32(currentPosition + 0xc, (uint) weapon.SpecialWeapon1);
+                gecko.poke32(currentPosition + 0x10, weapon.TurfInked);
+                gecko.poke32(currentPosition + 0x18, weapon.LastUsageTimestamp);
 
-                if (weapon.isNew)
+                if (weapon.IsNew)
                     gecko.poke32(currentPosition + 0x1c, 0x0);
                 else
                     gecko.poke32(currentPosition + 0x1c, 0x00010000);
@@ -119,13 +119,13 @@ namespace SplatAIO.UI.Weapons
             {
                 string name;
 
-                var index = WeaponDatabase.GetIndex(weapon.id);
+                var index = WeaponDatabase.GetIndex(weapon.Id);
                 if (index == 0)
                     name = weaponEditFormResources.GetString("weaponBox.Items");
                 else
                     name = weaponEditFormResources.GetString("weaponBox.Items" + index);
 
-                if (weapon.id == equippedWeapon)
+                if (weapon.Id == equippedWeapon)
                     name += " " + Strings.EQUIPPED;
 
                 weaponsList.Items.Add(name);
@@ -136,7 +136,7 @@ namespace SplatAIO.UI.Weapons
         {
             if (weaponsList.SelectedIndex != -1)
             {
-                equippedWeapon = weapons[weaponsList.SelectedIndex].id;
+                equippedWeapon = weapons[weaponsList.SelectedIndex].Id;
                 ReloadListBox();
             }
         }
@@ -174,7 +174,7 @@ namespace SplatAIO.UI.Weapons
         {
             var weapon = weapons[weaponsList.SelectedIndex];
 
-            if (weapon.id == 0x3f2)
+            if (weapon.Id == 0x3f2)
             {
                 // refuse to remove the Splattershot Jr.
                 MessageBox.Show(Strings.CANNOT_REMOVE_JR_TEXT);
@@ -182,7 +182,7 @@ namespace SplatAIO.UI.Weapons
             else
             {
                 // check if the removed weapon is currently equipped
-                if (weapon.id == equippedWeapon)
+                if (weapon.Id == equippedWeapon)
                     equippedWeapon = 0x3f2;
 
                 weapons.Remove(weapon);

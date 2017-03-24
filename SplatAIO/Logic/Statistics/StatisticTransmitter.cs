@@ -6,17 +6,17 @@ namespace SplatAIO.Logic.Statistics
 {
     public class StatisticTransmitter
     {
-        private static readonly string url = "https://wiiucodes.tk/statistics_bg.php";
-        private static readonly string agent = "AIOStats/1.0";
+        private const string Url = "https://wiiucodes.tk/statistics_bg.php";
+        private const string Agent = "AIOStats/1.0";
 
         public static void WriteToSlot(int slotnum, decimal content)
         {
             var client = new WebClient();
-            client.Headers.Add("user-agent", agent);
+            client.Headers.Add("user-agent", Agent);
 
             try //just in case
             {
-                client.DownloadString(url + "?id=2&slotnum=" + slotnum + "&value=" + content);
+                client.DownloadString(Url + "?id=2&slotnum=" + slotnum + "&value=" + content);
             }
             catch (ArgumentException e)
             {
@@ -38,11 +38,11 @@ namespace SplatAIO.Logic.Statistics
             var ci = CultureInfo.InstalledUICulture;
 
             var client = new WebClient();
-            client.Headers.Add("user-agent", agent);
+            client.Headers.Add("user-agent", Agent);
             try
             {
                 result =
-                    client.DownloadString(url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" +
+                    client.DownloadString(Url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" +
                                           ci.EnglishName).Equals("working");
             }
             catch (ArgumentException e)

@@ -98,9 +98,9 @@ namespace SplatAIO.UI
             foreach (var data in levelSaveData)
             {
                 // poke values
-                gecko.poke32(currentPosition, data.levelNumber);
-                gecko.poke32(currentPosition + 0x4, data.clearState);
-                gecko.poke32(currentPosition + 0x8, Convert.ToUInt32(data.scroll));
+                gecko.poke32(currentPosition, data.LevelNumber);
+                gecko.poke32(currentPosition + 0x4, data.ClearState);
+                gecko.poke32(currentPosition + 0x8, Convert.ToUInt32(data.Scroll));
 
                 // move to next save slot
                 currentPosition += 0xC;
@@ -245,9 +245,9 @@ namespace SplatAIO.UI
                 // add to the list view
                 string[] rowData =
                 {
-                    GetLevelString(data.levelNumber),
-                    GetClearStateString(data.clearState),
-                    data.scroll ? Strings.YES : Strings.NO
+                    GetLevelString(data.LevelNumber),
+                    GetClearStateString(data.ClearState),
+                    data.Scroll ? Strings.YES : Strings.NO
                 };
                 levelDataView.Items.Add(new ListViewItem(rowData));
             }

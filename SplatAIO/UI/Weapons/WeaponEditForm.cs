@@ -19,10 +19,10 @@ namespace SplatAIO.UI.Weapons
             InitializeComponent();
 
             weapon = wep;
-            weaponBox.SelectedIndex = WeaponDatabase.GetIndex(weapon.id);
+            weaponBox.SelectedIndex = WeaponDatabase.GetIndex(weapon.Id);
             weaponBox.Enabled = false;
-            turfInkedBox.Value = Convert.ToInt32(weapon.turfInked);
-            newFlagBox.Checked = weapon.isNew;
+            turfInkedBox.Value = Convert.ToInt32(weapon.TurfInked);
+            newFlagBox.Checked = weapon.IsNew;
         }
 
         private void saveBox_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace SplatAIO.UI.Weapons
 
                 // make sure this new weapon isn't already in the list
                 foreach (var existingWeapon in weaponsForm.weapons)
-                    if (selectedWeapon.id == existingWeapon.id)
+                    if (selectedWeapon.Id == existingWeapon.Id)
                     {
                         // refuse to save
                         MessageBox.Show(Strings.WEAPON_EXISTS_TEXT);
@@ -45,8 +45,8 @@ namespace SplatAIO.UI.Weapons
                 weapon = selectedWeapon;
             }
 
-            weapon.turfInked = Convert.ToUInt32(turfInkedBox.Value);
-            weapon.isNew = newFlagBox.Checked;
+            weapon.TurfInked = Convert.ToUInt32(turfInkedBox.Value);
+            weapon.IsNew = newFlagBox.Checked;
 
             Close();
         }

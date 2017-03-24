@@ -25,7 +25,7 @@ namespace SplatAIO.Logic.Memory
             var id = rangeCheckId(address);
             if (id == -1)
                 return AddressType.Unknown;
-            return ValidAreas[id].description;
+            return ValidAreas[id].Description;
         }
 
         public static int rangeCheckId(uint address)
@@ -33,7 +33,7 @@ namespace SplatAIO.Logic.Memory
             for (var i = 0; i < ValidAreas.Length; i++)
             {
                 var range = ValidAreas[i];
-                if (address >= range.low && address < range.high)
+                if (address >= range.Low && address < range.High)
                     return i;
             }
             return -1;
