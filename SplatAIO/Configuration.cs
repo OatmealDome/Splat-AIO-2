@@ -1,4 +1,4 @@
-﻿using SplatAIO.UI;
+﻿using SplatAIO.Statistics;
 using System;
 using System.IO;
 using System.Xml.Serialization;
