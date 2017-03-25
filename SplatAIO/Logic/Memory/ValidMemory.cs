@@ -4,7 +4,7 @@ namespace SplatAIO.Logic.Memory
 {
     public static class ValidMemory
     {
-        public static bool addressDebug = false;
+        private const bool AddressDebug = false;
 
         public static readonly AddressRange[] ValidAreas =
         {
@@ -22,13 +22,11 @@ namespace SplatAIO.Logic.Memory
 
         public static AddressType rangeCheck(uint address)
         {
-            var id = rangeCheckId(address);
-            if (id == -1)
-                return AddressType.Unknown;
-            return ValidAreas[id].Description;
+            var id = CheckRangeId(address);
+            return id == -1 ? AddressType.Unknown : ValidAreas[id].Description;
         }
 
-        public static int rangeCheckId(uint address)
+        public static int CheckRangeId(uint address)
         {
             for (var i = 0; i < ValidAreas.Length; i++)
             {
@@ -39,27 +37,27 @@ namespace SplatAIO.Logic.Memory
             return -1;
         }
 
-        public static bool validAddress(uint address, bool debug)
+        public static bool IsValidAddress(uint address, bool debug)
         {
-            return debug || rangeCheckId(address) >= 0;
+            return debug || CheckRangeId(address) >= 0;
         }
 
-        public static bool validAddress(uint address)
+        public static bool IsValidAddress(uint address)
         {
-            return validAddress(address, addressDebug);
+            return IsValidAddress(address, AddressDebug);
         }
 
-        public static bool validRange(uint low, uint high, bool debug)
+        public static bool IsValidRange(uint low, uint high, bool debug)
         {
-            return debug || rangeCheckId(low) == rangeCheckId(high - 1);
+            return debug || CheckRangeId(low) == CheckRangeId(high - 1);
         }
 
-        public static bool validRange(uint low, uint high)
+        public static bool IsValidRange(uint low, uint high)
         {
-            return validRange(low, high, addressDebug);
+            return IsValidRange(low, high, AddressDebug);
         }
 
-        public static void setDataUpper(TCPGecko upper)
+        public static void SetDataUpper(TCPGecko upper)
         {
             uint mem;
             switch (upper.OsVersionRequest())
@@ -79,15 +77,15 @@ namespace SplatAIO.Logic.Memory
             var tbl = upper.peek_kern(mem + 4);
             var lst = upper.peek_kern(tbl + 20);
 
-            var init_start = upper.peek_kern(lst + 0 + 0x00);
-            var init_len = upper.peek_kern(lst + 4 + 0x00);
-            var code_start = upper.peek_kern(lst + 0 + 0x10);
-            var code_len = upper.peek_kern(lst + 4 + 0x10);
-            var data_start = upper.peek_kern(lst + 0 + 0x20);
-            var data_len = upper.peek_kern(lst + 4 + 0x20);
-            ValidAreas[0] = new AddressRange(AddressType.Ex, init_start, init_start + init_len);
-            ValidAreas[1] = new AddressRange(AddressType.Ex, code_start, code_start + code_len);
-            ValidAreas[2] = new AddressRange(AddressType.Rw, data_start, data_start + data_len);
+            var initStart = upper.peek_kern(lst + 0 + 0x00);
+            var initLen = upper.peek_kern(lst + 4 + 0x00);
+            var codeStart = upper.peek_kern(lst + 0 + 0x10);
+            var codeLen = upper.peek_kern(lst + 4 + 0x10);
+            var dataStart = upper.peek_kern(lst + 0 + 0x20);
+            var dataLen = upper.peek_kern(lst + 4 + 0x20);
+            ValidAreas[0] = new AddressRange(AddressType.Ex, initStart, initStart + initLen);
+            ValidAreas[1] = new AddressRange(AddressType.Ex, codeStart, codeStart + codeLen);
+            ValidAreas[2] = new AddressRange(AddressType.Rw, dataStart, dataStart + dataLen);
         }
     }
 }

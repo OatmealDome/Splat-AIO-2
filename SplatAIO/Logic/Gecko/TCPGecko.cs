@@ -70,11 +70,11 @@ namespace SplatAIO.Logic.Gecko
         public TCPGecko(string host, int port = 7331)
         {
             PTCP = new TCPConnector(host, port);
-            connected = false;
+            Connected = false;
             PChunkUpdate = null;
         }
 
-        public bool connected { get; private set; }
+        public bool Connected { get; private set; }
 
         public bool CancelDump { get; set; }
 
@@ -83,7 +83,7 @@ namespace SplatAIO.Logic.Gecko
             get { return PTCP.Host; }
             set
             {
-                if (!connected)
+                if (!Connected)
                     PTCP = new TCPConnector(value, PTCP.Port);
             }
         }
@@ -98,7 +98,7 @@ namespace SplatAIO.Logic.Gecko
 
         ~TCPGecko()
         {
-            if (connected)
+            if (Connected)
                 Disconnect();
         }
 
@@ -110,10 +110,10 @@ namespace SplatAIO.Logic.Gecko
 
         public bool Connect()
         {
-            if (connected)
+            if (Connected)
                 Disconnect();
 
-            connected = false;
+            Connected = false;
 
             //Open TCP Gecko
             try
@@ -134,7 +134,7 @@ namespace SplatAIO.Logic.Gecko
             if (InitGecko())
             {
                 Thread.Sleep(150);
-                connected = true;
+                Connected = true;
                 return true;
             }
             return false;
@@ -142,7 +142,7 @@ namespace SplatAIO.Logic.Gecko
 
         public void Disconnect()
         {
-            connected = false;
+            Connected = false;
             PTCP.Close();
         }
 
@@ -215,10 +215,10 @@ namespace SplatAIO.Logic.Gecko
             //Reset connection
             InitGecko();
 
-            if (ValidMemory.rangeCheckId(startdump) != ValidMemory.rangeCheckId(enddump))
-                enddump = ValidMemory.ValidAreas[ValidMemory.rangeCheckId(startdump)].High;
+            if (ValidMemory.CheckRangeId(startdump) != ValidMemory.CheckRangeId(enddump))
+                enddump = ValidMemory.ValidAreas[ValidMemory.CheckRangeId(startdump)].High;
 
-            if (!ValidMemory.validAddress(startdump)) return;
+            if (!ValidMemory.IsValidAddress(startdump)) return;
 
             //How many bytes of data have to be transferred
             var memlength = enddump - startdump;
@@ -880,7 +880,7 @@ namespace SplatAIO.Logic.Gecko
 
         public uint peek(uint address)
         {
-            if (!ValidMemory.validAddress(address))
+            if (!ValidMemory.IsValidAddress(address))
                 return 0;
 
             //address will be alligned to 4
