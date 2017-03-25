@@ -1,4 +1,13 @@
-﻿using System;
+﻿using SplatAIO.Logic;
+using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Memory.Addresses;
+using SplatAIO.Logic.Statistics;
+using SplatAIO.Logic.Weapons;
+using SplatAIO.Properties;
+using SplatAIO.UI.Singleplayer;
+using SplatAIO.UI.TimerHax;
+using SplatAIO.UI.Weapons;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,14 +15,6 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using SplatAIO.Logic;
-using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Memory.Addresses;
-using SplatAIO.Logic.Statistics;
-using SplatAIO.Logic.Weapons;
-using SplatAIO.Properties;
-using SplatAIO.UI.TimerHax;
-using SplatAIO.UI.Weapons;
 
 namespace SplatAIO.UI
 {

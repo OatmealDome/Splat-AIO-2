@@ -72,7 +72,7 @@
     <Compile Include="Logic\Memory\Addresses\Gear.cs" />
     <Compile Include="Logic\Memory\Addresses\Octohax.cs" />
     <Compile Include="Logic\Memory\Addresses\Player.cs" />
-    <Compile Include="Logic\Memory\Addresses\Singleplayer.cs" />
+    <Compile Include="Logic\Memory\Addresses\World.cs" />
     <Compile Include="Logic\Memory\Addresses\Sisterhax.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
