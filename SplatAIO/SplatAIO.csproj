@@ -72,6 +72,7 @@
     <Compile Include="Logic\Memory\Addresses\Gear.cs" />
     <Compile Include="Logic\Memory\Addresses\Octohax.cs" />
     <Compile Include="Logic\Memory\Addresses\Player.cs" />
+    <Compile Include="Logic\Memory\Addresses\Singleplayer.cs" />
     <Compile Include="Logic\Memory\Addresses\Sisterhax.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
@@ -82,10 +83,10 @@
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\Configuration.cs" />
-    <Compile Include="UI\EditLevelDataForm.cs">
+    <Compile Include="UI\Singleplayer\EditLevelDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditLevelDataForm.Designer.cs">
+    <Compile Include="UI\Singleplayer\EditLevelDataForm.Designer.cs">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SplatAIOForm.cs">
@@ -94,7 +95,7 @@
     <Compile Include="UI\SplatAIOForm.Designer.cs">
       <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\LevelData.cs" />
+    <Compile Include="Logic\Singleplayer\LevelData.cs" />
     <Compile Include="Logic\Memory\AddressRange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UI\ProgressBitsForm.cs">
@@ -110,10 +111,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="SingleAssemblyComponentResourceManager.cs" />
-    <Compile Include="UI\SinglePlayerForm.cs">
+    <Compile Include="UI\Singleplayer\SinglePlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SinglePlayerForm.Designer.cs">
+    <Compile Include="UI\Singleplayer\SinglePlayerForm.Designer.cs">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Strings.Designer.cs">
@@ -155,10 +156,10 @@
     <EmbeddedResource Include="UI\Statistics\AllowStatisticsForm.resx">
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditLevelDataForm.ja.resx">
+    <EmbeddedResource Include="UI\Singleplayer\EditLevelDataForm.ja.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditLevelDataForm.resx">
+    <EmbeddedResource Include="UI\Singleplayer\EditLevelDataForm.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SplatAIOForm.ja.resx">
@@ -187,10 +188,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ja.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SinglePlayerForm.ja.resx">
+    <EmbeddedResource Include="UI\Singleplayer\SinglePlayerForm.ja.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SinglePlayerForm.resx">
+    <EmbeddedResource Include="UI\Singleplayer\SinglePlayerForm.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.resx">

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using SplatAIO.Logic;
+﻿using SplatAIO.Logic.Singleplayer;
 using SplatAIO.Properties;
+using System;
+using System.Windows.Forms;
 
-namespace SplatAIO.UI
+namespace SplatAIO.UI.Singleplayer
 {
     public partial class EditLevelDataForm : Form
     {

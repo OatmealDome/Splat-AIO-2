@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SplatAIO.Logic.Singleplayer;
+using SplatAIO.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using SplatAIO.Logic;
-using SplatAIO.Properties;
 
-namespace SplatAIO.UI
+namespace SplatAIO.UI.Singleplayer
 {
     public partial class SinglePlayerForm : Form
     {
@@ -15,11 +15,12 @@ namespace SplatAIO.UI
         private uint environmentFlagsAddress = 0x12CDC5B8;
         private uint heroShotAddress = 0x12CDC5C8;
         private uint inkTankAddress = 0x12CDC5CC;
-        public List<LevelData> levelSaveData = new List<LevelData>();
         private uint powerEggsAddress = 0x12CDC5E0;
         private uint saveSlotsAddress = 0x12CDC2B8;
         private uint seekerAddress = 0x12CDC5DC;
         private uint splatBombAddress = 0x12CDC5D4;
+
+        public List<LevelData> levelSaveData = new List<LevelData>();
 
         public SinglePlayerForm()
         {

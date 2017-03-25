@@ -3,6 +3,6 @@
     public enum Sisterhax : uint
     {
         Aori = 0x105EB5EC,
-        Hotaru = 0x105EB5F8
+        Hotaru = Aori + 0xC //0x105EB5F8
     }
 }

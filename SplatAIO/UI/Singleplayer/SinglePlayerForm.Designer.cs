@@ -1,4 +1,4 @@
-﻿namespace SplatAIO.UI
+﻿namespace SplatAIO.UI.Singleplayer
 {
     partial class SinglePlayerForm
     {

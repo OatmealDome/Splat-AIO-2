@@ -1,4 +1,4 @@
-﻿namespace SplatAIO.Logic
+﻿namespace SplatAIO.Logic.Singleplayer
 {
     public class LevelData
     {
