@@ -69,13 +69,20 @@
     <Compile Include="Logic\Gecko\ByteSwap.cs" />
     <Compile Include="Logic\Gecko\Dump.cs" />
     <Compile Include="Logic\Gecko\ETCPGeckoException.cs" />
-    <Compile Include="Logic\Memory\Addresses\Gear.cs" />
-    <Compile Include="Logic\Memory\Addresses\Octohax.cs" />
+    <Compile Include="Logic\Hacks\Octohax\OctohaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxMode.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxValue.cs" />
+    <Compile Include="Logic\Hacks\Unlock\GearAddress.cs" />
+    <Compile Include="Logic\Hacks\Octohax\OctohaxAddress.cs" />
     <Compile Include="Logic\Memory\Addresses\Player.cs" />
     <Compile Include="Logic\Memory\Addresses\World.cs" />
-    <Compile Include="Logic\Memory\Addresses\Sisterhax.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxAddress.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
+    <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />
+    <Compile Include="Logic\Hacks\Unlock\WeaponsUnlocker.cs" />
     <Compile Include="UI\Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>

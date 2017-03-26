@@ -1,5 +1,8 @@
 ﻿using SplatAIO.Logic;
 using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Hacks.Octohax;
+using SplatAIO.Logic.Hacks.Sisterhax;
+using SplatAIO.Logic.Hacks.Unlock;
 using SplatAIO.Logic.Memory.Addresses;
 using SplatAIO.Logic.Statistics;
 using SplatAIO.Logic.Weapons;
@@ -8,9 +11,7 @@ using SplatAIO.UI.Singleplayer;
 using SplatAIO.UI.TimerHax;
 using SplatAIO.UI.Weapons;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
@@ -20,275 +21,9 @@ namespace SplatAIO.UI
 {
     public partial class SplatAIOForm : Form
     {
-        private readonly Dictionary<uint, uint[]> clothes = new Dictionary<uint, uint[]>
-        {
-            {0x00000001, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000003e8, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000003e9, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x000003eb, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x000003ec, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x000003ed, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x000003ee, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000003ef, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003f0, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003f1, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003f2, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000003f3, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003f4, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003f5, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000003f6, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000003f7, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x000003f8, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x000003f9, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003fa, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000003fb, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000003fc, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000003fd, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000003fe, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000003ff, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000402, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00000403, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00000405, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000007d0, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d1, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000007d2, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000007d3, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d4, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000007d5, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d6, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x000007d7, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x000007d8, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000007d9, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x000007da, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000007db, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000007dc, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00000bb8, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000bb9, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000bba, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000bbb, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000bbc, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00000bbd, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00000bbe, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000bbf, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bc0, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000bc1, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00000fa0, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00000fa1, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000fa2, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000fa3, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00000fa4, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00000fa5, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00000fa6, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000fa7, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000fa8, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00001388, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x0000138a, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x0000138b, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x0000138c, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x0000138d, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x0000138e, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x0000138f, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001390, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00001391, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001392, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001393, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001394, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001395, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001396, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001397, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001398, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001770, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00001771, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00001b58, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001b59, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00001b5a, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00001b5b, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00001b5c, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001b5d, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001b5e, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x00001f40, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f41, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001f42, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001f43, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001f44, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00001f45, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001f46, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001f47, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001f48, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00001f49, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001f4a, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f4b, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f4c, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00001f4d, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001f4e, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00001f4f, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00002328, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00002329, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x0000232a, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x0000232b, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x0000232c, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x0000232d, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00002710, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00002711, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00002712, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00000400, new uint[] {0x00000006, 0x00000005, 0x00000005}},
-            {0x00000401, new uint[] {0x0000000A, 0x0000000C, 0x00000001}},
-            {0x00001772, new uint[] {0x00000000, 0x00000005, 0x00000001}},
-            {0x00001f50, new uint[] {0x00000004, 0x0000000C, 0x0000000B}},
-            {0x000061a8, new uint[] {0x0000000B, 0x0000000A, 0x0000000C}},
-            {0x000061a9, new uint[] {0x00000007, 0x00000008, 0x00000008}},
-            {0x000061aa, new uint[] {0x00000009, 0x00000001, 0x0000000C}},
-            {0x00000404, new uint[] {0x0000000C, 0x0000000C, 0x00000009}},
-            {0x00006978, new uint[] {0x0000000B, 0x0000000C, 0x0000000A}},
-            {0x0000697c, new uint[] {0x00000008, 0x00000003, 0x00000006}},
-            {0x00006d60, new uint[] {0x0000000C, 0x00000003, 0x0000000C}},
-            {0x00002713, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}}
-        };
-
-        private readonly Dictionary<uint, uint[]> hats = new Dictionary<uint, uint[]>
-        {
-            {0x00000001, new uint[] {0x00000000, 0x00000000, 0x00000000}},
-            {0x000003e8, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003e9, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x000003ea, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000003eb, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003ec, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003ed, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000003ee, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000003ef, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003f0, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003f1, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003f2, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003f3, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x000003f4, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000003f6, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x000007d0, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d1, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x000007d2, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d3, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x000007d4, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x000007d5, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00000bb8, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00000bb9, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00000bba, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00000bbb, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00000bbc, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00000bbd, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00000bbe, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x00000bbf, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bc0, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00000bc1, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00000bc2, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00000fa0, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00000fa1, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00000fa2, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00000fa3, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00000fa4, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00000fa5, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00000fa6, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00000fa7, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001388, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001389, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x0000138a, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001770, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x00001771, new uint[] {0x00000003, 0x00000003, 0x00000003}},
-            {0x00001772, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00001b58, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00001b5a, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001b5b, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001b5c, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00001b5d, new uint[] {0x00000009, 0x00000009, 0x00000009}},
-            {0x00001f40, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001f41, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00001f42, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001f43, new uint[] {0x00000008, 0x00000008, 0x00000008}},
-            {0x00002329, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x0000232a, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x0000232b, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x0000232c, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x0000232d, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x000003f5, new uint[] {0x00000005, 0x00000006, 0x0000000C}},
-            {0x0000232e, new uint[] {0x0000000A, 0x0000000C, 0x00000003}},
-            {0x000061a8, new uint[] {0x00000006, 0x00000004, 0x00000005}},
-            {0x000061a9, new uint[] {0x00000000, 0x00000001, 0x00000005}},
-            {0x000061aa, new uint[] {0x00000001, 0x00000001, 0x0000000B}},
-            {0x00006978, new uint[] {0x00000002, 0x00000005, 0x00000006}},
-            {0x0000697c, new uint[] {0x00000007, 0x00000007, 0x00000008}},
-            {0x00006d60, new uint[] {0x0000000C, 0x0000000C, 0x00000003}},
-            {0x000003f7, new uint[] {0x00000000, 0x00000001, 0x00000005}},
-            {0x000003f8, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}}
-        };
-
-        private readonly Dictionary<uint, uint[]> shoes = new Dictionary<uint, uint[]>
-        {
-            {0x00000001, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003e8, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003e9, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003ea, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003eb, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000003ec, new uint[] {0x0000000A, 0x0000000A, 0x0000000A}},
-            {0x000003ed, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000003ee, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000003ef, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000003f0, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000003f1, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000003f2, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000003f3, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x000007d0, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000007d1, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000007d2, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000007d3, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000007d4, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000007d5, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x000007d6, new uint[] {0x0000000B, 0x0000000B, 0x0000000B}},
-            {0x000007d8, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x000007d9, new uint[] {0x00000002, 0x00000002, 0x00000002}},
-            {0x00000bb8, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bb9, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000bba, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bbb, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000bbc, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bbd, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bbe, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bbf, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000bc0, new uint[] {0x00000007, 0x00000007, 0x00000007}},
-            {0x00000bc1, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00000fa0, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00000fa1, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00000fa2, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00000fa3, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001388, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00001389, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x0000138a, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00001770, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001771, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001772, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001773, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001774, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00001775, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x00001776, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001777, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001778, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001779, new uint[] {0x00000001, 0x00000001, 0x00000001}},
-            {0x0000177a, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x0000177b, new uint[] {0x00000004, 0x00000004, 0x00000004}},
-            {0x00001b58, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001b59, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001b5a, new uint[] {0x00000006, 0x00000006, 0x00000006}},
-            {0x00001f40, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f41, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f42, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f43, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00001f44, new uint[] {0x00000005, 0x00000005, 0x00000005}},
-            {0x00000fa6, new uint[] {0x00000000, 0x00000001, 0x00000007}},
-            {0x000007d7, new uint[] {0x0000000A, 0x00000008, 0x00000007}},
-            {0x000061a8, new uint[] {0x0000000B, 0x0000000C, 0x0000000C}},
-            {0x000061a9, new uint[] {0x00000007, 0x00000004, 0x00000002}},
-            {0x000061aa, new uint[] {0x0000000C, 0x00000007, 0x00000009}},
-            {0x00006978, new uint[] {0x00000002, 0x00000004, 0x00000009}},
-            {0x0000697c, new uint[] {0x00000005, 0x00000003, 0x00000006}},
-            {0x00006d60, new uint[] {0x0000000C, 0x00000009, 0x00000007}}
-        };
+        private GearUnlocker GearUnlocker { get; set; }
+        private OctohaxLogic OctohaxLogic { get; set; }
+        private SisterhaxLogic SisterhaxLogic { get; set; }
 
         public SplatAIOForm()
         {
@@ -360,7 +95,7 @@ namespace SplatAIO.UI
             }
 
             // do a version check using "ToHu" of "ToHuman"
-            if (Gecko.peek((uint) Octohax.Player00 + 0x50) != 0x546F4875)
+            if (Gecko.peek((uint) OctohaxAddress.Player00 + 0x50) != 0x546F4875)
             {
                 MessageBox.Show(Strings.VERSION_CHECK_FAILED_TEXT);
 
@@ -439,6 +174,9 @@ namespace SplatAIO.UI
         {
             hold();
 
+            GearUnlocker = new GearUnlocker(Gecko, Offset);
+            OctohaxLogic = new OctohaxLogic(Gecko);
+            SisterhaxLogic = new SisterhaxLogic(Gecko);
             Rank = Convert.ToInt32(Gecko.peek((uint) Player.Rank + Offset)) + 1;
             Okane = Convert.ToInt32(Gecko.peek((uint) Player.Okane + Offset));
             Ude = Convert.ToInt32(Gecko.peek((uint) Player.Ude + Offset));
@@ -608,142 +346,41 @@ namespace SplatAIO.UI
                     StatisticTransmitter.WriteToSlot(7, 1);
             }
         }
-
-        public void octohax(bool octopus)
-        {
-            uint tnkRvlOne = 0x52766C30; // "Rvl0"
-            uint tnkRvlTwo = 0x30000000; // "0"
-
-            // Tnk_Simple 1
-            Gecko.poke32((uint) Octohax.TnkSimpleOne + 0x4, tnkRvlOne);
-            Gecko.poke32((uint) Octohax.TnkSimpleOne + 0x8, tnkRvlTwo);
-
-            // Tnk_Simple 2
-            Gecko.poke32((uint) Octohax.TnkSimpleTwo + 0x4, tnkRvlOne);
-            Gecko.poke32((uint) Octohax.TnkSimpleTwo + 0x8, tnkRvlTwo);
-
-            // Player00
-            Gecko.poke32((uint) Octohax.Player00, 0x52697661);
-            Gecko.poke32((uint) Octohax.Player00 + 0x4, 0x6C303000);
-
-            // Player00_Hlf
-            Gecko.poke32((uint) Octohax.Player00Hlf, 0x52697661);
-            Gecko.poke32((uint) Octohax.Player00Hlf + 0x4, 0x6C30305F);
-            Gecko.poke32((uint) Octohax.Player00Hlf + 0x8, 0x486C6600);
-
-            // Rival_Squid
-            if (octopus)
-            {
-                Gecko.poke32((uint) Octohax.RivalSquid, 0x52697661);
-                Gecko.poke32((uint) Octohax.RivalSquid + 0x4, 0x6C5F5371);
-                Gecko.poke32((uint) Octohax.RivalSquid + 0x8, 0x75696400);
-            }
-            else
-            {
-                Gecko.poke32((uint) Octohax.RivalSquid, 0x506C6179);
-                Gecko.poke32((uint) Octohax.RivalSquid + 0x4, 0x65725F53);
-                Gecko.poke32((uint) Octohax.RivalSquid + 0x8, 0x71756964);
-            }
-
-            // Tnk_Simple 3
-            Gecko.poke32((uint) Octohax.TnkSimpleThree + 0x4, tnkRvlOne);
-            Gecko.poke32((uint) Octohax.TnkSimpleThree + 0x8, tnkRvlTwo);
-
-            // Tnk_Simple 4
-            Gecko.poke32((uint) Octohax.TnkSimpleFour + 0x4, tnkRvlOne);
-            Gecko.poke32((uint) Octohax.TnkSimpleFour + 0x8, tnkRvlTwo);
-
-            // Tnk_Simple 5
-            Gecko.poke32((uint) Octohax.TnkSimpleFive + 0x4, tnkRvlOne);
-            Gecko.poke32((uint) Octohax.TnkSimpleFive + 0x8, tnkRvlTwo);
-
-            if (SendStats)
-                StatisticTransmitter.WriteToSlot(9, 1);
-        }
-
-        public void sisterhax(string mode)
-        {
-            switch (mode)
-            {
-                case "aori":
-                    Gecko.poke32((uint) Sisterhax.Aori, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Aori + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Aori + 8, 0x41000000);
-
-                    Gecko.poke32((uint) Sisterhax.Hotaru, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 8, 0x41000000);
-                    break;
-
-                case "hotaru":
-                    Gecko.poke32((uint) Sisterhax.Aori, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Aori + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Aori + 8, 0x42000000);
-
-                    Gecko.poke32((uint) Sisterhax.Hotaru, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 8, 0x42000000);
-                    break;
-
-                case "swap":
-                    Gecko.poke32((uint) Sisterhax.Aori, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Aori + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Aori + 8, 0x42000000);
-
-                    Gecko.poke32((uint) Sisterhax.Hotaru, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 8, 0x41000000);
-                    break;
-
-                case "normal":
-                    Gecko.poke32((uint) Sisterhax.Aori, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Aori + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Aori + 8, 0x41000000);
-
-                    Gecko.poke32((uint) Sisterhax.Hotaru, 0x4E70635F);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 4, 0x49646F6C);
-                    Gecko.poke32((uint) Sisterhax.Hotaru + 8, 0x42000000);
-                    break;
-            }
-
-            if (SendStats)
-                StatisticTransmitter.WriteToSlot(8, 1);
-        }
+        
 
         private void progressFlagsBox_Click(object sender, EventArgs e)
         {
-            var progressBitsForm = new ProgressBitsForm();
-            progressBitsForm.ShowDialog(this);
+            new ProgressBitsForm().ShowDialog(this);
         }
 
         private void ikaBox_Click(object sender, EventArgs e)
         {
-            octohax(false);
+            OctohaxLogic.switchToSquid();
         }
 
         private void takoBox_Click(object sender, EventArgs e)
         {
-            octohax(true);
+            OctohaxLogic.switchToOctopus();
         }
 
         private void aoriBox_Click(object sender, EventArgs e)
         {
-            sisterhax("aori");
+            SisterhaxLogic.changeModels(SisterhaxMode.Aori);
         }
 
         private void hotaruBox_Click(object sender, EventArgs e)
         {
-            sisterhax("hotaru");
+            SisterhaxLogic.changeModels(SisterhaxMode.Hotaru);
         }
 
         private void swapBox_Click(object sender, EventArgs e)
         {
-            sisterhax("swap");
+            SisterhaxLogic.changeModels(SisterhaxMode.Swap);
         }
 
         private void normalBox_Click(object sender, EventArgs e)
         {
-            sisterhax("normal");
+            SisterhaxLogic.changeModels(SisterhaxMode.Normal);
         }
 
         private void gameButton_Click(object sender, EventArgs e)
@@ -755,55 +392,22 @@ namespace SplatAIO.UI
         {
             WeaponsForm.PokeWeapons(WeaponDatabase.Weapons, Gecko, Offset);
         }
-
-        private void PokeGear(uint baseAddress, Dictionary<uint, uint[]> gear)
-        {
-            // Sort the Dictionary's keys so that starter gear will appear first
-            var sortedKeys = gear.Keys.ToList();
-            sortedKeys.Sort();
-
-            foreach (var objectId in sortedKeys)
-            {
-                var abilities = gear[objectId];
-
-                // Poke the memory addresses
-                Gecko.poke(baseAddress, objectId); // objectId
-                Gecko.poke(baseAddress + 0x00000004, 0x00000004); // level
-                Gecko.poke(baseAddress + 0x00000008, 0x00000004); // slots
-                Gecko.poke(baseAddress + 0x0000000C, abilities[0]); // slot 1
-                Gecko.poke(baseAddress + 0x00000010, abilities[1]); // slot 2
-                Gecko.poke(baseAddress + 0x00000014, abilities[2]); // slot 3
-                Gecko.poke(baseAddress + 0x00000024, 0x00000024); // date
-                Gecko.poke(baseAddress + 0x00000028, 0x00010000); // new flag
-
-                // Move to next gear slot in the inventory
-                baseAddress += 0x00000030;
-
-                // debug
-                // Console.WriteLine("poked (objectId = " + objectId + ", new baseAddress = " + baseAddress + ")");
-            }
-
-            if (SendStats)
-                StatisticTransmitter.WriteToSlot(10, 1);
-        }
-
+        
         private void gearButton_Click_1(object sender, EventArgs e)
         {
-            PokeGear((uint) Gear.Hats + Offset, hats);
-            PokeGear((uint) Gear.Clothes + Offset, clothes);
-            PokeGear((uint) Gear.Shoes + Offset, shoes);
+            GearUnlocker.PokeHats();
+            GearUnlocker.PokeClothes();
+            GearUnlocker.PokeShoes();
         }
 
         private void singlePlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var singlePlayerForm = new SinglePlayerForm();
-            singlePlayerForm.ShowDialog(this);
+            new SinglePlayerForm().ShowDialog(this);
         }
 
         private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var timerHaxForm = new TimerHaxForm(Gecko);
-            timerHaxForm.ShowDialog(this);
+            new TimerHaxForm(Gecko).ShowDialog(this);
         }
 
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)

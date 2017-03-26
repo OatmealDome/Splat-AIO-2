@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Memory.Addresses;
+﻿using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Hacks.Unlock;
 using SplatAIO.Logic.Weapons;
 using SplatAIO.Properties;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SplatAIO.UI.Weapons
 {
@@ -33,10 +33,10 @@ namespace SplatAIO.UI.Weapons
         {
             weapons.Clear();
 
-            equippedWeapon = gecko.peek((uint) Gear.EquippedWeapon + offset);
+            equippedWeapon = gecko.peek((uint) GearAddress.EquippedWeapon + offset);
 
             // dump all weapon save slots
-            var weaponData = SplatAIOForm.DumpSaveSlots(gecko, offset, (uint) Gear.Weapons, 5120);
+            var weaponData = SplatAIOForm.DumpSaveSlots(gecko, offset, (uint) GearAddress.Weapons, 5120);
 
             // read data from slots
             var j = 0;
@@ -71,12 +71,12 @@ namespace SplatAIO.UI.Weapons
             PokeWeapons(weapons, gecko, offset);
 
             // poke the equipped weapon
-            gecko.poke32((uint) Gear.EquippedWeapon, equippedWeapon);
+            gecko.poke32((uint) GearAddress.EquippedWeapon, equippedWeapon);
         }
 
         public static void PokeWeapons(List<Weapon> weapons, TCPGecko gecko, uint offset)
         {
-            var currentPosition = (uint) Gear.Weapons + offset;
+            var currentPosition = (uint) GearAddress.Weapons + offset;
             foreach (var weapon in weapons)
             {
                 gecko.poke32(currentPosition, weapon.Id);

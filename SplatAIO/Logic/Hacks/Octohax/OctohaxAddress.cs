@@ -1,6 +1,6 @@
 ﻿namespace SplatAIO.Logic.Memory.Addresses
 {
-    public enum Octohax : uint
+    public enum OctohaxAddress : uint
     {
         TnkSimpleFive = 0x12BEB3E,
         TnkSimpleOne = 0x10506BC0,

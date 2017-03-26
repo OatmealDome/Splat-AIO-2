@@ -41,9 +41,10 @@ namespace SplatAIO.Logic.Statistics
             client.Headers.Add("user-agent", Agent);
             try
             {
-                result =
-                    client.DownloadString(Url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" +
+#if !DEBUG
+                result = client.DownloadString(Url + "?id=2&testing=true&os=" + Environment.OSVersion + "&lang=" +
                                           ci.EnglishName).Equals("working");
+#endif
             }
             catch (ArgumentException e)
             {
