@@ -75,8 +75,8 @@
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxValue.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearAddress.cs" />
     <Compile Include="Logic\Hacks\Octohax\OctohaxAddress.cs" />
-    <Compile Include="Logic\Memory\Addresses\Player.cs" />
-    <Compile Include="Logic\Memory\Addresses\World.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\PlayerAddress.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\WorldAddress.cs" />
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxAddress.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />

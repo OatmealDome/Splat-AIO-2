@@ -1,6 +1,6 @@
-﻿namespace SplatAIO.Logic.Memory.es
+﻿namespace SplatAIO.Logic.Hacks.Singleplayer
 {
-    public enum World : uint
+    public enum WorldAddress : uint
     {
         SaveSlots = 0x12CDC2B8,
         EnvironmentFlags = SaveSlots + 0x300, // 0x12CDC5B8

@@ -1,4 +1,4 @@
-﻿using SplatAIO.Logic.Memory.es;
+﻿using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Singleplayer;
 using SplatAIO.Properties;
 using System;
@@ -12,14 +12,14 @@ namespace SplatAIO.UI.Singleplayer
         private readonly SingleAssemblyComponentResourceManager editFormResources =
             new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
 
-        public uint BurstBombAddress { get; private set; } = (uint)World.BurstBomb;
-        public uint EnvironmentFlagsAddress { get; private set; } = (uint)World.EnvironmentFlags;
-        public uint HeroShotAddress { get; private set; } = (uint)World.HeroShot;
-        public uint InkTankAddress { get; private set; } = (uint)World.InkTank;
-        public uint PowerEggsAddress { get; private set; } = (uint)World.PowerEggs;
-        public uint SaveSlotsAddress { get; private set; } = (uint)World.SaveSlots;
-        public uint SeekerAddress { get; private set; } = (uint)World.Seeker;
-        public uint SplatBombAddress { get; private set; } = (uint)World.SplatBomb;
+        public uint BurstBombAddress { get; private set; } = (uint)WorldAddress.BurstBomb;
+        public uint EnvironmentFlagsAddress { get; private set; } = (uint)WorldAddress.EnvironmentFlags;
+        public uint HeroShotAddress { get; private set; } = (uint)WorldAddress.HeroShot;
+        public uint InkTankAddress { get; private set; } = (uint)WorldAddress.InkTank;
+        public uint PowerEggsAddress { get; private set; } = (uint)WorldAddress.PowerEggs;
+        public uint SaveSlotsAddress { get; private set; } = (uint)WorldAddress.SaveSlots;
+        public uint SeekerAddress { get; private set; } = (uint)WorldAddress.Seeker;
+        public uint SplatBombAddress { get; private set; } = (uint)WorldAddress.SplatBomb;
 
         public List<LevelData> levelSaveData = new List<LevelData>();
 
