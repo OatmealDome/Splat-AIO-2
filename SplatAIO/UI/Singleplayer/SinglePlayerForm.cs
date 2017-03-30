@@ -9,15 +9,17 @@ namespace SplatAIO.UI.Singleplayer
 {
     public partial class SinglePlayerForm : Form
     {
-        private readonly SingleAssemblyComponentResourceManager editFormResources =
+        private readonly SingleAssemblyComponentResourceManager _editFormResources =
             new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
         
         private SingleplayerLogic SingleplayerLogic { get; set; }
+        private EnvironmentHax EnvironmentHax { get; set; }
 
         public SinglePlayerForm()
         {
             InitializeComponent();
             SingleplayerLogic = new SingleplayerLogic(TCPGecko.Instance(), MemoryUtils.Offset);
+            EnvironmentHax = new EnvironmentHax(TCPGecko.Instance(), MemoryUtils.Offset);
         }
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
@@ -62,12 +64,12 @@ namespace SplatAIO.UI.Singleplayer
 
         private void clearEnvironmentButton_Click(object sender, EventArgs e)
         {
-            SingleplayerLogic.ClearEnvironmentFlags();
+            EnvironmentHax.ClearEnvironmentFlags();
         }
 
         private void setEnvironmentButton_Click(object sender, EventArgs e)
         {
-            SingleplayerLogic.SetAllEnvironmentFlags();
+            EnvironmentHax.SetAllEnvironmentFlags();
         }
 
         private void resetAllButton_Click(object sender, EventArgs e)
@@ -164,15 +166,15 @@ namespace SplatAIO.UI.Singleplayer
                 switch (levelNumber)
                 {
                     case 0x65:
-                        return editFormResources.GetString("levelBox.Items");
+                        return _editFormResources.GetString("levelBox.Items");
                     case 0x66:
-                        return editFormResources.GetString("levelBox.Items1");
+                        return _editFormResources.GetString("levelBox.Items1");
                     case 0x67:
-                        return editFormResources.GetString("levelBox.Items2");
+                        return _editFormResources.GetString("levelBox.Items2");
                     case 0x68:
-                        return editFormResources.GetString("levelBox.Items3");
+                        return _editFormResources.GetString("levelBox.Items3");
                     case 0x69:
-                        return editFormResources.GetString("levelBox.Items4");
+                        return _editFormResources.GetString("levelBox.Items4");
                     default:
                         throw new Exception(Strings.INVALID_LEVEL_NUMBER + " (levelNumber = " + levelNumber + ")");
                 }
@@ -184,11 +186,11 @@ namespace SplatAIO.UI.Singleplayer
             switch (clearState)
             {
                 case 0x0:
-                    return editFormResources.GetString("clearStateBox.Items");
+                    return _editFormResources.GetString("clearStateBox.Items");
                 case 0x2:
-                    return editFormResources.GetString("clearStateBox.Items1");
+                    return _editFormResources.GetString("clearStateBox.Items1");
                 case 0x3:
-                    return editFormResources.GetString("clearStateBox.Items2");
+                    return _editFormResources.GetString("clearStateBox.Items2");
                 default:
                     throw new Exception(Strings.INVALID_CLEAR_STATE + " (clearState = " + clearState + ")");
             }

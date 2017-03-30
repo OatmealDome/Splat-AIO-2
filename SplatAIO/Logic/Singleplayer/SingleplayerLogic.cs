@@ -10,7 +10,6 @@ namespace SplatAIO.Logic.Singleplayer
     {   
 
         private uint BurstBombAddress { get; set; }
-        private uint EnvironmentFlagsAddress { get; set; }
         private uint HeroShotAddress { get; set; }
         private uint InkTankAddress { get; set; }
         private uint PowerEggsAddress { get; set; }
@@ -25,7 +24,6 @@ namespace SplatAIO.Logic.Singleplayer
         {
             Gecko = gecko;
             SaveSlotsAddress = (uint)WorldAddress.BurstBomb + offset;
-            EnvironmentFlagsAddress = (uint)WorldAddress.EnvironmentFlags + offset;
             HeroShotAddress = (uint)WorldAddress.HeroShot + offset;
             InkTankAddress = (uint)WorldAddress.InkTank + offset;
             SplatBombAddress = (uint)WorldAddress.PowerEggs + offset;
@@ -108,23 +106,7 @@ namespace SplatAIO.Logic.Singleplayer
             Gecko.poke32(address + 0x4, clearState);
             Gecko.poke32(address + 0x8, Convert.ToUInt32(scroll));
         }
-
-        public void SetAllEnvironmentFlags()
-        {
-            Gecko.poke32(EnvironmentFlagsAddress, 0);
-            Gecko.poke32(EnvironmentFlagsAddress + 0x4, 0x001FFFFF);
-            Gecko.poke32(EnvironmentFlagsAddress + 0x8, 0);
-            Gecko.poke32(EnvironmentFlagsAddress + 0xC, 0x0003EFBE);
-        }
-
-        public void ClearEnvironmentFlags()
-        {
-            Gecko.poke32(EnvironmentFlagsAddress, 0);
-            Gecko.poke32(EnvironmentFlagsAddress + 0x4, 0);
-            Gecko.poke32(EnvironmentFlagsAddress + 0x8, 0);
-            Gecko.poke32(EnvironmentFlagsAddress + 0xC, 0);
-        }
-
+        
         public void SetBurstBomb(uint value)
         {
             Gecko.poke32(BurstBombAddress, value);
@@ -133,16 +115,6 @@ namespace SplatAIO.Logic.Singleplayer
         public uint GetBurstBomb()
         {
             return Gecko.peek(BurstBombAddress);
-        }
-
-        public void SetEnvironmentFlags(uint value)
-        {
-            Gecko.poke32(EnvironmentFlagsAddress, value);
-        }
-
-        public uint GetEnvironmentFlags()
-        {
-            return Gecko.peek(EnvironmentFlagsAddress);
         }
 
         public void SetHeroShot(uint value)
