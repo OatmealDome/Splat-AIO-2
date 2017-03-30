@@ -65,11 +65,37 @@ namespace SplatAIO.Logic.Gecko
 
     public class TCPGecko
     {
-        private TCPConnector PTCP;
+        private const int DefaultPort = 7331;
 
-        public TCPGecko(string host, int port = 7331)
+        private static TCPGecko _instance;
+
+        /// <summary>
+        /// Singleton with parameters.
+        /// This way you can initialize the connection at the begin and use
+        /// it everywhere in the application.
+        /// </summary>
+        /// <param name="host">Wii U IP address</param>
+        /// <param name="port">Geckos port</param>
+        /// <exception cref="InvalidOperationException">Throws if you haven't called with parameters yet</exception>
+        /// <returns>Instance of TCPGecko</returns>
+        public static TCPGecko Instance(string host = null, int port = DefaultPort)
         {
-            PTCP = new TCPConnector(host, port);
+            if (!string.IsNullOrEmpty(host))
+            {
+                _instance = new TCPGecko(host, port);
+            }
+            if (_instance == null)
+            {
+                throw new InvalidOperationException("You've to initialize the instance first!");
+            }
+            return _instance;
+        }
+
+        private TCPConnector _ptcp;
+
+        private TCPGecko(string host, int port)
+        {
+            _ptcp = new TCPConnector(host, port);
             Connected = false;
             PChunkUpdate = null;
         }
@@ -80,11 +106,11 @@ namespace SplatAIO.Logic.Gecko
 
         public string Host
         {
-            get { return PTCP.Host; }
+            get { return _ptcp.Host; }
             set
             {
                 if (!Connected)
-                    PTCP = new TCPConnector(value, PTCP.Port);
+                    _ptcp = new TCPConnector(value, _ptcp.Port);
             }
         }
 
@@ -118,7 +144,7 @@ namespace SplatAIO.Logic.Gecko
             //Open TCP Gecko
             try
             {
-                PTCP.Connect();
+                _ptcp.Connect();
                 /*Byte[] init = new Byte[1];
                 if (GeckoRead(init, 1) != FTDICommand.CMD_OK || init[0] != 1)
                     throw new IOException("init byte missing");*/
@@ -143,7 +169,7 @@ namespace SplatAIO.Logic.Gecko
         public void Disconnect()
         {
             Connected = false;
-            PTCP.Close();
+            _ptcp.Close();
         }
 
         protected FTDICommand GeckoRead(byte[] recbyte, uint nobytes)
@@ -152,7 +178,7 @@ namespace SplatAIO.Logic.Gecko
 
             try
             {
-                PTCP.Read(recbyte, nobytes, ref bytes_read);
+                _ptcp.Read(recbyte, nobytes, ref bytes_read);
             }
             catch (IOException)
             {
@@ -171,7 +197,7 @@ namespace SplatAIO.Logic.Gecko
 
             try
             {
-                PTCP.Write(sendbyte, nobytes, ref bytes_written);
+                _ptcp.Write(sendbyte, nobytes, ref bytes_written);
             }
             catch (IOException)
             {

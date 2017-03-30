@@ -57,7 +57,7 @@ namespace SplatAIO.UI.Singleplayer
             {
                 // check to make sure that this isn't already in the list
                 var singlePlayerForm = (SinglePlayerForm) Owner;
-                foreach (var data in singlePlayerForm.levelSaveData)
+                foreach (var data in singlePlayerForm.levelSaveData) // ToDo refactor the form
                     if (data.LevelNumber == levelNumber)
                     {
                         // Refuse to save

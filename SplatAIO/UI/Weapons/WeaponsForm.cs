@@ -1,5 +1,6 @@
 ﻿using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.Unlock;
+using SplatAIO.Logic.Memory;
 using SplatAIO.Logic.Weapons;
 using SplatAIO.Properties;
 using System;
@@ -10,8 +11,8 @@ namespace SplatAIO.UI.Weapons
 {
     public partial class WeaponsForm : Form
     {
-        private readonly TCPGecko gecko;
-        private readonly uint offset;
+        private readonly TCPGecko _gecko;
+        private readonly uint _offset;
 
         private readonly SingleAssemblyComponentResourceManager weaponEditFormResources =
             new SingleAssemblyComponentResourceManager(typeof(WeaponEditForm));
@@ -19,12 +20,12 @@ namespace SplatAIO.UI.Weapons
         public readonly List<Weapon> weapons = new List<Weapon>();
         private uint equippedWeapon;
 
-        public WeaponsForm(TCPGecko gecko, uint offset)
+        public WeaponsForm()
         {
             InitializeComponent();
 
-            this.gecko = gecko;
-            this.offset = offset;
+            this._gecko = TCPGecko.Instance();
+            this._offset = MemoryUtils.Offset;
 
             ReloadWeaponsList();
         }
@@ -33,10 +34,10 @@ namespace SplatAIO.UI.Weapons
         {
             weapons.Clear();
 
-            equippedWeapon = gecko.peek((uint) GearAddress.EquippedWeapon + offset);
+            equippedWeapon = _gecko.peek((uint) GearAddress.EquippedWeapon + _offset);
 
             // dump all weapon save slots
-            var weaponData = SplatAIOForm.DumpSaveSlots(gecko, offset, (uint) GearAddress.Weapons, 5120);
+            var weaponData = MemoryUtils.DumpSaveSlots(_gecko, _offset, (uint) GearAddress.Weapons, 5120);
 
             // read data from slots
             var j = 0;
@@ -68,10 +69,10 @@ namespace SplatAIO.UI.Weapons
         private void OKButton_Click(object sender, EventArgs e)
         {
             // poke weapons into memory
-            PokeWeapons(weapons, gecko, offset);
+            PokeWeapons(weapons, _gecko, _offset);
 
             // poke the equipped weapon
-            gecko.poke32((uint) GearAddress.EquippedWeapon, equippedWeapon);
+            _gecko.poke32((uint) GearAddress.EquippedWeapon, equippedWeapon);
         }
 
         public static void PokeWeapons(List<Weapon> weapons, TCPGecko gecko, uint offset)

@@ -78,7 +78,9 @@
     <Compile Include="Logic\Hacks\Singleplayer\PlayerAddress.cs" />
     <Compile Include="Logic\Hacks\Singleplayer\WorldAddress.cs" />
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxAddress.cs" />
+    <Compile Include="Logic\Memory\MemoryUtils.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
+    <Compile Include="Logic\Singleplayer\SingleplayerLogic.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
     <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Memory;
+using System;
 using System.Windows.Forms;
-using SplatAIO.Logic.Gecko;
 
 namespace SplatAIO.UI
 {
@@ -17,9 +18,8 @@ namespace SplatAIO.UI
 
         private void ProgressBitsForm_Load(object sender, EventArgs e)
         {
-            var mainForm = (SplatAIOForm) Owner;
-            gecko = mainForm.Gecko;
-            progression = gecko.peek(progressBitsAddress + mainForm.Offset);
+            gecko = TCPGecko.Instance();
+            progression = gecko.peek(progressBitsAddress + MemoryUtils.Offset);
 
             tutorialBox.Checked = (progression & 0x1) != 0;
             splatfestBox.Checked = (progression & 0x2) != 0;
@@ -50,7 +50,7 @@ namespace SplatAIO.UI
             SetFlag(ref progression, 0x100000, levelCapRaisedBox.Checked);
             SetFlag(ref progression, 0x200000, warningBox.Checked);
 
-            gecko.poke32(progressBitsAddress + ((SplatAIOForm) Owner).Offset, progression);
+            gecko.poke32(progressBitsAddress + MemoryUtils.Offset, progression);
         }
 
         public static void SetFlag(ref uint progression, uint flag, bool checkbox)

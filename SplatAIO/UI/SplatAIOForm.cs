@@ -1,8 +1,10 @@
 ﻿using SplatAIO.Logic;
 using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.Octohax;
+using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Hacks.Sisterhax;
 using SplatAIO.Logic.Hacks.Unlock;
+using SplatAIO.Logic.Memory;
 using SplatAIO.Logic.Memory.Addresses;
 using SplatAIO.Logic.Statistics;
 using SplatAIO.Logic.Weapons;
@@ -11,7 +13,6 @@ using SplatAIO.UI.Singleplayer;
 using SplatAIO.UI.TimerHax;
 using SplatAIO.UI.Weapons;
 using System;
-using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
@@ -41,10 +42,10 @@ namespace SplatAIO.UI
         public int Eyes { get; set; }
         public int Skin { get; set; }
         public uint Figure { get; set; }
-        public uint Offset { get; set; }
-        public TCPGecko Gecko { get; set; }
         public bool SendStats { get; set; }
         public bool AutoRefresh { get; set; }
+
+        private TCPGecko _gecko;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,11 +66,11 @@ namespace SplatAIO.UI
 
         private void connectBox_Click(object sender, EventArgs e)
         {
-            Gecko = new TCPGecko(ipBox.Text);
+            _gecko = TCPGecko.Instance(ipBox.Text);
 
             try
             {
-                Gecko.Connect();
+                _gecko.Connect();
             }
             catch (ETCPGeckoException)
             {
@@ -81,25 +82,25 @@ namespace SplatAIO.UI
             }
 
             //offset difference checker
-            var JRAddr = Gecko.peek(0x106E975C) + 0x92D8;
-            if (Gecko.peek(JRAddr) == 0x000003F2)
+            var JRAddr = _gecko.peek(0x106E975C) + 0x92D8;
+            if (_gecko.peek(JRAddr) == 0x000003F2)
             {
-                Offset = JRAddr - 0x12CDADA0;
+                MemoryUtils.Offset = JRAddr - 0x12CDADA0;
             }
             else
             {
                 MessageBox.Show(Strings.FIND_DIFF_FAILED_TEXT);
 
-                Gecko.Disconnect();
+                _gecko.Disconnect();
                 return;
             }
 
             // do a version check using "ToHu" of "ToHuman"
-            if (Gecko.peek((uint) OctohaxAddress.Player00 + 0x50) != 0x546F4875)
+            if (_gecko.peek((uint) OctohaxAddress.Player00 + 0x50) != 0x546F4875)
             {
                 MessageBox.Show(Strings.VERSION_CHECK_FAILED_TEXT);
 
-                Gecko.Disconnect();
+                _gecko.Disconnect();
                 return;
             }
 
@@ -174,18 +175,18 @@ namespace SplatAIO.UI
         {
             hold();
 
-            GearUnlocker = new GearUnlocker(Gecko, Offset);
-            OctohaxLogic = new OctohaxLogic(Gecko);
-            SisterhaxLogic = new SisterhaxLogic(Gecko);
-            Rank = Convert.ToInt32(Gecko.peek((uint) Player.Rank + Offset)) + 1;
-            Okane = Convert.ToInt32(Gecko.peek((uint) Player.Okane + Offset));
-            Ude = Convert.ToInt32(Gecko.peek((uint) Player.Ude + Offset));
-            Mae = Convert.ToInt32(Gecko.peek((uint) Player.Mae + Offset));
-            Sazae = Convert.ToInt32(Gecko.peek((uint) Player.Sazae + Offset));
-            Gender = Convert.ToInt32(Gecko.peek((uint) Player.Gender + Offset));
-            Eyes = Convert.ToInt32(Gecko.peek((uint) Player.Eyes + Offset));
-            Skin = Convert.ToInt32(Gecko.peek((uint) Player.Skin + Offset));
-            Figure = Gecko.peek((uint) Player.Amiibo + Offset);
+            GearUnlocker = new GearUnlocker(_gecko, MemoryUtils.Offset);
+            OctohaxLogic = new OctohaxLogic(_gecko);
+            SisterhaxLogic = new SisterhaxLogic(_gecko);
+            Rank = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Rank + MemoryUtils.Offset)) + 1;
+            Okane = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Okane + MemoryUtils.Offset));
+            Ude = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Ude + MemoryUtils.Offset));
+            Mae = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Mae + MemoryUtils.Offset));
+            Sazae = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Sazae + MemoryUtils.Offset));
+            Gender = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Gender + MemoryUtils.Offset));
+            Eyes = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Eyes + MemoryUtils.Offset));
+            Skin = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Skin + MemoryUtils.Offset));
+            Figure = _gecko.peek((uint)PlayerAddress.Amiibo + MemoryUtils.Offset);
 
             try
             {
@@ -245,7 +246,7 @@ namespace SplatAIO.UI
             catch (ArgumentOutOfRangeException)
             {
                 genderBox.SelectedIndex = 0;
-                Gecko.poke32((uint) Player.Gender, 0x00000000);
+                _gecko.poke32((uint)PlayerAddress.Gender, 0x00000000);
             }
 
             if (Figure == 0xFFFFFFFF)
@@ -267,7 +268,7 @@ namespace SplatAIO.UI
         {
             disconnectBox.Enabled = false;
             hold();
-            Gecko.Disconnect();
+            _gecko.Disconnect();
             connectBox.Enabled = true;
         }
 
@@ -293,15 +294,15 @@ namespace SplatAIO.UI
                     StatisticTransmitter.WriteToSlot(2, 1);
             }
 
-            pokeRank((uint) Player.Rank + Offset); // rank
-            Gecko.poke32((uint) Player.Okane + Offset, Convert.ToUInt32(kaneBox.Value)); // Okane
-            Gecko.poke32((uint) Player.Ude + Offset, Convert.ToUInt32(udeBox.SelectedIndex)); // ude
-            Gecko.poke32((uint) Player.Mae + Offset, Convert.ToUInt32(maeBox.Value)); // mae
-            Gecko.poke32((uint) Player.Sazae + Offset, Convert.ToUInt32(sazaeBox.Value)); // sazae
-            Gecko.poke32((uint) Player.Gender + Offset, Convert.ToUInt32(genderBox.SelectedIndex)); // gender
-            Gecko.poke32((uint) Player.Eyes + Offset, Convert.ToUInt32(eyeBox.SelectedIndex)); // eyes
-            Gecko.poke32((uint) Player.Skin + Offset, Convert.ToUInt32(skinBox.SelectedIndex)); // skin
-            pokeAmiibo((uint) Player.Amiibo + Offset); // amiibo
+            pokeRank((uint)PlayerAddress.Rank + MemoryUtils.Offset); // rank
+            _gecko.poke32((uint)PlayerAddress.Okane + MemoryUtils.Offset, Convert.ToUInt32(kaneBox.Value)); // Okane
+            _gecko.poke32((uint)PlayerAddress.Ude + MemoryUtils.Offset, Convert.ToUInt32(udeBox.SelectedIndex)); // ude
+            _gecko.poke32((uint)PlayerAddress.Mae + MemoryUtils.Offset, Convert.ToUInt32(maeBox.Value)); // mae
+            _gecko.poke32((uint)PlayerAddress.Sazae + MemoryUtils.Offset, Convert.ToUInt32(sazaeBox.Value)); // sazae
+            _gecko.poke32((uint)PlayerAddress.Gender + MemoryUtils.Offset, Convert.ToUInt32(genderBox.SelectedIndex)); // gender
+            _gecko.poke32((uint)PlayerAddress.Eyes + MemoryUtils.Offset, Convert.ToUInt32(eyeBox.SelectedIndex)); // eyes
+            _gecko.poke32((uint)PlayerAddress.Skin + MemoryUtils.Offset, Convert.ToUInt32(skinBox.SelectedIndex)); // skin
+            pokeAmiibo((uint)PlayerAddress.Amiibo + MemoryUtils.Offset); // amiibo
 
             release();
         }
@@ -312,7 +313,7 @@ namespace SplatAIO.UI
             var fix = MessageBox.Show(str1 + invalid + str2, Strings.INVALID, MessageBoxButtons.YesNo);
             if (fix == DialogResult.Yes)
             {
-                Gecko.poke32(fixAddress + Offset, Convert.ToUInt32(newPokeVal));
+                _gecko.poke32(fixAddress + MemoryUtils.Offset, Convert.ToUInt32(newPokeVal));
                 return newVal;
             }
             return noVal;
@@ -321,27 +322,27 @@ namespace SplatAIO.UI
         public void pokeRank(uint address)
         {
             var rank = Convert.ToUInt32(rankBox.Value);
-            Gecko.poke32(address, rank - 1); // rank
-            Gecko.poke32(address - 0x4, 0x00000000); // experience to 0
+            _gecko.poke32(address, rank - 1); // rank
+            _gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
             // set progression bits appropriately
-            var progression = Gecko.peek(ProgressBitsForm.progressBitsAddress + Offset);
+            var progression = _gecko.peek(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset);
             ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20);
                 // rank cap flag, remove if rank < 20, set if rank >= 20
             ProgressBitsForm.SetFlag(ref progression, 0x800, rank >= 10);
                 // gachi unlocked flag, remove if rank < 10, set if rank >= 10
-            Gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
+            _gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
         }
 
         public void pokeAmiibo(uint address)
         {
             if (amiiboBox.SelectedIndex == 0) // none / nashi
             {
-                Gecko.poke32(address, 0xFFFFFFFF);
+                _gecko.poke32(address, 0xFFFFFFFF);
             }
             else
             {
-                Gecko.poke32(address, Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
+                _gecko.poke32(address, Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
                 if (SendStats)
                     StatisticTransmitter.WriteToSlot(7, 1);
             }
@@ -385,12 +386,12 @@ namespace SplatAIO.UI
 
         private void gameButton_Click(object sender, EventArgs e)
         {
-            Gecko.poke32((uint) Player.Minigames + Offset, 0x000F0000);
+            _gecko.poke32((uint) PlayerAddress.Minigames + MemoryUtils.Offset, 0x000F0000);
         }
 
         private void bukiButton_Click(object sender, EventArgs e)
         {
-            WeaponsForm.PokeWeapons(WeaponDatabase.Weapons, Gecko, Offset);
+            WeaponsForm.PokeWeapons(WeaponDatabase.Weapons, _gecko, MemoryUtils.Offset);
         }
         
         private void gearButton_Click_1(object sender, EventArgs e)
@@ -407,36 +408,15 @@ namespace SplatAIO.UI
 
         private void timerHaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new TimerHaxForm(Gecko).ShowDialog(this);
+            new TimerHaxForm(_gecko).ShowDialog(this);
         }
 
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var weaponsForm = new WeaponsForm(Gecko, Offset);
+            var weaponsForm = new WeaponsForm();
             weaponsForm.ShowDialog(this);
         }
-
-        public static uint[] DumpSaveSlots(TCPGecko gecko, uint diff, uint start, uint size)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                // dump all save slots
-                gecko.Dump(start + diff, start + diff + size, memoryStream);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-
-                // convert to a uint array
-                var saveSlots = new uint[size / 4];
-                for (var i = 0; i < saveSlots.Length; i++)
-                {
-                    var buffer = new byte[4];
-                    memoryStream.Read(buffer, 0, 4);
-                    saveSlots[i] = ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
-                }
-
-                return saveSlots;
-            }
-        }
-
+        
         private void groupBox1_Enter(object sender, EventArgs e)
         {
         }

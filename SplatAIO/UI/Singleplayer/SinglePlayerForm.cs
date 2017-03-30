@@ -1,8 +1,8 @@
-﻿using SplatAIO.Logic.Hacks.Singleplayer;
+﻿using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Memory;
 using SplatAIO.Logic.Singleplayer;
 using SplatAIO.Properties;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SplatAIO.UI.Singleplayer
@@ -11,161 +11,69 @@ namespace SplatAIO.UI.Singleplayer
     {
         private readonly SingleAssemblyComponentResourceManager editFormResources =
             new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
-
-        public uint BurstBombAddress { get; private set; } = (uint)WorldAddress.BurstBomb;
-        public uint EnvironmentFlagsAddress { get; private set; } = (uint)WorldAddress.EnvironmentFlags;
-        public uint HeroShotAddress { get; private set; } = (uint)WorldAddress.HeroShot;
-        public uint InkTankAddress { get; private set; } = (uint)WorldAddress.InkTank;
-        public uint PowerEggsAddress { get; private set; } = (uint)WorldAddress.PowerEggs;
-        public uint SaveSlotsAddress { get; private set; } = (uint)WorldAddress.SaveSlots;
-        public uint SeekerAddress { get; private set; } = (uint)WorldAddress.Seeker;
-        public uint SplatBombAddress { get; private set; } = (uint)WorldAddress.SplatBomb;
-
-        public List<LevelData> levelSaveData = new List<LevelData>();
+        
+        private SingleplayerLogic SingleplayerLogic { get; set; }
 
         public SinglePlayerForm()
         {
             InitializeComponent();
+            SingleplayerLogic = new SingleplayerLogic(TCPGecko.Instance(), MemoryUtils.Offset);
         }
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
-            var mainForm = (SplatAIOForm) Owner;
-            var gecko = mainForm.Gecko;
-
-            // apply diff to the addresses
-            SaveSlotsAddress += mainForm.Offset;
-            EnvironmentFlagsAddress += mainForm.Offset;
-            HeroShotAddress += mainForm.Offset;
-            InkTankAddress += mainForm.Offset;
-            SplatBombAddress += mainForm.Offset;
-            BurstBombAddress += mainForm.Offset;
-            SeekerAddress += mainForm.Offset;
-            PowerEggsAddress += mainForm.Offset;
-
-            // dump all single player save slots
-            var rawLevelData = SplatAIOForm.DumpSaveSlots(gecko, 0, SaveSlotsAddress, 768);
-
-            // read data from slots
-            var j = 0;
-            while (j < rawLevelData.Length)
-            {
-                var levelNumber = rawLevelData[j];
-
-                // check if an empty save slot
-                if (levelNumber == 0xFFFFFFFF)
-                    break;
-
-                var clearState = rawLevelData[j + 1];
-                var scroll = Convert.ToBoolean(rawLevelData[j + 2]);
-
-                // add to the list
-                levelSaveData.Add(new LevelData(levelNumber, clearState, scroll));
-
-                // move to next slot
-                j += 3;
-            }
-
             // load the list view
             ReloadListView();
 
             // load power eggs
-            powerEggsBox.Value = Convert.ToInt32(gecko.peek(PowerEggsAddress));
+            powerEggsBox.Value = SingleplayerLogic.GetPowerEggs();
 
             // load upgrades
-            heroShotBox.SelectedIndex = Convert.ToInt32(gecko.peek(HeroShotAddress));
-            inkTankBox.SelectedIndex = Convert.ToInt32(gecko.peek(InkTankAddress));
-            splatBombBox.SelectedIndex = Convert.ToInt32(gecko.peek(SplatBombAddress));
+            heroShotBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetHeroShot());
+            inkTankBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetInkTank());
+            splatBombBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetSplatBomb());
 
             // for these upgrades, 0xFFFFFFFF = locked
-            var burstBomb = gecko.peek(BurstBombAddress);
-            if (burstBomb == 0xFFFFFFFF)
-                burstBombBox.SelectedIndex = 0;
-            else
-                burstBombBox.SelectedIndex = Convert.ToInt32(burstBomb + 1);
+            var burstBomb = SingleplayerLogic.GetBurstBomb();
+            burstBombBox.SelectedIndex = burstBomb == uint.MaxValue ? 0 : Convert.ToInt32(burstBomb + 1);
 
-            var seeker = gecko.peek(SeekerAddress);
-            if (seeker == 0xFFFFFFFF)
-                seekerBox.SelectedIndex = 0;
-            else
-                seekerBox.SelectedIndex = Convert.ToInt32(seeker + 1);
+            var seeker = SingleplayerLogic.GetSeeker();
+            seekerBox.SelectedIndex = seeker == uint.MaxValue ? 0 : Convert.ToInt32(seeker + 1);
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            var gecko = ((SplatAIOForm) Owner).Gecko;
-
-            // poke save slots in the list into memory
-            var currentPosition = SaveSlotsAddress;
-            foreach (var data in levelSaveData)
-            {
-                // poke values
-                gecko.poke32(currentPosition, data.LevelNumber);
-                gecko.poke32(currentPosition + 0x4, data.ClearState);
-                gecko.poke32(currentPosition + 0x8, Convert.ToUInt32(data.Scroll));
-
-                // move to next save slot
-                currentPosition += 0xC;
-            }
-
-            // fill in the rest of the slots with dummy data
-            for (var i = levelSaveData.Count; i < 64; i++)
-            {
-                // poke values
-                gecko.poke32(currentPosition, 0xFFFFFFFF);
-                gecko.poke32(currentPosition + 0x4, 0x00000000);
-                gecko.poke32(currentPosition + 0x8, 0x00000000);
-
-                // move to next save slot
-                currentPosition += 0xC;
-            }
-
+            SingleplayerLogic.FillSaveSlots();
             // poke power eggs
-            gecko.poke32(PowerEggsAddress, Convert.ToUInt32(powerEggsBox.Value));
-
+            SingleplayerLogic.SetPowerEggs(Convert.ToUInt32(powerEggsBox.Value));
             // poke upgrades
-            gecko.poke32(HeroShotAddress, Convert.ToUInt32(heroShotBox.SelectedIndex));
-            gecko.poke32(InkTankAddress, Convert.ToUInt32(inkTankBox.SelectedIndex));
-            gecko.poke32(SplatBombAddress, Convert.ToUInt32(splatBombBox.SelectedIndex));
+            SingleplayerLogic.SetHeroShot(Convert.ToUInt32(heroShotBox.SelectedIndex));
+            SingleplayerLogic.SetInkTank(Convert.ToUInt32(inkTankBox.SelectedIndex));
+            SingleplayerLogic.SetSplatBomb(Convert.ToUInt32(splatBombBox.SelectedIndex));
 
-            // for these upgrades, 0xFFFFFFFF = locked
-            if (burstBombBox.SelectedIndex == 0)
-                gecko.poke32(BurstBombAddress, 0xFFFFFFFF);
-            else
-                gecko.poke32(BurstBombAddress, Convert.ToUInt32(burstBombBox.SelectedIndex - 1));
-
-            if (seekerBox.SelectedIndex == 0)
-                gecko.poke32(SeekerAddress, 0xFFFFFFFF);
-            else
-                gecko.poke32(SeekerAddress, Convert.ToUInt32(seekerBox.SelectedIndex - 1));
+            // for these upgrades, 0xFFFFFFFF = locked // uint.MaxValue = 0xFFFFFFFF
+            SingleplayerLogic.SetBurstBomb(burstBombBox.SelectedIndex == 0
+                ? uint.MaxValue
+                : Convert.ToUInt32(burstBombBox.SelectedIndex - 1));
+            SingleplayerLogic.SetSeeker(seekerBox.SelectedIndex == 0
+                ? uint.MaxValue
+                : Convert.ToUInt32(seekerBox.SelectedIndex - 1));
         }
 
         private void clearEnvironmentButton_Click(object sender, EventArgs e)
         {
-            var gecko = ((SplatAIOForm) Owner).Gecko;
-
-            gecko.poke32(EnvironmentFlagsAddress, 0x0);
-            gecko.poke32(EnvironmentFlagsAddress + 0x4, 0x0);
-            gecko.poke32(EnvironmentFlagsAddress + 0x8, 0x0);
-            gecko.poke32(EnvironmentFlagsAddress + 0xC, 0x0);
+            SingleplayerLogic.ClearEnvironmentFlags();
         }
 
         private void setEnvironmentButton_Click(object sender, EventArgs e)
         {
-            var gecko = ((SplatAIOForm) Owner).Gecko;
-
-            gecko.poke32(EnvironmentFlagsAddress, 0x0);
-            gecko.poke32(EnvironmentFlagsAddress + 0x4, 0x001FFFFF);
-            gecko.poke32(EnvironmentFlagsAddress + 0x8, 0x0);
-            gecko.poke32(EnvironmentFlagsAddress + 0xC, 0x0003EFBE);
+            SingleplayerLogic.SetAllEnvironmentFlags();
         }
 
         private void resetAllButton_Click(object sender, EventArgs e)
         {
-            var dialogTitle = Strings.SINGLE_PLAYER_RESET_TITLE;
-            var dialogString = Strings.SINGLE_PLAYER_RESET_TEXT;
-            var result = MessageBox.Show(dialogString, dialogTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
-                MessageBoxDefaultButton.Button2);
+            var result = MessageBox.Show(Strings.SINGLE_PLAYER_RESET_TITLE, Strings.SINGLE_PLAYER_RESET_TEXT, 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
 
             if (result == DialogResult.Yes)
             {
@@ -173,7 +81,7 @@ namespace SplatAIO.UI.Singleplayer
                 clearEnvironmentButton_Click(null, null);
 
                 // Reset levels
-                levelSaveData = new List<LevelData>();
+                SingleplayerLogic.ClearLevelData();
                 ReloadListView();
 
                 // reset power eggs
@@ -190,14 +98,13 @@ namespace SplatAIO.UI.Singleplayer
                 OKButton_Click(null, null);
 
                 // Reset single player flags in the Inkopolis progress bits
-                var mainForm = (SplatAIOForm) Owner;
-                var progression = mainForm.Gecko.peek(ProgressBitsForm.progressBitsAddress + mainForm.Offset);
+                var progression = TCPGecko.Instance().peek(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset);
 
                 ProgressBitsForm.SetFlag(ref progression, 0x10, false); // octo valley intro
                 ProgressBitsForm.SetFlag(ref progression, 0x80, false); // great zapfish returned
                 ProgressBitsForm.SetFlag(ref progression, 0x100, false); // credits block available
 
-                mainForm.Gecko.poke32(ProgressBitsForm.progressBitsAddress + mainForm.Offset, progression);
+                TCPGecko.Instance().poke32(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset, progression);
             }
         }
 
@@ -210,19 +117,14 @@ namespace SplatAIO.UI.Singleplayer
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var levelData = levelSaveData[levelDataView.SelectedIndices[0]];
-
-            var editLevelDataForm = new EditLevelDataForm(levelData);
-            editLevelDataForm.ShowDialog(this);
+            new EditLevelDataForm(SingleplayerLogic.GetLevelData(levelDataView.SelectedIndices[0])).ShowDialog(this);
 
             ReloadListView();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var levelData = levelSaveData[levelDataView.SelectedIndices[0]];
-            levelSaveData.Remove(levelData);
-
+            SingleplayerLogic.RemoveLevelData(levelDataView.SelectedIndices[0]);
             ReloadListView();
         }
 
@@ -233,7 +135,7 @@ namespace SplatAIO.UI.Singleplayer
 
             if (editLevelDataForm.levelData != null)
             {
-                levelSaveData.Add(editLevelDataForm.levelData);
+                SingleplayerLogic.AddLevelData(editLevelDataForm.levelData);
                 ReloadListView();
             }
         }
@@ -241,8 +143,7 @@ namespace SplatAIO.UI.Singleplayer
         private void ReloadListView()
         {
             levelDataView.Items.Clear();
-
-            foreach (var data in levelSaveData)
+            foreach (var data in SingleplayerLogic.LevelData)
             {
                 // add to the list view
                 string[] rowData =
