@@ -12,14 +12,16 @@ namespace SplatAIO.UI.Singleplayer
         private readonly SingleAssemblyComponentResourceManager _editFormResources =
             new SingleAssemblyComponentResourceManager(typeof(EditLevelDataForm));
         
-        private SingleplayerLogic SingleplayerLogic { get; set; }
+        private LevelDataHax LevelDataHax { get; set; }
         private EnvironmentHax EnvironmentHax { get; set; }
+        private UpgradesHax UpgradesHax { get; set; }
 
         public SinglePlayerForm()
         {
             InitializeComponent();
-            SingleplayerLogic = new SingleplayerLogic(TCPGecko.Instance(), MemoryUtils.Offset);
+            LevelDataHax = new LevelDataHax(TCPGecko.Instance(), MemoryUtils.Offset);
             EnvironmentHax = new EnvironmentHax(TCPGecko.Instance(), MemoryUtils.Offset);
+            UpgradesHax = new UpgradesHax(TCPGecko.Instance(), MemoryUtils.Offset);
         }
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
@@ -28,36 +30,36 @@ namespace SplatAIO.UI.Singleplayer
             ReloadListView();
 
             // load power eggs
-            powerEggsBox.Value = SingleplayerLogic.GetPowerEggs();
+            powerEggsBox.Value = UpgradesHax.GetPowerEggs();
 
             // load upgrades
-            heroShotBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetHeroShot());
-            inkTankBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetInkTank());
-            splatBombBox.SelectedIndex = Convert.ToInt32(SingleplayerLogic.GetSplatBomb());
+            heroShotBox.SelectedIndex = Convert.ToInt32(UpgradesHax.GetHeroShot());
+            inkTankBox.SelectedIndex = Convert.ToInt32(UpgradesHax.GetInkTank());
+            splatBombBox.SelectedIndex = Convert.ToInt32(UpgradesHax.GetSplatBomb());
 
             // for these upgrades, 0xFFFFFFFF = locked
-            var burstBomb = SingleplayerLogic.GetBurstBomb();
+            var burstBomb = UpgradesHax.GetBurstBomb();
             burstBombBox.SelectedIndex = burstBomb == uint.MaxValue ? 0 : Convert.ToInt32(burstBomb + 1);
 
-            var seeker = SingleplayerLogic.GetSeeker();
+            var seeker = UpgradesHax.GetSeeker();
             seekerBox.SelectedIndex = seeker == uint.MaxValue ? 0 : Convert.ToInt32(seeker + 1);
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            SingleplayerLogic.FillSaveSlots();
+            LevelDataHax.FillSaveSlots();
             // poke power eggs
-            SingleplayerLogic.SetPowerEggs(Convert.ToUInt32(powerEggsBox.Value));
+            UpgradesHax.SetPowerEggs(Convert.ToUInt32(powerEggsBox.Value));
             // poke upgrades
-            SingleplayerLogic.SetHeroShot(Convert.ToUInt32(heroShotBox.SelectedIndex));
-            SingleplayerLogic.SetInkTank(Convert.ToUInt32(inkTankBox.SelectedIndex));
-            SingleplayerLogic.SetSplatBomb(Convert.ToUInt32(splatBombBox.SelectedIndex));
+            UpgradesHax.SetHeroShot(Convert.ToUInt32(heroShotBox.SelectedIndex));
+            UpgradesHax.SetInkTank(Convert.ToUInt32(inkTankBox.SelectedIndex));
+            UpgradesHax.SetSplatBomb(Convert.ToUInt32(splatBombBox.SelectedIndex));
 
             // for these upgrades, 0xFFFFFFFF = locked // uint.MaxValue = 0xFFFFFFFF
-            SingleplayerLogic.SetBurstBomb(burstBombBox.SelectedIndex == 0
+            UpgradesHax.SetBurstBomb(burstBombBox.SelectedIndex == 0
                 ? uint.MaxValue
                 : Convert.ToUInt32(burstBombBox.SelectedIndex - 1));
-            SingleplayerLogic.SetSeeker(seekerBox.SelectedIndex == 0
+            UpgradesHax.SetSeeker(seekerBox.SelectedIndex == 0
                 ? uint.MaxValue
                 : Convert.ToUInt32(seekerBox.SelectedIndex - 1));
         }
@@ -83,7 +85,7 @@ namespace SplatAIO.UI.Singleplayer
                 clearEnvironmentButton_Click(null, null);
 
                 // Reset levels
-                SingleplayerLogic.ClearLevelData();
+                LevelDataHax.ClearLevelData();
                 ReloadListView();
 
                 // reset power eggs
@@ -119,25 +121,25 @@ namespace SplatAIO.UI.Singleplayer
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new EditLevelDataForm(SingleplayerLogic.GetLevelData(levelDataView.SelectedIndices[0])).ShowDialog(this);
+            new EditLevelDataForm(LevelDataHax, LevelDataHax.GetLevelData(levelDataView.SelectedIndices[0])).ShowDialog(this);
 
             ReloadListView();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SingleplayerLogic.RemoveLevelData(levelDataView.SelectedIndices[0]);
+            LevelDataHax.RemoveLevelData(levelDataView.SelectedIndices[0]);
             ReloadListView();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            var editLevelDataForm = new EditLevelDataForm();
+            var editLevelDataForm = new EditLevelDataForm(LevelDataHax);
             editLevelDataForm.ShowDialog(this);
 
-            if (editLevelDataForm.levelData != null)
+            if (editLevelDataForm.LevelData != null)
             {
-                SingleplayerLogic.AddLevelData(editLevelDataForm.levelData);
+                LevelDataHax.AddLevelData(editLevelDataForm.LevelData);
                 ReloadListView();
             }
         }
@@ -145,7 +147,7 @@ namespace SplatAIO.UI.Singleplayer
         private void ReloadListView()
         {
             levelDataView.Items.Clear();
-            foreach (var data in SingleplayerLogic.LevelData)
+            foreach (var data in LevelDataHax.LevelData)
             {
                 // add to the list view
                 string[] rowData =

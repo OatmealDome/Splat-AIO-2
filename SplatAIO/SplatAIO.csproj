@@ -81,7 +81,8 @@
     <Compile Include="Logic\Memory\MemoryUtils.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
     <Compile Include="Logic\Singleplayer\EnvironmentHax.cs" />
-    <Compile Include="Logic\Singleplayer\SingleplayerLogic.cs" />
+    <Compile Include="Logic\Singleplayer\LevelDataHax.cs" />
+    <Compile Include="Logic\Singleplayer\UpgradesHax.cs" />
     <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
     <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />

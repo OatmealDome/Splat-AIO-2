@@ -6,30 +6,16 @@ using System.Collections.Generic;
 
 namespace SplatAIO.Logic.Singleplayer
 {
-    public class SingleplayerLogic
-    {   
-
-        private uint BurstBombAddress { get; set; }
-        private uint HeroShotAddress { get; set; }
-        private uint InkTankAddress { get; set; }
-        private uint PowerEggsAddress { get; set; }
+    public class LevelDataHax
+    {
         private uint SaveSlotsAddress { get; set; }
-        private uint SeekerAddress { get; set; }
-        private uint SplatBombAddress { get; set; }
-
         private TCPGecko Gecko { get; set; }
         public List<LevelData> LevelData { get; private set; }
 
-        public SingleplayerLogic(TCPGecko gecko, uint offset)
+        public LevelDataHax(TCPGecko gecko, uint offset)
         {
             Gecko = gecko;
             SaveSlotsAddress = (uint)WorldAddress.BurstBomb + offset;
-            HeroShotAddress = (uint)WorldAddress.HeroShot + offset;
-            InkTankAddress = (uint)WorldAddress.InkTank + offset;
-            SplatBombAddress = (uint)WorldAddress.PowerEggs + offset;
-            BurstBombAddress = (uint)WorldAddress.SaveSlots + offset;
-            SeekerAddress = (uint)WorldAddress.Seeker + offset;
-            PowerEggsAddress = (uint)WorldAddress.SplatBomb + offset;
         }
 
         public void LoadLevelData()
@@ -105,76 +91,6 @@ namespace SplatAIO.Logic.Singleplayer
             Gecko.poke32(address, level);
             Gecko.poke32(address + 0x4, clearState);
             Gecko.poke32(address + 0x8, Convert.ToUInt32(scroll));
-        }
-        
-        public void SetBurstBomb(uint value)
-        {
-            Gecko.poke32(BurstBombAddress, value);
-        }
-
-        public uint GetBurstBomb()
-        {
-            return Gecko.peek(BurstBombAddress);
-        }
-
-        public void SetHeroShot(uint value)
-        {
-            Gecko.poke32(HeroShotAddress, value);
-        }
-
-        public uint GetHeroShot()
-        {
-            return Gecko.peek(HeroShotAddress);
-        }
-
-        public void SetInkTank(uint value)
-        {
-            Gecko.poke32(InkTankAddress, value);
-        }
-
-        public uint GetInkTank()
-        {
-            return Gecko.peek(InkTankAddress);
-        }
-
-        public void SetPowerEggs(uint value)
-        {
-            Gecko.poke32(PowerEggsAddress, value);
-        }
-
-        public uint GetPowerEggs()
-        {
-            return Gecko.peek(PowerEggsAddress);
-        }
-
-        public void SetSaveSlots(uint value)
-        {
-            Gecko.poke32(SaveSlotsAddress, value);
-        }
-
-        public uint GetSaveSlots()
-        {
-            return Gecko.peek(SaveSlotsAddress);
-        }
-
-        public void SetSeeker(uint value)
-        {
-            Gecko.poke32(SeekerAddress, value);
-        }
-
-        public uint GetSeeker()
-        {
-            return Gecko.peek(SeekerAddress);
-        }
-
-        public void SetSplatBomb(uint value)
-        {
-            Gecko.poke32(SplatBombAddress, value);
-        }
-
-        public uint GetSplatBomb()
-        {
-            return Gecko.peek(SplatBombAddress);
         }
     }
 }
