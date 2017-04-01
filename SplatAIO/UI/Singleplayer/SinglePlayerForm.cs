@@ -26,6 +26,7 @@ namespace SplatAIO.UI.Singleplayer
 
         private void SinglePlayerForm_Load(object sender, EventArgs e)
         {
+            LevelDataHax.LoadLevelData();
             // load the list view
             ReloadListView();
 

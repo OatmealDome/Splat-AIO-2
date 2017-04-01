@@ -15,7 +15,7 @@ namespace SplatAIO.Logic.Singleplayer
         public LevelDataHax(TCPGecko gecko, uint offset)
         {
             Gecko = gecko;
-            SaveSlotsAddress = (uint)WorldAddress.BurstBomb + offset;
+            SaveSlotsAddress = (uint)WorldAddress.SaveSlots + offset;
         }
 
         public void LoadLevelData()
@@ -31,8 +31,10 @@ namespace SplatAIO.Logic.Singleplayer
                 var levelNumber = rawLevelData[j];
 
                 // check if an empty save slot
-                if (levelNumber == 0xFFFFFFFF)
+                if (levelNumber == uint.MaxValue)
+                {
                     break;
+                }   
 
                 var clearState = rawLevelData[j + 1];
                 var scroll = Convert.ToBoolean(rawLevelData[j + 2]);

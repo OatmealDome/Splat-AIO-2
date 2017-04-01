@@ -1,10 +1,5 @@
 ﻿using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.Singleplayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SplatAIO.Logic.Singleplayer
 {
@@ -24,10 +19,10 @@ namespace SplatAIO.Logic.Singleplayer
             Gecko = gecko;
             HeroShotAddress = (uint)WorldAddress.HeroShot + offset;
             InkTankAddress = (uint)WorldAddress.InkTank + offset;
-            SplatBombAddress = (uint)WorldAddress.PowerEggs + offset;
-            BurstBombAddress = (uint)WorldAddress.SaveSlots + offset;
+            SplatBombAddress = (uint)WorldAddress.SplatBomb + offset;
+            BurstBombAddress = (uint)WorldAddress.BurstBomb + offset;
             SeekerAddress = (uint)WorldAddress.Seeker + offset;
-            PowerEggsAddress = (uint)WorldAddress.SplatBomb + offset;
+            PowerEggsAddress = (uint)WorldAddress.PowerEggs + offset;
         }
 
         public void SetBurstBomb(uint value)
