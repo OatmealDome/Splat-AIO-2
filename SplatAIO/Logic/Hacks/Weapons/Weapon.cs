@@ -1,4 +1,4 @@
-﻿namespace SplatAIO.Logic.Weapons
+﻿namespace SplatAIO.Logic.Hacks.Weapons
 {
     public class Weapon
     {

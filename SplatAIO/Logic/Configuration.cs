@@ -1,8 +1,8 @@
-﻿using System;
+﻿using SplatAIO.UI;
+using SplatAIO.UI.Statistics;
+using System;
 using System.IO;
 using System.Xml.Serialization;
-using SplatAIO.UI;
-using SplatAIO.UI.Statistics;
 
 namespace SplatAIO.Logic
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace SplatAIO.Logic.Weapons
+namespace SplatAIO.Logic.Hacks.Weapons
 {
-    public class WeaponDatabase
+    class WeaponDatabase
     {
         private static readonly Dictionary<uint, int> idToIndex = new Dictionary<uint, int>();
 

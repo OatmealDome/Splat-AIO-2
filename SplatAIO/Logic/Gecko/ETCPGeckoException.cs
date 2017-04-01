@@ -2,7 +2,7 @@
 
 namespace SplatAIO.Logic.Gecko
 {
-    public enum ETCPErrorCode
+    public enum EtcpErrorCode
     {
         FTDIQueryError,
         noFTDIDevicesFound,
@@ -22,23 +22,23 @@ namespace SplatAIO.Logic.Gecko
 
     public class ETCPGeckoException : Exception
     {
-        public ETCPGeckoException(ETCPErrorCode code)
+        public ETCPGeckoException(EtcpErrorCode code)
         {
             ErrorCode = code;
         }
 
-        public ETCPGeckoException(ETCPErrorCode code, string message)
+        public ETCPGeckoException(EtcpErrorCode code, string message)
             : base(message)
         {
             ErrorCode = code;
         }
 
-        public ETCPGeckoException(ETCPErrorCode code, string message, Exception inner)
+        public ETCPGeckoException(EtcpErrorCode code, string message, Exception inner)
             : base(message, inner)
         {
             ErrorCode = code;
         }
 
-        public ETCPErrorCode ErrorCode { get; }
+        public EtcpErrorCode ErrorCode { get; }
     }
 }

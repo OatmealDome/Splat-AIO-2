@@ -1,5 +1,4 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Memory.Addresses;
 
 namespace SplatAIO.Logic.Hacks.Sisterhax
 {
@@ -12,7 +11,7 @@ namespace SplatAIO.Logic.Hacks.Sisterhax
             Gecko = gecko;
         }
 
-        public void changeModels(SisterhaxMode mode)
+        public void ChangeModels(SisterhaxMode mode)
         {
             Gecko.poke32((uint)SisterhaxAddress.Aori, (uint)SisterhaxValue.ValueOne);
             Gecko.poke32((uint)SisterhaxAddress.AoriTwo, (uint)SisterhaxValue.ValueTwo);

@@ -80,10 +80,10 @@
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxAddress.cs" />
     <Compile Include="Logic\Memory\MemoryUtils.cs" />
     <Compile Include="Logic\Memory\ValidMemory.cs" />
-    <Compile Include="Logic\Singleplayer\EnvironmentHax.cs" />
-    <Compile Include="Logic\Singleplayer\LevelDataHax.cs" />
-    <Compile Include="Logic\Singleplayer\UpgradesHax.cs" />
-    <Compile Include="Logic\TimeHax\TimerHaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\EnvironmentHax.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\LevelDataHax.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\UpgradesHax.cs" />
+    <Compile Include="Logic\Hacks\TimeHax\TimerHaxLogic.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
     <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />
     <Compile Include="Logic\Hacks\Unlock\WeaponsUnlocker.cs" />
@@ -106,7 +106,7 @@
     <Compile Include="UI\SplatAIOForm.Designer.cs">
       <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Singleplayer\LevelData.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\LevelData.cs" />
     <Compile Include="Logic\Memory\AddressRange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UI\ProgressBitsForm.cs">
@@ -134,8 +134,8 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Logic\Statistics\StatisticTransmitter.cs" />
-    <Compile Include="Logic\Weapons\SpecialWeapon.cs" />
-    <Compile Include="Logic\Weapons\SubWeapon.cs" />
+    <Compile Include="Logic\Hacks\Weapons\SpecialWeapon.cs" />
+    <Compile Include="Logic\Hacks\Weapons\SubWeapon.cs" />
     <Compile Include="Logic\Gecko\TCPConnector.cs" />
     <Compile Include="Logic\Gecko\TCPGecko.cs" />
     <Compile Include="UI\Checker.cs">
@@ -150,8 +150,8 @@
     <Compile Include="UI\TimerHax\TimerHaxForm.Designer.cs">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Weapons\Weapon.cs" />
-    <Compile Include="Logic\Weapons\WeaponDatabase.cs" />
+    <Compile Include="Logic\Hacks\Weapons\Weapon.cs" />
+    <Compile Include="Logic\Hacks\Weapons\WeaponDatabase.cs" />
     <Compile Include="UI\Weapons\WeaponEditForm.cs">
       <SubType>Form</SubType>
     </Compile>

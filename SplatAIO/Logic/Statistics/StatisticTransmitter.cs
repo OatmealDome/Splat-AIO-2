@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Net;
 
-namespace SplatAIO.Logic.Statistics
+namespace SplatAIO.Statistics
 {
     public class StatisticTransmitter
     {

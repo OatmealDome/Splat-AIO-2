@@ -1,5 +1,5 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.TimeHax;
+using SplatAIO.Logic.Hacks.TimeHax;
 using SplatAIO.Properties;
 using System;
 using System.Windows.Forms;

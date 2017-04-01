@@ -5,7 +5,7 @@ namespace SplatAIO.Logic.Gecko
 {
     public class Dump
     {
-        private int fileNumber;
+        private int _fileNumber;
 
         /*
         public void WriteCompressedStreamToDisk(string filepath)
@@ -40,7 +40,7 @@ namespace SplatAIO.Logic.Gecko
             EndAddress = theEndAddress;
             ReadCompletedAddress = theStartAddress;
             mem = new byte[EndAddress - StartAddress];
-            fileNumber = theFileNumber;
+            _fileNumber = theFileNumber;
         }
 
 
@@ -101,7 +101,7 @@ namespace SplatAIO.Logic.Gecko
             var myDirectory = Environment.CurrentDirectory + @"\searchdumps\";
             if (!Directory.Exists(myDirectory))
                 Directory.CreateDirectory(myDirectory);
-            var myFile = myDirectory + "dump" + fileNumber + ".dmp";
+            var myFile = myDirectory + "dump" + _fileNumber + ".dmp";
 
             WriteStreamToDisk(myFile);
         }

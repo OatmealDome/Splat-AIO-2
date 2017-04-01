@@ -1,7 +1,6 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Hacks.Singleplayer;
 
-namespace SplatAIO.Logic.Singleplayer
+namespace SplatAIO.Logic.Hacks.Singleplayer
 {
     public class UpgradesHax
     {

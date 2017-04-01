@@ -4,11 +4,10 @@ using SplatAIO.Logic.Hacks.Octohax;
 using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Hacks.Sisterhax;
 using SplatAIO.Logic.Hacks.Unlock;
+using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Logic.Memory;
-using SplatAIO.Logic.Memory.Addresses;
-using SplatAIO.Logic.Statistics;
-using SplatAIO.Logic.Weapons;
 using SplatAIO.Properties;
+using SplatAIO.Statistics;
 using SplatAIO.UI.Singleplayer;
 using SplatAIO.UI.TimerHax;
 using SplatAIO.UI.Weapons;
@@ -366,22 +365,22 @@ namespace SplatAIO.UI
 
         private void aoriBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.changeModels(SisterhaxMode.Aori);
+            SisterhaxLogic.ChangeModels(SisterhaxMode.Aori);
         }
 
         private void hotaruBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.changeModels(SisterhaxMode.Hotaru);
+            SisterhaxLogic.ChangeModels(SisterhaxMode.Hotaru);
         }
 
         private void swapBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.changeModels(SisterhaxMode.Swap);
+            SisterhaxLogic.ChangeModels(SisterhaxMode.Swap);
         }
 
         private void normalBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.changeModels(SisterhaxMode.Normal);
+            SisterhaxLogic.ChangeModels(SisterhaxMode.Normal);
         }
 
         private void gameButton_Click(object sender, EventArgs e)

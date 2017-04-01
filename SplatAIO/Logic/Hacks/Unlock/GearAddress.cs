@@ -1,6 +1,6 @@
 ﻿namespace SplatAIO.Logic.Hacks.Unlock
 {
-    public enum GearAddress : uint
+    enum GearAddress : uint
     {
         EquippedClothes = 0x12CD1D80,
         EquippedShoes = EquippedClothes + 0x4, // 0x12CD1D84

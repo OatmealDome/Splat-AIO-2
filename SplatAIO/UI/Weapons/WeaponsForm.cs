@@ -1,7 +1,7 @@
 ﻿using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.Unlock;
+using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Logic.Memory;
-using SplatAIO.Logic.Weapons;
 using SplatAIO.Properties;
 using System;
 using System.Collections.Generic;

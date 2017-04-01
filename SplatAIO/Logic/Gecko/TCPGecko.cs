@@ -153,7 +153,7 @@ namespace SplatAIO.Logic.Gecko
             {
                 // Don't disconnect if there's nothing connected
                 Disconnect();
-                throw new ETCPGeckoException(ETCPErrorCode.noTCPGeckoFound);
+                throw new ETCPGeckoException(EtcpErrorCode.noTCPGeckoFound);
             }
 
             //Initialise TCP Gecko
@@ -261,7 +261,7 @@ namespace SplatAIO.Logic.Gecko
 
             var GeckoMemRange = ByteSwap.Swap(((ulong) startdump << 32) + enddump);
             if (GeckoWrite(BitConverter.GetBytes(cmd_readmem), 1) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Read reply - expcecting GCACK -- nope, too slow, TCP is reliable!
             byte retry = 0;
@@ -279,7 +279,7 @@ namespace SplatAIO.Logic.Gecko
 
             //Now let's send the dump information
             if (GeckoWrite(BitConverter.GetBytes(GeckoMemRange), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //We start with chunk 0
             uint chunk = 0;
@@ -301,7 +301,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 var reply = response[0];
                 if (reply == BlockZero)
@@ -319,7 +319,7 @@ namespace SplatAIO.Logic.Gecko
                         {
                             //Give up, too many retries
                             GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                            throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                            throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                         }
                         //GeckoWrite(BitConverter.GetBytes(GCRETRY), 1);
                         continue;
@@ -328,7 +328,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Major fail, give it up
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                        throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                        throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                     }
                 }
                 //write received package to output stream
@@ -366,7 +366,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 var reply = response[0];
                 if (reply == BlockZero)
@@ -384,7 +384,7 @@ namespace SplatAIO.Logic.Gecko
                         {
                             //Give up, too many retries
                             GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                            throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                            throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                         }
                         //GeckoWrite(BitConverter.GetBytes(GCRETRY), 1);
                         continue;
@@ -393,7 +393,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Major fail, give it up
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                        throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                        throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                     }
                 }
                 //write received package to output stream
@@ -430,7 +430,7 @@ namespace SplatAIO.Logic.Gecko
 
             var GeckoMemRange = ByteSwap.Swap(((ulong) startdump << 32) + enddump);
             if (GeckoWrite(BitConverter.GetBytes(cmd_readmem), 1) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Read reply - expcecting GCACK -- nope, too slow, TCP is reliable!
             byte retry = 0;
@@ -448,7 +448,7 @@ namespace SplatAIO.Logic.Gecko
 
             //Now let's send the dump information
             if (GeckoWrite(BitConverter.GetBytes(GeckoMemRange), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //We start with chunk 0
             uint chunk = 0;
@@ -472,7 +472,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 var reply = response[0];
                 if (reply == BlockZero)
@@ -490,7 +490,7 @@ namespace SplatAIO.Logic.Gecko
                         {
                             //Give up, too many retries
                             GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                            throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                            throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                         }
                         //GeckoWrite(BitConverter.GetBytes(GCRETRY), 1);
                         continue;
@@ -499,7 +499,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Major fail, give it up
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                        throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                        throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                     }
                 }
                 //write received package to output stream
@@ -545,7 +545,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 var reply = response[0];
                 if (reply == BlockZero)
@@ -563,7 +563,7 @@ namespace SplatAIO.Logic.Gecko
                         {
                             //Give up, too many retries
                             GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                            throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                            throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                         }
                         //GeckoWrite(BitConverter.GetBytes(GCRETRY), 1);
                         continue;
@@ -572,7 +572,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Major fail, give it up
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
-                        throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                        throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                     }
                 }
                 //write received package to output stream
@@ -615,7 +615,7 @@ namespace SplatAIO.Logic.Gecko
 
             var GeckoMemRange = ByteSwap.Swap(((ulong) startupload << 32) + endupload);
             if (GeckoWrite(BitConverter.GetBytes(cmd_upload), 1) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Read reply - expcecting GCACK -- nope, too slow, TCP is reliable!
             byte retry = 0;
@@ -633,7 +633,7 @@ namespace SplatAIO.Logic.Gecko
 
             //Now let's send the upload information
             if (GeckoWrite(BitConverter.GetBytes(GeckoMemRange), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //We start with chunk 0
             uint chunk = 0;
@@ -657,7 +657,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Give up, too many retries
                         Disconnect();
-                        throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                        throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                     }
                     //Reset stream
                     sendStream.Seek(-1 * (int) uplpacketsize, SeekOrigin.Current);
@@ -668,7 +668,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     Disconnect();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 //reset retry counter
                 retry = 0;
@@ -696,7 +696,7 @@ namespace SplatAIO.Logic.Gecko
                     {
                         //Give up, too many retries
                         Disconnect();
-                        throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                        throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                     }
                     //Reset stream
                     sendStream.Seek(-1 * (int) lastchunk, SeekOrigin.Current);
@@ -707,7 +707,7 @@ namespace SplatAIO.Logic.Gecko
                 {
                     //Major fail, give it up
                     Disconnect();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 //reset retry counter
                 retry = 0;
@@ -719,10 +719,10 @@ namespace SplatAIO.Logic.Gecko
 
             var response = new byte[1];
             if (GeckoRead(response, 1) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
             var reply = response[0];
             if (reply != GCACK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIInvalidReply);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDIInvalidReply);
             SendUpdate(endupload, allchunks, allchunks, memlength, memlength, true, false);
         }
 
@@ -750,7 +750,7 @@ namespace SplatAIO.Logic.Gecko
         {
             //Only needs to send a cmd_pause to Wii
             if (RawCommand(cmd_pause) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         // Tries to repeatedly pause the game until it succeeds
@@ -772,7 +772,7 @@ namespace SplatAIO.Logic.Gecko
         {
             //Only needs to send a cmd_unfreeze to Wii
             if (RawCommand(cmd_unfreeze) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         /*
@@ -814,18 +814,18 @@ namespace SplatAIO.Logic.Gecko
             Thread.Sleep(100);
             //Initialise Gecko
             if (!InitGecko())
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIResetError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDIResetError);
 
             //Send status command
             if (RawCommand(cmd_status) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //			System.Threading.Thread.Sleep(10);
 
             //Read status
             var buffer = new byte[1];
             if (GeckoRead(buffer, 1) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
 
             //analyse reply
             switch (buffer[0])
@@ -848,11 +848,11 @@ namespace SplatAIO.Logic.Gecko
         {
             //Reset buffers
             if (!InitGecko())
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIResetError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDIResetError);
 
             //Send step command
             if (RawCommand(cmd_step) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         //Is this version code a correct Gecko version?
@@ -869,7 +869,7 @@ namespace SplatAIO.Logic.Gecko
             InitGecko();
 
             if (RawCommand(cmd_version) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             byte retries = 0;
             byte result = 0;
@@ -893,12 +893,12 @@ namespace SplatAIO.Logic.Gecko
         public uint OsVersionRequest()
         {
             if (RawCommand(cmd_os_version) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             var buffer = new byte[4];
 
             if (GeckoRead(buffer, 4) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             return ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
         }
@@ -1013,11 +1013,11 @@ namespace SplatAIO.Logic.Gecko
 
             //Send poke
             if (RawCommand(cmd_pokemem) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //write value
             if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         //Copy of poke, just poke32 to make clear it is a 32-bit poke
@@ -1039,11 +1039,11 @@ namespace SplatAIO.Logic.Gecko
 
             //Send poke16
             if (RawCommand(cmd_poke16) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //write value
             if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         //Poke a 08 bit value - note: address and value must be all in endianness of sending platform
@@ -1056,11 +1056,11 @@ namespace SplatAIO.Logic.Gecko
 
             //Send poke08
             if (RawCommand(cmd_poke08) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //write value
             if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         #endregion
@@ -1077,11 +1077,11 @@ namespace SplatAIO.Logic.Gecko
 
             //Send poke
             if (RawCommand(cmd_writekern) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //write value
             if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         //Read a 32 bit value from kernel. note: address must be all in endianness of sending platform
@@ -1092,15 +1092,15 @@ namespace SplatAIO.Logic.Gecko
 
             //Send read
             if (RawCommand(cmd_readkern) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //write value
             if (GeckoWrite(BitConverter.GetBytes(address), 4) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             var buffer = new byte[4];
             if (GeckoRead(buffer, 4) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             return ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
         }
@@ -1127,24 +1127,24 @@ namespace SplatAIO.Logic.Gecko
             if (!useGeckoBP) //classic PPC breakpoint
             {
                 if (RawCommand(cmd_breakpoint) != FTDICommand.CMD_OK)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
                 //Convert lowaddr to BigEndian
                 var breakpaddr = ByteSwap.Swap(lowaddr);
 
                 if (GeckoWrite(BitConverter.GetBytes(breakpaddr), 4) != FTDICommand.CMD_OK)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
             }
             else //advanced exact Gecko breakpoint
             {
                 if (RawCommand(cmd_nbreakpoint) != FTDICommand.CMD_OK)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
                 var breakpaddr = ((ulong) lowaddr << 32) | address;
                 breakpaddr = ByteSwap.Swap(breakpaddr);
 
                 if (GeckoWrite(BitConverter.GetBytes(breakpaddr), 8) != FTDICommand.CMD_OK)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
             }
         }
 
@@ -1193,11 +1193,11 @@ namespace SplatAIO.Logic.Gecko
 
             //Send breakpoint execute command
             if (RawCommand(cmd_breakpointx) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Send address to handler
             if (GeckoWrite(BitConverter.GetBytes(baddress), 4) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         //Returns true once a Breakpoint has hit
@@ -1218,7 +1218,7 @@ namespace SplatAIO.Logic.Gecko
         public void CancelBreakpoint()
         {
             if (RawCommand(cmd_cancelbp) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         #endregion
@@ -1319,7 +1319,7 @@ namespace SplatAIO.Logic.Gecko
             if (length % 8 != 0)
             {
                 cheatStream.Close();
-                throw new ETCPGeckoException(ETCPErrorCode.CheatStreamSizeInvalid);
+                throw new ETCPGeckoException(EtcpErrorCode.CheatStreamSizeInvalid);
             }
 
             //Reset buffers
@@ -1349,7 +1349,7 @@ namespace SplatAIO.Logic.Gecko
             if (GeckoWrite(BitConverter.GetBytes(cmd_sendcheats), 1) != FTDICommand.CMD_OK)
             {
                 cheatStream.Close();
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
             }
 
             //How many chunks do I need to split this data into
@@ -1370,7 +1370,7 @@ namespace SplatAIO.Logic.Gecko
                 if (GeckoRead(response, 1) != FTDICommand.CMD_OK)
                 {
                     cheatStream.Close();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 var reply = response[0];
                 if (reply == GCACK)
@@ -1378,7 +1378,7 @@ namespace SplatAIO.Logic.Gecko
                 if (retry == 9)
                 {
                     cheatStream.Close();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIInvalidReply);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIInvalidReply);
                 }
             }
 
@@ -1386,7 +1386,7 @@ namespace SplatAIO.Logic.Gecko
             if (GeckoWrite(BitConverter.GetBytes(blength), 4) != FTDICommand.CMD_OK)
             {
                 cheatStream.Close();
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
             }
 
             //We start with chunk 0
@@ -1411,7 +1411,7 @@ namespace SplatAIO.Logic.Gecko
                         //Give up, too many retries
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                         cheatStream.Close();
-                        throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                        throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                     }
                     //Reset stream
                     cheatStream.Seek(-1 * (int) uplpacketsize, SeekOrigin.Current);
@@ -1423,7 +1423,7 @@ namespace SplatAIO.Logic.Gecko
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                     cheatStream.Close();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
 
                 var response = new byte[1];
@@ -1436,7 +1436,7 @@ namespace SplatAIO.Logic.Gecko
                         //Give up, too many retries
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                         cheatStream.Close();
-                        throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                        throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                     }
                     //Reset stream
                     cheatStream.Seek(-1 * (int) uplpacketsize, SeekOrigin.Current);
@@ -1448,7 +1448,7 @@ namespace SplatAIO.Logic.Gecko
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                     cheatStream.Close();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
 
                 //reset retry counter
@@ -1476,7 +1476,7 @@ namespace SplatAIO.Logic.Gecko
                         //Give up, too many retries
                         GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                         cheatStream.Close();
-                        throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
+                        throw new ETCPGeckoException(EtcpErrorCode.TooManyRetries);
                     }
                     //Reset stream
                     cheatStream.Seek(-1 * (int) lastchunk, SeekOrigin.Current);
@@ -1488,7 +1488,7 @@ namespace SplatAIO.Logic.Gecko
                     //Major fail, give it up
                     GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
                     cheatStream.Close();
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+                    throw new ETCPGeckoException(EtcpErrorCode.FTDIReadDataError);
                 }
                 //reset retry counter
                 retry = 0;
@@ -1505,7 +1505,7 @@ namespace SplatAIO.Logic.Gecko
         public void ExecuteCheats()
         {
             if (RawCommand(cmd_cheatexec) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         #endregion
@@ -1527,7 +1527,7 @@ namespace SplatAIO.Logic.Gecko
             //Perform hook command
             command += (byte) hookType;
             if (RawCommand(command) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Send language
             if (language != WiiLanguage.NoOverride)
@@ -1536,12 +1536,12 @@ namespace SplatAIO.Logic.Gecko
                 command = 0xCD;
 
             if (RawCommand(command) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             //Send patches
             command = (byte) patches;
             if (RawCommand(command) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
         }
 
         public void Hook()
@@ -1678,15 +1678,15 @@ namespace SplatAIO.Logic.Gecko
 
             //Send read
             if (RawCommand(cmd_rpc) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
 
             //write value
             if (GeckoWrite(buffer, buffer.Length) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             if (GeckoRead(buffer, 8) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+                throw new ETCPGeckoException(EtcpErrorCode.FTDICommandSendError);
 
             return ByteSwap.Swap(BitConverter.ToUInt64(buffer, 0));
         }

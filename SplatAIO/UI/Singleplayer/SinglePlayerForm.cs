@@ -1,6 +1,6 @@
 ﻿using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Memory;
-using SplatAIO.Logic.Singleplayer;
 using SplatAIO.Properties;
 using System;
 using System.Windows.Forms;

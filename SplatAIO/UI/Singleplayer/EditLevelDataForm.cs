@@ -1,4 +1,4 @@
-﻿using SplatAIO.Logic.Singleplayer;
+﻿using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Properties;
 using System;
 using System.Windows.Forms;

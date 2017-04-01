@@ -1,10 +1,9 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Memory;
 using System;
 using System.Collections.Generic;
 
-namespace SplatAIO.Logic.Singleplayer
+namespace SplatAIO.Logic.Hacks.Singleplayer
 {
     public class LevelDataHax
     {

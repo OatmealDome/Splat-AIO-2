@@ -1,6 +1,6 @@
 ﻿namespace SplatAIO.Logic.Hacks.Singleplayer
 {
-    public enum PlayerAddress : uint
+    enum PlayerAddress : uint
     {
         Minigames = 0x12CD1C40,
         Gender = Minigames + 0x150, //0x12CD1D90

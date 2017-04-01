@@ -1,5 +1,4 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Memory.Addresses;
 
 namespace SplatAIO.Logic.Hacks.Octohax
 {

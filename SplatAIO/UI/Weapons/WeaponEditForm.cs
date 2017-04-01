@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using SplatAIO.Logic.Weapons;
+﻿using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace SplatAIO.UI.Weapons
 {

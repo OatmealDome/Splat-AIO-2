@@ -1,7 +1,7 @@
-﻿using System;
-using SplatAIO.Logic.Gecko;
+﻿using SplatAIO.Logic.Gecko;
+using System;
 
-namespace SplatAIO.Logic.TimeHax
+namespace SplatAIO.Logic.Hacks.TimeHax
 {
     public class TimerHaxLogic
     {

@@ -1,6 +1,6 @@
 ﻿namespace SplatAIO.Logic
 {
-    public enum Abilities : uint
+    enum Abilities : uint
     {
         DamageUp = 0,
         DefenseUp,

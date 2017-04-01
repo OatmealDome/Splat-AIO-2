@@ -1,6 +1,6 @@
 ﻿namespace SplatAIO.Logic.Hacks.Sisterhax
 {
-    public enum SisterhaxValue : uint
+    enum SisterhaxValue : uint
     {
         AoriModel = 0x41000000, // Aori's Model 
         HotaruModel = 0x42000000, // Hotaru's Model

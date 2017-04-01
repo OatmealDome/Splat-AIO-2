@@ -1,6 +1,6 @@
-﻿namespace SplatAIO.Logic.Memory.Addresses
+﻿namespace SplatAIO.Logic.Hacks.Sisterhax
 {
-    public enum SisterhaxAddress : uint
+    enum SisterhaxAddress : uint
     {
         Aori = 0x105EB5EC, // Callie
         AoriTwo = Aori + 0x4,
