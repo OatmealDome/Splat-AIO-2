@@ -1,6 +1,6 @@
-﻿namespace SplatAIO.UI
+﻿namespace SplatAIO.UI.ProgressHax
 {
-    partial class ProgressBitsForm
+    partial class ProgressFlagsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(ProgressBitsForm));
+            System.ComponentModel.ComponentResourceManager resources = new SingleAssemblyComponentResourceManager(typeof(ProgressFlagsForm));
             this.tutorialBox = new System.Windows.Forms.CheckBox();
             this.splatfestBox = new System.Windows.Forms.CheckBox();
             this.rankedNewsBox = new System.Windows.Forms.CheckBox();

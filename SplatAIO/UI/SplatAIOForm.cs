@@ -1,6 +1,7 @@
 ﻿using SplatAIO.Logic;
 using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.Octohax;
+using SplatAIO.Logic.Hacks.ProgressHax;
 using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Hacks.Sisterhax;
 using SplatAIO.Logic.Hacks.Unlock;
@@ -8,6 +9,7 @@ using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Logic.Memory;
 using SplatAIO.Properties;
 using SplatAIO.Statistics;
+using SplatAIO.UI.ProgressHax;
 using SplatAIO.UI.Singleplayer;
 using SplatAIO.UI.TimerHax;
 using SplatAIO.UI.Weapons;
@@ -24,6 +26,7 @@ namespace SplatAIO.UI
         private GearUnlocker GearUnlocker { get; set; }
         private OctohaxLogic OctohaxLogic { get; set; }
         private SisterhaxLogic SisterhaxLogic { get; set; }
+        private ProgressFlags ProgressFlags { get; set; }
 
         public SplatAIOForm()
         {
@@ -177,6 +180,7 @@ namespace SplatAIO.UI
             GearUnlocker = new GearUnlocker(_gecko, MemoryUtils.Offset);
             OctohaxLogic = new OctohaxLogic(_gecko);
             SisterhaxLogic = new SisterhaxLogic(_gecko);
+            ProgressFlags = new ProgressFlags(_gecko);
             Rank = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Rank + MemoryUtils.Offset)) + 1;
             Okane = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Okane + MemoryUtils.Offset));
             Ude = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Ude + MemoryUtils.Offset));
@@ -324,13 +328,12 @@ namespace SplatAIO.UI
             _gecko.poke32(address, rank - 1); // rank
             _gecko.poke32(address - 0x4, 0x00000000); // experience to 0
 
-            // set progression bits appropriately
-            var progression = _gecko.peek(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset);
-            ProgressBitsForm.SetFlag(ref progression, 0x100000, rank >= 20);
-                // rank cap flag, remove if rank < 20, set if rank >= 20
-            ProgressBitsForm.SetFlag(ref progression, 0x800, rank >= 10);
-                // gachi unlocked flag, remove if rank < 10, set if rank >= 10
-            _gecko.poke32(ProgressBitsForm.progressBitsAddress, progression);
+            // set progression bits appropriately            
+            ProgressFlags.LevelCapRaised = rank >= 20;
+            // rank cap flag, remove if rank < 20, set if rank >= 20
+            ProgressFlags.RankedUnlocked = rank >= 10;
+            // gachi unlocked flag, remove if rank < 10, set if rank >= 10
+            ProgressFlags.Apply();
         }
 
         public void pokeAmiibo(uint address)
@@ -350,7 +353,7 @@ namespace SplatAIO.UI
 
         private void progressFlagsBox_Click(object sender, EventArgs e)
         {
-            new ProgressBitsForm().ShowDialog(this);
+            new ProgressFlagsForm().ShowDialog(this);
         }
 
         private void ikaBox_Click(object sender, EventArgs e)

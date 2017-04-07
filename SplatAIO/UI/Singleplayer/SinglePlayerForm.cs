@@ -1,4 +1,5 @@
 ﻿using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Hacks.ProgressHax;
 using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Memory;
 using SplatAIO.Properties;
@@ -103,13 +104,11 @@ namespace SplatAIO.UI.Singleplayer
                 OKButton_Click(null, null);
 
                 // Reset single player flags in the Inkopolis progress bits
-                var progression = TCPGecko.Instance().peek(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset);
-
-                ProgressBitsForm.SetFlag(ref progression, 0x10, false); // octo valley intro
-                ProgressBitsForm.SetFlag(ref progression, 0x80, false); // great zapfish returned
-                ProgressBitsForm.SetFlag(ref progression, 0x100, false); // credits block available
-
-                TCPGecko.Instance().poke32(ProgressBitsForm.progressBitsAddress + MemoryUtils.Offset, progression);
+                ProgressFlags progressFlags = new ProgressFlags(TCPGecko.Instance());
+                progressFlags.HeroSuit = false; // octo valley intro
+                progressFlags.GreatZapfish = false; // great zapfish returned
+                progressFlags.CuttlefishPostGame = false; // credits block available
+                progressFlags.Apply();
             }
         }
 
