@@ -11,124 +11,51 @@ namespace SplatAIO.UI.Weapons
 {
     public partial class WeaponsForm : Form
     {
-        private readonly TCPGecko _gecko;
-        private readonly uint _offset;
+        private WeaponsHax WeaponsHax { get; set; }
 
         private readonly SingleAssemblyComponentResourceManager weaponEditFormResources =
             new SingleAssemblyComponentResourceManager(typeof(WeaponEditForm));
-
-        public readonly List<Weapon> weapons = new List<Weapon>();
-        private uint equippedWeapon;
-
+        
         public WeaponsForm()
         {
             InitializeComponent();
 
-            this._gecko = TCPGecko.Instance();
-            this._offset = MemoryUtils.Offset;
-
+            WeaponsHax = new WeaponsHax(TCPGecko.Instance(), MemoryUtils.Offset);
             ReloadWeaponsList();
         }
 
         private void ReloadWeaponsList()
         {
-            weapons.Clear();
-
-            equippedWeapon = _gecko.peek((uint) GearAddress.EquippedWeapon + _offset);
-
-            // dump all weapon save slots
-            var weaponData = MemoryUtils.DumpSaveSlots(_gecko, _offset, (uint) GearAddress.Weapons, 5120);
-
-            // read data from slots
-            var j = 0;
-            while (j < weaponData.Length)
-            {
-                var id = weaponData[j];
-
-                // check if an empty save slot
-                if (id == 0xFFFFFFFF)
-                    break;
-
-                var number = weaponData[j + 1];
-                var sub = (SubWeapon) weaponData[j + 2];
-                var special = (SpecialWeapon) weaponData[j + 3];
-                var turfInked = weaponData[j + 4];
-                var timestamp = weaponData[j + 7];
-                var newFlag = weaponData[j + 8] == 0x0;
-
-                weapons.Add(new Weapon(id, number, sub, special, turfInked, timestamp, newFlag));
-
-                // move to next slot
-                j += 10;
-            }
-
+            WeaponsHax.ReloadWeapons();
             // reload the list
             ReloadListBox();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            // poke weapons into memory
-            PokeWeapons(weapons, _gecko, _offset);
-
-            // poke the equipped weapon
-            _gecko.poke32((uint) GearAddress.EquippedWeapon, equippedWeapon);
+            WeaponsHax.PokeWeapons();
         }
-
-        public static void PokeWeapons(List<Weapon> weapons, TCPGecko gecko, uint offset)
-        {
-            var currentPosition = (uint) GearAddress.Weapons + offset;
-            foreach (var weapon in weapons)
-            {
-                gecko.poke32(currentPosition, weapon.Id);
-                gecko.poke32(currentPosition + 0x4, weapon.WeaponSpecificNumber);
-                gecko.poke32(currentPosition + 0x8, (uint) weapon.SubWeapon);
-                gecko.poke32(currentPosition + 0xc, (uint) weapon.SpecialWeapon1);
-                gecko.poke32(currentPosition + 0x10, weapon.TurfInked);
-                gecko.poke32(currentPosition + 0x18, weapon.LastUsageTimestamp);
-
-                if (weapon.IsNew)
-                    gecko.poke32(currentPosition + 0x1c, 0x0);
-                else
-                    gecko.poke32(currentPosition + 0x1c, 0x00010000);
-
-                // move to next slot
-                currentPosition += 0x28;
-            }
-
-            // fill the rest of the slots with dummy data
-            for (var i = weapons.Count; i < 128; i++)
-            {
-                gecko.poke32(currentPosition, 0xFFFFFFFF);
-                gecko.poke32(currentPosition + 0x4, 0xFFFFFFFF);
-                gecko.poke32(currentPosition + 0x8, 0xFFFFFFFF);
-                gecko.poke32(currentPosition + 0xc, 0xFFFFFFFF);
-                gecko.poke32(currentPosition + 0x10, 0x0);
-                gecko.poke32(currentPosition + 0x18, 0x0);
-                gecko.poke32(currentPosition + 0x1c, 0x0);
-
-                // move to next slot
-                currentPosition += 0x28;
-            }
-        }
-
+        
         private void ReloadListBox()
         {
             weaponsList.Items.Clear();
 
-            foreach (var weapon in weapons)
+            foreach (var weapon in WeaponsHax.Weapons)
             {
-                string name;
-
+                string name = "";
                 var index = WeaponDatabase.GetIndex(weapon.Id);
                 if (index == 0)
+                {
                     name = weaponEditFormResources.GetString("weaponBox.Items");
+                }                    
                 else
+                {
                     name = weaponEditFormResources.GetString("weaponBox.Items" + index);
-
-                if (weapon.Id == equippedWeapon)
+                }
+                if (weapon.Id.Equals(WeaponsHax.EquippedWeapon))
+                {
                     name += " " + Strings.EQUIPPED;
-
+                }
                 weaponsList.Items.Add(name);
             }
         }
@@ -137,7 +64,7 @@ namespace SplatAIO.UI.Weapons
         {
             if (weaponsList.SelectedIndex != -1)
             {
-                equippedWeapon = weapons[weaponsList.SelectedIndex].Id;
+                WeaponsHax.SetEquippedWeapon(weaponsList.SelectedIndex);
                 ReloadListBox();
             }
         }
@@ -149,7 +76,7 @@ namespace SplatAIO.UI.Weapons
 
             if (editForm.weapon != null)
             {
-                weapons.Add(editForm.weapon);
+                WeaponsHax.AddWeapon(editForm.weapon);
                 ReloadListBox();
             }
         }
@@ -165,7 +92,7 @@ namespace SplatAIO.UI.Weapons
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var editForm = new WeaponEditForm(weapons[weaponsList.SelectedIndex]);
+            var editForm = new WeaponEditForm(WeaponsHax.Weapons[weaponsList.SelectedIndex]);
             editForm.ShowDialog(this);
 
             ReloadListBox();
@@ -173,9 +100,9 @@ namespace SplatAIO.UI.Weapons
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var weapon = weapons[weaponsList.SelectedIndex];
+            var weapon = WeaponsHax.GetWeapon(weaponsList.SelectedIndex);
 
-            if (weapon.Id == 0x3f2)
+            if (weapon.Id.Equals(WeaponsHax.DefaultWeapon))
             {
                 // refuse to remove the Splattershot Jr.
                 MessageBox.Show(Strings.CANNOT_REMOVE_JR_TEXT);
@@ -183,10 +110,11 @@ namespace SplatAIO.UI.Weapons
             else
             {
                 // check if the removed weapon is currently equipped
-                if (weapon.Id == equippedWeapon)
-                    equippedWeapon = 0x3f2;
-
-                weapons.Remove(weapon);
+                if (weapon.Id.Equals(WeaponsHax.EquippedWeapon))
+                {
+                    WeaponsHax.EquipDefaultWeapon();
+                }
+                WeaponsHax.RemoveWeapon(weapon);
                 ReloadListBox();
             }
         }
