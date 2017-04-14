@@ -1,10 +1,8 @@
 ﻿using SplatAIO.Logic.Gecko;
-using SplatAIO.Logic.Hacks.Unlock;
 using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Logic.Memory;
 using SplatAIO.Properties;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SplatAIO.UI.Weapons
@@ -74,9 +72,9 @@ namespace SplatAIO.UI.Weapons
             var editForm = new WeaponEditForm();
             editForm.ShowDialog(this);
 
-            if (editForm.weapon != null)
+            if (editForm.Weapon != null)
             {
-                WeaponsHax.AddWeapon(editForm.weapon);
+                WeaponsHax.AddWeapon(editForm.Weapon);
                 ReloadListBox();
             }
         }
@@ -92,8 +90,8 @@ namespace SplatAIO.UI.Weapons
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var editForm = new WeaponEditForm(WeaponsHax.Weapons[weaponsList.SelectedIndex]);
-            editForm.ShowDialog(this);
+            new WeaponEditForm(WeaponsHax.GetWeapon(weaponsList.SelectedIndex), WeaponsHax.Weapons)
+                .ShowDialog(this);
 
             ReloadListBox();
         }

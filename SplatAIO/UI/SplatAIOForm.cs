@@ -393,7 +393,7 @@ namespace SplatAIO.UI
 
         private void bukiButton_Click(object sender, EventArgs e)
         {
-            WeaponsForm.PokeWeapons(WeaponDatabase.Weapons, _gecko, MemoryUtils.Offset);
+            WeaponsHax.PokeWeapons(WeaponDatabase.Weapons, _gecko, MemoryUtils.Offset);
         }
         
         private void gearButton_Click_1(object sender, EventArgs e)

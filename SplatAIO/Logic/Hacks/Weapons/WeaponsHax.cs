@@ -12,14 +12,8 @@ namespace SplatAIO.Logic.Hacks.Weapons
         private TCPGecko Gecko { get; set; }
         private uint Offset { get; set; }
 
-        private List<Weapon> _weapons;
-        public IReadOnlyList<Weapon> Weapons
-        {
-            get
-            {
-                return _weapons.AsReadOnly();
-            }
-        }
+        private readonly List<Weapon> _weapons;
+        public IReadOnlyList<Weapon> Weapons => _weapons.AsReadOnly();
         public uint EquippedWeapon { get; private set; }
 
         public WeaponsHax(TCPGecko gecko, uint offset)
@@ -91,44 +85,49 @@ namespace SplatAIO.Logic.Hacks.Weapons
 
         public void PokeWeapons()
         {
-            var currentPosition = (uint)GearAddress.Weapons + Offset;
-            foreach (var weapon in _weapons)
+            PokeWeapons(_weapons, Gecko, Offset);
+            // set equipped weapon
+            Gecko.poke32((uint)GearAddress.EquippedWeapon, EquippedWeapon);
+        }
+
+        public static void PokeWeapons(List<Weapon> weapons, TCPGecko gecko, uint offset)
+        {
+            var currentPosition = (uint)GearAddress.Weapons + offset;
+            foreach (var weapon in weapons)
             {
-                Gecko.poke32(currentPosition, weapon.Id);
-                Gecko.poke32(currentPosition + 0x4, weapon.WeaponSpecificNumber);
-                Gecko.poke32(currentPosition + 0x8, (uint)weapon.SubWeapon);
-                Gecko.poke32(currentPosition + 0xc, (uint)weapon.SpecialWeapon1);
-                Gecko.poke32(currentPosition + 0x10, weapon.TurfInked);
-                Gecko.poke32(currentPosition + 0x18, weapon.LastUsageTimestamp);
+                gecko.poke32(currentPosition, weapon.Id);
+                gecko.poke32(currentPosition + 0x4, weapon.WeaponSpecificNumber);
+                gecko.poke32(currentPosition + 0x8, (uint)weapon.SubWeapon);
+                gecko.poke32(currentPosition + 0xc, (uint)weapon.SpecialWeapon1);
+                gecko.poke32(currentPosition + 0x10, weapon.TurfInked);
+                gecko.poke32(currentPosition + 0x18, weapon.LastUsageTimestamp);
 
                 if (weapon.IsNew)
                 {
-                    Gecko.poke32(currentPosition + 0x1c, 0x0);
+                    gecko.poke32(currentPosition + 0x1c, 0x0);
                 }                    
                 else
                 {
-                    Gecko.poke32(currentPosition + 0x1c, 0x00010000);
+                    gecko.poke32(currentPosition + 0x1c, 0x00010000);
                 }
                 // move to next slot
                 currentPosition += 0x28;
             }
 
             // fill the rest of the slots with dummy data
-            for (var i = _weapons.Count; i < 128; i++)
+            for (var i = weapons.Count; i < 128; i++)
             {
-                Gecko.poke32(currentPosition, 0xFFFFFFFF);
-                Gecko.poke32(currentPosition + 0x4, 0xFFFFFFFF);
-                Gecko.poke32(currentPosition + 0x8, 0xFFFFFFFF);
-                Gecko.poke32(currentPosition + 0xc, 0xFFFFFFFF);
-                Gecko.poke32(currentPosition + 0x10, 0x0);
-                Gecko.poke32(currentPosition + 0x18, 0x0);
-                Gecko.poke32(currentPosition + 0x1c, 0x0);
+                gecko.poke32(currentPosition, 0xFFFFFFFF);
+                gecko.poke32(currentPosition + 0x4, 0xFFFFFFFF);
+                gecko.poke32(currentPosition + 0x8, 0xFFFFFFFF);
+                gecko.poke32(currentPosition + 0xc, 0xFFFFFFFF);
+                gecko.poke32(currentPosition + 0x10, 0x0);
+                gecko.poke32(currentPosition + 0x18, 0x0);
+                gecko.poke32(currentPosition + 0x1c, 0x0);
 
                 // move to next slot
                 currentPosition += 0x28;
             }
-            // set equipped weapon
-            Gecko.poke32((uint)GearAddress.EquippedWeapon, EquippedWeapon);
         }
     }
 }

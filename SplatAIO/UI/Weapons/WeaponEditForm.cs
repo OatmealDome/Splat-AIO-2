@@ -1,28 +1,33 @@
 ﻿using SplatAIO.Logic.Hacks.Weapons;
 using SplatAIO.Properties;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SplatAIO.UI.Weapons
 {
     public partial class WeaponEditForm : Form
-    {
-        public Weapon weapon;
+    {   
+        private IReadOnlyList<Weapon> OwnedWeapons { get; set; }
+
+        public Weapon Weapon { get; private set; }
 
         public WeaponEditForm()
         {
             InitializeComponent();
         }
 
-        public WeaponEditForm(Weapon wep)
+        public WeaponEditForm(Weapon chosenWeapon, IReadOnlyList<Weapon> ownedWeapons)
         {
             InitializeComponent();
 
-            weapon = wep;
-            weaponBox.SelectedIndex = WeaponDatabase.GetIndex(weapon.Id);
+            Weapon = chosenWeapon;
+            OwnedWeapons = ownedWeapons;
+            weaponBox.SelectedIndex = WeaponDatabase.GetIndex(Weapon.Id);
             weaponBox.Enabled = false;
-            turfInkedBox.Value = Convert.ToInt32(weapon.TurfInked);
-            newFlagBox.Checked = weapon.IsNew;
+            turfInkedBox.Value = Convert.ToInt32(Weapon.TurfInked);
+            newFlagBox.Checked = Weapon.IsNew;
         }
 
         private void saveBox_Click(object sender, EventArgs e)
@@ -30,23 +35,19 @@ namespace SplatAIO.UI.Weapons
             // check if we're adding a new weapon
             if (weaponBox.Enabled)
             {
-                var weaponsForm = (WeaponsForm) Owner;
                 var selectedWeapon = WeaponDatabase.Weapons[weaponBox.SelectedIndex];
 
                 // make sure this new weapon isn't already in the list
-                foreach (var existingWeapon in weaponsForm.weapons)
-                    if (selectedWeapon.Id == existingWeapon.Id)
-                    {
-                        // refuse to save
-                        MessageBox.Show(Strings.WEAPON_EXISTS_TEXT);
-                        return;
-                    }
-
-                weapon = selectedWeapon;
+                if (OwnedWeapons.Any(existingWeapon => selectedWeapon.Id == existingWeapon.Id))
+                {
+                    MessageBox.Show(Strings.WEAPON_EXISTS_TEXT);
+                    return;
+                }
+                Weapon = selectedWeapon;
             }
 
-            weapon.TurfInked = Convert.ToUInt32(turfInkedBox.Value);
-            weapon.IsNew = newFlagBox.Checked;
+            Weapon.TurfInked = Convert.ToUInt32(turfInkedBox.Value);
+            Weapon.IsNew = newFlagBox.Checked;
 
             Close();
         }
