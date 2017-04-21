@@ -74,6 +74,7 @@
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxLogic.cs" />
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxMode.cs" />
     <Compile Include="Logic\Hacks\Sisterhax\SisterhaxValue.cs" />
+    <Compile Include="Logic\Hacks\SplatAIOCore.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearAddress.cs" />
     <Compile Include="Logic\Hacks\Octohax\OctohaxAddress.cs" />
     <Compile Include="Logic\Hacks\Singleplayer\PlayerAddress.cs" />

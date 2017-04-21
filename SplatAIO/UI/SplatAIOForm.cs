@@ -1,5 +1,6 @@
 ﻿using SplatAIO.Logic;
 using SplatAIO.Logic.Gecko;
+using SplatAIO.Logic.Hacks;
 using SplatAIO.Logic.Hacks.Octohax;
 using SplatAIO.Logic.Hacks.ProgressHax;
 using SplatAIO.Logic.Hacks.Singleplayer;
@@ -23,6 +24,7 @@ namespace SplatAIO.UI
 {
     public partial class SplatAIOForm : Form
     {
+        private SplatAIOCore SplatAIOCore { get; set; }
         private GearUnlocker GearUnlocker { get; set; }
         private OctohaxLogic OctohaxLogic { get; set; }
         private SisterhaxLogic SisterhaxLogic { get; set; }
