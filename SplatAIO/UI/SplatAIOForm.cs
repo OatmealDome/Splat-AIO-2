@@ -28,26 +28,14 @@ namespace SplatAIO.UI
         private GearUnlocker GearUnlocker { get; set; }
         private OctohaxLogic OctohaxLogic { get; set; }
         private SisterhaxLogic SisterhaxLogic { get; set; }
-        private ProgressFlags ProgressFlags { get; set; }
+        private MinigamesUnlocker MinigamesUnlocker { get; set; }
 
         public SplatAIOForm()
         {
             InitializeComponent();
         }
-
-        //general vars
-
-        public int Rank { get; set; }
-        public int Okane { get; set; }
-        public int Ude { get; set; }
-        public int Mae { get; set; }
-        public int Sazae { get; set; }
-        public int Gender { get; set; }
-        public int Eyes { get; set; }
-        public int Skin { get; set; }
-        public uint Figure { get; set; }
-        public bool SendStats { get; set; }
-        public bool AutoRefresh { get; set; }
+                
+        private bool SendStats { get; set; }
 
         private TCPGecko _gecko;
 
@@ -55,7 +43,9 @@ namespace SplatAIO.UI
         {
             var checker = new Checker();
             if (checker.getdata() == 0 && checker.ver > GetCurrentVersion())
+            {
                 checker.ShowDialog();
+            }
 
             Configuration.Load();
             ipBox.Text = Configuration.CurrentConfig.LastIp;
@@ -63,9 +53,13 @@ namespace SplatAIO.UI
             Text += " (" + Assembly.GetExecutingAssembly().GetName().Version + ")";
 
             if (Configuration.CurrentConfig.AllowStatistics)
+            {
                 SendStats = StatisticTransmitter.WorkingConnection();
+            }
             else
+            {
                 SendStats = false;
+            }
         }
 
         private void connectBox_Click(object sender, EventArgs e)
@@ -179,88 +173,82 @@ namespace SplatAIO.UI
         {
             hold();
 
+            SplatAIOCore = new SplatAIOCore(_gecko, MemoryUtils.Offset);
             GearUnlocker = new GearUnlocker(_gecko, MemoryUtils.Offset);
+            MinigamesUnlocker = new MinigamesUnlocker(_gecko, MemoryUtils.Offset);
             OctohaxLogic = new OctohaxLogic(_gecko);
             SisterhaxLogic = new SisterhaxLogic(_gecko);
-            ProgressFlags = new ProgressFlags(_gecko);
-            Rank = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Rank + MemoryUtils.Offset)) + 1;
-            Okane = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Okane + MemoryUtils.Offset));
-            Ude = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Ude + MemoryUtils.Offset));
-            Mae = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Mae + MemoryUtils.Offset));
-            Sazae = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Sazae + MemoryUtils.Offset));
-            Gender = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Gender + MemoryUtils.Offset));
-            Eyes = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Eyes + MemoryUtils.Offset));
-            Skin = Convert.ToInt32(_gecko.peek((uint)PlayerAddress.Skin + MemoryUtils.Offset));
-            Figure = _gecko.peek((uint)PlayerAddress.Amiibo + MemoryUtils.Offset);
+
+            SplatAIOCore.loadValues();
 
             try
             {
-                rankBox.Value = Rank;
+                rankBox.Value = SplatAIOCore.Rank;
             }
             catch (ArgumentOutOfRangeException)
             {
-                var rankDisplay = fixStuff(Strings.BAD_RANK_1, Rank, Strings.BAD_RANK_2, 0x12CDC1A8, 49, 50, 1);
+                var rankDisplay = fixStuff(Strings.BAD_RANK_1, SplatAIOCore.Rank, Strings.BAD_RANK_2, 0x12CDC1A8, 49, 50, 1);
                 rankBox.Value = rankDisplay;
             }
 
             try
             {
-                kaneBox.Value = Okane;
+                kaneBox.Value = SplatAIOCore.Okane;
             }
             catch (ArgumentOutOfRangeException)
             {
-                var OkaneDisplay = fixStuff(Strings.BAD_OKANE_1, Okane, Strings.BAD_OKANE_2, 0x12CDC1A0, 9999999,
+                var OkaneDisplay = fixStuff(Strings.BAD_OKANE_1, SplatAIOCore.Okane, Strings.BAD_OKANE_2, 0x12CDC1A0, 9999999,
                     9999999, 0);
                 kaneBox.Value = OkaneDisplay;
             }
 
             try
             {
-                maeBox.Value = Mae;
+                maeBox.Value = SplatAIOCore.Mae;
             }
             catch (ArgumentOutOfRangeException)
             {
-                var maeDisplay = fixStuff(Strings.BAD_MAE_1, Mae, Strings.BAD_MAE_2, 0x12CDC1B0, 99, 99, 0);
+                var maeDisplay = fixStuff(Strings.BAD_MAE_1, SplatAIOCore.Mae, Strings.BAD_MAE_2, 0x12CDC1B0, 99, 99, 0);
                 maeBox.Value = maeDisplay;
             }
 
             try
             {
-                sazaeBox.Value = Sazae;
+                sazaeBox.Value = SplatAIOCore.Sazae;
             }
             catch (ArgumentOutOfRangeException)
             {
-                var sazaeDisplay = fixStuff(Strings.BAD_SAZAE_1, Sazae, Strings.BAD_SAZAE_2, 0x12CDC1B4, 999, 999, 0);
+                var sazaeDisplay = fixStuff(Strings.BAD_SAZAE_1, SplatAIOCore.Sazae, Strings.BAD_SAZAE_2, 0x12CDC1B4, 999, 999, 0);
                 sazaeBox.Value = sazaeDisplay;
             }
 
             try
             {
-                udeBox.SelectedIndex = Ude;
+                udeBox.SelectedIndex = SplatAIOCore.Ude;
             }
             catch (ArgumentOutOfRangeException)
             {
-                var udeDisplay = fixStuff(Strings.BAD_UDE_1, Ude, Strings.BAD_UDE_2, 0x12CDC1AC, 10, 10, 0);
+                var udeDisplay = fixStuff(Strings.BAD_UDE_1, SplatAIOCore.Ude, Strings.BAD_UDE_2, 0x12CDC1AC, 10, 10, 0);
                 udeBox.SelectedIndex = udeDisplay;
             }
 
             try
             {
-                genderBox.SelectedIndex = Gender;
+                genderBox.SelectedIndex = SplatAIOCore.Gender;
             }
             catch (ArgumentOutOfRangeException)
             {
                 genderBox.SelectedIndex = 0;
-                _gecko.poke32((uint)PlayerAddress.Gender, 0x00000000);
+                SplatAIOCore.PokeGender(0);
             }
 
-            if (Figure == 0xFFFFFFFF)
+            if (SplatAIOCore.Amiibo == UInt32.MaxValue)
                 amiiboBox.SelectedIndex = 0;
             else
-                amiiboBox.SelectedIndex = Convert.ToInt32(Figure + 1);
+                amiiboBox.SelectedIndex = Convert.ToInt32(SplatAIOCore.Amiibo + 1);
 
-            eyeBox.SelectedIndex = Eyes;
-            skinBox.SelectedIndex = Skin;
+            eyeBox.SelectedIndex = SplatAIOCore.Eyes;
+            skinBox.SelectedIndex = SplatAIOCore.Skin;
             release();
         }
 
@@ -283,31 +271,45 @@ namespace SplatAIO.UI
 
             if (SendStats)
             {
-                if (kaneBox.Value != Okane)
-                    StatisticTransmitter.WriteToSlot(0, Math.Abs(kaneBox.Value - Okane));
-                if (rankBox.Value != Rank)
-                    StatisticTransmitter.WriteToSlot(3, Math.Abs(rankBox.Value - Rank));
-                if (sazaeBox.Value != Sazae)
-                    StatisticTransmitter.WriteToSlot(1, Math.Abs(sazaeBox.Value - Sazae));
-                if (eyeBox.SelectedIndex != Eyes)
+                if (kaneBox.Value != SplatAIOCore.Okane)
+                {
+                    StatisticTransmitter.WriteToSlot(0, Math.Abs(kaneBox.Value - SplatAIOCore.Okane));
+                }
+                if (rankBox.Value != SplatAIOCore.Rank)
+                {
+                    StatisticTransmitter.WriteToSlot(3, Math.Abs(rankBox.Value - SplatAIOCore.Rank));
+                }
+                if (sazaeBox.Value != SplatAIOCore.Sazae)
+                {
+                    StatisticTransmitter.WriteToSlot(1, Math.Abs(sazaeBox.Value - SplatAIOCore.Sazae));
+                }
+                if (eyeBox.SelectedIndex != SplatAIOCore.Eyes)
+                {
                     StatisticTransmitter.WriteToSlot(5, 1);
-                if (genderBox.SelectedIndex != Gender)
+                }
+                if (genderBox.SelectedIndex != SplatAIOCore.Gender)
+                {
                     StatisticTransmitter.WriteToSlot(4, 1);
-                if (skinBox.SelectedIndex != Skin)
+                }
+                if (skinBox.SelectedIndex != SplatAIOCore.Skin)
+                {
                     StatisticTransmitter.WriteToSlot(6, 1);
-                if (udeBox.SelectedIndex != Ude || maeBox.Value != Mae)
+                }
+                if (udeBox.SelectedIndex != SplatAIOCore.Ude || maeBox.Value != SplatAIOCore.Mae)
+                {
                     StatisticTransmitter.WriteToSlot(2, 1);
+                }
             }
 
-            pokeRank((uint)PlayerAddress.Rank + MemoryUtils.Offset); // rank
-            _gecko.poke32((uint)PlayerAddress.Okane + MemoryUtils.Offset, Convert.ToUInt32(kaneBox.Value)); // Okane
-            _gecko.poke32((uint)PlayerAddress.Ude + MemoryUtils.Offset, Convert.ToUInt32(udeBox.SelectedIndex)); // ude
-            _gecko.poke32((uint)PlayerAddress.Mae + MemoryUtils.Offset, Convert.ToUInt32(maeBox.Value)); // mae
-            _gecko.poke32((uint)PlayerAddress.Sazae + MemoryUtils.Offset, Convert.ToUInt32(sazaeBox.Value)); // sazae
-            _gecko.poke32((uint)PlayerAddress.Gender + MemoryUtils.Offset, Convert.ToUInt32(genderBox.SelectedIndex)); // gender
-            _gecko.poke32((uint)PlayerAddress.Eyes + MemoryUtils.Offset, Convert.ToUInt32(eyeBox.SelectedIndex)); // eyes
-            _gecko.poke32((uint)PlayerAddress.Skin + MemoryUtils.Offset, Convert.ToUInt32(skinBox.SelectedIndex)); // skin
-            pokeAmiibo((uint)PlayerAddress.Amiibo + MemoryUtils.Offset); // amiibo
+            SplatAIOCore.PokeRank(Convert.ToUInt32(rankBox.Value));
+            SplatAIOCore.PokeOkane(Convert.ToUInt32(kaneBox.Value));
+            SplatAIOCore.PokeUde(Convert.ToUInt32(udeBox.SelectedIndex));
+            SplatAIOCore.PokeMae(Convert.ToUInt32(maeBox.Value));
+            SplatAIOCore.PokeSazae(Convert.ToUInt32(sazaeBox.Value));
+            SplatAIOCore.PokeGender(Convert.ToUInt32(genderBox.SelectedIndex));
+            SplatAIOCore.PokeEyes(Convert.ToUInt32(eyeBox.SelectedIndex));
+            SplatAIOCore.PokeSkin(Convert.ToUInt32(skinBox.SelectedIndex));
+            PokeAmiibo();
 
             release();
         }
@@ -324,31 +326,19 @@ namespace SplatAIO.UI
             return noVal;
         }
 
-        public void pokeRank(uint address)
-        {
-            var rank = Convert.ToUInt32(rankBox.Value);
-            _gecko.poke32(address, rank - 1); // rank
-            _gecko.poke32(address - 0x4, 0x00000000); // experience to 0
-
-            // set progression bits appropriately            
-            ProgressFlags.LevelCapRaised = rank >= 20;
-            // rank cap flag, remove if rank < 20, set if rank >= 20
-            ProgressFlags.RankedUnlocked = rank >= 10;
-            // gachi unlocked flag, remove if rank < 10, set if rank >= 10
-            ProgressFlags.Apply();
-        }
-
-        public void pokeAmiibo(uint address)
+        public void PokeAmiibo()
         {
             if (amiiboBox.SelectedIndex == 0) // none / nashi
             {
-                _gecko.poke32(address, 0xFFFFFFFF);
+                SplatAIOCore.PokeAmiibo(UInt32.MaxValue);
             }
             else
             {
-                _gecko.poke32(address, Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
+                SplatAIOCore.PokeAmiibo(Convert.ToUInt32(amiiboBox.SelectedIndex - 1));
                 if (SendStats)
+                {
                     StatisticTransmitter.WriteToSlot(7, 1);
+                }
             }
         }
         
@@ -390,7 +380,7 @@ namespace SplatAIO.UI
 
         private void gameButton_Click(object sender, EventArgs e)
         {
-            _gecko.poke32((uint) PlayerAddress.Minigames + MemoryUtils.Offset, 0x000F0000);
+            MinigamesUnlocker.UnlockMinigames();
         }
 
         private void bukiButton_Click(object sender, EventArgs e)
@@ -417,32 +407,20 @@ namespace SplatAIO.UI
 
         private void weaponsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var weaponsForm = new WeaponsForm();
-            weaponsForm.ShowDialog(this);
-        }
-        
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-        }
+            new WeaponsForm().ShowDialog(this);
+        }        
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) //autorefresh checkbox
         {
-            if (checkBox1.Checked)
-            {
-                AutoRefresh = true;
-                autoRefreshTimer.Enabled = true;
-            }
-            else
-            {
-                AutoRefresh = false;
-                autoRefreshTimer.Enabled = false;
-            }
+            autoRefreshTimer.Enabled = checkBox1.Checked;
         }
 
         private void timer1_Tick(object sender, EventArgs e) //refresh on interval
         {
-            if (AutoRefresh)
+            if (autoRefreshTimer.Enabled)
+            {
                 load();
+            }
         }
 
         public static int GetCurrentVersion()
@@ -451,9 +429,12 @@ namespace SplatAIO.UI
             var builder = new StringBuilder(version.Length);
 
             for (var i = 0; i < version.Length; i++)
+            {
                 if (!version[i].Equals('.'))
+                {
                     builder.Append(version[i]);
-
+                }
+            }
             return Convert.ToInt32(builder.ToString());
         }
     }

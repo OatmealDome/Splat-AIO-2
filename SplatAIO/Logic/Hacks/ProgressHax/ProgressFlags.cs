@@ -24,6 +24,7 @@ namespace SplatAIO.Logic.Hacks.ProgressHax
         private const uint ProgressBitsAddress = 0x12CD1C24;
 
         private TCPGecko Gecko { get; set; }
+        private uint Offset { get; set; }
         private uint _progression;
 
         public bool Tutorial { get { return (_progression & (uint)ProgressBits.Tutorial) != 0; } set { SetFlag((uint)ProgressBits.Tutorial, value); } }
@@ -39,9 +40,10 @@ namespace SplatAIO.Logic.Hacks.ProgressHax
         public bool LevelCapRaised { get { return (_progression & (uint)ProgressBits.LevelCapRaised) != 0; } set { SetFlag((uint)ProgressBits.LevelCapRaised, value); } }
         public bool Warning { get { return (_progression & (uint)ProgressBits.Warning) != 0; } set { SetFlag((uint)ProgressBits.Warning, value); } }
 
-        public ProgressFlags(TCPGecko gecko)
+        public ProgressFlags(TCPGecko gecko, uint offset)
         {
             Gecko = gecko;
+            Offset = offset;
             Refresh();
         }
 
@@ -59,12 +61,12 @@ namespace SplatAIO.Logic.Hacks.ProgressHax
 
         public void Refresh()
         {
-            _progression = Gecko.peek(ProgressBitsAddress + MemoryUtils.Offset);
+            _progression = Gecko.peek(ProgressBitsAddress + Offset);
         }
 
         public void Apply()
         {
-            Gecko.poke32(ProgressBitsAddress + MemoryUtils.Offset, _progression);
+            Gecko.poke32(ProgressBitsAddress + Offset, _progression);
         }
     }
 }
