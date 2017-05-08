@@ -89,7 +89,6 @@
     <Compile Include="Logic\Hacks\TimeHax\TimerHaxLogic.cs" />
     <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
     <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />
-    <Compile Include="Logic\Hacks\Unlock\WeaponsUnlocker.cs" />
     <Compile Include="UI\Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>

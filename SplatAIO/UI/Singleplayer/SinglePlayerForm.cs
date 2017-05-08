@@ -104,7 +104,7 @@ namespace SplatAIO.UI.Singleplayer
                 OKButton_Click(null, null);
 
                 // Reset single player flags in the Inkopolis progress bits
-                ProgressFlags progressFlags = new ProgressFlags(TCPGecko.Instance());
+                ProgressFlags progressFlags = new ProgressFlags(TCPGecko.Instance(), MemoryUtils.Offset);
                 progressFlags.HeroSuit = false; // octo valley intro
                 progressFlags.GreatZapfish = false; // great zapfish returned
                 progressFlags.CuttlefishPostGame = false; // credits block available

@@ -68,9 +68,6 @@ namespace SplatAIO.Logic.Hacks.Octohax
             // Tnk_Simple 5
             Gecko.poke32((uint)OctohaxAddress.TnkSimpleFive + 0x4, tnkRvlOne);
             Gecko.poke32((uint)OctohaxAddress.TnkSimpleFive + 0x8, tnkRvlTwo);
-
-            /*if (SendStats) ToDo
-                StatisticTransmitter.WriteToSlot(9, 1);*/
         }
     }
 }

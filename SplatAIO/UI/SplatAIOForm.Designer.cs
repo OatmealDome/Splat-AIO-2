@@ -34,7 +34,7 @@
             this.connectBox = new System.Windows.Forms.Button();
             this.disconnectBox = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.autoRefreshBox = new System.Windows.Forms.CheckBox();
             this.refreshButton = new System.Windows.Forms.Button();
             this.skinBox = new System.Windows.Forms.ComboBox();
             this.OKButton = new System.Windows.Forms.Button();
@@ -108,7 +108,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.autoRefreshBox);
             this.groupBox1.Controls.Add(this.refreshButton);
             this.groupBox1.Controls.Add(this.skinBox);
             this.groupBox1.Controls.Add(this.OKButton);
@@ -130,15 +130,14 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // checkBox1
+            // autoRefreshBox
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            resources.ApplyResources(this.autoRefreshBox, "autoRefreshBox");
+            this.autoRefreshBox.BackColor = System.Drawing.SystemColors.Control;
+            this.autoRefreshBox.Name = "autoRefreshBox";
+            this.autoRefreshBox.UseVisualStyleBackColor = false;
+            this.autoRefreshBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // refreshButton
             // 
@@ -464,7 +463,6 @@
             // 
             // autoRefreshTimer
             // 
-            this.autoRefreshTimer.Enabled = true;
             this.autoRefreshTimer.Interval = 5000;
             this.autoRefreshTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -551,7 +549,7 @@
         private System.Windows.Forms.ToolStripMenuItem editorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem weaponsToolStripMenuItem;
         private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox autoRefreshBox;
         private System.Windows.Forms.Timer autoRefreshTimer;
     }
 }

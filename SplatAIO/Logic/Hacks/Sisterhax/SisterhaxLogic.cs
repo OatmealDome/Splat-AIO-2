@@ -20,9 +20,6 @@ namespace SplatAIO.Logic.Hacks.Sisterhax
             Gecko.poke32((uint)SisterhaxAddress.Hotaru, (uint)SisterhaxValue.ValueOne);
             Gecko.poke32((uint)SisterhaxAddress.HotaruTwo, (uint)SisterhaxValue.ValueTwo);
             Gecko.poke32((uint)SisterhaxAddress.HotaruModel, mode.HotaruValue);
-
-            /* if (SendStats) ToDo
-                StatisticTransmitter.WriteToSlot(8, 1);*/
         }
     }
 }

@@ -2,8 +2,6 @@
 using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks;
 using SplatAIO.Logic.Hacks.Octohax;
-using SplatAIO.Logic.Hacks.ProgressHax;
-using SplatAIO.Logic.Hacks.Singleplayer;
 using SplatAIO.Logic.Hacks.Sisterhax;
 using SplatAIO.Logic.Hacks.Unlock;
 using SplatAIO.Logic.Hacks.Weapons;
@@ -136,7 +134,7 @@ namespace SplatAIO.UI
             refreshButton.Enabled = true;
             OKButton.Enabled = true;
             menuStrip.Enabled = true;
-            checkBox1.Enabled = true;
+            autoRefreshBox.Enabled = true;
             autoRefreshTimer.Enabled = true;
         }
 
@@ -165,7 +163,7 @@ namespace SplatAIO.UI
             refreshButton.Enabled = false;
             OKButton.Enabled = false;
             menuStrip.Enabled = false;
-            checkBox1.Enabled = false;
+            autoRefreshBox.Enabled = false;
             autoRefreshTimer.Enabled = false;
         }
 
@@ -351,31 +349,48 @@ namespace SplatAIO.UI
         private void ikaBox_Click(object sender, EventArgs e)
         {
             OctohaxLogic.switchToSquid();
+            if (SendStats)
+            {
+                StatisticTransmitter.WriteToSlot(9, 1);
+            }
         }
 
         private void takoBox_Click(object sender, EventArgs e)
         {
             OctohaxLogic.switchToOctopus();
+            if (SendStats)
+            {
+                StatisticTransmitter.WriteToSlot(9, 1);
+            }
         }
 
         private void aoriBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.ChangeModels(SisterhaxMode.Aori);
+            ChangeModels(SisterhaxMode.Aori);
         }
 
         private void hotaruBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.ChangeModels(SisterhaxMode.Hotaru);
+            ChangeModels(SisterhaxMode.Hotaru);
         }
 
         private void swapBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.ChangeModels(SisterhaxMode.Swap);
+            ChangeModels(SisterhaxMode.Swap);
         }
 
         private void normalBox_Click(object sender, EventArgs e)
         {
-            SisterhaxLogic.ChangeModels(SisterhaxMode.Normal);
+            ChangeModels(SisterhaxMode.Normal);
+        }
+
+        private void ChangeModels(SisterhaxMode mode)
+        {
+            SisterhaxLogic.ChangeModels(mode);
+            if (SendStats)
+            {
+                StatisticTransmitter.WriteToSlot(8, 1);
+            }
         }
 
         private void gameButton_Click(object sender, EventArgs e)
@@ -393,6 +408,10 @@ namespace SplatAIO.UI
             GearUnlocker.PokeHats();
             GearUnlocker.PokeClothes();
             GearUnlocker.PokeShoes();
+            if (SendStats)
+            {
+                StatisticTransmitter.WriteToSlot(10, 1);
+            }
         }
 
         private void singlePlayerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -412,7 +431,7 @@ namespace SplatAIO.UI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) //autorefresh checkbox
         {
-            autoRefreshTimer.Enabled = checkBox1.Checked;
+            autoRefreshTimer.Enabled = autoRefreshBox.Checked;
         }
 
         private void timer1_Tick(object sender, EventArgs e) //refresh on interval

@@ -1,5 +1,6 @@
 ﻿using SplatAIO.Logic.Gecko;
 using SplatAIO.Logic.Hacks.ProgressHax;
+using SplatAIO.Logic.Memory;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace SplatAIO.UI.ProgressHax
         public ProgressFlagsForm()
         {
             InitializeComponent();
-            ProgressFlags = new ProgressFlags(TCPGecko.Instance());
+            ProgressFlags = new ProgressFlags(TCPGecko.Instance(), MemoryUtils.Offset);
         }
 
         private void ProgressBitsForm_Load(object sender, EventArgs e)

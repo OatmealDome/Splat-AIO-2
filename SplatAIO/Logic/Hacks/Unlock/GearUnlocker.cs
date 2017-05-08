@@ -325,9 +325,6 @@ namespace SplatAIO.Logic.Hacks.Unlock
                 // debug
                 // Console.WriteLine("poked (objectId = " + objectId + ", new baseAddress = " + baseAddress + ")");
             }
-
-            /*if (SendStats) ToDo 
-                StatisticTransmitter.WriteToSlot(10, 1);*/
         }
     }
 }
