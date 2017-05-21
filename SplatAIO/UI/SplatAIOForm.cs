@@ -106,10 +106,10 @@ namespace SplatAIO.UI
             connectBox.Enabled = false;
             disconnectBox.Enabled = true;
 
-            load();
+            Reload();
         }
 
-        public void release()
+        public void Release()
         {
             rankBox.Enabled = true;
             ipBox.Enabled = false;
@@ -135,10 +135,10 @@ namespace SplatAIO.UI
             OKButton.Enabled = true;
             menuStrip.Enabled = true;
             autoRefreshBox.Enabled = true;
-            autoRefreshTimer.Enabled = true;
+            //autoRefreshTimer.Enabled = true;
         }
 
-        public void hold()
+        public void Hold()
         {
             rankBox.Enabled = false;
             ipBox.Enabled = true;
@@ -164,12 +164,12 @@ namespace SplatAIO.UI
             OKButton.Enabled = false;
             menuStrip.Enabled = false;
             autoRefreshBox.Enabled = false;
-            autoRefreshTimer.Enabled = false;
+            //autoRefreshTimer.Enabled = false;
         }
 
-        public void load()
+        public void Reload()
         {
-            hold();
+            Hold();
 
             SplatAIOCore = new SplatAIOCore(_gecko, MemoryUtils.Offset);
             GearUnlocker = new GearUnlocker(_gecko, MemoryUtils.Offset);
@@ -247,25 +247,25 @@ namespace SplatAIO.UI
 
             eyeBox.SelectedIndex = SplatAIOCore.Eyes;
             skinBox.SelectedIndex = SplatAIOCore.Skin;
-            release();
+            Release();
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            load();
+            Reload();
         }
 
         private void disconnectBox_Click(object sender, EventArgs e)
         {
             disconnectBox.Enabled = false;
-            hold();
+            Hold();
             _gecko.Disconnect();
             connectBox.Enabled = true;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            hold();
+            Hold();
 
             if (SendStats)
             {
@@ -309,7 +309,7 @@ namespace SplatAIO.UI
             SplatAIOCore.PokeSkin(Convert.ToUInt32(skinBox.SelectedIndex));
             PokeAmiibo();
 
-            release();
+            Release();
         }
 
         public int fixStuff(string str1, int invalid, string str2, uint fixAddress, int newPokeVal, int newVal,
@@ -438,7 +438,7 @@ namespace SplatAIO.UI
         {
             if (autoRefreshTimer.Enabled)
             {
-                load();
+                Reload();
             }
         }
 
