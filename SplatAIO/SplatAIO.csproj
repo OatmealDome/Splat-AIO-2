@@ -52,7 +52,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,34 +65,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abilities.cs" />
-    <Compile Include="AllowStatisticsForm.cs">
+    <Compile Include="Logic\Abilities.cs" />
+    <Compile Include="Logic\Gecko\ByteSwap.cs" />
+    <Compile Include="Logic\Gecko\Dump.cs" />
+    <Compile Include="Logic\Gecko\ETCPGeckoException.cs" />
+    <Compile Include="Logic\Hacks\Octohax\OctohaxLogic.cs" />
+    <Compile Include="Logic\Hacks\ProgressHax\ProgressFlags.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxMode.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxValue.cs" />
+    <Compile Include="Logic\Hacks\SplatAIOCore.cs" />
+    <Compile Include="Logic\Hacks\Unlock\GearAddress.cs" />
+    <Compile Include="Logic\Hacks\Octohax\OctohaxAddress.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\PlayerAddress.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\WorldAddress.cs" />
+    <Compile Include="Logic\Hacks\Sisterhax\SisterhaxAddress.cs" />
+    <Compile Include="Logic\Hacks\Weapons\WeaponsHax.cs" />
+    <Compile Include="Logic\Memory\MemoryUtils.cs" />
+    <Compile Include="Logic\Memory\ValidMemory.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\EnvironmentHax.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\LevelDataHax.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\UpgradesHax.cs" />
+    <Compile Include="Logic\Hacks\TimeHax\TimerHaxLogic.cs" />
+    <Compile Include="Logic\Hacks\Unlock\GearUnlocker.cs" />
+    <Compile Include="Logic\Hacks\Unlock\MinigamesUnlocker.cs" />
+    <Compile Include="UI\Statistics\AllowStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllowStatisticsForm.Designer.cs">
+    <Compile Include="UI\Statistics\AllowStatisticsForm.Designer.cs">
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configuration.cs" />
-    <Compile Include="EditLevelDataForm.cs">
+    <Compile Include="Logic\Configuration.cs" />
+    <Compile Include="UI\Singleplayer\EditLevelDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditLevelDataForm.Designer.cs">
+    <Compile Include="UI\Singleplayer\EditLevelDataForm.Designer.cs">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="UI\SplatAIOForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\SplatAIOForm.Designer.cs">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LevelData.cs" />
-    <Compile Include="MemAreas.cs" />
+    <Compile Include="Logic\Hacks\Singleplayer\LevelData.cs" />
+    <Compile Include="Logic\Memory\AddressRange.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressBitsForm.cs">
+    <Compile Include="UI\ProgressHax\ProgressFlagsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgressBitsForm.Designer.cs">
-      <DependentUpon>ProgressBitsForm.cs</DependentUpon>
+    <Compile Include="UI\ProgressHax\ProgressFlagsForm.Designer.cs">
+      <DependentUpon>ProgressFlagsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Strings.ja.Designer.cs">
@@ -102,10 +124,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="SingleAssemblyComponentResourceManager.cs" />
-    <Compile Include="SinglePlayerForm.cs">
+    <Compile Include="UI\Singleplayer\SinglePlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SinglePlayerForm.Designer.cs">
+    <Compile Include="UI\Singleplayer\SinglePlayerForm.Designer.cs">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Strings.Designer.cs">
@@ -113,57 +135,57 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Statistics.cs" />
-    <Compile Include="SpecialWeapon.cs" />
-    <Compile Include="SubWeapon.cs" />
-    <Compile Include="tcpconn.cs" />
-    <Compile Include="TCPGecko.cs" />
-    <Compile Include="Checker.cs">
+    <Compile Include="Logic\Statistics\StatisticTransmitter.cs" />
+    <Compile Include="Logic\Hacks\Weapons\SpecialWeapon.cs" />
+    <Compile Include="Logic\Hacks\Weapons\SubWeapon.cs" />
+    <Compile Include="Logic\Gecko\TCPConnector.cs" />
+    <Compile Include="Logic\Gecko\TCPGecko.cs" />
+    <Compile Include="UI\Checker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Checker.Designer.cs">
+    <Compile Include="UI\Checker.Designer.cs">
       <DependentUpon>Checker.cs</DependentUpon>
     </Compile>
-    <Compile Include="TimerHaxForm.cs">
+    <Compile Include="UI\TimerHax\TimerHaxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TimerHaxForm.Designer.cs">
+    <Compile Include="UI\TimerHax\TimerHaxForm.Designer.cs">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Weapon.cs" />
-    <Compile Include="WeaponDatabase.cs" />
-    <Compile Include="WeaponEditForm.cs">
+    <Compile Include="Logic\Hacks\Weapons\Weapon.cs" />
+    <Compile Include="Logic\Hacks\Weapons\WeaponDatabase.cs" />
+    <Compile Include="UI\Weapons\WeaponEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WeaponEditForm.Designer.cs">
+    <Compile Include="UI\Weapons\WeaponEditForm.Designer.cs">
       <DependentUpon>WeaponEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WeaponsForm.cs">
+    <Compile Include="UI\Weapons\WeaponsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WeaponsForm.Designer.cs">
+    <Compile Include="UI\Weapons\WeaponsForm.Designer.cs">
       <DependentUpon>WeaponsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AllowStatisticsForm.resx">
+    <EmbeddedResource Include="UI\Statistics\AllowStatisticsForm.resx">
       <DependentUpon>AllowStatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditLevelDataForm.ja.resx">
+    <EmbeddedResource Include="UI\Singleplayer\EditLevelDataForm.ja.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditLevelDataForm.resx">
+    <EmbeddedResource Include="UI\Singleplayer\EditLevelDataForm.resx">
       <DependentUpon>EditLevelDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.ja.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SplatAIOForm.ja.resx">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SplatAIOForm.resx">
+      <DependentUpon>SplatAIOForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProgressBitsForm.ja.resx">
-      <DependentUpon>ProgressBitsForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ProgressHax\ProgressFlagsForm.ja.resx">
+      <DependentUpon>ProgressFlagsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProgressBitsForm.resx">
-      <DependentUpon>ProgressBitsForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ProgressHax\ProgressFlagsForm.resx">
+      <DependentUpon>ProgressFlagsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -179,32 +201,32 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ja.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SinglePlayerForm.ja.resx">
+    <EmbeddedResource Include="UI\Singleplayer\SinglePlayerForm.ja.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SinglePlayerForm.resx">
+    <EmbeddedResource Include="UI\Singleplayer\SinglePlayerForm.resx">
       <DependentUpon>SinglePlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Checker.resx">
+    <EmbeddedResource Include="UI\Checker.resx">
       <DependentUpon>Checker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TimerHaxForm.ja.resx">
+    <EmbeddedResource Include="UI\TimerHax\TimerHaxForm.ja.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TimerHaxForm.resx">
+    <EmbeddedResource Include="UI\TimerHax\TimerHaxForm.resx">
       <DependentUpon>TimerHaxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeaponEditForm.ja.resx">
+    <EmbeddedResource Include="UI\Weapons\WeaponEditForm.ja.resx">
       <DependentUpon>WeaponEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeaponEditForm.resx">
+    <EmbeddedResource Include="UI\Weapons\WeaponEditForm.resx">
       <DependentUpon>WeaponEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeaponsForm.resx">
+    <EmbeddedResource Include="UI\Weapons\WeaponsForm.resx">
       <DependentUpon>WeaponsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -236,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="_itshim.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using SplatAIO.UI;
+using System;
 using System.Windows.Forms;
 
 namespace SplatAIO
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             // for debugging purposes
-            /*CultureInfo japaneseCulture = new CultureInfo("ja-JP");
+/*#if DEBUG
+            CultureInfo japaneseCulture = new CultureInfo("ja-JP");
             Thread.CurrentThread.CurrentCulture = japaneseCulture;
             Thread.CurrentThread.CurrentUICulture = japaneseCulture;
             CultureInfo.DefaultThreadCurrentCulture = japaneseCulture;
-            CultureInfo.DefaultThreadCurrentUICulture = japaneseCulture;*/
-
-            // Generate the weapon database on start up
-            WeaponDatabase.NoOperation();
+            CultureInfo.DefaultThreadCurrentUICulture = japaneseCulture
+#endif*/
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-
+            Application.Run(new SplatAIOForm());
         }
     }
 }
