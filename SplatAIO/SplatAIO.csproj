@@ -239,15 +239,24 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release (
+    <PostBuildEvent Condition="'$(OS)' == 'Windows_NT'">if $(ConfigurationName) == Release (
   move "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
   "$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"
 )</PostBuildEvent>
+    <PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">if [ "$(ConfigurationName)" == "Release" ]; then
+  mv "$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe"
+  mono "$(ProjectDir)buildTools\ILRepack.exe" /out:"$(TargetPath)" "$(ProjectDir)$(OutDir)SplatAIO-no-resources.exe" "$(ProjectDir)$(OutDir)ja\SplatAIO.resources.dll"
+fi
+</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Release (
+    <PreBuildEvent Condition="'$(OS)' == 'Windows_NT'">if $(ConfigurationName) == Release (
   "$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"
 )
+exit 0</PreBuildEvent>
+    <PreBuildEvent Condition="'$(OS)' != 'Windows_NT'">if [ "$(ConfigurationName)" == "Release" ]; then
+  mono "$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"
+fi
 exit 0</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
