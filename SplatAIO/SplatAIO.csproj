@@ -251,7 +251,7 @@ fi
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent Condition="'$(OS)' == 'Windows_NT'">if $(ConfigurationName) == Release (
-  mono "$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"
+  "$(ProjectDir)buildTools\fart.exe" "$(ProjectDir)*.Designer.cs" "new System.ComponentModel.ComponentResourceManager" "new SingleAssemblyComponentResourceManager"
 )
 exit 0</PreBuildEvent>
     <PreBuildEvent Condition="'$(OS)' != 'Windows_NT'">if [ "$(ConfigurationName)" == "Release" ]; then
